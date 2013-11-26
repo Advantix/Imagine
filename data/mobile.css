@@ -1,0 +1,158 @@
+/* General */
+body {
+	background: #dddddd;
+}
+
+
+#home {
+	background: #e5e5e5 url(../img/bg.png) top center repeat-x;
+	margin:0;
+	padding:0;
+}
+#homeheader {
+	margin:0;
+	padding:55px 0 0 0;
+	text-align: center
+}
+#homeheader h1 {
+	margin: 0;
+	padding:0;
+}
+#homeheader p {
+	margin: 0;
+	padding:0;
+}
+.mainnav {
+	text-align:center;
+}
+.themeswitcher {
+	clear: both;
+	margin: 20px 0 0;
+}
+h2 {
+	margin-top:1.5em;
+}
+p code {
+	font-size:1.2em;
+	font-weight:bold;
+}
+dt {
+	font-weight: bold;
+	margin: 2em 0 .5em;
+}
+dt code, dd code {
+	font-size:1.3em;
+	line-height:150%;
+}
+pre {
+	white-space: pre;
+	white-space: pre-wrap;
+	word-wrap: break-word;
+}
+.home {
+	top:0.65em;
+}
+.error{
+		color: #F00;
+		font-size:0.8em;
+		text-align:center;
+}
+/* Gallery */
+.gallery {
+	list-style: none;
+	padding: 0;
+	margin: 0;
+}
+.gallery:after {
+	clear: both;
+	content: ".";
+	display: block;
+	height: 0;
+	visibility: hidden;
+}
+.gallery li {
+	float: left;
+	width: 25%;
+}
+.gallery li a {
+	display: block;
+	margin: 5px;
+	border: 2px solid #000000;
+}
+.gallery li img {
+	display: block;
+	width: 100%;
+	height: auto;
+}
+/* Individual Color */
+.ui-bar-f {
+	border:1px solid #803714;
+	background:#74b042;
+	color:#fff;
+	font-weight:bold;
+	text-shadow:0 -1px 1px #234403;
+	background:-webkit-gradient(linear, left top, left bottom, from(#ae4b1b), to(#803714));
+	background:-webkit-linear-gradient(top, #ae4b1b, #803714);
+	background: -moz-linear-gradient(top, #ae4b1b, #803714);
+	background: -o-linear-gradient(top, #ae4b1b, #803714);
+	background: linear-gradient(top, #ae4b1b, #803714)
+}
+.ui-bar-f, .ui-bar-f .ui-link-inherit {
+	color:#fff
+}
+.ui-bar-f .ui-link {
+	color:#fff;
+	font-weight:bold;
+	text-decoration:none;
+}
+.ui-btn-up-f {
+	background:#74b042;
+	background:-webkit-gradient(linear, left top, left bottom, from(#ae4b1b), to(#803714));
+	background:-webkit-linear-gradient(top, #ae4b1b, #803714);
+	background: -moz-linear-gradient(top, #ae4b1b, #803714);
+	background: -o-linear-gradient(top, #ae4b1b, #803714);
+	background: linear-gradient(top, #ae4b1b, #803714);
+	border:1px solid #803714;
+	color:#FFF;
+	font-weight:bold;
+	text-shadow:0 -1px 1px #234403
+}
+.ui-btn-hover-f {
+	background:#74b042;
+	background:-webkit-gradient(linear, left top, left bottom, from(#ae4b1b), to(#803714));
+	background:-webkit-linear-gradient(top, #ae4b1b, #803714);
+	background: -moz-linear-gradient(top, #ae4b1b, #803714);
+	background: -o-linear-gradient(top, #ae4b1b, #803714);
+	background: linear-gradient(top, #ae4b1b, #803714);
+	border:1px solid #803714;
+	color:#FFF;
+	font-weight:bold;
+	text-shadow:0 -1px 1px #234403
+}
+
+
+/*-------- clearfix-------*/
+.clearfix:after {
+    content: ".";
+    display: block;
+    clear: both;
+    visibility: hidden;
+    line-height: 0;
+    height: 0;
+}
+.clearfix {
+    display: inline-block;
+}
+html[xmlns] .clearfix {
+    display: block;
+}
+* html .clearfix {
+    height: 1%;
+}
+
+@media only screen and (max-width: 35em) {
+
+.ui-radio input { margin-top:6px;} .small-big{margin:0 auto; width: auto; }
+.small-big span{ font-size:1em;}
+ .ui-checkbox input, .ui-radio input { position:static; float:left;}
+ }

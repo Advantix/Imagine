@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0;" name="viewport" />
+<meta name="apple-mobile-web-app-capable" content="yes" />
+<title>Imagine Fine Dining & Pizza Restaurant</title>
+<link rel="stylesheet"  href="data/jquery.mobile-1.04.min.css" />
+<link rel="stylesheet" href="data/mobile.css" />
+<link rel="stylesheet" href="data/photoswipe.css" />
+<script type="text/javascript" src="data/klass.min.js"></script>
+<script type="text/javascript" src="data/jquery-1.6.4.min.js"></script>
+<script type="text/javascript" src="data/jquery.mobile-1.04.min.js"></script>
+<script type="text/javascript" src="data/code.photoswipe.jquery-2.1.3.min.js"></script>
+<script type="text/javascript" src="data/mobile.js"></script>
+</head>
+<body id="bodyId">
+<div data-role="page" data-theme="b" id="services">
+	<!-- /Header -->
+	<div data-role="header" id="headerContId" data-theme="b" style="background:#272829 url(img/header-title.png) top repeat-x;"></div>
+	<div style="float:left; text-align:center; width:100%;color:#404040;height:20px;font-size:13px;border-bottom:1px solid #404040;background-color:#ffffff" id="userName"></div>
+	<!-- /Header -->
+	
+	<!-- /content start--> 
+	<div data-role="content" class="item-detail">
+		<form id="itemCheckOutFrm">
+			<h2 style="text-align:center;">Your Order</h2>
+			<div id="itemDetList" class="ui-grid-a checkout-list"></div>
+			<div id="deliveryDivId"  class="checkout-grid clearfix" style="background-color:#f1f1f1;padding:10px 0 10px 10px;text-align:center;" ></div>
+				
+			<div class="clearfix"></div>       
+    
+    
+			<div data-role="controlgroup" data-type="horizontal" class="checkout-list" id="buttGroup">
+
+			<a href="#" id="changOrdButtonId" rel="external" data-theme="c" data-icon="plus" data-role="button"  class="ui-btn ui-btn-icon-left ui-corner-left ui-btn-up-c">
+			<span class="ui-btn-inner ui-corner-left">
+			<img src="img/change_order.png" alt="" id="changeOrdImgId">
+			<div class="ui-btn-text" id="changeOrdDiveId">Chance Order</div></span>
+			</a>
+
+			<a href="showMenu.html" id="addAnoItmButtonId" data-theme="c" data-icon="star" data-role="button" class="ui-btn ui-btn-icon-left ui-btn-up-c" rel="external">
+			<span class="ui-btn-inner">
+			<img src="img/add_item.png" alt="">
+			<div class="ui-btn-text">Add Another Item</div></span>
+			</a>
+
+			
+			</div>
+			<a href="#" id="pickupnow" data-role="button"  >Pick Up Now</a>
+			<a href="#" id="pickupTimeSelector" data-role="button">Time Slector</a>		
+			<a href="#" id="placeOrdButtonId" data-role="button">Place Order</a>
+
+			
+		</form>
+	</div>
+	
+
+	<!-- /content end--> 
+</div>
+
+<!--<script type="text/javascript" charset="utf-8" src="js/cordova.js"></script>-->
+<script type="text/javascript" charset="utf-8" src="js/jquery.js"></script>
+<script type="text/javascript" charset="utf-8" src="js/jquery.mobile-1.0rc1.min.js"></script>
+<script type="text/javascript" charset="utf-8" src="js/common.js"></script>
+<script type="text/javascript" charset="utf-8" src="js/checkout.js"></script>
+</body>
+</html>

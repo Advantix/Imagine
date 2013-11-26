@@ -1,0 +1,17 @@
+#employeePic {
+	float: left;
+	padding-right: 10px;
+	padding-bottom: 16px;
+}
+
+#employeeDetails p {
+	margin-top: 0px;
+	margin-bottom: 8px;
+}
+
+#actionList {
+	clear: both;
+}
+.navbutton {background-color:#f0f0f0}
+
+#employeeList  li.ui-body-c{border:1px solid #f1f1f1;color:#333;text-shadow:0 1px 0 #;background-color:rgba(255,225,225,0.5);}

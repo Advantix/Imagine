@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0;" name="viewport" />
+<meta name="apple-mobile-web-app-capable" content="yes" />
+<title>Imagine Fine Dining & Pizza Restaurant</title>
+<link rel="stylesheet"  href="data/jquery.mobile-1.04.min.css" />
+<link rel="stylesheet" href="data/mobile.css" />
+<link rel="stylesheet" href="data/photoswipe.css" />
+<script type="text/javascript" src="data/klass.min.js"></script>
+<script type="text/javascript" src="data/jquery-1.6.4.min.js"></script>
+<script type="text/javascript" src="data/jquery.mobile-1.04.min.js"></script>
+<script type="text/javascript" src="data/code.photoswipe.jquery-2.1.3.min.js"></script>
+<script type="text/javascript" src="data/mobile.js"></script>
+</head>
+<body id="bodyId">
+<div data-role="page" data-theme="b" id="services">
+	<!-- /Header -->
+	<div data-role="header" id="headerContId" data-theme="b" style="background:#272829 url(img/header-title.png) top repeat-x;"></div>
+	
+	 <div style="float:left; text-align:center; width:100%;color:#404040;height:20px;font-size:13px;border-bottom:1px solid #404040;background-color:#ffffff" id="userName"></div>		   
+		
+	  
+	
+	<!-- /Header -->
+	
+	<!-- /content start--> 
+	<div data-role="content"  >
+		<div id="pageLoader" class="ui-loader">		
+		   <img src="data/loader.gif" />		
+		</div>
+		
+		<a href="#" id="loginBtnId" data-role="button" data-icon="star" data-theme="c" class="ui-rfloat ui-top" rel="external">Login</a>
+		<a href="#" id="signupBtnId" data-role="button" data-icon="grid" data-theme="b" class="ui-rfloat ui-top" rel="external">Signup</a>	
+<a href="#" id="addrBtnId" data-role="button" data-icon="alert" data-theme="c" class="ui-rfloat ui-top" rel="external">Address</a>	
+
+		<form id="registerFrmId" style="display:none">
+			<ul data-role="listview"  data-inset="true" data-theme="c" style="margin-top:100px">
+				<li><b>First Name</b></li>
+				<li><input type="text" id="fname" name="fname" required></li>
+				<li><b>Last Name</b></li>
+				<li><input type="text" id="lname" name="lname" required></li>
+				<li><b>Email</b></li>
+				<li><input type="email" id="email" name="email" required></li>
+				<li><b>Phone</b></li>
+				<li><input type="tel" id="phone" name="phone" required></li>				
+			</ul>
+			<input type="hidden" id="user_id" name="user_id" readonly>
+			<a href="#" id="sinupButtonId" data-role="button" data-icon="save" data-theme="a" class="ui-rfloat ui-top">Submit</a>
+		</form>
+		<form id="loginFrmId" style="display:none">
+			<ul data-role="listview"  data-inset="true" data-theme="c" style="margin-top:100px">				
+				<li><b>Email</b></li>
+				<li><input type="email" id="email" name="email" required></li>
+				<li><b>Password</b></li>
+				<li><input type="password" id="password" name="password" required></li>				
+			</ul>
+			<a href="#" id="loginButtonId" data-role="button" data-icon="save" data-theme="a" class="ui-rfloat ui-top">Submit</a>
+		</form>
+		<form id="addrFrmId" style="display:none">
+			<ul data-role="listview"  data-inset="true" data-theme="c" style="margin-top:100px">
+				<li><b>Street Number</b></li>
+				<li><input type="text" id="street_number" name="street_number" required></li>
+				<li><b>Street Name</b></li>
+				<li><input type="text" id="street_name" name="street_name" required></li>
+				<li><b>Suburb</b></li>
+				<li><input type="text" id="suburb" name="suburb" required></li>
+				<li><b>Postcode</b></li>
+				<li><input type="text" id="postcode" name="postcode" required></li>				
+			</ul>
+			<input type="hidden" id="add_user_id" name="add_user_id" readonly>
+			<a href="#" id="addrButtonId" data-role="button" data-icon="save" data-theme="a" class="ui-rfloat ui-top">Save</a>
+		</form>
+		
+		
+	</div>
+	
+
+	<!-- /content end--> 
+</div>
+
+<script type="text/javascript" charset="utf-8" src="js/jquery.js"></script>
+<script type="text/javascript" charset="utf-8" src="js/jquery.mobile-1.0rc1.min.js"></script>
+<script type="text/javascript" charset="utf-8" src="js/common.js"></script>
+<script type="text/javascript" charset="utf-8" src="js/register.js"></script>
+</body>
+</html>
