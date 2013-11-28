@@ -72,9 +72,9 @@ function getCartList() {
 			htmlData='<div class=" checkout-grid clearfix">';
                 htmlData+='<ul>';
 		if(dealId!=null) {
-			htmlData+='<li class="title" style="width:55%;text-shadow:none;">Cart is empty!<a href="showMenu.html?itemId='+dealId+'"  class="ui-link-inherit" rel="external" style="color:#000000 ;text-decoration:underline !important;text-shadow:none;">&nbsp;Add items</a></li>';
+			htmlData+='<li class="title" style="width:55%;text-shadow:none;">Cart is empty!<a href="showMenu.html?itemId='+dealId+'"  class="ui-link-inherit" rel="external" style="color:#fff;text-decoration:underline !important;text-shadow:none;">&nbsp;Add items</a></li>';
 		} else {
-			htmlData+='<li class="title" style="width:55%;text-shadow:none;">Cart is empty!<a href="showMenu.html"  class="ui-link-inherit" rel="external" style="color:#000000;text-decoration:underline !important;text-shadow:none;">&nbsp;Add items</a></li>';
+			htmlData+='<li class="title" style="width:55%;text-shadow:none;">Cart is empty!<a href="showMenu.html"  class="ui-link-inherit" rel="external" style="color:#fff;text-decoration:underline !important;text-shadow:none;">&nbsp;Add items</a></li>';
 		}
 		
 		$('#itemDetList').html(htmlData);

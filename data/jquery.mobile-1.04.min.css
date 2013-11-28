@@ -50,14 +50,14 @@
 
 /*--- item detail---*/
 .item-detail {}
-.item-detail h2{ margin:3px 0 6px 0; padding:0; font-size:18px; text-shadow: 0px 0px ;}
+.item-detail h2{ margin:3px 0 6px 0; padding:0; font-size:18px; color:#fff; text-shadow: 0px 0px ;}
 .item-wrap{ width:98%; margin:0 auto; } 
  
 .item-image{ height:150px; width:46%; float:left; border:1px solid #646464;overflow: hidden;}
 .item-image img{ height:100%; width:100%; }
 
 .item-desc{ width:48%; float:right; font-family:Calibri, Arial, Helvetica, sans-serif; }
-.item-desc p{ font-size:14px; color:#000; line-height:21px; font-family:Calibri, Arial, Helvetica, sans-serif; text-shadow: 0px 0px ;}
+.item-desc p{ font-size:14px; color:#fff; line-height:21px; font-family:Calibri, Arial, Helvetica, sans-serif; text-shadow: 0px 0px ;}
 
 .item-left {width:48%; float:left; font-family:Calibri, Arial, Helvetica, sans-serif} .item-right {width:48%; float:right; font-family:Calibri, Arial, Helvetica, sans-serif}
 
@@ -74,12 +74,12 @@
 .ui-radio input { margin-top:12px;}
 
 .checkout-list ul { list-style:none; margin:0; padding:0; width:100%;}
-.checkout-list ul li { float:left; padding:0 8px; margin-bottom:10px;}
-.checkout-list ul li.sno{ width:5%;} .checkout-list ul li.title{ width:50%;} .checkout-list ul li.sprice{ width:15%;}
- .checkout-list ul li.sremove{ width:10%;}
+.checkout-list ul li { float:left; padding:0 8px; margin-bottom:10px; color:#fff;}
+.checkout-list ul li.sno{ width:5%;} .checkout-list ul li.title{ width:50%; color:#fff;} .checkout-list ul li.sprice{ width:15%;color:#fff;}
+ .checkout-list ul li.sremove{ width:10%;color:#fff;}
 hr{color: #696969; border:0px solid #000;
 background-color: #696969;
-height: 1px;}
+height: 1px;color:#fff;}
 .checkout-grid{width:100%; display:block}
 .check-top{ margin-top:10px;}
 
@@ -88,8 +88,36 @@ height: 1px;}
 .checkout-grid h2,.checkout-grid h3, .checkout-grid h4 { margin:0; padding:0; text-align:centre; text-shadow: 0px 0px ;}
 
 
+ /*modified 28/11 -------*/
+.head-top{width:50%; /*background:red;*/ margin:0 auto; text-align:center;}
+.head-span{display:block; padding-top:20px;}
+.head-img {float:left;}.head-span{display:block; float:left; padding-top:10px; margin-left:12px}
+ .head-img img{ margin-top:4px;}
+.ui-header h1 {font-size: 2.3em; margin: 9px 0 0 6px;  padding: 0;}
+
+ @media only screen and (min-width:768px) and (max-width:1024px){
  
-@media only screen and (max-width: 35em) {
+ /*modified 28/11 -------*/
+.ui-header h1 {font-size: 2.1em; margin: 8px 0 0 6px;  padding: 0;} .ui-bar-b { height:75px;}
+.head-top{width:65%; /*background:red;*/ margin:10px auto 0 auto;  text-align:center;}
+/*.head-img img{ width:100%;}*/ .head-span{display:block; float:left; padding-top:10px; margin-left:12px}
+ 
+ 
+ }
+
+@media only screen and (min-width: 480px) and (max-width: 767px){
+.checkout-list .ui-btn-icon-left .ui-btn-inner{ padding-left:28px; font-size:14px; text-align:center;}  
+.checkout-list .ui-btn-inner{ padding:0.6em 28px 0.6em 25px;}
+
+/*modified 28/11 -------*/
+.ui-header h1{ font-size:1.7em; padding:0; } .ui-bar-b { height:75px;}
+.head-top{width:79%; /*background:red;*/ margin:8px auto 0 auto;  text-align:center;}
+/*.head-img img{ width:100%;}*/ .head-span{display:block; float:left; padding-top:10px; margin-left:12px}
+
+}
+ 
+ 
+@media only screen and (max-width: 479px) {
 .ui-header .ui-title{ font-size:20px;}
 .ui-radio input { margin-top:6px;} .small-big{margin:0 auto; width: auto; }
 .small-big span{ font-size:1em;}
@@ -105,6 +133,10 @@ height: 1px;}
 
 .checkout-list .ui-btn-icon-left .ui-btn-inner{ padding-left:11px; text-align:center;}  
 .checkout-list .ui-btn-inner{ padding:0.6em 12px 0.6em 25px;}
- .ui-header h1{ font-size:1.2em; margin-top:21px;} .ui-bar-b { height:75px;}
- }
+ .ui-header h1{ font-size:15px; margin-top:13px;} .ui-bar-b { height:75px;}
  
+/*modified 28/11 -------*/
+.ui-header h1{ font-size:16px;  margin-top: 19px;} .ui-bar-b { height:75px;}
+.head-top{width:79%; /*background:red;*/ margin:6px auto 0 auto;  text-align:center;}
+/*.head-img img{ width:76%;}*/ .head-span{display:block; float:left; padding-top:10px; margin-left:8px;}
+ }

@@ -12,7 +12,7 @@ if(dataAppConfig!=null) {
 	$("#bodyId").css("background-repeat", "no-repeat");
 	$("#bodyId").css("background-position", "center");
 	file_name=get_path_filename();
-	htmlData='<div style="float:left; text-align:center; width:100%;"><h1>'+dataAppConfig.AppConfig.store_name+'</h1></div><div class="ui-top-icon">';
+	htmlData='<div style="float:left; text-align:center; width:100%;"><div  class="clearfix head-top"><div class="head-img"><img src="'+dataAppConfig.AppConfig.store_logo+'" alt=""></div> <h1 class="head-span">'+dataAppConfig.AppConfig.store_name+'</h1></div></div><div class="ui-top-icon">';
 	if(file_name=='index.html') { 
 		htmlData+='<a href="register.html" rel="external"><img src="img/singin-btn.png" alt=""></a>';
 	} else {

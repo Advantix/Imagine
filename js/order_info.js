@@ -6,6 +6,7 @@ if(orderId!=null) {
 	showOrderinfo();
 }else{
 	$('#placOtheOrdId').hide();
+	$('#storeDirection').hide();
 	getOrderList();
 }
 
@@ -39,11 +40,11 @@ function showOrderinfo() {
 		$.each(orderDets, function(index, item) {
 			
 			htmlData='<h2 style="text-align:left; color:#ffffff;font-sze:22px;">Your order has been confirmed, details are below:</h2>';
-			 htmlData+='<div style="margin:20px 0 0 0;text-shadow:0;"><h4 style="color:#000; text-shadow:none;font-size:21px;">Order number: '+item.order_id+'</h4></div>';      
+			 htmlData+='<div style="margin:20px 0 0 0;text-shadow:0;"><h4 style="color:#ffffff; text-shadow:none;font-size:21px;">Order number: '+item.order_id+'</h4></div>';      
 			
-			htmlData+='<p class="itemp" style="text-shadow:none;">Meal Ready Time: '+item.delivery_time+'</p>';
-			htmlData+='<div style="margin:20px 0;"><h4 class="itemp" style="text-shadow:none;"><strong>Cost:</strong> $ '+item.total_amount+'</h4><h4 class="itemp" style="text-shadow:none;"><strong>Payment Status:</strong>'+item.payment_status+'</h4></div>';
-			htmlData+=' <div style="margin:20px 0;"><h4 class="itemp" style="text-shadow:none;">Store Name: '+dataAppConfig.AppConfig.store_name+'</h4><h4 class="itemp" style="text-shadow:none;">Store Address: '+userData.addr_data.address+' , '+userData.addr_data.street+' '+userData.addr_data.city+' '+userData.addr_data.post_code+'</h4><h4 class="itemp" style="text-shadow:none;">Directions to store: '+userData.addr_data.address+' , '+userData.addr_data.street+' '+userData.addr_data.city+' '+userData.addr_data.post_code+'</h4></div>';
+			htmlData+='<p class="itemp" style="text-shadow:none;color:#ffffff">Meal Ready Time: '+item.delivery_time+'</p>';
+			htmlData+='<div style="margin:20px 0;"><h4 class="itemp" style="text-shadow:none;color:#ffffff"><strong>Cost:</strong> $ '+item.total_amount+'</h4><h4 class="itemp" style="text-shadow:none;color:#ffffff"><strong>Payment Status:</strong>'+item.payment_status+'</h4></div>';
+			htmlData+=' <div style="margin:20px 0;"><h4 class="itemp" style="text-shadow:none;color:#ffffff">Store Name: '+dataAppConfig.AppConfig.store_name+'</h4><h4 class="itemp" style="text-shadow:none;color:#ffffff">Store Address: '+userData.addr_data.address+' , '+userData.addr_data.street+' '+userData.addr_data.city+' '+userData.addr_data.post_code+'</h4></div>';
 			
 			$('#orderDetList').html(htmlData);
 		}); 
