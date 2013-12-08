@@ -4,10 +4,11 @@
 <meta charset="utf-8">
 <meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0;" name="viewport" />
 <meta name="apple-mobile-web-app-capable" content="yes" />
-<title>Imagine Fine Dining & Pizza Restaurant</title>
+<title>Steve's Pizza Restaurant</title>
 <link rel="stylesheet"  href="data/jquery.mobile-1.04.min.css" />
 <link rel="stylesheet" href="data/mobile.css" />
 <link rel="stylesheet" href="data/photoswipe.css" />
+<link rel="stylesheet" href="data/font_style.css" />
 <script type="text/javascript" src="data/klass.min.js"></script>
 <script type="text/javascript" src="data/jquery-1.6.4.min.js"></script>
 <script type="text/javascript" src="data/jquery.mobile-1.04.min.js"></script>
@@ -17,39 +18,41 @@
 <body id="bodyId">
 <div data-role="page" data-theme="b" id="services">
 	<!-- /Header -->
-	<div data-role="header" id="headerContId" data-theme="b" style="background:#48f94d url(img/header-title.png) bottom repeat-x;"></div>
-	<div style="float:left; text-align:center; width:100%;color:#404040;height:20px;font-size:13px;border-bottom:1px solid #404040;background-color:#ffffff" id="userName"></div>
+	<div data-role="header" id="headerContId" data-theme="b" style="background:#272829 url(img/header-title.png) top repeat-x;"></div>
+	<div class="userTopMenu" id="userName"></div>
 	<!-- /Header -->
 	
 	<!-- /content start--> 
 	<div data-role="content" class="item-detail">
 		<form id="itemCheckOutFrm">
 			<h2 style="text-align:center;">Your Order</h2>
-			<div id="itemDetList" class="ui-grid-a checkout-list"></div>
-			<div id="deliveryDivId"  class="checkout-grid clearfix" style="background-color:#f1f1f1;padding:10px 0 10px 10px;text-align:center;" ></div>
+			<div id="itemDetList" class="ui-grid-a checkout-list" style="background:#e9e9e9; padding:10px; width:96%;"></div>
+			<div id="deliveryDivId"  class="ui-grid-a checkout-list" style="background:#e9e9e9; padding:10px; width:96%;" ></div>
 				
 			<div class="clearfix"></div>       
     
     
 			<div data-role="controlgroup" data-type="horizontal" class="checkout-list" id="buttGroup">
 
-			<a href="#" id="changOrdButtonId" rel="external" data-theme="c" data-icon="plus" data-role="button"  class="ui-btn ui-btn-icon-left ui-corner-left ui-btn-up-c">
-			<span class="ui-btn-inner ui-corner-left">
-			<img src="img/change_order.png" alt="" id="changeOrdImgId">
-			<div class="ui-btn-text" id="changeOrdDiveId">Chance Order</div></span>
+			<a href="#" id="changOrdButtonId" rel="external" data-theme="c" data-icon="plus" data-role="button"  class="ui-btn ui-btn-icon-left ui-corner-left ui-btn-up-c lfclear_card">
+			<span class="ui-btn-inner ui-corner-left" >			
+			<div class="ui-btn-text" id="changeOrdDiveId"></div></span>
 			</a>
 
-			<a href="showMenu.html" id="addAnoItmButtonId" data-theme="c" data-icon="star" data-role="button" class="ui-btn ui-btn-icon-left ui-btn-up-c" rel="external">
+			<a href="showMenu.html" id="addAnoItmButtonId" data-theme="c" data-icon="star" data-role="button" class="ui-btn ui-btn-icon-left ui-btn-up-c lfclear_card" 
+            rel="external">
 			<span class="ui-btn-inner">
-			<img src="img/add_item.png" alt="">
-			<div class="ui-btn-text">Add Another Item</div></span>
+			
+			<div class="ui-btn-text"><img src="img/add_item.png" alt=""> Add Another Item</div></span>
 			</a>
-
 			
 			</div>
-			<a href="#" id="pickupnow" data-role="button"  >Pick Up Now</a>
-			<a href="#" id="pickupTimeSelector" data-role="button">Time Selector</a>		
-			<a href="#" id="placeOrdButtonId" data-role="button">Place Order</a>
+            <div style="display:block;" class="clearfix">
+            <a href="#" id="pickupnow" data-role="button" data-theme="c" class="ui-lfloat ui-top gra_but"> <i class="pickup_ic"></i>Pick Up Now</a>
+            <a href="#" id="pickupTimeSelector" data-role="button" data-theme="c" class="ui-rfloat ui-top gra_but" ><i class="time_ic"></i>Time Selector</a>
+            </div>				
+			<div style="display:block; clear:both; margin-top:20px;"><a href="#" data-theme="c"  id="placeOrdButtonId" data-role="button" class="gra_but add_cart_txt">Place Order</a>
+            </div>
 
 			
 		</form>

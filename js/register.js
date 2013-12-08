@@ -69,12 +69,13 @@ $("#sinupButtonId").click(function() {
 
 $('#registerFrmId').submit(function(){		
 	var postData = $(this).serialize();
-	//alert(postData);
+	//alert(serviceURL+'register_post');
 	$.ajax({
 		type: 'POST',
 		data: postData+'&store_id=Mw',
 		url: serviceURL+'register',
 		success: function(data){
+			//alert(data);
 			if(data.response == 1) {
 				window.localStorage.setItem('userData',JSON.stringify(data));
 				console.log(data);
@@ -93,7 +94,7 @@ $('#registerFrmId').submit(function(){
 				$("#pageLoader").hide();
 			}	
 		},
-		error: function(){
+		error: function(data){
 			console.log(data);
 			alert('There was an error adding your comment');
 			$("#pageLoader").hide();
@@ -131,7 +132,7 @@ $('#loginFrmId').submit(function(){
 				$("#pageLoader").hide();
 			}
 		},
-		error: function(){
+		error: function(data){
 			console.log(data);
 			alert('There was an error adding your comment');
 			$("#pageLoader").hide();

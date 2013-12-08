@@ -4,10 +4,11 @@
 <meta charset="utf-8">
 <meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0;" name="viewport" />
 <meta name="apple-mobile-web-app-capable" content="yes" />
-<title>Imagine Fine Dining & Pizza Restaurant </title>
+<title>Steve's Pizza Restaurant</title>
 <link rel="stylesheet"  href="data/jquery.mobile-1.04.min.css" />
 <link rel="stylesheet" href="data/mobile.css" />
 <link rel="stylesheet" href="data/photoswipe.css" />
+<link rel="stylesheet" href="data/font_style.css" />
 <script type="text/javascript" src="data/klass.min.js"></script>
 <script type="text/javascript" src="data/jquery-1.6.4.min.js"></script>
 <script type="text/javascript" src="data/jquery.mobile-1.04.min.js"></script>
@@ -17,22 +18,27 @@
 <body id="bodyId">
 <div data-role="page" data-theme="b" id="services">
 	<!-- /Header -->
-	<div data-role="header" id="headerContId" data-theme="b" style="background:#48f94d url(img/header-title.png) bottom repeat-x;"></div>
-	<div style="float:left; text-align:center; width:100%;color:#404040;height:20px;font-size:13px;border-bottom:1px solid #404040;background-color:#ffffff" id="userName"></div>
+	<div data-role="header" id="headerContId" data-theme="b" style="background:#272829 url(img/header-title.png1) top repeat-x;"></div>
+	<div class="userTopMenu" id="userName"></div>
+    
+    <!--<ul><li>Guest <span style="margin-right:20px;color:#ff0000">User</span></li><li><span><a href="checkout.html" id="cartBtnId" rel="external" style="margin-right:10px; color:#fff;">Cart <span style="color:#ff0000">['+cartCount+']</span></a></span></li><li><span ><a href="#" id="logoutBtnId" rel="external" style="color:#fff">Login</a></span></li></ul>-->
+    
 	<!-- /Header -->
 	
 	<!-- /content start--> 
 	<div data-role="content" class="item-detail">
-		
-		<ul id="employeeList" data-role="listview"  data-inset="true" data-theme="c" style="margin-top:100px"></ul>
+		<h2 class="menu-head">Menu List</h2>
+		<ul id="employeeList" data-role="listview"  data-inset="true" data-theme="c" ></ul>
 		
 		<div id="itemDetList"></div>
 		<span id="itemDetAlert" class="clearfix" ></span>
 		<ul id="dealItemList" data-role="listview"  data-inset="true" data-theme="c" ></ul>
 		
-		<a href="#" id="addCartButtonId" data-role="button" data-icon="save" data-theme="b" class="ui-rfloat ui-top" >Add to cart</a>
-		<a href="#" id="addMoreItemButtonId" data-role="button" data-icon="back" data-theme="b" class="ui-rfloat ui-top" onclick="goPrevious()">Add More Items</a>
-		<a href="#" id="checkOutButtonId" data-role="button" data-icon="save" data-theme="b" class="ui-rfloat ui-top" rel="external">Checkout</a>
+		<a href="#" id="addCartButtonId" data-role="button"  data-theme="c" class="ui-top gra_but add_cart_txt" >Add to cart</a>
+		
+        <a href="#" id="checkOutButtonId" data-role="button"  data-theme="c" class="ui-rfloat ui-top gra_but" rel="external"><i class="checkout_ic"></i>Checkout</a>
+        <a href="#" id="addMoreItemButtonId" data-role="button"  data-theme="c" class="ui-lfloat ui-top gra_but" onClick="goPrevious()"><i class="add_moreit"></i>Add More Items</a>
+		
 		
 	</div>
 	

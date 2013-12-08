@@ -10,8 +10,10 @@ $('#services').bind('pageinit', function(event) {
 var dealId = window.localStorage.getItem('deal_id');
 
 if(dealId==null) {
-	$('#changeOrdDiveId').html('Clear Cart');
-	$('#changeOrdImgId').attr('src','img/remove.png');
+	$('#changeOrdDiveId').html('<img src="img/remove.png" alt="" id="changeOrdImgId">&nbsp;Clear Cart');
+	//$('#changeOrdImgId').attr('src','img/remove.png');
+} else {
+	$('#changeOrdDiveId').html('<img src="img/change_order.png" alt="" id="changeOrdImgId">&nbsp;Change Order');
 }
 
 $.ajaxSetup({ cache: false });
@@ -29,14 +31,14 @@ function getCartList() {
 		if(dealName!=null) {
 			htmlData+='<h4>Deal :'+dealName+'</h4>';
 		}
+		
 		$.each(itemDetsAf, function(index, itemDetaf) {
 			//alert(index);
-			//alert(itemDetaf.item_id);
-			
+			//alert(itemDetaf.deal_id);
 			htmlData+='<div class=" checkout-grid clearfix">';
                 htmlData+='<ul>';
-                    htmlData+='<li class="sno">'+(index+1)+'.</li> <li class="title"><h4 >' + itemDetaf.item_name + '&nbsp;['+itemDetaf.price_type+']</h4>';
-                  /*htmlData+='<span>'+ itemDetaf.item_desc + '</span>';*/
+                    htmlData+='<li class="sno">'+(index+1)+'.</li> <li class="title"><h4 >' + itemDetaf.item_name + '&nbsp;'+(itemDetaf.deal_id!=0 ? '[ deal ]' : (itemDetaf.price_type!=null ? '['+itemDetaf.price_type+']' : ''))+'</h4>';
+                    htmlData+='<span>'+ itemDetaf.item_desc + '</span>';
                     htmlData+='</li> <li class="sprice"><h4 >$ '+itemDetaf.item_price+'</h4></li><li class="sremove"><img src="img/remove.png" alt="" onclick="removeItem('+index+');"></li>';       
                 htmlData+='</ul>';
             htmlData+='</div>';
@@ -54,11 +56,25 @@ function getCartList() {
 			htmlData+='</ul>';
 		htmlData+='</div><hr></hr>';
 		
+		var holidaypercnt = JSON.parse(window.localStorage.getItem('holidaypercnt'));
+		if(holidaypercnt!=null && holidaypercnt!=""){
+			percentageval = ((priceSubTotal/100)*holidaypercnt).toFixed(1);
+			htmlData+='<div  class="checkout-grid clearfix"  >';
+			htmlData+='<ul>';
+			htmlData+='<li class="sno">&nbsp;</li><li class="title"><h4 style=" text-align:right" >Holiday Cost</h4>';				
+			htmlData+='</li> <li class="sprice"><h4 >$ '+percentageval+'</h4></li>  ';       
+			htmlData+='</ul>';
+			htmlData+='</div><hr></hr>';	
+		}else{
+			percentageval=0;
+		}		
+		
 		// total
+		overalltotal = (+priceSubTotal + +percentageval).toFixed(1);
 		htmlData+='<div  class="checkout-grid clearfix"  >';
 			htmlData+='<ul>';
 				htmlData+='<li class="sno">&nbsp;</li><li class="title"><h4 style=" text-align:right" >Total</h4>';				
-				htmlData+='</li> <li class="sprice"><h4 >$ '+priceSubTotal+'<input type="hidden" name="gross_total" id="gross_total" value="'+priceSubTotal+'"></h4></li>  ';       
+				htmlData+='</li> <li class="sprice"><h4 >$ '+overalltotal+'<input type="hidden" name="gross_total" id="gross_total" value="'+overalltotal+'"></h4></li>';       
 			htmlData+='</ul>';
 		htmlData+='</div>';	
 		
@@ -71,11 +87,11 @@ function getCartList() {
 		$('#pickupTimeSelector').hide();
 			htmlData='<div class=" checkout-grid clearfix">';
                 htmlData+='<ul>';
-		if(dealId!=null) {
-			htmlData+='<li class="title" style="width:55%;text-shadow:none;">Cart is empty!<a href="showMenu.html?itemId='+dealId+'"  class="ui-link-inherit" rel="external" style="color:#fff;text-decoration:underline !important;text-shadow:none;">&nbsp;Add items</a></li>';
-		} else {
-			htmlData+='<li class="title" style="width:55%;text-shadow:none;">Cart is empty!<a href="showMenu.html"  class="ui-link-inherit" rel="external" style="color:#fff;text-decoration:underline !important;text-shadow:none;">&nbsp;Add items</a></li>';
-		}
+				if(dealId!=null) {
+					htmlData+='<li class="title" style="width:55%;text-shadow:none;">Cart is empty!<a href="showMenu.html?itemId='+dealId+'"  class="ui-link-inherit" rel="external" style="color:#000000 ;text-decoration:underline !important;text-shadow:none;">&nbsp;Add items</a></li>';
+				} else {
+					htmlData+='<li class="title" style="width:55%;text-shadow:none;">Cart is empty!<a href="showMenu.html"  class="ui-link-inherit" rel="external" style="color:#000000;text-decoration:underline !important;text-shadow:none;">&nbsp;Add items</a></li>';
+				}
 		
 		$('#itemDetList').html(htmlData);
 	}
@@ -161,17 +177,20 @@ $("#pickupnow").click(function() {
 	var gettime = new Date(); 
 	var currdate = gettime.getFullYear()+'-'+(gettime.getMonth()+1)+'-'+gettime.getDate(); 
 	var currtime = gettime.getHours()+':'+gettime.getMinutes(); 
-	var postData = 'store_id=Mw&date='+currdate+'&time='+currtime;	
-	//alert(postData);
+	var postData = 'rest_id='+restId+'&date='+currdate+'&time='+currtime;	
+	//alert(serviceURL+'workinghours/'+postData);
 	$.ajax({
 		type: 'POST',
 		data: postData,
 		url: serviceURL+'workinghours',
-		success: function(data){				
+		success: function(data){	
+			//alert(data);
 			if(data.response==1) {
 				window.localStorage.setItem('hoursinfo',JSON.stringify(data.hoursinfo)); // store local storage
+				window.localStorage.setItem('holidaypercnt',JSON.stringify(data.percnt));
 				console.log(data);
 				//alert(data.hoursinfo);
+				//alert(data.percnt);
 				alert('Pick up time selected successfully');
 				refresh();
 				//window.localStorage.setItem('form_active','#addrFrmId'); // store local storage
@@ -194,17 +213,27 @@ $("#pickupTimeSelector").click(function() {
 	window.location.href='working_hours.html';
 });
 
-$("#placeOrdButtonId").click(function() {
-	if(userData!=null) {	
-		//alert(checkAllDealItemInCart())
-		if(checkAllDealItemInCart()==1) {
-			$("#pageLoader").show();
-			$('#itemCheckOutFrm').submit();
-		} else {
-			if(confirm('Please add all the deal item to cart to place order! do you want to go deal selection page?')) {
-				window.location.href='showMenu.html?itemId='+dealId;
+$("#placeOrdButtonId").click(function() {	
+	if(userData!=null) {
+		postData = 'rest_id='+restId+'&postcode='+userData.addr_data.post_code;
+		$.ajax({
+			type: 'POST',
+			data: postData,
+			url: serviceURL+'postcodecheck',
+			success: function(data){
+				if(data.response==1){
+					$("#pageLoader").show();
+					$('#itemCheckOutFrm').submit();
+				}else{
+					console.log(data);				
+					alert(data.response);
+				}				
+			},
+			error: function(data){
+				console.log(data);
+				alert('There was an error in your biling details');
 			}
-		}
+		});	
 	} else {
 		if(confirm("Please login to procced next step")) {
 			window.location.href='register.html';
@@ -218,8 +247,9 @@ function checkAllDealItemInCart() {
 	
 	if(dealItemGet!=null) {
 		var dealItemGetCnt=dealItemGet.items.length;
-		var getDealItemDetsFrmDB = JSON.parse(window.localStorage.getItem('dealItemDetsFrmDB'));
-		var getDealItemDetsFrmDBCnt=getDealItemDetsFrmDB.length;
+		var getDealItemDetsFrmDB = JSON.parse(window.localStorage.getItem('deal_item_det'));
+		var dealCatIdArrsy = getDealItemDetsFrmDB.deal_cat_id.split("#:#"); 	
+		var getDealItemDetsFrmDBCnt=dealCatIdArrsy.length;
 		if(dealItemGetCnt==getDealItemDetsFrmDBCnt) {
 			return true;
 		} else {
@@ -249,7 +279,6 @@ $("#changOrdButtonId").click(function() {
 
 $('#itemCheckOutFrm').submit(function(){		
 	//var postData = $(this).serialize();
-	//alert(postData);
 	var hoursinfoCheck = JSON.parse(window.localStorage.getItem('hoursinfo'));	
 	//alert(hoursinfoCheck);
 	if(hoursinfoCheck!=null) {			
@@ -263,7 +292,7 @@ $('#itemCheckOutFrm').submit(function(){
 			type: 'POST',		
 			url: serviceURL+'order',
 			dataType : 'json',
-			data:{data:postData,store_id:'Mw',user_id:userData.user_data.userid,delivery_time:hoursinfo,gross_total:grossTotal,total_amount:totalAmount},
+			data:{data:postData,store_id:'Mw',user_id:userData.user_data.userid,delivery_time:hoursinfo,gross_total:grossTotal,total_amount:totalAmount,'restaurant_id':restId},
 			success: function(data){
 				//alert(data);
 				console.log(data);
@@ -286,5 +315,6 @@ $('#itemCheckOutFrm').submit(function(){
 	}else{
 		alert('Set delivery time before placing an order');
 	}
+	
 	return false;
 });

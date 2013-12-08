@@ -22,11 +22,12 @@ $('#hoursFrmId').submit(function(){
 	//alert(postData);
 	$.ajax({
 		type: 'POST',
-		data: 'store_id=Mw&'+postData,
+		data: 'rest_id='+restId+'&'+postData,
 		url: serviceURL+'workinghours',
 		success: function(data){				
 			if(data.response==1) {
 				window.localStorage.setItem('hoursinfo',JSON.stringify(data.hoursinfo)); // store local storage
+				window.localStorage.setItem('holidaypercnt',JSON.stringify(data.percnt));
 				console.log(data);
 				//alert(data.hoursinfo);
 				alert('Time selected successfully');

@@ -1,4 +1,4 @@
-if(dataAppConfig==null) {
+	if(dataAppConfig==null) {
 	window.location.href='index.html';
 }
 var userData = JSON.parse(window.localStorage.getItem('userData'));
@@ -18,8 +18,8 @@ if(userData==null) {
 	} else {
 		cartCount = 0;
 	}
-	
-	window.localStorage.setItem('welcomeDiv','Welcome <span style="margin-right:20px;color:#ff0000">'+userData.user_data.fname+'</span><span style="margin-right:20px;"><a href="#" id="logoutBtnId" rel="external">logout</a></span><span style="margin-right:10px;"><a href="checkout.html" id="cartBtnId" rel="external">Cart ['+cartCount+']</a></span><span><a href="myaccount.html" rel="external">My Account</a></span>'); // store local storage
+		
+	window.localStorage.setItem('welcomeDiv','<ul class="clearfix"><li>'+userData.user_data.fname+'</li><li>|</li><li><span ><a href="#" id="logoutBtnId" rel="external" style=" color:#fff;">logout</a></span></li><li>|</li><li><span><a href="checkout.html" id="cartBtnId" rel="external" style=" color:#fff;">Cart <span style="color:#ff0000">['+cartCount+']</span></a></span></li><li>|</li><li><span ><a href="myaccount.html" rel="external" style=" color:#fff;">My Account</a></span></li></ul>'); // store local storage
 	var welcomeDiv = window.localStorage.getItem('welcomeDiv');
 	$('#userName').html(welcomeDiv);
 	
