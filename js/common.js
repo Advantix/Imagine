@@ -12,9 +12,10 @@ var serviceURL = "http://advantixcrm.com/prj/mitech/index.php/api/";
 var dataAppConfig = JSON.parse(window.localStorage.getItem('configData'));
 
 if(dataAppConfig!=null) {		
-	//$("#bodyId").css("background-image", "url("+dataAppConfig.AppConfig.bg_image+")");
-	//$("#bodyId").css("background-repeat", "no-repeat");
-	//$("#bodyId").css("background-position", "center");
+	$("#bodyId").css("background-image", "url("+dataAppConfig.AppConfig.bg_image+")");
+	$("#bodyId").css("background-repeat", "repeat-x");
+	$("#bodyId").css("background-position", "top");
+	$("#bodyId").css("background-color", "#000");
 	file_name=get_path_filename();
 	htmlData='<div style="float:left; text-align:center; padding-bottom: 8px; width:100%;"><div  class="clearfix head-top"><div class="head-img"><img src="'+dataAppConfig.AppConfig.store_logo+'" alt=""></div> <h1 class="head-span">'+dataAppConfig.AppConfig.store_name+'</h1></div></div><div class="ui-ltop-icon">';
 	if(file_name=='index.html') { 
@@ -44,7 +45,7 @@ if(userData!=null) {
 		cartCount = 0;
 	}
 		
-	window.localStorage.setItem('welcomeDiv','<ul class="clearfix"><li>'+userData.user_data.fname+'</li><li>|</li><li><span ><a href="#" id="logoutBtnId" rel="external" style=" color:#fff;">logout</a></span></li><li>|</li><li><span><a href="checkout.html" id="cartBtnId" rel="external" style=" color:#fff;">Cart <span style="color:#ff0000">['+cartCount+']</span></a></span></li><li>|</li><li><span ><a href="myaccount.html" rel="external" style=" color:#fff;">My Account</a></span></li></ul><div  class="ui-menu-right"> <a href="home.html" rel="external"><img src="img/icon_menu.png" alt=""></a></div>'); // store local storage
+	window.localStorage.setItem('welcomeDiv','<ul class="clearfix"><li>'+userData.user_data.fname+'</li><li>|</li><li><span ><a href="#" id="logoutBtnId" rel="external" style=" color:#fff;">logout</a></span></li><li>|</li><li><span><a href="checkout.html" id="cartBtnId" rel="external" style=" color:#fff;">Cart <span style="color:#ff0000">['+cartCount+']</span></a></span></li></ul><div  class="ui-menu-right"> <a href="myaccount.html" rel="external"><img src="img/icon_menu.png" alt=""></a></div>'); // store local storage
 	var welcomeDiv = window.localStorage.getItem('welcomeDiv');
 	
 	$('#userName').html(welcomeDiv);
@@ -62,7 +63,7 @@ if(userData!=null) {
 		cartCount = 0;
 	}
 	
-	window.localStorage.setItem('welcomeDiv','<ul class="clearfix"><li>Guest <span style="color:#fff">User</span></li><li>|</li><li><span><a href="checkout.html" id="cartBtnId" rel="external" style=" color:#fff;">Cart <span style="color:#ff0000">['+cartCount+']</span></a></span></li><li>|</li><li><span ><a href="#" id="logoutBtnId" rel="external" style="color:#fff">Login</a></span></li></ul><div  class="ui-menu-right"> <a href="home.html" rel="external"><img src="img/icon_menu.png" alt=""></a></div>'); // store local storage
+	window.localStorage.setItem('welcomeDiv','<ul class="clearfix"><li>Guest <span style="color:#fff">User</span></li><li>|</li><li><span><a href="checkout.html" id="cartBtnId" rel="external" style=" color:#fff;">Cart <span style="color:#ff0000">['+cartCount+']</span></a></span></li><li>|</li><li><span ><a href="#" id="logoutBtnId" rel="external" style="color:#fff">Login</a></span></li></ul><div  class="ui-menu-right"><a href="myaccount.html" rel="external"><img src="img/icon_menu.png" alt=""></a></div>'); // store local storage
 	var welcomeDiv = window.localStorage.getItem('welcomeDiv');
 	$('#userName').html(welcomeDiv);
 	

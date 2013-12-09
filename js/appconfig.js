@@ -10,9 +10,10 @@ function getAppConfig(data) {
 		
 		if(data!==null) {
 			$('#appTitle').text(data.AppConfig.store_name);
-			//$("#bodyId").css("background-image", "url("+data.AppConfig.bg_image+")");
-			//$("#bodyId").css("background-repeat", "no-repeat");
-			//$("#bodyId").css("background-position", "center");
+			$("#bodyId").css("background-image", "url("+data.AppConfig.bg_image+")");
+			$("#bodyId").css("background-repeat", "repeat-x");
+			$("#bodyId").css("background-position", "top");
+			$("#bodyId").css("background-color", "#000");
 		}
 		
 		htmlOption='<select onchange="setResLoc(this.value)"><option>--Select Restarunt Location---</option>';

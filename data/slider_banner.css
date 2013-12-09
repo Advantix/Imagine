@@ -52,9 +52,7 @@
 
 
 @media screen and (max-width: 600px) {
-  h1 {
-    font: 24px/50px "Helvetica Neue", Helvetica, Arial, sans-serif;
-    }
+
   .callbacks_nav {
     top: 47%;
     }
