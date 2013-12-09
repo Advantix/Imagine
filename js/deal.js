@@ -66,6 +66,7 @@ function getDealItemList() {
 		});
 		//onclick="showDealCartAlert('+item.item_id+','+dealFlag+','+dealItemsId+')"
 		$('#employeeList').listview('refresh');
+		$('#deallist').html('Deal Item List');
 	});
 }
 
@@ -127,6 +128,7 @@ function getDealItemDet() {
 		});	
 			
 		$('#dealItemList').listview('refresh');
+		$('#deallist').html('Deal Item');
 		$("#addCartButtonId").hide();
 		$("#addMoreItemButtonId").hide();
 		
@@ -144,6 +146,7 @@ function getSingleDealItem() {
 				$('#employeeList').append('<li data-theme="c" class="ui-btn ui-btn-icon-right ui-li ui-corner-top ui-btn-up-c"><div class="ui-btn-inner ui-li ui-corner-top"><div class="ui-btn-text"><a href="deal.html?chkitemid='+itemDet.item_id+'&dealId='+dealId+'" class="ui-link-inherit" rel="external" ><img src="'+itemImgURL+(itemDet.item_img!=""? itemDet.item_img:defaultImgURL)+'" style="padding:5px;">&nbsp;' + itemDet.item_name + '&nbsp;<span style="font-size:11px; display:block; margin-left:4px; margin-top:4px;">('+ itemDet.item_desc + ')</span></a></div><span class="ui-icon ui-icon-arrow-r"></span></div></li>');
 			});
 			$('#employeeList').listview('refresh');
+			$('#deallist').html('Deal Items');
 	});
 }
 
@@ -167,6 +170,7 @@ function addCartItemdet() {
 			htmlVal+='</div>';			
 			htmlVal+='</div>';
 			$('#itemDetList').html(htmlVal);
+			$('#deallist').html('Deal Item');
 		});
 	});
 }

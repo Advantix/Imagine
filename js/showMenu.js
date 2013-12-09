@@ -57,6 +57,7 @@ function getMenuCatList() {
 		});
 				
 		$('#employeeList').listview('refresh');
+		$('#menulist').html('Menu Category');
 	});
 }
 function getMenuList() {
@@ -73,10 +74,12 @@ function getMenuList() {
 				
 				$('#employeeList').append('<li data-theme="c" class="ui-btn ui-btn-icon-right ui-li ui-corner-top ui-btn-up-c"><div class="ui-btn-inner ui-li ui-corner-top"><div class="ui-btn-text"><a href="showMenu.html?catId='+subCat.sub_id+'" class="ui-link-inherit" rel="external"><img src="'+itemImgURL+(subCat.subcat_image!=""? subCat.subcat_image:defaultImgURL)+'" style="padding:5px;">&nbsp;' + subCat.subcat_name + '&nbsp;<span style="font-size:11px; display:block; margin-left:4px; margin-top:4px;">('+ subCat.subcat_name + ')</span></a></div><span class="ui-icon ui-icon-arrow-r"></span></div></li>');
 			});
+			$('#menulist').html('Menu Sub Category');
 		} else {			
 			$.each(items, function(index, item) {				
 				$('#employeeList').append('<li data-theme="c" class="ui-btn ui-btn-icon-right ui-li ui-corner-top ui-btn-up-c"><div class="ui-btn-inner ui-li ui-corner-top"><div class="ui-btn-text"><a href="showMenu.html?itemId='+item.item_id+'" class="ui-link-inherit" rel="external"><img src="'+itemImgURL+(item.item_img!=""? item.item_img:defaultImgURL)+'" style="padding:5px;">&nbsp;' + item.item_name + '&nbsp;<span style="font-size:11px; display:block; margin-left:4px; margin-top:4px;">('+ item.item_desc + ')</span></a></div><span class="ui-icon ui-icon-arrow-r"></span></div></li>');
 			});
+			$('#menulist').html('Menu Items List');
 		}
 				
 		$('#employeeList').listview('refresh');
@@ -94,7 +97,7 @@ function getMenuItemList() {
 		var itemOptionDets = data.itemOption;
 	
 		//alert('item page');
-		htmlVal+='<h2>'+itemDet.item_name+'</h2>';
+		htmlVal+='<div class="titlemenu-hd">'+itemDet.item_name+'</div>';
 		htmlVal+='<div class="item-wrap clearfix">';
 			htmlVal+=' <div class="item-image">';
 				htmlVal+='<img src="'+itemImgURL+(itemDet.item_img!=""? itemDet.item_img:defaultImgURL)+'" alt="">';
@@ -137,9 +140,6 @@ function getMenuItemList() {
 			}
 			
 			
-
-			$('#dealItemList').hide();	
-			
 			htmlVal+='<div class="ui-grid-b price-cat" style="margin-top:10px;">';
 			styleArr=Array('a','b','c');
 			$.each(itemOptionDets, function(index, itemOpt) {	
@@ -166,6 +166,7 @@ function getMenuItemList() {
 			htmlVal+='</div>';
 		} 
 		$('#itemDetList').html(htmlVal);
+		$('#menulist').html('Menu Item');
 	});
 }
 

@@ -18,7 +18,7 @@
 <body id="bodyId">
 <div data-role="page" data-theme="b" id="services">
 	<!-- /Header -->
-	<div data-role="header" id="headerContId" data-theme="b" style="background:#272829 url(img/header-title.png1) top repeat-x;"></div>
+	<div data-role="header" id="headerContId" data-theme="b" style="background:#272829 url(img/header-title.png) top repeat-x;"></div>
 	<div class="userTopMenu" id="userName"></div>
     
     <!--<ul><li>Guest <span style="margin-right:20px;color:#ff0000">User</span></li><li><span><a href="checkout.html" id="cartBtnId" rel="external" style="margin-right:10px; color:#fff;">Cart <span style="color:#ff0000">['+cartCount+']</span></a></span></li><li><span ><a href="#" id="logoutBtnId" rel="external" style="color:#fff">Login</a></span></li></ul>-->
@@ -27,12 +27,12 @@
 	
 	<!-- /content start--> 
 	<div data-role="content" class="item-detail">
-		<h2 class="menu-head">Menu List</h2>
+		<h2 class="menu-head" id="menulist"></h2>
 		<ul id="employeeList" data-role="listview"  data-inset="true" data-theme="c" ></ul>
 		
 		<div id="itemDetList"></div>
-		<span id="itemDetAlert" class="clearfix" ></span>
-		<ul id="dealItemList" data-role="listview"  data-inset="true" data-theme="c" ></ul>
+		<!--<span id="itemDetAlert" class="clearfix" ></span>
+		<ul id="dealItemList" data-role="listview"  data-inset="true" data-theme="c" ></ul>-->
 		
 		<a href="#" id="addCartButtonId" data-role="button"  data-theme="c" class="ui-top gra_but add_cart_txt" >Add to cart</a>
 		

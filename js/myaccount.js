@@ -47,12 +47,15 @@ function getMenuList() {
 		
 		//var menus = data.MenuInfo;
 		//$.each(menus, function(index, menu) {
-			
+		
+		$('#employeeList').append('<li><a href="index.html" class="ui-link-inherit" rel="external">Change Location</a></li>');	
 		$('#employeeList').append('<li><a href="register.html?form_active=registerFrmId" class="ui-link-inherit" rel="external">Account Details</a></li>');
 		$('#employeeList').append('<li><a href="register.html?form_active=addrFrmId" class="ui-link-inherit" rel="external">Billing Address</a></li>');
 		$('#employeeList').append('<li><a href="order_info.html" class="ui-link-inherit" rel="external">Order History</a></li>');
 		$('#employeeList').append('<li><a href="checkout.html" class="ui-link-inherit" rel="external">View Cart</a></li>');
 		$('#employeeList').append('<li><a href="change_password.html" class="ui-link-inherit" rel="external">Change Password</a></li>');
+		$('#employeeList').append('<li><a href="showMenu.html" class="ui-link-inherit" rel="external">View Menu</a></li>');
+		$('#employeeList').append('<li><a href="deal.html" class="ui-link-inherit" rel="external">View Deal</a></li>');
 		//});
 				
 		$('#employeeList').listview('refresh');

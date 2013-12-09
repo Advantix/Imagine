@@ -1,4 +1,4 @@
-var itemImgURL = "http://advantixcrm.com/prj/mitech/images/item/";
+var itemImgURL = "http://advantixcrm.com/prj/mitech//images/item/";
 var defaultImgURL = "logo_miapps.png";
 var serviceAppURL = "http://advantixcrm.com/prj/mitech/index.php/api/appconfig/Mw";
 var resData = JSON.parse(window.localStorage.getItem('RestInfoDet'));//alert(resData.id);
@@ -44,7 +44,7 @@ if(userData!=null) {
 		cartCount = 0;
 	}
 		
-	window.localStorage.setItem('welcomeDiv','<ul class="clearfix"><li>'+userData.user_data.fname+'</li><li>|</li><li><span ><a href="#" id="logoutBtnId" rel="external" style=" color:#fff;">logout</a></span></li><li>|</li><li><span><a href="checkout.html" id="cartBtnId" rel="external" style=" color:#fff;">Cart <span style="color:#ff0000">['+cartCount+']</span></a></span></li><li>|</li><li><span ><a href="myaccount.html" rel="external" style=" color:#fff;">My Account</a></span></li></ul>'); // store local storage
+	window.localStorage.setItem('welcomeDiv','<ul class="clearfix"><li>'+userData.user_data.fname+'</li><li>|</li><li><span ><a href="#" id="logoutBtnId" rel="external" style=" color:#fff;">logout</a></span></li><li>|</li><li><span><a href="checkout.html" id="cartBtnId" rel="external" style=" color:#fff;">Cart <span style="color:#ff0000">['+cartCount+']</span></a></span></li><li>|</li><li><span ><a href="myaccount.html" rel="external" style=" color:#fff;">My Account</a></span></li></ul><div  class="ui-menu-right"> <a href="home.html" rel="external"><img src="img/icon_menu.png" alt=""></a></div>'); // store local storage
 	var welcomeDiv = window.localStorage.getItem('welcomeDiv');
 	
 	$('#userName').html(welcomeDiv);
@@ -62,7 +62,7 @@ if(userData!=null) {
 		cartCount = 0;
 	}
 	
-	window.localStorage.setItem('welcomeDiv','<ul class="clearfix"><li>Guest <span style="color:#fff">User</span></li><li>|</li><li><span><a href="checkout.html" id="cartBtnId" rel="external" style=" color:#fff;">Cart <span style="color:#ff0000">['+cartCount+']</span></a></span></li><li>|</li><li><span ><a href="#" id="logoutBtnId" rel="external" style="color:#fff">Login</a></span></li></ul>'); // store local storage
+	window.localStorage.setItem('welcomeDiv','<ul class="clearfix"><li>Guest <span style="color:#fff">User</span></li><li>|</li><li><span><a href="checkout.html" id="cartBtnId" rel="external" style=" color:#fff;">Cart <span style="color:#ff0000">['+cartCount+']</span></a></span></li><li>|</li><li><span ><a href="#" id="logoutBtnId" rel="external" style="color:#fff">Login</a></span></li></ul><div  class="ui-menu-right"> <a href="home.html" rel="external"><img src="img/icon_menu.png" alt=""></a></div>'); // store local storage
 	var welcomeDiv = window.localStorage.getItem('welcomeDiv');
 	$('#userName').html(welcomeDiv);
 	

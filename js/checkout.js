@@ -51,8 +51,8 @@ function getCartList() {
 		// subtotal
 		htmlData+='<hr></hr><div  class="checkout-grid clearfix"  >';
 			htmlData+='<ul>';
-				htmlData+='<li class="sno">&nbsp;</li><li class="title"><h4 style=" text-align:right" >Subtotal</h4>';				
-				htmlData+='</li> <li class="sprice"><h4 >$ '+priceSubTotal+'<input type="hidden" name="total_amount" id="total_amount" value="'+priceSubTotal+'"></h4></li>  ';       
+				htmlData+='<li class="sno">&nbsp;</li><li class="title"><h4 style=" text-align:right;font-size:13px;" >Subtotal</h4>';				
+				htmlData+='</li> <li class="sprice" style="width:25%;"><h4 >$ '+priceSubTotal+'<input type="hidden" name="total_amount" id="total_amount" value="'+priceSubTotal+'"></h4></li>  ';       
 			htmlData+='</ul>';
 		htmlData+='</div><hr></hr>';
 		
@@ -61,7 +61,7 @@ function getCartList() {
 			percentageval = ((priceSubTotal/100)*holidaypercnt).toFixed(1);
 			htmlData+='<div  class="checkout-grid clearfix"  >';
 			htmlData+='<ul>';
-			htmlData+='<li class="sno">&nbsp;</li><li class="title"><h4 style=" text-align:right" >Holiday Cost</h4>';				
+			htmlData+='<li class="sno">&nbsp;</li><li class="title"><h4 style=" text-align:right; font-size:13px;">Holiday Cost ('+holidaypercnt+'%)</h4>';				
 			htmlData+='</li> <li class="sprice"><h4 >$ '+percentageval+'</h4></li>  ';       
 			htmlData+='</ul>';
 			htmlData+='</div><hr></hr>';	
@@ -74,7 +74,7 @@ function getCartList() {
 		htmlData+='<div  class="checkout-grid clearfix"  >';
 			htmlData+='<ul>';
 				htmlData+='<li class="sno">&nbsp;</li><li class="title"><h4 style=" text-align:right" >Total</h4>';				
-				htmlData+='</li> <li class="sprice"><h4 >$ '+overalltotal+'<input type="hidden" name="gross_total" id="gross_total" value="'+overalltotal+'"></h4></li>';       
+				htmlData+='</li> <li class="sprice" style="width:25%;"><h4 >$ '+overalltotal+'<input type="hidden" name="gross_total" id="gross_total" value="'+overalltotal+'"></h4></li>';       
 			htmlData+='</ul>';
 		htmlData+='</div>';	
 		
@@ -168,7 +168,7 @@ function removeDealItems(indexItemId) {
 var hoursinfo = JSON.parse(window.localStorage.getItem('hoursinfo'));		
 // delevery time
 if(hoursinfo!=null) {
-	$('#deliveryDivId').html('<h4 class="title">Delivery Time: '+hoursinfo+'</h4>');
+	$('#deliveryDivId').html('<h4 class="title" style="margin:0; padding:0; text-align:center; color:red; font-weight:normal">Delivery Time: '+hoursinfo+'</h4>');
 } else {
 	$('#deliveryDivId').hide();
 }
