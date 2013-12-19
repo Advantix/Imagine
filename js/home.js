@@ -4,7 +4,8 @@ $('#typography').live('pageshow', function(event) {
 	//}
 });
 $.ajaxSetup({ cache: false });
-function showHomePage() {		
+function showHomePage() {
+		$("#dealDivId").hide();
 		var appData = JSON.parse(window.localStorage.getItem('configData'));
 		var htmlIn='';
 		buttonArray=resData.service_options;
@@ -17,12 +18,17 @@ function showHomePage() {
 				//alert(JSON.stringify(data.DealList));
 				
 				var items = data.DealList;
-				$.each(items, function(index, item) {
-					//alert(item.item_img);
-					dealItemsId=item.deal_items_id=="" ? null :1;
-					 $('#slider4').append('<li><a href="deal.html?delitemId='+item.item_id+'" rel="external"><img src="'+itemImgURL+(item.item_img!=""? item.item_img:defaultImgURL)+'" alt=""></a></li>');		
-					
-				});
+				if(items.length>0) {
+					$("#dealDivId").show();
+					$.each(items, function(index, item) {
+						//alert(item.item_img);
+						dealItemsId=item.deal_items_id=="" ? null :1;
+						 $('#slider4').append('<li><a href="deal.html?delitemId='+item.item_id+'" rel="external"><img src="'+itemImgURL+(item.item_img!=""? item.item_img:defaultImgURL)+'" alt=""></a></li>');		
+						
+					});
+				} else {
+					$("#dealDivId").hide();
+				}
 			});
 		}
 		
