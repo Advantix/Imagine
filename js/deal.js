@@ -60,10 +60,14 @@ function getDealItemList() {
 		$('#employeeList li').remove();		
 		//alert(data.DealList);
 		var items = data.DealList;
-		$.each(items, function(index, item) {
-			dealItemsId=item.deal_items_id=="" ? null :1;
-			$('#employeeList').append('<li data-theme="c" class="ui-btn ui-btn-icon-right ui-li ui-corner-top ui-btn-up-c"><div class="ui-btn-inner ui-li ui-corner-top"><div class="ui-btn-text"><a href="deal.html?delitemId='+item.item_id+'" class="ui-link-inherit" rel="external" ><img src="'+itemImgURL+(item.item_img!=""? item.item_img:defaultImgURL)+'" style="padding:5px;">&nbsp;' + item.item_name + '&nbsp;<span style="font-size:11px; display:block; margin-left:4px; margin-top:4px;">('+ item.item_desc + ')</span></a></div><span class="ui-icon ui-icon-arrow-r"></span></div></li>');
-		});
+		if(items.length>0) {
+			$.each(items, function(index, item) {
+				dealItemsId=item.deal_items_id=="" ? null :1;
+				$('#employeeList').append('<li data-theme="c" class="ui-btn ui-btn-icon-right ui-li ui-corner-top ui-btn-up-c"><div class="ui-btn-inner ui-li ui-corner-top"><div class="ui-btn-text"><a href="deal.html?delitemId='+item.item_id+'" class="ui-link-inherit" rel="external" ><img src="'+itemImgURL+(item.item_img!=""? item.item_img:defaultImgURL)+'" style="padding:5px;">&nbsp;' + item.item_name + '&nbsp;<span style="font-size:11px; display:block; margin-left:4px; margin-top:4px;">('+ item.item_desc + ')</span></a></div><span class="ui-icon ui-icon-arrow-r"></span></div></li>');
+			});
+		} else {
+			$('#employeeList').append('<li><span style="color:#ff0000">No Deals Found</span></li>');
+		}
 		//onclick="showDealCartAlert('+item.item_id+','+dealFlag+','+dealItemsId+')"
 		$('#employeeList').listview('refresh');
 		$('#deallist').html('Deal Item List');
@@ -80,7 +84,7 @@ function getDealItemDet() {
 		window.localStorage.setItem('deal_item_det',JSON.stringify(itemDets[0])); // store local storage
 		$.each(itemDets, function(index, itemDet) {
 			//alert('item page');
-			htmlVal+='<h2>'+itemDet.item_name+'</h2>';
+			//htmlVal+='<h2>'+itemDet.item_name+'</h2>';
 			htmlVal+='<div class="item-wrap clearfix">';
 				htmlVal+=' <div class="item-image">';
 					htmlVal+='<img src="'+itemImgURL+(itemDet.item_img!=""? itemDet.item_img:defaultImgURL)+'" alt="">';
@@ -128,7 +132,7 @@ function getDealItemDet() {
 		});	
 			
 		$('#dealItemList').listview('refresh');
-		$('#deallist').html('Deal Item');
+		$('#deallist').html(itemDets[0].item_name);
 		$("#addCartButtonId").hide();
 		$("#addMoreItemButtonId").hide();
 		
@@ -141,21 +145,22 @@ function getSingleDealItem() {
 		//alert(data);
 		$('#employeeList li').remove();	
 		var itemDets1 = data.ItemDet;
+		//alert(data.DealTitle);
 		$.each(itemDets1, function(index, itemDet) {
 		
 				$('#employeeList').append('<li data-theme="c" class="ui-btn ui-btn-icon-right ui-li ui-corner-top ui-btn-up-c"><div class="ui-btn-inner ui-li ui-corner-top"><div class="ui-btn-text"><a href="deal.html?chkitemid='+itemDet.item_id+'&dealId='+dealId+'" class="ui-link-inherit" rel="external" ><img src="'+itemImgURL+(itemDet.item_img!=""? itemDet.item_img:defaultImgURL)+'" style="padding:5px;">&nbsp;' + itemDet.item_name + '&nbsp;<span style="font-size:11px; display:block; margin-left:4px; margin-top:4px;">('+ itemDet.item_desc + ')</span></a></div><span class="ui-icon ui-icon-arrow-r"></span></div></li>');
 			});
 			$('#employeeList').listview('refresh');
-			$('#deallist').html('Deal Items');
+			$('#deallist').html(data.DealTitle);
 	});
 }
 
 function addCartItemdet() {
 	htmlVal="";
 	//alert(serviceURL+'itemdet/'+itemId);
-	$.getJSON(serviceURL+'dealitemdet/'+chkitemid, function(data) {
+	$.getJSON(serviceURL+'dealitemdet/'+chkitemid+'/'+dealId, function(data) {
 		$('#employeeList').hide();		
-		//alert(data);
+		//alert(data.DealTitle);
 		var itemDets = data.ItemDet;
 		$.each(itemDets, function(index, itemDet) {
 			//alert('item page');
@@ -170,7 +175,7 @@ function addCartItemdet() {
 			htmlVal+='</div>';			
 			htmlVal+='</div>';
 			$('#itemDetList').html(htmlVal);
-			$('#deallist').html('Deal Item');
+			$('#deallist').html(data.DealTitle+' [Deal]');
 		});
 	});
 }

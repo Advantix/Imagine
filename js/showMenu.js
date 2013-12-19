@@ -55,6 +55,9 @@ function getMenuCatList() {
 			
 			$('#employeeList').append('<li data-theme="c" class="ui-btn ui-btn-icon-right ui-li ui-corner-top ui-btn-up-c"><div class="ui-btn-inner ui-li ui-corner-top"><div class="ui-btn-text"><a href="showMenu.html?catId='+cat.sub_id+'" class="ui-link-inherit" rel="external"><img src="'+itemImgURL+(cat.subcat_image!=""? cat.subcat_image:defaultImgURL)+'" style="padding:5px;">&nbsp;' + cat.subcat_name + '&nbsp;<span style="font-size:11px; display:block; margin-left:4px; margin-top:4px;">('+ cat.subcat_name + ')</span></a></div><span class="ui-icon ui-icon-arrow-r"></span></div></li>');
 		});
+		if(dataAppConfig.AppConfig.deal_status=='A') {
+			$('#employeeList').append('<li data-theme="c" class="ui-btn ui-btn-icon-right ui-li ui-corner-top ui-btn-up-c"><div class="ui-btn-inner ui-li ui-corner-top"><div class="ui-btn-text"><a href="deal.html" class="ui-link-inherit" rel="external"><img src="'+itemImgURL+defaultImgURL+'" style="padding:5px;">&nbsp;Deals&nbsp;<span style="font-size:11px; display:block; margin-left:4px; margin-top:4px;">(Deal Items)</span></a></div><span class="ui-icon ui-icon-arrow-r"></span></div></li>');
+		}
 				
 		$('#employeeList').listview('refresh');
 		$('#menulist').html(data.MenuInfo.category_name);
@@ -75,10 +78,14 @@ function getMenuList() {
 				$('#employeeList').append('<li data-theme="c" class="ui-btn ui-btn-icon-right ui-li ui-corner-top ui-btn-up-c"><div class="ui-btn-inner ui-li ui-corner-top"><div class="ui-btn-text"><a href="showMenu.html?catId='+subCat.sub_id+'" class="ui-link-inherit" rel="external"><img src="'+itemImgURL+(subCat.subcat_image!=""? subCat.subcat_image:defaultImgURL)+'" style="padding:5px;">&nbsp;' + subCat.subcat_name + '&nbsp;<span style="font-size:11px; display:block; margin-left:4px; margin-top:4px;">('+ subCat.subcat_name + ')</span></a></div><span class="ui-icon ui-icon-arrow-r"></span></div></li>');
 			});
 			$('#menulist').html(data.MenuTitle);
-		} else {			
-			$.each(items, function(index, item) {				
-				$('#employeeList').append('<li data-theme="c" class="ui-btn ui-btn-icon-right ui-li ui-corner-top ui-btn-up-c"><div class="ui-btn-inner ui-li ui-corner-top"><div class="ui-btn-text"><a href="showMenu.html?itemId='+item.item_id+'" class="ui-link-inherit" rel="external"><img src="'+itemImgURL+(item.item_img!=""? item.item_img:defaultImgURL)+'" style="padding:5px;">&nbsp;' + item.item_name + '&nbsp;<span style="font-size:11px; display:block; margin-left:4px; margin-top:4px;">('+ item.item_desc + ')</span></a></div><span class="ui-icon ui-icon-arrow-r"></span></div></li>');
-			});
+		} else {	
+			if(items.length>0) {
+				$.each(items, function(index, item) {				
+					$('#employeeList').append('<li data-theme="c" class="ui-btn ui-btn-icon-right ui-li ui-corner-top ui-btn-up-c"><div class="ui-btn-inner ui-li ui-corner-top"><div class="ui-btn-text"><a href="showMenu.html?itemId='+item.item_id+'" class="ui-link-inherit" rel="external"><img src="'+itemImgURL+(item.item_img!=""? item.item_img:defaultImgURL)+'" style="padding:5px;">&nbsp;' + item.item_name + '&nbsp;<span style="font-size:11px; display:block; margin-left:4px; margin-top:4px;">('+ item.item_desc + ')</span></a></div><span class="ui-icon ui-icon-arrow-r"></span></div></li>');
+				});
+			} else {
+				$('#employeeList').append('<li><span style="color:#ff0000">No Items Found</span></li>');
+			}
 			$('#menulist').html(data.MenuTitle);
 		}
 				
