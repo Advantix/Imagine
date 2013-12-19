@@ -18,18 +18,20 @@ $("#hoursButtonId").click(function() {
 });
 
 $('#hoursFrmId').submit(function(){		
-	var postData = $(this).serialize();	
+	var postData = $(this).serialize();
+	var ordertype = JSON.parse(window.localStorage.getItem('takeordelivry'));	
 	//alert(postData);
 	$.ajax({
 		type: 'POST',
-		data: 'rest_id='+restId+'&'+postData,
+		data: 'rest_id='+restId+'&ordertype='+ordertype+'&'+postData,
 		url: serviceURL+'workinghours',
-		success: function(data){				
+		success: function(data){	
+			//alert(data);
 			if(data.response==1) {
 				window.localStorage.setItem('hoursinfo',JSON.stringify(data.hoursinfo)); // store local storage
-				window.localStorage.setItem('holidaypercnt',JSON.stringify(data.percnt));
+				window.localStorage.setItem('holidaypercnt',JSON.stringify(data.percnt));				
+				window.localStorage.setItem('minorderamt',JSON.stringify(data.minorder));
 				console.log(data);
-				//alert(data.hoursinfo);
 				alert('Time selected successfully');
 				window.location.href='checkout.html';
 			}else{

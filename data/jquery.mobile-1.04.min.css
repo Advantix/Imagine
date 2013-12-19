@@ -43,7 +43,7 @@
  
 
 .ui-pickup{ width:30%} 
-.ui-marg-cent { margin:0 auto; width:94%; padding-top:8%; padding-bottom:8%;}
+.ui-marg-cent { margin:0 auto; width:94%; padding-top:0%; padding-bottom:0%;}
 .ui-rfloat { float:right;}
 
  .ui-header .ui-title { font-size:26px; margin-top:0.5em;}

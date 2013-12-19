@@ -79,7 +79,7 @@ $('#registerFrmId').submit(function(){
 			if(data.response == 1) {
 				window.localStorage.setItem('userData',JSON.stringify(data));
 				console.log(data);
-				alert("User Registered Successfully");
+				alert("User Registered Successfully, the password sent to your email");
 				$("#pageLoader").hide();
 				window.localStorage.setItem('form_active','#addrFrmId'); // store local storage
 				window.location.href='myaccount.html';
