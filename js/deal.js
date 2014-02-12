@@ -9,18 +9,15 @@ if(delitemId!=null){
 }else if(dealId!=null && chkitemid==null){
 	getSingleDealItem();
 	$('#checkOutButtonId').hide();
-	$('#addCartButtonId').hide();
-	$('#addMoreItemButtonId').hide();
+	$('#addCartButtonId').hide();	
 }else if(chkitemid!=null && dealId!=null){
 	addCartItemdet();
 	$('#checkOutButtonId').hide();
-	$('#addCartButtonId').show();
-	$('#addMoreItemButtonId').hide();
+	$('#addCartButtonId').show();	
 }else{
 	getDealItemList();
 	$('#checkOutButtonId').hide();
-	$('#addCartButtonId').hide();
-	$('#addMoreItemButtonId').hide();
+	$('#addCartButtonId').hide();	
 }
 $("#checkOutButtonId").click(function() {
 	var carDataGet = JSON.parse(window.localStorage.getItem('carDatas'));
@@ -63,14 +60,15 @@ function getDealItemList() {
 		if(items.length>0) {
 			$.each(items, function(index, item) {
 				dealItemsId=item.deal_items_id=="" ? null :1;
-				$('#employeeList').append('<li data-theme="c" class="ui-btn ui-btn-icon-right ui-li ui-corner-top ui-btn-up-c"><div class="ui-btn-inner ui-li ui-corner-top"><div class="ui-btn-text"><a href="deal.html?delitemId='+item.item_id+'" class="ui-link-inherit" rel="external" ><img src="'+itemImgURL+(item.item_img!=""? item.item_img:defaultImgURL)+'" style="padding:5px;">&nbsp;' + item.item_name + '&nbsp;<span style="font-size:11px; display:block; margin-left:4px; margin-top:4px;">('+ item.item_desc + ')</span></a></div><span class="ui-icon ui-icon-arrow-r"></span></div></li>');
+				$('#employeeList').append('<li class="ui-li-has-thumb"><a class="ui-btn ui-btn-icon-right ui-icon-carat-r" href="deal.html?delitemId='+item.item_id+'" rel="external" ><img src="'+itemImgURL+(item.item_img!=""? item.item_img:defaultImgURL)+'" style="padding:5px;">&nbsp;' + item.item_name + '&nbsp;<span style="font-size:11px; display:block; margin-left:4px; margin-top:4px;">('+ item.item_desc + ')</span></a></li>');
 			});
 		} else {
-			$('#employeeList').append('<li><span style="color:#ff0000">No Deals Found</span></li>');
+			$('#employeeList').append('<li class="ui-li-has-thumb"><span style="color:#ff0000">No Deals Found</span></li>');
 		}
 		//onclick="showDealCartAlert('+item.item_id+','+dealFlag+','+dealItemsId+')"
 		$('#employeeList').listview('refresh');
-		$('#deallist').html('Deal Item List');
+		headerHtml('Deal Item List');
+		//$('#deallist').html('Deal Item List');
 	});
 }
 
@@ -88,16 +86,17 @@ function getDealItemDet() {
 			htmlVal+='<div class="item-wrap clearfix">';
 				htmlVal+=' <div class="item-image">';
 					htmlVal+='<img src="'+itemImgURL+(itemDet.item_img!=""? itemDet.item_img:defaultImgURL)+'" alt="">';
-				htmlVal+='</div>';            
-				htmlVal+='<div class="item-desc"><p>'+itemDet.item_desc+'</p></div>';   
+				htmlVal+='</div>';   
+			
+				htmlVal+='<p class="para_text">'+itemDet.item_desc+'</p>';   
 				// hidden fields
 				htmlVal+='<input type="hidden" value="'+itemDet.item_name+'" name="item_name"  id="item_name"><input type="hidden" value="'+itemDet.item_id+'" name="item_id"  id="item_id"><input type="hidden" value="'+itemDet.item_desc+'" name="item_desc" id="item_desc"><input type="hidden" value="'+itemDet.item_img+'" name="item_img"  id="item_img">';
 			htmlVal+='</div>';
-			htmlVal+='<div class="item-wrap org_price clearfix" style=" background:#eeeeee; margin-top:20px;">';
+			
                    
-			htmlVal+='<div class="item-left price-txt"><h2 style="color:#000;">Price</h2></div>';            
-				htmlVal+='<div class="item-right"><h2 style="color:red;"><span style="color:#000; font-size:14px;">AUD</span> '+ itemDet.item_selling_price + '/-</h2></div>';
-				htmlVal+='</div>';
+			htmlVal+='<div class="item-desc"><h3>Price';            
+				htmlVal+='AUD  <span>'+ itemDet.item_selling_price + '/-</span><h3>';
+				
 
 				/* htmlVal+='<div class="item-wrap clearfix">';				 
 				htmlVal+='<div class="item-left price-txt"><h2>Selling Price</h2></div>';		
@@ -123,18 +122,21 @@ function getDealItemDet() {
 			}
 			//alert(dealSel);
 			if(dealSel!="") {
-				dealSelSpan='ui-icon-checkbox-on';
+				dealSelSpan='ui-icon-check';
+				tick='id="tick"';
 			} else {
-				dealSelSpan='ui-icon-checkbox-off';
+				dealSelSpan='ui-icon-check';
+				tick='';
 			}
 			
-			$('#dealItemList').append('<li data-theme="c" class="ui-btn ui-btn-icon-right ui-li  ui-btn-up-c"><div class="ui-btn-inner ui-li ui-corner-top"><div class="ui-btn-text"><a href="deal.html?dealId='+dealItem.id+'" class="ui-link-inherit" rel="external">' + dealItem.deal_item_name + '&nbsp;</a></div><span class="ui-icon '+dealSelSpan+'"></span></div></li>');
+			$('#dealItemList').append('<li '+tick+' class="ui-li-has-thumb"><a class="ui-btn ui-btn-icon-right '+dealSelSpan+'" href="deal.html?dealId='+dealItem.id+'" rel="external">' + dealItem.deal_item_name + '&nbsp;</a></li>');
 		});	
 			
 		$('#dealItemList').listview('refresh');
-		$('#deallist').html(itemDets[0].item_name);
+		headerHtml(itemDets[0].item_name);
+		//$('#deallist').html(itemDets[0].item_name);
 		$("#addCartButtonId").hide();
-		$("#addMoreItemButtonId").hide();
+		
 		
 	});
 }
@@ -148,10 +150,11 @@ function getSingleDealItem() {
 		//alert(data.DealTitle);
 		$.each(itemDets1, function(index, itemDet) {
 		
-				$('#employeeList').append('<li data-theme="c" class="ui-btn ui-btn-icon-right ui-li ui-corner-top ui-btn-up-c"><div class="ui-btn-inner ui-li ui-corner-top"><div class="ui-btn-text"><a href="deal.html?chkitemid='+itemDet.item_id+'&dealId='+dealId+'" class="ui-link-inherit" rel="external" ><img src="'+itemImgURL+(itemDet.item_img!=""? itemDet.item_img:defaultImgURL)+'" style="padding:5px;">&nbsp;' + itemDet.item_name + '&nbsp;<span style="font-size:11px; display:block; margin-left:4px; margin-top:4px;">('+ itemDet.item_desc + ')</span></a></div><span class="ui-icon ui-icon-arrow-r"></span></div></li>');
+				$('#employeeList').append('<li class="ui-li-has-thumb"><a class="ui-btn ui-btn-icon-right ui-icon-carat-r" href="deal.html?chkitemid='+itemDet.item_id+'&dealId='+dealId+'" rel="external" ><img src="'+itemImgURL+(itemDet.item_img!=""? itemDet.item_img:defaultImgURL)+'" style="padding:5px;">&nbsp;' + itemDet.item_name + '&nbsp;<span style="font-size:11px; display:block; margin-left:4px; margin-top:4px;">('+ itemDet.item_desc + ')</span></a></li>');
 			});
-			$('#employeeList').listview('refresh');
-			$('#deallist').html(data.DealTitle);
+			//$('#employeeList').listview('refresh');
+			//$('#deallist').html(data.DealTitle);
+			headerHtml(data.DealTitle);
 	});
 }
 
@@ -164,18 +167,19 @@ function addCartItemdet() {
 		var itemDets = data.ItemDet;
 		$.each(itemDets, function(index, itemDet) {
 			//alert('item page');
-			htmlVal+='<h2>'+itemDet.item_name+'</h2>';
+			htmlVal+='<div class="item-desc"><h3>'+itemDet.item_name+'</h3></div>';
 			htmlVal+='<div class="item-wrap clearfix">';
 				htmlVal+=' <div class="item-image">';
 					htmlVal+='<img src="'+itemImgURL+(itemDet.item_img!=""? itemDet.item_img:defaultImgURL)+'" alt="">';
-				htmlVal+='</div>';            
-				htmlVal+='<div class="item-desc"><p>'+itemDet.item_desc+'</p></div>';   
+				htmlVal+='</div>';  				
+				htmlVal+='<p class="para_text">'+itemDet.item_desc+'</p>';   
 				// hidden fields
 				htmlVal+='<input type="hidden" value="'+itemDet.item_name+'" name="item_name"  id="item_name"><input type="hidden" value="'+itemDet.item_id+'" name="item_id"  id="item_id"><input type="hidden" value="'+itemDet.item_desc+'" name="item_desc" id="item_desc"><input type="hidden" value="'+itemDet.item_img+'" name="item_img"  id="item_img">';
-			htmlVal+='</div>';			
+				
 			htmlVal+='</div>';
 			$('#itemDetList').html(htmlVal);
-			$('#deallist').html(data.DealTitle+' [Deal]');
+			//$('#deallist').html(data.DealTitle+' [Deal]');
+			headerHtml(data.DealTitle+' [Deal]');
 		});
 	});
 }

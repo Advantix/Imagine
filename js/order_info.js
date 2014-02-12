@@ -22,9 +22,9 @@ function getOrderList() {
 		//alert(orderDets);
 		$.each(orderDets, function(index, item) {
 			
-			$('#orderList').append('<li data-theme="c" class="ui-btn ui-btn-icon-right ui-li ui-corner-top ui-btn-up-c"><div class="ui-btn-inner ui-li ui-corner-top"><div class="ui-btn-text"><a href="order_info.html?orderId='+item.order_id+'" class="ui-link-inherit" rel="external">'+(index+1)+'. Order Id:'+item.order_id+' Amount:'+item.total_amount+' Delivery Time:'+item.delivery_time+'</a></div><span class="ui-icon ui-icon-arrow-r"></span></div></li>');
+			$('#orderList').append('<li><a class="ui-btn ui-btn-icon-right ui-icon-carat-r" href="order_info.html?orderId='+item.order_id+'"  rel="external">'+(index+1)+'. Order Id:'+item.order_id+' Amount:'+item.total_amount+' Delivery Time:'+item.delivery_time+'</a></li>');
 		}); 
-		$('#orderList').listview('refresh');
+		//$('#orderList').listview('refresh');
 	});
 }
 
@@ -38,19 +38,19 @@ function showOrderinfo() {
 		//alert(resData.restaurant_name);
 		var orderDets = data.order;
 		$.each(orderDets, function(index, item) {
-				htmlData='<h2 style="text-align:left; color:#363636;font-sze:18px; margin-top:10px;">Your order has been confirmed, details are below:</h2>';
-				htmlData+='<div style="margin:10px 0 0 0;text-shadow:0;">';
-				htmlData+='<p style="text-shadow:none;" class="itemp">Order Number: <strong style="color:#ff0000">'+item.order_id+'</strong></p>';    
-				htmlData+='<p style="text-shadow:none;" class="itemp">Meal Ready Time: <strong style="color:#ff0000">'+item.delivery_time+'</strong></p>';
-				htmlData+='<p style="text-shadow:none;" class="itemp">Cost: <strong style="color:#ff0000">$ '+item.gross_total+'</strong></p>';
-				htmlData+='<p style="text-shadow:none;" class="itemp">Payment Status: <strong style="color:#0f7f00; font-size:15px;">'+item.payment_status+'</strong></p>';    
+				htmlData='<h4>Your order has been confirmed, details are below:</h4>';
+				htmlData+='<div style="margin:20px 0 0 0;">';
+				htmlData+='<h4>Order Number: '+item.order_id+'<h4></div>';    
+				htmlData+='<p class="itemp">Meal Ready Time: '+item.delivery_time+'</p>';
+				htmlData+='<div style="margin:20px 0;"><h4 class="itemp">Cost: $ '+item.gross_total+'</h4>';
+				htmlData+='<h4 class="itemp">Payment Status: <span>'+item.payment_status+'</span></h4>';    
 				htmlData+='</div>';
 			
-				htmlData+='<div style="margin:20px 0; background:#d6d6d6; padding:6px;">';
-				htmlData+='<p style="text-shadow:none;" class="itemp">Store Name: <strong style="color:#000">'+dataAppConfig.AppConfig.store_name+'</strong></p>';  
-				htmlData+='<p style="text-shadow:none;" class="itemp">Store Address: <strong style="color:#000">'+resData.restaurant_name+'('+resData.restaurant_location+'), '+resData.address_line1+', '+resData.address_line2+', '+resData.phone+', '+resData.suburb+', '+resData.state+' - '+resData.postcode+'</strong></p>';  
+				htmlData+='<div style="margin:20px 0;">';
+				htmlData+='<h4 class="itemp">Store Name: '+dataAppConfig.AppConfig.store_name+'</h4>';  
+				htmlData+='<h4 class="itemp">Store Address: '+resData.restaurant_name+'('+resData.restaurant_location+'), '+resData.address_line1+', '+resData.address_line2+', '+resData.phone+', '+resData.suburb+', '+resData.state+' - '+resData.postcode+'</h4>';  
 				htmlData+='</div>';
-				htmlData+='<div class="clearfix"><a class="ui-lfloat ui-btn ui-btn-corner-all ui-shadow ui-btn-up-a" data-theme="a" rel="external" data-role="button" id="storeDirection" href=""><span class="ui-btn-inner ui-btn-corner-all"><span class="ui-btn-text">Directions to store</span></span></a>        	</div>';
+				//htmlData+='<div class="clearfix"><a class="ui-lfloat ui-btn ui-btn-corner-all ui-shadow ui-btn-up-a" data-theme="a" rel="external" data-role="button" id="storeDirection" href=""><span class="ui-btn-inner ui-btn-corner-all"><span class="ui-btn-text">Directions to store</span></span></a>        	</div>';
 			
 			/*htmlData='<h2 style="text-align:left; color:#ffffff;font-sze:22px;">Your order has been confirmed, details are below:</h2>';
 			htmlData+='<div style="margin:20px 0 0 0;text-shadow:0;"><h4 style="color:#000; text-shadow:none;font-size:21px;">Order number: '+item.order_id+'</h4></div>';      

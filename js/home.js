@@ -1,8 +1,11 @@
-$('#typography').live('pageshow', function(event) {	
+if(dataAppConfig==null) {
+	window.location.href='index.html';
+}
+//$('#typography').live('pageshow', function(event) {	
 	//if(checkConnection()) {
 		showHomePage();
 	//}
-});
+//});
 $.ajaxSetup({ cache: false });
 function showHomePage() {
 		$("#dealDivId").hide();
@@ -33,16 +36,19 @@ function showHomePage() {
 		}
 		
 		if(buttonArray[1]==1) {
-			if(buttonArray[0]==1) {cssSt="ui-rfloat "} else {cssSt=""}
-				htmlIn+='<a  class="'+cssSt+'ui-btn ui-btn-inline ui-btn-corner-all ui-shadow ui-btn-up-c gra_but" data-inline="true" data-role="button" href="#" onclick = delortakeorder("delivery") data-theme="b"><span class="ui-btn-inner ui-btn-corner-all"><span class="ui-btn-text"><i class="delive_ic"></i>'+appData.GlobalConfig.delivery_label+'</span></span></a>';
+			
+				htmlIn+='<button class="ui-btn ui-btngrey" onclick = delortakeorder("delivery")>'+appData.GlobalConfig.delivery_label+'</button>';
+				//htmlIn+='<a  class="'+cssSt+'ui-btn ui-btn-inline ui-btn-corner-all ui-shadow ui-btn-up-c gra_but" data-inline="true" data-role="button" href="#" onclick = delortakeorder("delivery") data-theme="b"><span class="ui-btn-inner ui-btn-corner-all"><span class="ui-btn-text"><i class="delive_ic"></i>'+appData.GlobalConfig.delivery_label+'</span></span></a>';
 			
 		}
-		if(buttonArray[0]==1) {			
-			htmlIn+='<a  class="ui-btn ui-btn-inline ui-btn-corner-all ui-shadow ui-btn-up-c gra_but" data-inline="true" data-role="button" href="#" onclick=delortakeorder("takeaway") data-theme="b"><span class="ui-btn-inner ui-btn-corner-all"><span class="ui-btn-text"><i class="takeaw_ic"></i>'+appData.GlobalConfig.takeaway_label+'</span></span></a>';
+		if(buttonArray[0]==1) {		
+			htmlIn+='<button class="ui-btn ui-btngrey" onclick = delortakeorder("takeaway")>'+appData.GlobalConfig.takeaway_label+'</button>';
+			//htmlIn+='<a  class="ui-btn ui-btn-inline ui-btn-corner-all ui-shadow ui-btn-up-c gra_but" data-inline="true" data-role="button" href="#" onclick=delortakeorder("takeaway") data-theme="b"><span class="ui-btn-inner ui-btn-corner-all"><span class="ui-btn-text"><i class="takeaw_ic"></i>'+appData.GlobalConfig.takeaway_label+'</span></span></a>';
 			
 		}
 		if(appData.AppConfig.see_the_menu_btn=='A') {
-			htmlIn+='<a rel="external" data-role="button" href="showMenu.html" data-theme="c" class="ui-btn ui-btn-corner-all ui-shadow ui-btn-up-c gra_but"><span class="ui-btn-inner ui-btn-corner-all"><span class="ui-btn-text add_cart_txt">'+appData.GlobalConfig.see_the_menu_label+'</span></span></a>';
+			htmlIn+='<button class="ui-btn ui-btngrey" onclick = delortakeorder("ShowMenu")>'+appData.GlobalConfig.see_the_menu_label+'</button>';
+			//htmlIn+='<a rel="external" data-role="button" href="showMenu.html" data-theme="c" class="ui-btn ui-btn-corner-all ui-shadow ui-btn-up-c gra_but"><span class="ui-btn-inner ui-btn-corner-all"><span class="ui-btn-text add_cart_txt">'+appData.GlobalConfig.see_the_menu_label+'</span></span></a>';
 		}
 	
 		

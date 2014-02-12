@@ -33,11 +33,11 @@ if(userData==null) {
 	});
 
 
-	$('#services').bind('pageinit', function(event) {
+	//$('#services').bind('pageinit', function(event) {
 		//if(checkConnection()) {
 			getMenuList();
 		//}
-	});
+	//});
 	$.ajaxSetup({ cache: false });
 }
 
@@ -56,8 +56,9 @@ function getMenuList() {
 		$('#employeeList').append('<li><a href="change_password.html" class="ui-link-inherit" rel="external">Change Password</a></li>');
 		$('#employeeList').append('<li><a href="showMenu.html" class="ui-link-inherit" rel="external">View Menu</a></li>');
 		$('#employeeList').append('<li><a href="deal.html" class="ui-link-inherit" rel="external">View Deal</a></li>');
+		$('#employeeList').append('<li><a href="#" id="logoutBtnId" onclick="logout();" rel="external" class="ui-link-inherit">Logout</a></li>');
 		//});
 				
-		$('#employeeList').listview('refresh');
+		//$('#employeeList').listview('refresh');
 	//});
 }

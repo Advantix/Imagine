@@ -1,15 +1,25 @@
 var itemImgURL = "http://advantixcrm.com/prj/mitech/images/item/";
 var defaultImgURL = "logo_miapps.png";
 var serviceAppURL = "http://advantixcrm.com/prj/mitech/index.php/api/appconfig/Mw";
+
+var store_id= 'Mw';
+var serviceURL = "http://advantixcrm.com/prj/mitech/index.php/api/";
+
 var resData = JSON.parse(window.localStorage.getItem('RestInfoDet'));//alert(resData.id);
 if(resData!=null) {	
 	restId = resData.id;
-	menuId = resData.menu;
-	//alert(menuId);
+	tabId=getUrlVars()["tabId"];	
+	if(tabId!=null) {
+		menuId = tabId ;
+	} else {
+		//var dataAppConfig = window.localStorage.getItem('tabIdSess');
+		getMenuTabDefId();
+		menuId = window.localStorage.getItem('tabIdSess');
+	}
+	
+	//alert(menuId+":"+restId);
 	var serviceMenuURL = "http://advantixcrm.com/prj/mitech/index.php/api/catlist/Mw/"+restId+"/"+menuId;
 }
-var store_id= 'Mw';
-var serviceURL = "http://advantixcrm.com/prj/mitech/index.php/api/";
 
 var dataAppConfig = JSON.parse(window.localStorage.getItem('configData'));
 
@@ -21,22 +31,44 @@ if(dataAppConfig==null) {
 	});
 }
 
-if(dataAppConfig!=null) {		
-	$("#bodyId").css("background-image", "url("+dataAppConfig.AppConfig.bg_image+")");
+if(dataAppConfig!=null) {	
+	
+	/*$("#bodyId").css("background-image", "url("+dataAppConfig.AppConfig.bg_image+")");
 	$("#bodyId").css("background-repeat", "repeat-x");
 	$("#bodyId").css("background-position", "top");
-	$("#bodyId").css("background-color", "#000");
+	$("#bodyId").css("background-color", "#000");*/
+	$(document).ready(function() {
+        document.title = dataAppConfig.AppConfig.store_name;
+		headerHtml(dataAppConfig.AppConfig.store_name);
+    });
 	file_name=get_path_filename();
-	htmlData='<div style="float:left; text-align:center; padding-bottom: 8px; width:100%;"><div  class="clearfix head-top"><div class="head-img"><img src="'+dataAppConfig.AppConfig.store_logo+'" alt=""></div> <h1 class="head-span">'+dataAppConfig.AppConfig.store_name+'</h1></div></div><div class="ui-ltop-icon">';
-	if(file_name=='index.html') { 
-		htmlData+='<a href="register.html" rel="external"><img src="img/singin-btn.png" alt=""></a>';
-	} else {
-		htmlData+='<a href="#" onclick="goPrevious();" rel="external"><img src="img/back_btn.png" alt=""></a>';
-	}
-	htmlData+='</div><div  class="ui-top-icon-right"> <a href="#"  onclick="refresh();" rel="external"><img src="img/refresh-btn.png" alt=""></a></div>';
-	$('#headerContId').html(htmlData);
+	
+	
 } 
 
+
+function getMenuTabDefId() {
+	$.getJSON(serviceURL+'tab/'+store_id+'/'+restId, function(data) {	
+		var tabs = data.TabInfo;
+		//alert(tabs);
+		if(tabs[0]!=null) {
+			var tabIdVal = tabs[0]['cat_id'];
+			
+		} else {
+			var tabIdVal = 0;
+		}
+		window.localStorage.setItem('tabIdSess',tabIdVal); 	
+	});
+	
+}
+
+function headerHtml(titVal) {
+	htmlData='<a href="../toolbar/" data-rel="back" class="ui-btn ui-btn-left ui-alt-icon ui-nodisc-icon ui-corner-all ui-btn-icon-notext ui-icon-back">Back</a>';
+	htmlData+='<a href="#" data-rel="refresh" class="ui-btn ui-btn-right ui-alt-icon ui-nodisc-icon ui-corner-all ui-btn-icon-notext ui-icon-refresh" onclick="refresh();">Refresh</a>';
+    htmlData+='<h1 class="ui-title" role="heading" aria-level="1">'+titVal+'</h1>';
+
+	$('#headerContId').html(htmlData);
+}
 var userData = JSON.parse(window.localStorage.getItem('userData'));
 
 var welcomeDiv = window.localStorage.getItem('welcomeDiv');
@@ -79,7 +111,9 @@ if(userData!=null) {
 	
 }
 
-$("#logoutBtnId").click(function() {
+//$("#logoutBtnId").click(function() {
+function logout() {
+	//alert("dsf");
 	window.localStorage.removeItem('userData');
 	$("#loginFrmId").show();
 	$("#registerFrmId").hide();	
@@ -88,7 +122,8 @@ $("#logoutBtnId").click(function() {
 	window.localStorage.setItem('form_active','#loginFrmId'); // store local storage
 	//window.localStorage.setItem('form_inactive','#registerFrmId'); // store local storage
 	window.location.href='register.html';
-});
+}
+//});
 
 
 function checkConnection() {

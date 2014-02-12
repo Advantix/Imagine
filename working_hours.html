@@ -1,58 +1,121 @@
 <!DOCTYPE html>
 <html>
-<head>
-<meta charset="utf-8">
-<meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0;" name="viewport" />
-<meta name="apple-mobile-web-app-capable" content="yes" />
-<title>Steve's Pizza Restaurant</title>
-<link rel="stylesheet"  href="data/jquery.mobile-1.04.min.css" />
-<link rel="stylesheet" href="data/mobile.css" />
-<link rel="stylesheet" href="data/photoswipe.css" />
-<link rel="stylesheet" href="data/font_style.css" />
-<script type="text/javascript" src="data/klass.min.js"></script>
-<script type="text/javascript" src="data/jquery-1.6.4.min.js"></script>
-<script type="text/javascript" src="data/jquery.mobile-1.04.min.js"></script>
-<script type="text/javascript" src="data/code.photoswipe.jquery-2.1.3.min.js"></script>
-<script type="text/javascript" src="data/mobile.js"></script>
-<!-- Time Picker -->
-<script type="text/javascript" charset="utf-8" src="js/jquery.js"></script>
+	<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title id="titleId"></title>
+	<link rel="shortcut icon" href="../favicon.ico">
+    <link rel="stylesheet" href="http://fonts.googleapis.com/css?family=Open+Sans:300,400,700">
+	<link rel="stylesheet" href="css/themes/default/jquery.mobile-1.4.0.css">
+    <link rel="stylesheet" href="css/theme-classic/theme-classic.css">
+	<link rel="stylesheet" href="_assets/css/jqm-demos.css">
+     <link rel="stylesheet" href="css/slider_banner.css" />
+
+
+
+
+	<script src="js/jquery.js"></script>
+	<script src="_assets/js/index.js1"></script>
+	<script src="js/jquery.mobile-1.4.0.min.js"></script>
+	<!-- Time Picker -->
+
 <script type="text/javascript" src="data/cal.js"></script>
 <link rel="StyleSheet" href="data/calendar.css" type="text/css" media="screen">
 <link rel="stylesheet" type="text/css" href="data/ui.core.css" media="screen" />
 <link rel="stylesheet" type="text/css" href="data/ui.theme.css" media="screen" />
 <link rel="stylesheet" type="text/css" href="data/jquery.ptTimeSelect.css" media="screen" />
 <script type="text/javascript" language="JavaScript" src="data/jquery.ptTimeSelect.js"></script>
-</head>
-<body id="bodyId">
-<div data-role="page" data-theme="b" id="services">
-	<!-- /Header -->
-	<div data-role="header" id="headerContId" data-theme="b" style="background:#272829 url(img/header-title.png) top repeat-x;"></div>
-	
-	 <div class="userTopMenu" id="userName"></div>
-	<!-- /Header -->
-	
-	<!-- /content start--> 
-	<div data-role="content"  >
-		<div id="pageLoader" class="ui-loader">		
-		   <img src="data/loader.gif" />		
-		</div>
+	<script>
+		$(function() {
+			$( "[data-role='navbar']" ).navbar();
+			$( "[data-role='header'], [data-role='footer']" ).toolbar();
+		});
 		
-		<form id="hoursFrmId" style="display:block">
-			<ul data-role="listview"  data-inset="true" data-theme="c" style="margin-top:100px">				
-				<li><b>Date</b></li>
-				<li><input type="text" id="date" name="date" class="one" required></li>
-				<li><b>Time Selector</b></li>
-				<li><span id="sample1"><input type="text" id="time" name="time" required></span></li>			
-			</ul>
-			<a href="#" id="hoursButtonId" data-role="button" data-icon="save" data-theme="c" class="ui-rfloat ui-top gra_but">Submit</a>
-		</form>		
-	</div>	
+		// Update the contents of the toolbars
+		$( document ).on( "pageshow", "[data-role='page']", function() {
+			// Each of the four pages in this demo has a data-title attribute
+			// which value is equal to the text of the nav button
+			// For example, on first page: <div data-role="page" data-title="Info">
+			var current = $( this ).jqmData( "title" );
+			// Change the heading
+			$( "[data-role='header'] h1" ).text( current );
+			// Remove active class from nav buttons
+			$( "[data-role='navbar'] a.ui-btn-active" ).removeClass( "ui-btn-active" );
+			// Add active class to current nav button
+			$( "[data-role='navbar'] a" ).each(function() {
+				if ( $( this ).text() === current ) {
+					$( this ).addClass( "ui-btn-active" );
+				}
+			});
+		});
+		
+		
+		
 
-	<!-- /content end--> 
-</div>
+		// You can also use "$(window).load(function() {"
+		$(function () {		
+		  // Slideshow 4
+		  $("#slider4").responsiveSlides({
+			auto: true,
+			pager: false,
+			nav: true,
+			speed: 500,
+			namespace: "callbacks"      		
+		  });
+		});
+
+  
+		
+	</script>
+    
+    <script type="text/javascript" src="js/responsiveslides.min.js"></script>
+    
+   
+</head>
+
+<body id="bodyId">
+	<!-- Header -->
+	<div data-role="header" id="headerContId" data-position="fixed" data-theme="a"></div>  
+	<!-- /Header -->
+	
+	<!-- page -->
+	<div data-role="page"  >
+		<!-- content -->
+		<div class="ui-content" role="main" >
+			<div id="pageLoader" class="ui-loader">		
+			   <img src="data/loader.gif" />		
+			</div>
+			
+			<form id="hoursFrmId" style="display:block">
+				<ul data-role="listview"  data-inset="true" data-theme="c">				
+					<li><b>Date</b></li>
+					<li><input type="text" id="date" name="date" class="one" required></li>
+					<li><b>Time Selector</b></li>
+					<li><span id="sample1"><input type="text" id="time" name="time" required></span></li>			
+				</ul>
+				<a href="#" id="hoursButtonId" data-role="button" data-theme="c" class="ui-rfloat ui-top gra_but">Submit</a>
+			</form>		
+		</div>
+		<!-- /content -->
+
+	</div>
+	<!-- /page -->
+  
+	<!-- footer -->
+	<div data-role="footer" data-position="fixed" data-theme="a">
+		
+		<div class="ui-grid-c center" style="text-align:center;">
+			<div class="ui-block-a"><a href="home.html" rel="external"  class="ui-shadow ui-btn ui-corner-all ui-icon-home ui-btn-icon-notext ui-btn-inline">Button</a></div>
+			<div class="ui-block-b"><a class="ui-shadow ui-btn ui-corner-all ui-icon-arrow-l ui-btn-icon-notext ui-icon-info">Button</a></div>
+			<div class="ui-block-c"><a class="ui-shadow ui-btn ui-corner-all ui-icon-grid ui-btn-icon-notext ui-icon-phone">Button</a></div>
+			<div class="ui-block-d"><a href="myaccount.html" rel="external" class="ui-shadow ui-btn ui-corner-all ui-icon-arrow-r ui-btn-icon-notext ui-icon-user">Button</a></div>
+		</div>
+
+	</div>
+	<!-- /footer -->
 
 
-<script type="text/javascript" charset="utf-8" src="js/jquery.mobile-1.0rc1.min.js"></script>
+<!--<script type="text/javascript" charset="utf-8" src="js/jquery.mobile-1.0rc1.min.js"></script>-->
 <script type="text/javascript" charset="utf-8" src="js/common.js"></script>
 <script type="text/javascript" charset="utf-8" src="js/working_hours.js"></script>
 </body>

@@ -1,11 +1,11 @@
 if(dataAppConfig==null) {
 	window.location.href='index.html';
 }
-$('#services').bind('pageinit', function(event) {
+//$('#services').bind('pageinit', function(event) {
 	//if(checkConnection()) {
 		getCartList();
 	//}
-});
+//});
 
 var dealId = window.localStorage.getItem('deal_id');
 
