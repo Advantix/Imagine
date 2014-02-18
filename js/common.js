@@ -212,7 +212,7 @@ function capitalize (text) {
 
 function getDateFormat(dateGiven) {
 	
-	/*Date.prototype.myMet=function()
+	Date.prototype.myMet=function()
 	{
 	if (this.getMonth()==0){this.myProp="January"};
 	if (this.getMonth()==1){this.myProp="February"};
@@ -235,7 +235,7 @@ function getDateFormat(dateGiven) {
 	weekday[3]="Wednesday";
 	weekday[4]="Thursday";
 	weekday[5]="Friday";
-	weekday[6]="Saturday";*/
+	weekday[6]="Saturday";
 	//alert(dateGiven);
 	
 	dArr=dateGiven.split('-');
@@ -252,7 +252,15 @@ function getDateFormat(dateGiven) {
 	var n = weekday[Datestring.getDay()];
 	da = Datestring.toString();
 	dArr=da.split(' ');*/
-	return Datestring.toLocaleFormat('%A, %d %B %Y');
+	//return Datestring.toLocaleFormat('%A, %d %B %Y');
+	Datestring.myMet();
+	
+	var mon = Datestring.myProp;
+	var day = weekday[Datestring.getDay()];
+	var date = Datestring.getDate();
+	var year = Datestring.getFullYear();
+	//alert(day+" "+date+" "+ mon +" "+ year);
+	return day+" "+date+" "+ mon +" "+ year;
 }
 
 // Footer controls starts
