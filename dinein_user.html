@@ -3,7 +3,7 @@
 	<head>
 	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
-	<title id="titleId"></title>
+	<title></title>
 	<link rel="shortcut icon" href="../favicon.ico">
     <link rel="stylesheet" href="http://fonts.googleapis.com/css?family=Open+Sans:300,400,700">
 	<link rel="stylesheet" href="css/themes/default/jquery.mobile-1.4.0.css">
@@ -17,14 +17,13 @@
 	<script src="js/jquery.js"></script>
 	<script src="_assets/js/index.js1"></script>
 	<script src="js/jquery.mobile-1.4.0.min.js"></script>
-	<!-- Time Picker -->
+	<script src="js/functions.js"></script>
+	
+	<!-- Date Picker -->
 
-<script type="text/javascript" language="JavaScript" src="js/cal/cal.js"></script>
-<link rel="StyleSheet" type="text/css" href="css/cal/calendar.css" media="screen">
-<link rel="stylesheet" type="text/css" href="css/cal/ui.core.css" media="screen" />
-<link rel="stylesheet" type="text/css" href="css/cal/ui.theme.css" media="screen" />
-<link rel="stylesheet" type="text/css" href="css/cal/jquery.ptTimeSelect.css" media="screen" />
-<script type="text/javascript" language="JavaScript" src="js/cal/jquery.ptTimeSelect.js"></script>
+	<script type="text/javascript" language="JavaScript" src="js/cal/cal.js"></script>
+	<link rel="StyleSheet" type="text/css" href="css/cal/calendar.css" media="screen">
+	
 	<script>
 		$(function() {
 			$( "[data-role='navbar']" ).navbar();
@@ -47,6 +46,7 @@
 					$( this ).addClass( "ui-btn-active" );
 				}
 			});
+			$( "#registerFrmId ul li div.ui-checkbox" ).css({"width":'20px',"float":'left'});
 		});
 		
 		
@@ -82,19 +82,33 @@
 	<div data-role="page"  >
 		<!-- content -->
 		<div class="ui-content" role="main" >
+
 			<div id="pageLoader" class="ui-loader">		
-			   <img src="data/loader.gif" />		
+			<img src="img/loader.gif" />		
 			</div>
-			
-			<form id="hoursFrmId" style="display:block">
-				<ul data-role="listview"  data-inset="true" data-theme="c">				
-					<li><b>Date</b></li>
-					<li><input type="text" id="date" name="date" class="one" required></li>
-					<li><b>Time Selector</b></li>
-					<li><span id="sample1"><input type="text" id="time" name="time" required></span></li>			
-				</ul>
-				<a href="#" id="hoursButtonId" data-role="button" data-theme="c" class="ui-rfloat ui-top gra_but">Submit</a>
-			</form>		
+			<form id="registerFrmId" name="registerFrmId">
+			<ul data-role="listview"  data-inset="true" data-theme="c">
+				<li id="bookingDate"></li>
+				<li id="numGuest"></li>
+				<li><b>First Name</b></li>
+				<li><input type="text" id="fname" name="fname" required></li>
+				<li><b>Surname</b></li>
+				<li><input type="text" id="lname" name="lname" required></li>
+				<li><b>Mobile Number</b></li>
+				<li><input type="tel" id="phone" name="phone" required maxlength="12"></li>
+				<li><b>Email</b></li>
+				<li><input type="email" id="email" name="email" required></li>					
+				<li id="termLiId"><input type="checkbox" id="term" name="term" required> <div style="text-indent:15px;font-weight:bold;"><a href="terms.html" rel="external" style="color: #333333;">Accept Terms & Condition </a></div></li>	
+				<li><b>Notes to Restaurant</b></li>
+				<li><input type="text" id="comments" name="comments" required></li>	
+			</ul>
+			<input type="hidden" id="time_validate" name="time_validate" readonly>
+			<input type="hidden" id="booking_date" name="booking_date" readonly>
+			<input type="hidden" id="num_guest" name="num_guest" readonly>
+			<input type="hidden" id="seating" name="seating" readonly>
+			<input type="hidden" id="user_id" name="user_id" readonly>
+			<a href="#" id="sinupButtonId" data-role="button" data-theme="c" class="ui-rfloat ui-top gra_but">Submit</a>
+			</form>
 		</div>
 		<!-- /content -->
 
@@ -105,9 +119,10 @@
 	<div data-role="footer" data-position="fixed" data-theme="a" id="footerDiv"></div>
 	<!-- /footer -->
 
-
-<!--<script type="text/javascript" charset="utf-8" src="js/jquery.mobile-1.0rc1.min.js"></script>-->
+<!--<script type="text/javascript" charset="utf-8" src="js/cordova.js"></script>
+<script type="text/javascript" charset="utf-8" src="js/jquery.js"></script>
+<script type="text/javascript" charset="utf-8" src="js/jquery.mobile-1.0rc1.min.js"></script>-->
 <script type="text/javascript" charset="utf-8" src="js/common.js"></script>
-<script type="text/javascript" charset="utf-8" src="js/working_hours.js"></script>
+<script type="text/javascript" charset="utf-8" src="js/dinein_user.js"></script>
 </body>
 </html>

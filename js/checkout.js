@@ -19,9 +19,10 @@ if(dealId==null) {
 $.ajaxSetup({ cache: false });
 // Add to cart Post	
 function getCartList() {	
-	var carDataGetAfter = JSON.parse(window.localStorage.getItem('carDatas'));
+	var carDataGetAfterval = window.localStorage.getItem('carDatas');
 	
-	if(carDataGetAfter!=null) {
+	if(carDataGetAfterval!=null) {
+		var carDataGetAfter = JSON.parse(carDataGetAfterval);
 		//alert(carDataGetAfter.items);
 		var itemDetsAf = carDataGetAfter.items;
 		htmlData="";
@@ -56,8 +57,9 @@ function getCartList() {
 			htmlData+='</ul>';
 		htmlData+='</div><hr></hr>';
 		
-		var holidaypercnt = JSON.parse(window.localStorage.getItem('holidaypercnt'));
-		if(holidaypercnt!=null && holidaypercnt!=""){
+		var holidaypercntval = window.localStorage.getItem('holidaypercnt');
+		if(holidaypercntval!=null && holidaypercntval!=""){
+			var holidaypercnt = JSON.parse(holidaypercntval);
 			percentageval = ((priceSubTotal/100)*holidaypercnt).toFixed(1);
 			htmlData+='<div  class="checkout-grid clearfix"  >';
 			htmlData+='<ul>';
@@ -139,8 +141,9 @@ function removeItem(indexId) {
 
 function removeDealItems(indexItemId) {
 	//alert(indexItemId);
-	var carDataGetRemoveDeal = JSON.parse(window.localStorage.getItem('dealItemsId'));
-	if(carDataGetRemoveDeal!=null) {
+	var carDataGetRemoveDealval = window.localStorage.getItem('dealItemsId');
+	if(carDataGetRemoveDealval!=null) {
+		var carDataGetRemoveDeal = JSON.parse(carDataGetRemoveDealval);
 		//alert(carDataGetAfter.items);
 		var cartItemCntDeal=carDataGetRemoveDeal.items.length;
 		//alert(cartItemCntDeal);	
@@ -167,17 +170,19 @@ function removeDealItems(indexItemId) {
 	}
 }
 
-var hoursinfo = JSON.parse(window.localStorage.getItem('hoursinfo'));		
+var hoursinfoval = window.localStorage.getItem('hoursinfo');		
 // delevery time
-if(hoursinfo!=null) {
+if(hoursinfoval!=null) {
+	var hoursinfo = JSON.parse(hoursinfoval);
 	$('#deliveryDivId').html('<h4 class="title" style="margin:0; padding:0; text-align:center; color:red; font-weight:normal">Delivery Time: '+hoursinfo+'</h4>');
 } else {
 	$('#deliveryDivId').hide();
 }
 
 $("#pickupnow").click(function() {
-	var ordertype = JSON.parse(window.localStorage.getItem('takeordelivry'));	
-	if(ordertype != null){	
+	var ordertypeval = window.localStorage.getItem('takeordelivry');	
+	if(ordertypeval != null){	
+		var ordertype = JSON.parse(ordertypeval);
 		var gettime = new Date(); 
 		var currdate = gettime.getFullYear()+'-'+(gettime.getMonth()+1)+'-'+gettime.getDate(); 
 		var currtime = gettime.getHours()+':'+gettime.getMinutes(); 
@@ -228,8 +233,8 @@ $("#pickupnow").click(function() {
 });
 
 $("#pickupTimeSelector").click(function() {
-	var ordertype = JSON.parse(window.localStorage.getItem('takeordelivry'));	
-	if(ordertype != null){
+	var ordertypeval = window.localStorage.getItem('takeordelivry');	
+	if(ordertypeval != null){
 		window.location.href='working_hours.html';
 	}else{
 		//alert('Please Select Delivery or Takeaway!');
@@ -279,9 +284,10 @@ $("#placeOrdButtonId").click(function() {
 });
 
 function checkAllDealItemInCart() {
-	var dealItemGet=JSON.parse(window.localStorage.getItem('dealItemsId'));
+	var dealItemGetval=window.localStorage.getItem('dealItemsId');
 	
-	if(dealItemGet!=null) {
+	if(dealItemGetval!=null) {
+		var dealItemGet=JSON.parse(dealItemGetval);
 		var dealItemGetCnt=dealItemGet.items.length;
 		var getDealItemDetsFrmDB = JSON.parse(window.localStorage.getItem('deal_item_det'));
 		var dealCatIdArrsy = getDealItemDetsFrmDB.deal_cat_id.split("#:#"); 	
@@ -317,9 +323,10 @@ $("#changOrdButtonId").click(function() {
 
 $('#itemCheckOutFrm').submit(function(){		
 	//var postData = $(this).serialize();
-	var hoursinfo = JSON.parse(window.localStorage.getItem('hoursinfo'));
+	var hoursinfoval = window.localStorage.getItem('hoursinfo');
 	//alert(hoursinfoCheck);
-	if(hoursinfo!=null) {	
+	if(hoursinfoval!=null) {	
+		var hoursinfo = JSON.parse(hoursinfoval);
 		grossTotal =$('#gross_total').val();
 		var minorderCheck = JSON.parse(window.localStorage.getItem('minorderamt'));	
 		if(parseFloat(minorderCheck) <= parseFloat(grossTotal)){

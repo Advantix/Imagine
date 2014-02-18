@@ -17,6 +17,7 @@
 	<script src="js/jquery.js"></script>
 	<script src="_assets/js/index.js1"></script>
 	<script src="js/jquery.mobile-1.4.0.min.js"></script>
+	<script src="js/functions.js"></script>
 	<script>
 		$(function() {
 			$( "[data-role='navbar']" ).navbar();
@@ -74,14 +75,14 @@
 		<!-- content -->
 		<div class="ui-content" role="main" >
 			<div id="pageLoader" class="ui-loader">		
-			<img src="data/loader.gif" />		
+			<img src="img/loader.gif" />		
 			</div>
 
 			<a href="#" id="loginBtnId" data-role="button" data-icon="star" data-theme="c" class="ui-rfloat ui-top gra_but" rel="external">Login</a>
 			<a href="#" id="signupBtnId" data-role="button" data-icon="grid" data-theme="c" class="ui-rfloat ui-top gra_but" rel="external">Signup</a>	
 			<a href="#" id="addrBtnId" data-role="button" data-icon="alert" data-theme="c" class="ui-rfloat ui-top gra_but" rel="external">Address</a>	
 
-			<form id="registerFrmId" style="display:none">
+			<form id="registerFrmId" name="registerFrmId" style="display:none">
 			<ul data-role="listview"  data-inset="true" data-theme="c">
 				<li><b>First Name</b></li>
 				<li><input type="text" id="fname" name="fname" required></li>
@@ -89,8 +90,8 @@
 				<li><input type="text" id="lname" name="lname" required></li>
 				<li><b>Email</b></li>
 				<li><input type="email" id="email" name="email" required></li>
-				<li><b>Phone</b></li>
-				<li><input type="tel" id="phone" name="phone" required></li>				
+				<li><b>Mobile Number</b></li>
+				<li><input type="tel" id="phone" name="phone" required maxlength="12"></li>				
 			</ul>
 			<input type="hidden" id="user_id" name="user_id" readonly>
 			<a href="#" id="sinupButtonId" data-role="button" data-theme="c" class="ui-rfloat ui-top gra_but">Submit</a>
@@ -129,16 +130,7 @@
 	<!-- /page -->
   
 	<!-- footer -->
-	<div data-role="footer" data-position="fixed" data-theme="a">
-		
-		<div class="ui-grid-c center" style="text-align:center;">
-			<div class="ui-block-a"><a href="home.html" rel="external"  class="ui-shadow ui-btn ui-corner-all ui-icon-home ui-btn-icon-notext ui-btn-inline">Button</a></div>
-			<div class="ui-block-b"><a class="ui-shadow ui-btn ui-corner-all ui-icon-arrow-l ui-btn-icon-notext ui-icon-info">Button</a></div>
-			<div class="ui-block-c"><a class="ui-shadow ui-btn ui-corner-all ui-icon-grid ui-btn-icon-notext ui-icon-phone">Button</a></div>
-			<div class="ui-block-d"><a href="myaccount.html" rel="external" class="ui-shadow ui-btn ui-corner-all ui-icon-arrow-r ui-btn-icon-notext ui-icon-user">Button</a></div>
-		</div>
-
-	</div>
+	<div data-role="footer" data-position="fixed" data-theme="a" id="footerDiv"></div>
 	<!-- /footer -->
 
 <!--<script type="text/javascript" charset="utf-8" src="js/jquery.js"></script>

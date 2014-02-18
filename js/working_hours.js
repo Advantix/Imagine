@@ -1,6 +1,6 @@
-/* if(dataAppConfig==null || userData==null) {
+if(dataAppConfig==null) {
 	window.location.href='index.html';
-} */
+}
 jQuery(document).ready(function () {
 	var currentYr = (new Date).getFullYear() - 60;
 	var endyear = currentYr+60;		

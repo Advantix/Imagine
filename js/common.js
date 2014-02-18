@@ -5,8 +5,9 @@ var serviceAppURL = "http://advantixcrm.com/prj/mitech/index.php/api/appconfig/M
 var store_id= 'Mw';
 var serviceURL = "http://advantixcrm.com/prj/mitech/index.php/api/";
 
-var resData = JSON.parse(window.localStorage.getItem('RestInfoDet'));//alert(resData.id);
-if(resData!=null) {	
+var resDatavl = window.localStorage.getItem('RestInfoDet');//alert(resDatavl);
+if(resDatavl!=null) {	
+	var resData = JSON.parse(resDatavl);
 	restId = resData.id;
 	tabId=getUrlVars()["tabId"];	
 	if(tabId!=null) {
@@ -21,17 +22,19 @@ if(resData!=null) {
 	var serviceMenuURL = "http://advantixcrm.com/prj/mitech/index.php/api/catlist/Mw/"+restId+"/"+menuId;
 }
 
-var dataAppConfig = JSON.parse(window.localStorage.getItem('configData'));
-
-if(dataAppConfig==null) {
+var dataAppConfigval = window.localStorage.getItem('configData');
+if(dataAppConfigval==null) {
 	//alert('null');
 	$.getJSON(serviceAppURL, function(data) {
-		window.localStorage.setItem('configData',JSON.stringify(data)); // store local storage		
+		window.localStorage.setItem('configData',JSON.stringify(data)); // store local storage	
+		var dataAppConfigval = window.localStorage.getItem('configData');
+		var dataAppConfig = JSON.parse(dataAppConfigval);	
 		history.go(0);
 	});
 }
 
-if(dataAppConfig!=null) {	
+if(dataAppConfigval!=null) {	
+	var dataAppConfig = JSON.parse(dataAppConfigval);
 	
 	/*$("#bodyId").css("background-image", "url("+dataAppConfig.AppConfig.bg_image+")");
 	$("#bodyId").css("background-repeat", "repeat-x");
@@ -63,24 +66,30 @@ function getMenuTabDefId() {
 }
 
 function headerHtml(titVal) {
+	if(file_name!='index.html') {
 	htmlData='<a href="../toolbar/" data-rel="back" class="ui-btn ui-btn-left ui-alt-icon ui-nodisc-icon ui-corner-all ui-btn-icon-notext ui-icon-back">Back</a>';
+	} else {
+		htmlData='';
+	}
 	htmlData+='<a href="#" data-rel="refresh" class="ui-btn ui-btn-right ui-alt-icon ui-nodisc-icon ui-corner-all ui-btn-icon-notext ui-icon-refresh" onclick="refresh();">Refresh</a>';
     htmlData+='<h1 class="ui-title" role="heading" aria-level="1">'+titVal+'</h1>';
 
 	$('#headerContId').html(htmlData);
 }
-var userData = JSON.parse(window.localStorage.getItem('userData'));
+var userDataval = window.localStorage.getItem('userData');
 
 var welcomeDiv = window.localStorage.getItem('welcomeDiv');
 
-if(userData!=null) {
-	var carDataGetcnt = JSON.parse(window.localStorage.getItem('carDatas'));
-	var carDataGetDealCnt = JSON.parse(window.localStorage.getItem('dealItemsId'));
+if(userDataval!=null) {
+	var userData = JSON.parse(userDataval);
+	var carDataGetcntval = window.localStorage.getItem('carDatas');
+	var carDataGetDealCnt = window.localStorage.getItem('dealItemsId');
 	
 	
 	if(carDataGetDealCnt!=null) {
 		cartCount = 1;
 	} else if(carDataGetcnt!=null) {
+		var carDataGetcnt = JSON.parse(carDataGetcntval);
 		var cartItemCntView=carDataGetcnt.items.length;
 		cartCount = cartItemCntView;
 	} else {
@@ -92,13 +101,14 @@ if(userData!=null) {
 	
 	$('#userName').html(welcomeDiv);
 } else {
-	var carDataGetcnt = JSON.parse(window.localStorage.getItem('carDatas'));
-	var carDataGetDealCnt = JSON.parse(window.localStorage.getItem('dealItemsId'));
+	var carDataGetcntval =window.localStorage.getItem('carDatas');
+	var carDataGetDealCnt = window.localStorage.getItem('dealItemsId');
 	
 	
 	if(carDataGetDealCnt!=null) {
 		cartCount = 1;
 	} else if(carDataGetcnt!=null) {
+		var carDataGetcnt = JSON.parse(carDataGetcntval);
 		var cartItemCntView=carDataGetcnt.items.length;
 		cartCount = cartItemCntView;
 	} else {
@@ -151,6 +161,7 @@ catId=getUrlVars()["catId"];
 itemId=getUrlVars()["itemId"];
 itemType=getUrlVars()["type"];
 orderId=getUrlVars()["orderId"];
+bokId=getUrlVars()["bokId"];
 delitemId=getUrlVars()["delitemId"];
 dealId=getUrlVars()["dealId"];
 chkitemid=getUrlVars()["chkitemid"];
@@ -198,3 +209,74 @@ function get_path_filename() {
 function capitalize (text) {
     return text.charAt(0).toUpperCase() + text.slice(1).toLowerCase();
 }
+
+function getDateFormat(dateGiven) {
+	
+	/*Date.prototype.myMet=function()
+	{
+	if (this.getMonth()==0){this.myProp="January"};
+	if (this.getMonth()==1){this.myProp="February"};
+	if (this.getMonth()==2){this.myProp="March"};
+	if (this.getMonth()==3){this.myProp="April"};
+	if (this.getMonth()==4){this.myProp="May"};
+	if (this.getMonth()==5){this.myProp="June"};
+	if (this.getMonth()==6){this.myProp="July"};
+	if (this.getMonth()==7){this.myProp="August"};
+	if (this.getMonth()==8){this.myProp="Spetember"};
+	if (this.getMonth()==9){this.myProp="October"};
+	if (this.getMonth()==10){this.myProp="November"};
+	if (this.getMonth()==11){this.myProp="December"};
+	}
+	
+	var weekday=new Array(7);
+	weekday[0]="Sunday";
+	weekday[1]="Monday";
+	weekday[2]="Tuesday";
+	weekday[3]="Wednesday";
+	weekday[4]="Thursday";
+	weekday[5]="Friday";
+	weekday[6]="Saturday";*/
+	//alert(dateGiven);
+	
+	dArr=dateGiven.split('-');
+	if(dArr[0]<2000) {
+		dateGiven=dArr[2]+'-'+(dArr[1]<10 ? '0'+dArr[1]: dArr[1])+'-'+(dArr[0]<10 ? '0'+dArr[0]: dArr[0]);
+	}
+	
+     // alert(dateGiven);
+	
+	var Datestring = new Date(dateGiven);
+	/*Datestring.myMet();
+	alert(Datestring.toLocaleFormat('%A, %d %B %Y'));
+	mon = Datestring.myProp;
+	var n = weekday[Datestring.getDay()];
+	da = Datestring.toString();
+	dArr=da.split(' ');*/
+	return Datestring.toLocaleFormat('%A, %d %B %Y');
+}
+
+// Footer controls starts
+
+if(resData!=null) {
+	buttonArray=resData.service_options;
+	buttonArray=buttonArray.split('-');
+} else {
+	var buttonArray= Array();
+	buttonArray[2]=0;
+}
+
+footHtml='<div class="ui-grid-c center" style="text-align:center;">';
+	footHtml+='<div class="ui-block-a"><a href="home.html" rel="external"  class="ui-shadow ui-btn ui-corner-all ui-icon-home ui-btn-icon-notext ui-btn-inline">Button</a></div>';
+	footHtml+='<div class="ui-block-b"><a href="info.html" rel="external" class="ui-shadow ui-btn ui-corner-all ui-icon-arrow-l ui-btn-icon-notext ui-icon-info">Button</a></div>';
+	if(buttonArray[2]==1) {	
+		footHtml+='<div class="ui-block-c"><a href="dinein.html" rel="external" class="ui-shadow ui-btn ui-corner-all ui-icon-grid ui-btn-icon-notext ui-icon-phone">Button</a></div>';
+	} else {
+		footHtml+='<div class="ui-block-c"><a class="ui-shadow ui-btn ui-corner-all ui-icon-grid ui-btn-icon-notext ui-icon-phone">Button</a></div>';
+	}
+	footHtml+='<div class="ui-block-d"><a href="myaccount.html" rel="external" class="ui-shadow ui-btn ui-corner-all ui-icon-arrow-r ui-btn-icon-notext ui-icon-user">Button</a></div>';
+footHtml+='</div>';
+		
+
+$('#footerDiv').html(footHtml);
+
+// Footer controls ends

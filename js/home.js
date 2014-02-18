@@ -1,4 +1,4 @@
-if(dataAppConfig==null) {
+if(dataAppConfig==null || resData==null) {
 	window.location.href='index.html';
 }
 //$('#typography').live('pageshow', function(event) {	
@@ -46,6 +46,11 @@ function showHomePage() {
 			//htmlIn+='<a  class="ui-btn ui-btn-inline ui-btn-corner-all ui-shadow ui-btn-up-c gra_but" data-inline="true" data-role="button" href="#" onclick=delortakeorder("takeaway") data-theme="b"><span class="ui-btn-inner ui-btn-corner-all"><span class="ui-btn-text"><i class="takeaw_ic"></i>'+appData.GlobalConfig.takeaway_label+'</span></span></a>';
 			
 		}
+		if(buttonArray[2]==1) {		
+			htmlIn+='<button class="ui-btn ui-btngrey" onclick = delortakeorder("DineIn")>'+appData.GlobalConfig.dinein_label+'</button>';
+			//htmlIn+='<a  class="ui-btn ui-btn-inline ui-btn-corner-all ui-shadow ui-btn-up-c gra_but" data-inline="true" data-role="button" href="#" onclick=delortakeorder("takeaway") data-theme="b"><span class="ui-btn-inner ui-btn-corner-all"><span class="ui-btn-text"><i class="takeaw_ic"></i>'+appData.GlobalConfig.takeaway_label+'</span></span></a>';
+			
+		}
 		if(appData.AppConfig.see_the_menu_btn=='A') {
 			htmlIn+='<button class="ui-btn ui-btngrey" onclick = delortakeorder("ShowMenu")>'+appData.GlobalConfig.see_the_menu_label+'</button>';
 			//htmlIn+='<a rel="external" data-role="button" href="showMenu.html" data-theme="c" class="ui-btn ui-btn-corner-all ui-shadow ui-btn-up-c gra_but"><span class="ui-btn-inner ui-btn-corner-all"><span class="ui-btn-text add_cart_txt">'+appData.GlobalConfig.see_the_menu_label+'</span></span></a>';
@@ -57,6 +62,10 @@ function showHomePage() {
 
 	function delortakeorder(val) {
 		window.localStorage.setItem('takeordelivry',JSON.stringify(val));
-		window.location.href='showMenu.html';
+		if(val=='DineIn') {
+			window.location.href='dinein.html';
+		} else {
+			window.location.href='showMenu.html';
+		}
 	}
 		

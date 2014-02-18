@@ -36,7 +36,7 @@ if(catId!=null) {
 
 
 $("#checkOutButtonId").click(function() {
-	var carDataGet = JSON.parse(window.localStorage.getItem('carDatas'));
+	var carDataGet = window.localStorage.getItem('carDatas');
 	
 	
 	if(carDataGet!=null) {		
@@ -80,8 +80,9 @@ function getMenuCatList() {
 		//alert(totMenCnt);
 		$.each(cats, function(index, cat) {
 			//alert(index);
+			strCat=cat.subcat_name;
 			if(index==0) { fir='ui-first-child';} else if(totMenCnt==index && dataAppConfig.AppConfig.deal_status=='B'){fir='ui-last-child';}else{ fir='';}
-			$('#employeeList').append('<li class="ui-li-has-thumb '+fir+'"><a class="ui-btn ui-btn-icon-right ui-icon-carat-r" href="showMenu.html?catId='+cat.sub_id+'&tabId='+menuId+'" rel="external"><img src="'+itemImgURL+(cat.subcat_image!=""? cat.subcat_image:defaultImgURL)+'" style="padding:5px;">&nbsp;<h2>' + cat.subcat_name + '</h2></a></li>');
+			$('#employeeList').append('<li class="ui-li-has-thumb '+fir+'"><a class="ui-btn ui-btn-icon-right ui-icon-carat-r" href="showMenu.html?catId='+cat.sub_id+'&tabId='+menuId+'" rel="external"><img src="'+itemImgURL+(cat.subcat_image!=""? cat.subcat_image:defaultImgURL)+'" style="padding:5px;"><h2>' + strCat.substr(0,15)+'...</h2></a></li>');
 		});
 		if(dataAppConfig.AppConfig.deal_status=='A') {
 			$('#employeeList').append('<li class="ui-li-has-thumb ui-last-child"><a class="ui-btn ui-btn-icon-right ui-icon-carat-r" href="deal.html" rel="external"><img src="'+itemImgURL+defaultImgURL+'" style="padding:5px;">&nbsp;Deals&nbsp;</a></li>');
@@ -106,7 +107,8 @@ function getMenuList() {
 				//alert(index);
 				if(index==0 && totMenCnt1!=index) { fir1='ui-first-child';} else if(totMenCnt1==index){fir1='ui-last-child';}else{ fir1='';}
 				//alert(fir1);
-				$('#employeeList').append('<li class="ui-li-has-thumb '+fir1+'"><a class="ui-btn ui-btn-icon-right ui-icon-carat-r"  href="showMenu.html?catId='+subCat.sub_id+'&tabId='+menuId+'" rel="external"><img src="'+itemImgURL+(subCat.subcat_image!=""? subCat.subcat_image:defaultImgURL)+'" style="padding:5px;">&nbsp;' + subCat.subcat_name + '&nbsp;<span style="font-size:11px; display:block; margin-left:4px; margin-top:4px;">('+ subCat.subcat_name + ')</span></a></li>');
+				strSubCat=subCat.subcat_name;
+				$('#employeeList').append('<li class="ui-li-has-thumb '+fir1+'"><a class="ui-btn ui-btn-icon-right ui-icon-carat-r"  href="showMenu.html?catId='+subCat.sub_id+'&tabId='+menuId+'" rel="external"><img src="'+itemImgURL+(subCat.subcat_image!=""? subCat.subcat_image:defaultImgURL)+'" style="padding:5px;">&nbsp;' + strSubCat.substr(0,15)+'...&nbsp;</a></li>');
 			});		
 			headerHtml(data.MenuTitle);
 		} else {	
@@ -114,7 +116,9 @@ function getMenuList() {
 				var totMenCnt2=items.length-1;
 				$.each(items, function(index, item) {
 					if(index==0 && totMenCnt2==index) { fir2='ui-first-child';} else if(totMenCnt2==index){fir2='ui-last-child';}else{ fir2='';}
-					$('#employeeList').append('<li class="ui-li-has-thumb '+fir2+'"><a class="ui-btn ui-btn-icon-right ui-icon-carat-r" href="showMenu.html?itemId='+item.item_id+'&tabId='+menuId+'" rel="external"><img src="'+itemImgURL+(item.item_img!=""? item.item_img:defaultImgURL)+'" style="padding:5px;">&nbsp;' + item.item_name + '&nbsp;<span style="font-size:11px; display:block; margin-left:4px; margin-top:4px;">('+ item.item_desc + ')</span></a></li>');
+					strDesc=item.item_desc;
+					strItemName=item.item_name;
+					$('#employeeList').append('<li class="ui-li-has-thumb '+fir2+'"><a class="ui-btn ui-btn-icon-right ui-icon-carat-r" href="showMenu.html?itemId='+item.item_id+'&tabId='+menuId+'" rel="external"><img src="'+itemImgURL+(item.item_img!=""? item.item_img:defaultImgURL)+'" style="padding:5px;">&nbsp;'+strItemName.substr(0,15)+'...&nbsp;<span style="font-size:11px; display:block; margin-left:4px; margin-top:4px;width:60%;float:left;">('+ strDesc.substr(0,15) + '...)</span><span class="shop_pric">$'+ item.item_selling_price + '</span></a></li>');
 				});
 			} else {
 				$('#employeeList').append('<li><span style="color:#ff0000">No Items Found</span></li>');
@@ -170,8 +174,9 @@ function getMenuItemList() {
 			htmlVal+='</div>';
 		} else {
 			
-			var carDataGetRadio = JSON.parse(window.localStorage.getItem('carDatas'));
-			if(carDataGetRadio!=null) {
+			var carDataGetRadioval = window.localStorage.getItem('carDatas');
+			if(carDataGetRadioval!=null) {
+				var carDataGetRadio = JSON.parse(carDataGetRadioval);
 				var priceSelect=jQuery.map(carDataGetRadio.items, function(obj) {
 					if(obj.item_id === itemDet.item_id )
 						 return obj.item_price; // or return obj.name, whatever.
@@ -234,10 +239,10 @@ $("#addCartButtonId").click(function() {
 		//alert(itemPrice);
 	}
 	if(itemPrice!="") {
-		var carDataGet = JSON.parse(window.localStorage.getItem('carDatas'));
+		var carDataGetval = window.localStorage.getItem('carDatas');
 			
-		if(carDataGet!=null) {
-			
+		if(carDataGetval!=null) {
+			var carDataGet = JSON.parse(carDataGetval);
 			var itemExiIndexId=0;
 			var itemExiId=0;
 			var itemDets = carDataGet.items;

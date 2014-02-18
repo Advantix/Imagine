@@ -62,9 +62,11 @@ if(formActive==null) {
 $("#pageLoader").hide();	
 
 // Register Post	
-$("#sinupButtonId").click(function() {
-	$("#pageLoader").show();
-	$('#registerFrmId').submit();
+$("#sinupButtonId").click(function() {	
+	if(userValidate()==true) {
+		$("#pageLoader").show();
+		$('#registerFrmId').submit();
+	}
 });
 
 $('#registerFrmId').submit(function(){		
@@ -190,4 +192,39 @@ function showPrevValue(formName){
 		$('#postcode').val(userData.addr_data.post_code);	
 	}
 	
+}
+
+
+function userValidate() {
+	
+	var error = new Array();
+	var errorMessage = "";
+	var frm = document.registerFrmId;	
+	
+	error[0] = nameCheck(frm.fname.value) ? "" : "This is not a valid first name";
+	error[1] = nameCheck(frm.lname.value) ? "" :  "This is not a valid Surname";
+	error[2] = phoneCheck(frm.phone.value) ? "" :  "Please provide mobile phone number";
+	error[3] = checkText(frm.email) ? "" :  "Email Address is empty!";
+	if(error[3]=="") {
+		error[3]=emailCheck(frm.email.value) ? "" : "This is not valid email address";	
+	}
+	/*if( $('#termLiId').is(':visible') ) {
+		if(frm.term.checked == false) {
+				error[4] = "Accept Terms and Conditions!";
+		}
+	}*/
+			
+	
+	
+	for(var i= 0 ;i<error.length; ++i)
+		if(error[i]!=undefined)
+			errorMessage+= error[i] != "" ? " * " +error[i]+"\n" : "";
+
+		if(errorMessage == "") {			
+			return true;
+		} else {
+			alert(errorMessage);
+			return false;
+		}
+
 }

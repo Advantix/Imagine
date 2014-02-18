@@ -6,10 +6,10 @@
 
 $.ajaxSetup({ cache: false });
 function getAppConfig() {
-		data=dataAppConfig; 
+		data= window.localStorage.getItem('configData'); 
 		//window.localStorage.setItem('configData',JSON.stringify(data)); // store local storage		
-		
-		if(data!==null) {			
+		if(data!==null) {	
+			var data = JSON.parse(data);
 			$("#bodyId").css("background-image", "url("+data.AppConfig.bg_image+")");
 			$("#bodyId").css("background-repeat", "repeat-x");
 			$("#bodyId").css("background-position", "top");
@@ -19,8 +19,9 @@ function getAppConfig() {
 			htmlOption='<select onchange="setResLoc(this.value)"><option>--Select Restarunt Location---</option>';
 			var rest = data.RestInfo;
 			$.each(rest, function(index, res) {
-				var restDet = JSON.parse(window.localStorage.getItem('RestInfoDet'));
-				if(restDet!=null) {
+				var restDetval = window.localStorage.getItem('RestInfoDet');
+				if(restDetval!=null) {
+					var restDet = JSON.parse(restDetval);
 					if(restDet.id==res.id) {
 						htmlOption+='<option value='+index+' selected>'+res.restaurant_name+'('+res.restaurant_location+')</option>';
 					} else {

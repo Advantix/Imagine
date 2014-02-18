@@ -1,18 +1,19 @@
 	if(dataAppConfig==null) {
 	window.location.href='index.html';
 }
-var userData = JSON.parse(window.localStorage.getItem('userData'));
-if(userData==null) {
+var userDataval = window.localStorage.getItem('userData');
+if(userDataval==null) {
 	window.location.href='register.html';
 } else {	
-
-	var carDataGetcnt = JSON.parse(window.localStorage.getItem('carDatas'));
-	var carDataGetDealCnt = JSON.parse(window.localStorage.getItem('dealItemsId'));
+	var userData = JSON.parse(userDataval);
+	var carDataGetcntval = window.localStorage.getItem('carDatas');
+	var carDataGetDealCnt = window.localStorage.getItem('dealItemsId');
 	
 	
 	if(carDataGetDealCnt!=null) {
 		cartCount = 1;
-	} else if(carDataGetcnt!=null) {
+	} else if(carDataGetcntval!=null) {
+		var carDataGetcnt = JSON.parse(carDataGetcntval);
 		var cartItemCntView=carDataGetcnt.items.length;
 		cartCount = cartItemCntView;
 	} else {
@@ -52,6 +53,7 @@ function getMenuList() {
 		$('#employeeList').append('<li><a href="register.html?form_active=registerFrmId" class="ui-link-inherit" rel="external">Account Details</a></li>');
 		$('#employeeList').append('<li><a href="register.html?form_active=addrFrmId" class="ui-link-inherit" rel="external">Billing Address</a></li>');
 		$('#employeeList').append('<li><a href="order_info.html" class="ui-link-inherit" rel="external">Order History</a></li>');
+		$('#employeeList').append('<li><a href="confirm_booking.html" class="ui-link-inherit" rel="external">Reservation History</a></li>');
 		$('#employeeList').append('<li><a href="checkout.html" class="ui-link-inherit" rel="external">View Cart</a></li>');
 		$('#employeeList').append('<li><a href="change_password.html" class="ui-link-inherit" rel="external">Change Password</a></li>');
 		$('#employeeList').append('<li><a href="showMenu.html" class="ui-link-inherit" rel="external">View Menu</a></li>');
