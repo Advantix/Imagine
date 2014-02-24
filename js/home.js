@@ -1,9 +1,18 @@
-if(dataAppConfig==null || resData==null) {
-	window.location.href='index.html';
-}
+
 //$('#typography').live('pageshow', function(event) {	
 	//if(checkConnection()) {
-		showHomePage();
+		
+		if(resDatavl!=null) {
+			var ref = 1;
+			$("#dealDivId").show();
+			$("#employeeList").show();
+			showHomePage();
+		} else {
+			$("#dealDivId").hide();
+			$("#employeeList").hide();
+			var ref = 0;
+		}
+		getAppConfig();
 	//}
 //});
 $.ajaxSetup({ cache: false });
@@ -57,7 +66,8 @@ function showHomePage() {
 		}
 	
 		
-		$('#employeeList').append(htmlIn);		
+		$('#employeeList').append(htmlIn);	
+		headerHtml(resData.restaurant_name);
 }
 
 	function delortakeorder(val) {
@@ -68,4 +78,65 @@ function showHomePage() {
 			window.location.href='showMenu.html';
 		}
 	}
+	
+function getAppConfig() {
 		
+		data= window.localStorage.getItem('configData'); 
+		//window.localStorage.setItem('configData',JSON.stringify(data)); // store local storage		
+		if(data!==null) {	
+			var data = JSON.parse(data);
+			$("#bodyId").css("background-image", "url("+data.AppConfig.bg_image+")");
+			$("#bodyId").css("background-repeat", "repeat-x");
+			$("#bodyId").css("background-position", "top");
+			$("#bodyId").css("background-color", "#000");
+		
+			
+			htmlOption='<select onchange="setResLoc(this.value,2)"><option>--Select Restaurant Location---</option>';
+			var rest = data.RestInfo;
+			var restCnt = rest.length;
+			//alert(restCnt);
+			if(restCnt>1) {
+				$('#resLocationId').show();
+				$.each(rest, function(index, res) {
+					var restDetval = window.localStorage.getItem('RestInfoDet');
+					if(restDetval!=null) {
+						var restDet = JSON.parse(restDetval);
+						if(restDet.id==res.id) {
+							htmlOption+='<option value='+index+' selected>'+res.restaurant_name+'('+res.restaurant_location+')</option>';
+						} else {
+							htmlOption+='<option value='+index+'>'+res.restaurant_name+'('+res.restaurant_location+')</option>';
+						}
+					} else {
+						htmlOption+='<option value='+index+'>'+res.restaurant_name+'('+res.restaurant_location+')</option>';
+						$('#homeButtonId').hide();
+					}
+					
+				});
+				htmlOption+='</select>';
+				$('#resLocationId').html(htmlOption);
+			} else {
+				$('#resLocationId').hide();
+				setResLoc(0,0);
+			}
+		
+		}
+		if(resData==null) {
+			if(dataAppConfig!=null) {
+				headerHtml(dataAppConfig.AppConfig.store_name);
+			} 
+		} else {
+			headerHtml(resData.restaurant_name);
+		}
+}
+function setResLoc(restId,refVa) {
+	window.localStorage.setItem('RestInfoDetIndex',restId); // store local storage
+	var restDet = JSON.parse(window.localStorage.getItem('configData'));
+	window.localStorage.setItem('RestInfoDet',JSON.stringify(restDet.RestInfo[restId])); // store local storage
+	//alert(ref+"::"+refVa);
+	if(ref==refVa) {
+		//alert(ref+"::"+refVa);
+		window.location.href='index.html';
+	} else if(refVa==2){
+		window.location.href='index.html';
+	}
+}	

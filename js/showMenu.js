@@ -1,4 +1,4 @@
-if(dataAppConfig==null) {
+if(dataAppConfig==null && resDatavl==null) {
 	window.location.href='index.html';
 }
 //alert(catId);
@@ -62,7 +62,7 @@ function getMenuTab() {
 				$('#menuTab').append('<li class="ui-block-'+pos+'"><a class="ui-state-persist ui-link ui-btn" href="showMenu.html?tabId='+tab.cat_id+'" rel="external">' + tab.category_name + '</a></li>');
 			});
 		} else {
-			
+			headerHtml('Menu');
 			$('#employeeList').append('<li class="ui-li-has-thumb"><a class="ui-btn" href="#" rel="external">Menu is not available.</a></li>');
 		}
 		//headerHtml(data.MenuInfo.category_name);		
@@ -75,20 +75,25 @@ function getMenuCatList() {
 	$.getJSON(serviceMenuURL, function(data) {		
 		$('#employeeList li').remove();		
 		//alert(JSON.stringify(data.MenuInfo.category_name));
-		var cats = data.CatInfo;		
-		var totMenCnt=cats.length-1;
+		var cats = data.CatInfo;	
 		//alert(totMenCnt);
-		$.each(cats, function(index, cat) {
-			//alert(index);
-			strCat=cat.subcat_name;
-			if(index==0) { fir='ui-first-child';} else if(totMenCnt==index && dataAppConfig.AppConfig.deal_status=='B'){fir='ui-last-child';}else{ fir='';}
-			$('#employeeList').append('<li class="ui-li-has-thumb '+fir+'"><a class="ui-btn ui-btn-icon-right ui-icon-carat-r" href="showMenu.html?catId='+cat.sub_id+'&tabId='+menuId+'" rel="external"><img src="'+itemImgURL+(cat.subcat_image!=""? cat.subcat_image:defaultImgURL)+'" style="padding:5px;"><h2>' + strCat.substr(0,15)+'...</h2></a></li>');
-		});
-		if(dataAppConfig.AppConfig.deal_status=='A') {
-			$('#employeeList').append('<li class="ui-li-has-thumb ui-last-child"><a class="ui-btn ui-btn-icon-right ui-icon-carat-r" href="deal.html" rel="external"><img src="'+itemImgURL+defaultImgURL+'" style="padding:5px;">&nbsp;Deals&nbsp;</a></li>');
+		if(cats!=null) {
+			var totMenCnt=cats.length-1;
+			$.each(cats, function(index, cat) {
+				//alert(index);
+				strCat=cat.subcat_name;
+				if(index==0) { fir='ui-first-child';} else if(totMenCnt==index && dataAppConfig.AppConfig.deal_status=='B'){fir='ui-last-child';}else{ fir='';}
+				$('#employeeList').append('<li class="ui-li-has-thumb '+fir+'"><a class="ui-btn ui-btn-icon-right ui-icon-carat-r" href="showMenu.html?catId='+cat.sub_id+'&tabId='+menuId+'" rel="external"><img src="'+itemImgURL+(cat.subcat_image!=""? cat.subcat_image:defaultImgURL)+'" style="padding:5px;"><h2>' + strCat.substr(0,15)+'...</h2></a></li>');
+			});
+			if(dataAppConfig.AppConfig.deal_status=='A') {
+				$('#employeeList').append('<li class="ui-li-has-thumb ui-last-child"><a class="ui-btn ui-btn-icon-right ui-icon-carat-r" href="deal.html" rel="external"><img src="'+itemImgURL+defaultImgURL+'" style="padding:5px;">&nbsp;Deals&nbsp;</a></li>');
+			}
+			headerHtml(data.MenuInfo.category_name);		
+			//$('#employeeList').listview('refresh');
+		} else {
+			headerHtml(data.MenuInfo.category_name);
+			$('#employeeList').append('<li class="ui-li-has-thumb ui-last-child"><span style="color:#ff0000">No Category Found</span></li>');
 		}
-		headerHtml(data.MenuInfo.category_name);		
-		//$('#employeeList').listview('refresh');
 		
 	});
 }

@@ -1,7 +1,21 @@
 if(dataAppConfig==null || resData==null) {
 	window.location.href='index.html';
 }
+// sitting details 
+sitStaVa = resData.sitting_status;
+sittingStaArr = sitStaVa.split('-');
+
+sitVa = resData.sitting;	
+sittingArr = sitVa.split('||');
+sittingArrLen=sittingArr.length;//alert(sittingArrLen);
+var sittingValuArr=new Array(3);
+sittingValuArr[0] = 'bkfst';
+sittingValuArr[1] = 'lunch'
+sittingValuArr[2] = 'dinner';
+
+
 jQuery(document).ready(function () {
+	headerHtml('Reservation');	
 	var currentYr = (new Date).getFullYear();
 	var startYr = (new Date).getFullYear();
 	var endyear = currentYr+2;//new Date().getTime() + (30 * 24 * 60 * 60 * 1000);  
@@ -11,6 +25,7 @@ jQuery(document).ready(function () {
 	$('input.one').simpleDatepicker({ startdate: new Date(), enddate: endyear });	
 	
 	getNumGuest();
+	getSittingName();
 	
 	var bookingDetailsArr = window.localStorage.getItem('bookingDetailsArray');	
 
@@ -19,8 +34,10 @@ jQuery(document).ready(function () {
 		$('#booking_date').val(bookVal.booking_date);//alert(bookVal.num_gust_online);
 		$('#num_guest_online').val(bookVal.num_gust_online);
 		$('#num_guest_online-button span').html(bookVal.num_gust_online);
-		$('#seating').val(bookVal.seating);
-		loadtimediv();
+		if(bookVal.seating=='bkfst') { sittInd=0;} else if(bookVal.seating=='lunch') { sittInd=1;} else if(bookVal.seating=='dinner') { sittInd=2;}
+		$('#seating').val(bookVal.seating);// alert(bookVal.seating);
+		$('#seating-button span').html(sittingArr[sittInd]);
+		loadtimediv('');
 		setTimeout(function() {
 			 var labelidDef=bookVal.time_val;//alert(labelidDef);
 			$("#"+labelidDef+" a").css({"background":'#BFC4C4'});
@@ -30,6 +47,13 @@ jQuery(document).ready(function () {
 		}, 500);
 		
 		//alert(bookVal.time_val);
+	} else {
+		$('#num_guest_online').val(resData.min_gust_per_online_bk);
+		$('#num_guest_online-button span').html(resData.min_gust_per_online_bk);
+		$('#seating').val('Select Sitting');
+		$('#seating-button span').html('Select Sitting');
+		currDate = today.getDate()+'-'+(today.getMonth()+1)+'-'+today.getFullYear();
+		$('#booking_date').val(currDate);//alert(bookVal.num_gust_online);
 	}
 });
 
@@ -44,16 +68,28 @@ function getNumGuest() {
 	$('#num_guest_online').html(numGuestHtml);	
 	
 }
+function getSittingName() {	
+	
+	numGuestHtml='<option>Select Sitting</option>';
+	for(i=0;i<sittingArrLen;i++){	
+		if(sittingStaArr[i]==0) {
+			numGuestHtml+='<option value='+sittingValuArr[i]+'>'+sittingArr[i]+'</option>';
+		}
+	}		
+	$('#seating').html(numGuestHtml);	
+}
 
-
-	function loadtimediv(){
+	function loadtimediv(onCh){
+		if(onCh=='drop') {
+			$('#time_validate').val('');
+		}
 		numGuestSel=$( "#num_guest_online option:selected" ).val();//alert(numGuestSel);
 		var d = $('#booking_date').val();			
 		if(numGuestSel!="0" && d!="") {
 			
 			
 
-			var seating = $('select[name="seating"]').val();
+			var seating = $('select[name="seating"]').val(); //alert(seating);
 			
 			//alert(d+":"+dtstring+":"+seating);
 			
@@ -100,7 +136,7 @@ function getNumGuest() {
 			});	
 		} else {
 			alert('Please Select Number of Guest');
-			$('#seating').val('Select seating');
+			$('#seating').val('Select sitting');
 		}
 		
 	}

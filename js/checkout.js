@@ -6,7 +6,7 @@ if(dataAppConfig==null) {
 		getCartList();
 	//}
 //});
-
+headerHtml('View Cart');	
 var dealId = window.localStorage.getItem('deal_id');
 
 if(dealId==null) {

@@ -11,6 +11,7 @@ $.ajaxSetup({ cache: false });
 
 
 function getInfoMenuList() {
+	headerHtml('Information');
 	//$.getJSON(serviceURL, function(data) {
 		$('#infoPage li').remove();		
 		

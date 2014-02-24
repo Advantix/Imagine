@@ -2,15 +2,21 @@ if(dataAppConfig==null || userData==null) {
 	window.location.href='index.html';
 }
 if(orderId!=null) {
+	if(bokord==null) {
+		headerHtml('Confirmation');	
+	} else {
+		headerHtml('Order Details');	
+	}
 	$('#orderList').hide();
 	showOrderinfo();
 }else{
+	headerHtml('Order History');	
 	$('#placOtheOrdId').hide();
 	$('#orderDetList').hide();
 	getOrderList();
 }
 
-function getOrderList() {	
+function getOrderList() {		
 	var store = 'Mw';
 	var order_id = null;
 	var user_id = userData.user_data.userid;
@@ -22,7 +28,7 @@ function getOrderList() {
 		//alert(orderDets);
 		$.each(orderDets, function(index, item) {
 			
-			$('#orderList').append('<li><a class="ui-btn ui-btn-icon-right ui-icon-carat-r" href="order_info.html?orderId='+item.order_id+'"  rel="external">'+(index+1)+'. Order Id:'+item.order_id+' Amount:'+item.total_amount+' Delivery Time:'+item.delivery_time+'</a></li>');
+			$('#orderList').append('<li><a class="ui-btn ui-btn-icon-right ui-icon-carat-r" href="order_info.html?orderId='+item.order_id+'&bokord=view"  rel="external">'+(index+1)+'. Order Id:'+item.order_id+' Amount:'+item.total_amount+' Delivery Time:'+item.delivery_time+'</a></li>');
 		}); 
 		//$('#orderList').listview('refresh');
 	});
@@ -38,7 +44,12 @@ function showOrderinfo() {
 		//alert(resData.restaurant_name);
 		var orderDets = data.order;
 		$.each(orderDets, function(index, item) {
-				htmlData='<h4>Your order has been confirmed, details are below:</h4>';
+				if(bokord==null) {
+					htmlData='<h4>Your order has been confirmed, details are below:</h4>';
+				} else {
+					htmlData='<h4>Your order details</h4>';
+				}
+				
 				htmlData+='<div style="margin:20px 0 0 0;">';
 				htmlData+='<h4>Order Number: '+item.order_id+'<h4></div>';    
 				htmlData+='<p class="itemp">Meal Ready Time: '+item.delivery_time+'</p>';

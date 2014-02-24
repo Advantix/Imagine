@@ -91,12 +91,7 @@
 				<li><b>Guests</b></li>
 				<li>
 					<select id="num_guest_online" name="num_guest_online" data-shadow="false"></select>
-					<select id="seating" name="seating" data-shadow="false" onchange="loadtimediv()">
-						<option>Select seating</option>
-						<option value="bkfst">Breakfast</option>
-						<option value="lunch">Lunch</option>
-						<option value="dinner">Dinner</option>
-					</select>
+					<select id="seating" name="seating" data-shadow="false" onchange="loadtimediv('drop')"></select>
 				</li>
 				<li><b>Select from available times</b></li>
 				<li><div id="timediv" class="time_hole_size">Please select the seating</div></li>

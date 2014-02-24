@@ -5,6 +5,7 @@ var userDataval = window.localStorage.getItem('userData');
 if(userDataval==null) {
 	window.location.href='register.html';
 } else {	
+	headerHtml('My Account');	
 	var userData = JSON.parse(userDataval);
 	var carDataGetcntval = window.localStorage.getItem('carDatas');
 	var carDataGetDealCnt = window.localStorage.getItem('dealItemsId');

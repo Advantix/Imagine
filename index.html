@@ -44,17 +44,21 @@
 		
 		
 
-		// You can also use "$(window).load(function() {"
-		$(function () {		
-		  // Slideshow 4
-		  $("#slider4").responsiveSlides({
-			auto: true,
-			pager: false,
-			nav: true,
-			speed: 500,
-			namespace: "callbacks"      		
-		  });
-		});
+		 // You can also use "$(window).load(function() {"
+		   $( document ).ready(function() {	
+				//alert("test");
+			  // Slideshow 4
+			   setTimeout(function () {
+				  $("#slider4").responsiveSlides({
+					auto: true,
+					pager: false,
+					nav: true,
+					speed: 500,	
+					timeout: 3000,		
+					namespace: "callbacks"      		
+				  });
+				 }, 3000);
+		   });
 
   
 		
@@ -63,23 +67,25 @@
     <script type="text/javascript" src="js/responsiveslides.min.js"></script>
     
    
-</head>
-
-<body id="bodyId">
+</head><body id="bodyId">
 	<!-- Header -->
 	<div data-role="header" id="headerContId" data-position="fixed" data-theme="a"></div>  
 	<!-- /Header -->
 	
 	<!-- page -->
-	<div data-role="page"  >
+	<div data-role="page" >
 		<!-- content -->
 		<div class="ui-content" role="main" >
 			<form>
-				<ul data-role="listview"  data-inset="true" data-theme="c">
-					<li><b>Restaurant Locations</b></li>
-					<li style="height:130px;"><div id="resLocationId" style="text-align:center;margin-top:50px;"></div></li>
-				</ul>		
+				<div id="resLocationId" style="text-align:center;margin-top:10px;"></div>	
 			</form>
+			<div class="callbacks_container" id="dealDivId">
+				<ul class="rslides" id="slider4">
+				   
+				</ul>
+			</div>		
+			<div class="clearfix"></div>
+			<div id="employeeList"></div>
 		</div>
 		<!-- /content -->
 
@@ -89,7 +95,7 @@
 	<!-- footer -->
 	<div data-role="footer" data-position="fixed" data-theme="a" id="footerDiv"></div>
 	<!-- /footer -->
-
+	
 <!-- /Typography 
 <script type="text/javascript" charset="utf-8" src="js/cordova.js"></script>
 <script type="text/javascript" charset="utf-8" src="js/jquery.js"></script>
@@ -98,6 +104,6 @@
 
 <script type="text/javascript" charset="utf-8" src="js/jquery.mobile-1.0rc1.min.js"></script>-->
 <script type="text/javascript" charset="utf-8" src="js/common.js"></script>
-<script type="text/javascript" charset="utf-8" src="js/appconfig.js"></script>
+<script type="text/javascript" charset="utf-8" src="js/home.js"></script>
 </body>
-</html>
+</html>  

@@ -6,12 +6,13 @@ var store_id= 'Mw';
 var serviceURL = "http://advantixcrm.com/prj/mitech/index.php/api/";
 
 var resDatavl = window.localStorage.getItem('RestInfoDet');//alert(resDatavl);
+var restId;
 if(resDatavl!=null) {	
 	var resData = JSON.parse(resDatavl);
 	restId = resData.id;
 	tabId=getUrlVars()["tabId"];	
 	if(tabId!=null) {
-		menuId = tabId ;
+		menuId = tabId;
 	} else {
 		//var dataAppConfig = window.localStorage.getItem('tabIdSess');
 		getMenuTabDefId();
@@ -42,7 +43,7 @@ if(dataAppConfigval!=null) {
 	$("#bodyId").css("background-color", "#000");*/
 	$(document).ready(function() {
         document.title = dataAppConfig.AppConfig.store_name;
-		headerHtml(dataAppConfig.AppConfig.store_name);
+		
     });
 	file_name=get_path_filename();
 	
@@ -66,15 +67,18 @@ function getMenuTabDefId() {
 }
 
 function headerHtml(titVal) {
-	if(file_name!='index.html') {
-	htmlData='<a href="../toolbar/" data-rel="back" class="ui-btn ui-btn-left ui-alt-icon ui-nodisc-icon ui-corner-all ui-btn-icon-notext ui-icon-back">Back</a>';
-	} else {
-		htmlData='';
-	}
-	htmlData+='<a href="#" data-rel="refresh" class="ui-btn ui-btn-right ui-alt-icon ui-nodisc-icon ui-corner-all ui-btn-icon-notext ui-icon-refresh" onclick="refresh();">Refresh</a>';
-    htmlData+='<h1 class="ui-title" role="heading" aria-level="1">'+titVal+'</h1>';
+	$(document).ready(function() {
+		//alert(titVal);
+		if(file_name!='index.html') {
+		htmlData='<a href="../toolbar/" data-rel="back" class="ui-btn ui-btn-left ui-alt-icon ui-nodisc-icon ui-corner-all ui-btn-icon-notext ui-icon-back">Back</a>';
+		} else {
+			htmlData='';
+		}
+		htmlData+='<a href="#" data-rel="refresh" class="ui-btn ui-btn-right ui-alt-icon ui-nodisc-icon ui-corner-all ui-btn-icon-notext ui-icon-refresh" onclick="refresh();">Refresh</a>';
+		htmlData+='<h1 class="ui-title" role="heading" aria-level="1">'+titVal+'</h1>';
 
-	$('#headerContId').html(htmlData);
+		$('#headerContId').html(htmlData);
+	});
 }
 var userDataval = window.localStorage.getItem('userData');
 
@@ -165,6 +169,7 @@ bokId=getUrlVars()["bokId"];
 delitemId=getUrlVars()["delitemId"];
 dealId=getUrlVars()["dealId"];
 chkitemid=getUrlVars()["chkitemid"];
+bokord=getUrlVars()["bokord"];//alert(bokord);
 
 
 
@@ -274,7 +279,7 @@ if(resData!=null) {
 }
 
 footHtml='<div class="ui-grid-c center" style="text-align:center;">';
-	footHtml+='<div class="ui-block-a"><a href="home.html" rel="external"  class="ui-shadow ui-btn ui-corner-all ui-icon-home ui-btn-icon-notext ui-btn-inline">Button</a></div>';
+	footHtml+='<div class="ui-block-a"><a href="index.html" rel="external"  class="ui-shadow ui-btn ui-corner-all ui-icon-home ui-btn-icon-notext ui-btn-inline">Button</a></div>';
 	footHtml+='<div class="ui-block-b"><a href="info.html" rel="external" class="ui-shadow ui-btn ui-corner-all ui-icon-arrow-l ui-btn-icon-notext ui-icon-info">Button</a></div>';
 	if(buttonArray[2]==1) {	
 		footHtml+='<div class="ui-block-c"><a href="dinein.html" rel="external" class="ui-shadow ui-btn ui-corner-all ui-icon-grid ui-btn-icon-notext ui-icon-phone">Button</a></div>';

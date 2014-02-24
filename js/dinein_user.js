@@ -14,7 +14,7 @@ function userValidate() {
 	
 	error[0] = nameCheck(frm.fname.value) ? "" : "This is not a valid first name";
 	error[1] = nameCheck(frm.lname.value) ? "" :  "This is not a valid Surname";
-	error[2] = phoneCheck(frm.phone.value) ? "" :  "Please provide mobile phone number";
+	error[2] = phoneCheck(frm.mobile.value) ? "" :  "Please provide mobile number";
 	error[3] = checkText(frm.email) ? "" :  "Email Address is empty!";
 	if(error[3]=="") {
 		error[3]=emailCheck(frm.email.value) ? "" : "This is not valid email address";	
@@ -63,21 +63,29 @@ $('#registerFrmId').submit(function(){
 				window.localStorage.setItem('userData',JSON.stringify(data));
 				console.log(data);
 				//alert(data.user_data.userid);
-				alert("User Registered Successfully, the password sent to your email");
+				//alert("User Registered Successfully, the password sent to your email");
 				$("#pageLoader").hide();				
-				bookReservation(postData,data.user_data.userid)
+				bookReservation(postData,data.user_data.userid);
 			}else if(data.response == 2) {
 				window.localStorage.setItem('userData',JSON.stringify(data));
 				console.log(data);
 				//alert(data.user_data.userid);
-				alert("User Updated Successfully");
+				//alert("User Updated Successfully");
 				$("#pageLoader").hide();
-				bookReservation(postData,'')				
+				bookReservation(postData,data.user_data.userid);				
+			}else if(data.response == 3) {
+				window.localStorage.setItem('userData',JSON.stringify(data));
+				console.log(data);
+				//alert(data.user_data.userid);
+				//alert("You are not changed User information");
+				$("#pageLoader").hide();
+				bookReservation(postData,data.user_data.userid);				
 			}else{
+				//window.localStorage.setItem('userData',JSON.stringify(data));
 				console.log(data);				
 				alert(data.response);
 				$("#pageLoader").hide();
-				bookReservation(postData,'')		
+				//bookReservation(postData,'');		
 			}	
 		},
 		error: function(data){
@@ -94,6 +102,7 @@ showPrevValue();
 
 function showPrevValue(){	
 	//alert(JSON.stringify(userData));
+	headerHtml('Reservation Details');	
 	var bookingDetailsArr = window.localStorage.getItem('bookingDetailsArray');	
 
 	if(bookingDetailsArr!=null) {
@@ -109,13 +118,16 @@ function showPrevValue(){
 		$('#seating').val(bookVal.seating);
 		//alert(bookVal.time_val);
 	}
-	if(userData!=null) {
-		$('#user_id').val(userData.user_data.userid);
+	var userDataval = window.localStorage.getItem('userData');
+	if(userDataval!=null) {
+		var userData = JSON.parse(userDataval);
+		//alert(JSON.stringify(userData));
+		//$('#user_id').val(userData.user_data.userid);
 		$('#fname').val(userData.user_data.fname);
 		$('#lname').val(userData.user_data.lname);
 		$('#email').val(userData.user_data.email);
-		$('#email').attr('readonly', true);
-		$('#phone').val(userData.addr_data.phone);	 
+		//$('#email').attr('readonly', true);
+		$('#mobile').val(userData.addr_data.mobile);	 
 		$('#termLiId').hide();	 
 	} 
 	
@@ -123,11 +135,8 @@ function showPrevValue(){
 
 function bookReservation(postData,userId) {
 
-	if(userId!="") {
-		postDataAll = postData+'&restaurant_id='+restId+'&user_id='+userId+'&store_id='+store_id;
-	} else {
-		postDataAll = postData+'&restaurant_id='+restId+'&store_id='+store_id;
-	}
+	postDataAll = postData+'&restaurant_id='+restId+'&user_id='+userId+'&store_id='+store_id;
+	
 	//alert(postDataAll);
 	//var postData = $(this).serialize();
 	//alert(serviceURL+'register_post');
@@ -138,7 +147,7 @@ function bookReservation(postData,userId) {
 		success: function(data){
 			//alert(data);
 			if(data.response == 1) {				
-				alert("Reservation Successfully registered");
+				//alert("Reservation Successfully registered");
 				window.localStorage.removeItem('bookingDetailsArray');
 				$("#pageLoader").hide();				
 				window.location.href='confirm_booking.html?bokId='+data.booking_id;

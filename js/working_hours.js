@@ -6,7 +6,7 @@ jQuery(document).ready(function () {
 	var endyear = currentYr+60;		
 	$('input.one').simpleDatepicker({ startdate: currentYr, enddate: endyear });
 });
-
+headerHtml('Working Hours');
 $('#sample1 input').ptTimeSelect();
 
 $("#pageLoader").hide();	

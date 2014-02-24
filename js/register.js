@@ -2,6 +2,7 @@ if(dataAppConfig==null) {
 	window.location.href='index.html';
 }
 $("#loginBtnId").click(function() {
+	headerHtml('Login');	
 	$("#loginFrmId").show();
 	$("#registerFrmId").hide();	
 	$("#addrFrmId").hide();
@@ -10,6 +11,11 @@ $("#loginBtnId").click(function() {
 });
 
 $("#signupBtnId").click(function() {
+	if(form_active_url==null) {
+		headerHtml('Register');	
+	} else {
+		headerHtml('Account Details');
+	}
 	$("#registerFrmId").show();
 	$("#loginFrmId").hide();	
 	$("#addrFrmId").hide();
@@ -21,6 +27,7 @@ $("#signupBtnId").click(function() {
 });
 
 $("#addrBtnId").click(function() {
+	headerHtml('Billing Address');	
 	$("#addrFrmId").show();
 	$("#registerFrmId").hide();	
 	$("#loginFrmId").hide();	
@@ -34,23 +41,34 @@ $("#addrBtnId").click(function() {
 var formActive=window.localStorage.getItem('form_active');
 
 //var formInActive=window.localStorage.getItem('form_inactive');
+//alert(formInActive);
 if(formActive==null) {	
 	$("#addrBtnId").hide();
 	$("#logoutBtnId").hide();
 	$("#userName").hide();
 	$('#loginFrmId').show();
+	headerHtml('Login');	
 } else {	
 	if(userData==null) {
+		if(form_active_url==null) {
+			headerHtml('Login');
+		}
 		$("#addrBtnId").hide();
 		$("#userName").hide();
 		$("#logoutBtnId").hide();
 		$(formActive).show();
 	} else {		
+		//headerHtml('Login');
 		$("#loginBtnId").hide();	
 		var form_active_url = getUrlVars()["form_active"];
 		if(form_active_url!=null) {
 			showPrevValue(form_active_url);
 			$('#'+form_active_url).show();
+			if(form_active_url=='registerFrmId') {
+				headerHtml('Account Details');
+			} else {
+				headerHtml('Billing Details');
+			}
 		} else {
 			showPrevValue(formActive);
 			$(formActive).show();
@@ -74,10 +92,10 @@ $('#registerFrmId').submit(function(){
 	//alert(serviceURL+'register_post');
 	$.ajax({
 		type: 'POST',
-		data: postData+'&store_id=Mw',
+		data: postData+'&store_id='+store_id,
 		url: serviceURL+'register',
 		success: function(data){
-			//alert(data);
+			//alert(JSON.stringify(data));
 			if(data.response == 1) {
 				window.localStorage.setItem('userData',JSON.stringify(data));
 				console.log(data);
@@ -89,6 +107,11 @@ $('#registerFrmId').submit(function(){
 				window.localStorage.setItem('userData',JSON.stringify(data));
 				console.log(data);
 				alert("User Updated Successfully");
+				$("#pageLoader").hide();
+			}else if(data.response == 3) {
+				window.localStorage.setItem('userData',JSON.stringify(data));
+				console.log(data);
+				alert("You are not changed User information");
 				$("#pageLoader").hide();
 			}else{
 				console.log(data);				
@@ -117,9 +140,10 @@ $('#loginFrmId').submit(function(){
 	//alert(postData);
 	$.ajax({
 		type: 'POST',
-		data: postData+'&store_id=Mw',
+		data: postData+'&store_id='+store_id,
 		url: serviceURL+'login',
-		success: function(data){			
+		success: function(data){	
+			//alert(JSON.stringify(data));
 			if(data.response==1) {
 				window.localStorage.setItem('userData',JSON.stringify(data)); // store local storage
 				console.log(data);
@@ -156,7 +180,7 @@ $('#addrFrmId').submit(function(){
 	//alert(postData);
 	$.ajax({
 		type: 'POST',
-		data: postData+'&store_id=Mw',
+		data: postData+'&store_id='+store_id,
 		url: serviceURL+'updateaddress',
 		success: function(data){
 			window.localStorage.setItem('userData',JSON.stringify(data));
@@ -183,7 +207,7 @@ function showPrevValue(formName){
 		$('#lname').val(userData.user_data.lname);
 		$('#email').val(userData.user_data.email);
 		$('#email').attr('readonly', true);
-		$('#phone').val(userData.addr_data.phone);
+		$('#mobile').val(userData.addr_data.mobile);
 	} else if(formName=="addrFrmId" || formName=="#addrFrmId") {
 		$('#add_user_id').val(userData.user_data.userid);
 		$('#street_number').val(userData.addr_data.address);
@@ -203,7 +227,7 @@ function userValidate() {
 	
 	error[0] = nameCheck(frm.fname.value) ? "" : "This is not a valid first name";
 	error[1] = nameCheck(frm.lname.value) ? "" :  "This is not a valid Surname";
-	error[2] = phoneCheck(frm.phone.value) ? "" :  "Please provide mobile phone number";
+	error[2] = phoneCheck(frm.mobile.value) ? "" :  "Please provide mobile number";
 	error[3] = checkText(frm.email) ? "" :  "Email Address is empty!";
 	if(error[3]=="") {
 		error[3]=emailCheck(frm.email.value) ? "" : "This is not valid email address";	
