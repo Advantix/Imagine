@@ -1,6 +1,7 @@
 if(dataAppConfig==null || userData==null) {
 	window.location.href='index.html';
 }
+headerHtml('Change Password');	
 // Register Post	
 $('#user_id').val(userData.user_data.userid);
 $("#paswrdButtonId").click(function() {
