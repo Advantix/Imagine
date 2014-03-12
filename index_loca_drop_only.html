@@ -3,7 +3,7 @@
 	<head>
 	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
-	<title></title>
+	<title id="titleId"></title>
 	<link rel="shortcut icon" href="../favicon.ico">
     <link rel="stylesheet" href="http://fonts.googleapis.com/css?family=Open+Sans:300,400,700">
 	<link rel="stylesheet" href="css/themes/default/jquery.mobile-1.4.0.css">
@@ -74,9 +74,12 @@
 	<div data-role="page"  >
 		<!-- content -->
 		<div class="ui-content" role="main" >
-		
-		<div id="infoPage"></div>
-		
+			<form>
+				<ul data-role="listview"  data-inset="true" data-theme="c">
+					<li><b>Restaurant Locations</b></li>
+					<li style="height:130px;"><div id="resLocationId" style="text-align:center;margin-top:50px;"></div></li>
+				</ul>		
+			</form>
 		</div>
 		<!-- /content -->
 
@@ -87,10 +90,14 @@
 	<div data-role="footer" data-position="fixed" data-theme="a" id="footerDiv"></div>
 	<!-- /footer -->
 
-<!--<script type="text/javascript" charset="utf-8" src="js/cordova.js"></script>
+<!-- /Typography 
+<script type="text/javascript" charset="utf-8" src="js/cordova.js"></script>
 <script type="text/javascript" charset="utf-8" src="js/jquery.js"></script>
+
+<script type="text/javascript" src="js/responsiveslides.min.js"></script>
+
 <script type="text/javascript" charset="utf-8" src="js/jquery.mobile-1.0rc1.min.js"></script>-->
 <script type="text/javascript" charset="utf-8" src="js/common.js"></script>
-<script type="text/javascript" charset="utf-8" src="js/info.js"></script>
+<script type="text/javascript" charset="utf-8" src="js/appconfig.js"></script>
 </body>
 </html>

@@ -1,6 +1,11 @@
 if(dataAppConfig==null) {
 	window.location.href='index.html';
 }
+// disabled all the top navaigation 
+$("#loginBtnId").hide();	
+$("#signupBtnId").hide();	
+$("#addrBtnId").hide();	
+
 $("#loginBtnId").click(function() {
 	headerHtml('Login');	
 	$("#loginFrmId").show();
@@ -92,7 +97,7 @@ $('#registerFrmId').submit(function(){
 	//alert(serviceURL+'register_post');
 	$.ajax({
 		type: 'POST',
-		data: postData+'&store_id='+store_id,
+		data: postData+'&store_id='+store_id+'&restaurant_id='+restId,
 		url: serviceURL+'register',
 		success: function(data){
 			//alert(JSON.stringify(data));
@@ -140,7 +145,7 @@ $('#loginFrmId').submit(function(){
 	//alert(postData);
 	$.ajax({
 		type: 'POST',
-		data: postData+'&store_id='+store_id,
+		data: postData+'&store_id='+store_id+'&restaurant_id='+restId,
 		url: serviceURL+'login',
 		success: function(data){	
 			//alert(JSON.stringify(data));
@@ -171,8 +176,10 @@ $('#loginFrmId').submit(function(){
 
 // Address Post	
 $("#addrButtonId").click(function() {
-	$("#pageLoader").show();
-	$('#addrFrmId').submit();
+	if(addrValidate()==true) {
+		$("#pageLoader").show();
+		$('#addrFrmId').submit();
+	}
 });
 
 $('#addrFrmId').submit(function(){		
@@ -205,15 +212,15 @@ function showPrevValue(formName){
 		$('#user_id').val(userData.user_data.userid);
 		$('#fname').val(userData.user_data.fname);
 		$('#lname').val(userData.user_data.lname);
-		$('#email').val(userData.user_data.email);
-		$('#email').attr('readonly', true);
+		$('#email_reg').val(userData.user_data.email);
+		$('#email_reg').attr('readonly', true);
 		$('#mobile').val(userData.addr_data.mobile);
 	} else if(formName=="addrFrmId" || formName=="#addrFrmId") {
 		$('#add_user_id').val(userData.user_data.userid);
-		$('#street_number').val(userData.addr_data.address);
-		$('#street_name').val(userData.addr_data.street);
-		$('#suburb').val(userData.addr_data.city);
-		$('#postcode').val(userData.addr_data.post_code);	
+		$('#street_number').val(userData.addr_data.address!=""? userData.addr_data.address : "Street Number");
+		$('#street_name').val(userData.addr_data.street!=""? userData.addr_data.street : "Street Name");
+		$('#suburb').val(userData.addr_data.city!=""? userData.addr_data.city : "Suburp");
+		$('#postcode').val(userData.addr_data.post_code!=""? userData.addr_data.post_code : "Postcode");	
 	}
 	
 }
@@ -225,10 +232,10 @@ function userValidate() {
 	var errorMessage = "";
 	var frm = document.registerFrmId;	
 	
-	error[0] = nameCheck(frm.fname.value) ? "" : "This is not a valid first name";
-	error[1] = nameCheck(frm.lname.value) ? "" :  "This is not a valid Surname";
-	error[2] = phoneCheck(frm.mobile.value) ? "" :  "Please provide mobile number";
-	error[3] = checkText(frm.email) ? "" :  "Email Address is empty!";
+	error[0] = nameCheck(frm.fname.value,'First Name') ? "" : "This is not a valid first name";
+	error[1] = nameCheck(frm.lname.value,'Surname') ? "" :  "This is not a valid Surname";
+	error[2] = phoneCheck(frm.mobile.value,'Mobile Number') ? "" :  "Please provide mobile number";
+	error[3] = checkText(frm.email,'Email') ? "" :  "Email Address is empty!";
 	if(error[3]=="") {
 		error[3]=emailCheck(frm.email.value) ? "" : "This is not valid email address";	
 	}
@@ -239,6 +246,31 @@ function userValidate() {
 	}*/
 			
 	
+	
+	for(var i= 0 ;i<error.length; ++i)
+		if(error[i]!=undefined)
+			errorMessage+= error[i] != "" ? " * " +error[i]+"\n" : "";
+
+		if(errorMessage == "") {			
+			return true;
+		} else {
+			alert(errorMessage);
+			return false;
+		}
+
+}
+
+
+function addrValidate() {
+	
+	var error = new Array();
+	var errorMessage = "";
+	var frmAdd = document.addrFrmId;	
+	
+	error[0] = checkText(frmAdd.street_number,'Street Number') ? "" : "Street Number is Empty";
+	error[1] = checkText(frmAdd.street_name,'Street Name') ? "" :  "Street Name is Empty";
+	error[2] = checkText(frmAdd.suburb,'Suburb') ? "" :  "Suburb is Empty";
+	error[3] = checkText(frmAdd.postcode,'Postcode') ? "" :  "Postcode is empty";
 	
 	for(var i= 0 ;i<error.length; ++i)
 		if(error[i]!=undefined)

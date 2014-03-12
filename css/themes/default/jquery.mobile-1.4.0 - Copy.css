@@ -1070,7 +1070,7 @@ html body .ui-group-theme-a .ui-slider-track .ui-btn-active,
 html body div.ui-slider-track.ui-body-a .ui-btn-active {
 	background-color: 		#3388cc /*{a-active-background-color}*/;
 	border-color:	 		#3388cc /*{a-active-border}*/;
-	color: 					#000 /*{a-active-color}*/;
+	color: 					#fff /*{a-active-color}*/;
 	text-shadow: 0 /*{a-active-shadow-x}*/ 1px /*{a-active-shadow-y}*/ 0 /*{a-active-shadow-radius}*/ #005599 /*{a-active-shadow-color}*/;
 }
 /* Active radio button icon */
@@ -1093,11 +1093,10 @@ html .ui-bar-a .ui-focus,
 html .ui-body-a .ui-focus,
 html body .ui-group-theme-a .ui-focus,
 html head + body .ui-btn-a.ui-focus,
-html head + body .ui-body-a.ui-focus {/*{a-active-background-color}*/
-	/*-webkit-box-shadow: 0 0 12px 	#fff ;
-	-moz-box-shadow: 0 0 12px 		#fff ;
-	box-shadow: 0 0 12px 			#fff ;
-	*/
+html head + body .ui-body-a.ui-focus {
+	-webkit-box-shadow: 0 0 12px 	#fff /*{a-active-background-color}*/;
+	-moz-box-shadow: 0 0 12px 		#fff /*{a-active-background-color}*/;
+	box-shadow: 0 0 12px 			#fff /*{a-active-background-color}*/;
 }
 /* B
 -----------------------------------------------------------------------------------------------------------*/
@@ -1401,18 +1400,15 @@ div.ui-mobile-viewport {
 	margin-top: -1.4375em;
 }
 .ui-loader-verbose {
-	background: none repeat scroll 0 0 #000000;
-    box-shadow: 0 0 5px 5px #FFFFFF;
-    color: #FFFFFF;
-    height: auto;
-    margin-left: -6.875em;
-    margin-top: -2.6875em;
-    opacity: 0.88;
-    padding: 0.625em;
-    width: 9.5em;
+	width: 12.5em;
+	filter: Alpha(Opacity=88);
+	opacity: .88;
+	box-shadow: 0 1px 1px -1px #fff;
+	height: auto;
+	margin-left: -6.875em;
+	margin-top: -2.6875em;
+	padding: .625em;
 }
-.ui-loader-verbose  img{float:left;display:inline;padding-right:10px;}
-.ui-loader-verbose  span{float:left;display:inline;padding-top:5px;}
 .ui-loader-default h1 {
 	font-size: 0;
 	width: 0;
@@ -4727,8 +4723,6 @@ for Android 4.1 */
 	.ui-responsive-panel.ui-page-active ~ .ui-panel-dismiss-display-push {
 		display: none;
 	}
-	
-	
 }
 
 .ui-tabs {
@@ -4741,12 +4735,13 @@ for Android 4.1 */
 .myleft { float:left; width:73%; } .myright { float:left; width:21%; text-align:center}
 .imgshow { height:200px; overflow:hidden;} .imgshow img{ width:100%; }
 
-#cremove.ui-listview > li h1, #cremove.ui-listview > li h2, #cremove.ui-listview > li h3{
+.cremove.ui-listview > li h1, .cremove.ui-listview > li h2, .cremove.ui-listview > li h3{
 margin: 0 0 0.3em ;   font-size:1.3em;}
 
-ul#cremove li{ padding-bottom:4px;}
+ul.cremove li{ padding-bottom:4px;}
 
-ul#cremove.ui-listview > li p{ width:100%;}
+ul.cremove.ui-listview > li p{ width:100%;}
+
 
 .green_disc {background-color: rgba(1,215,71,9) /*{global-icon-disc}*/;}
 #tick .ui-btn-icon-right:after{background-color: rgba(1, 215, 71, 0.9)}
@@ -4769,8 +4764,9 @@ select > option { font-weight:normal; }
 
 /*------------Gokul style-----------*/
 
-.confirmation, .terms, .menu_wrap{ margin:0; padding:0; text-align:left; background:#fff; padding:15px;  min-height:25em;}
+.confirmation, .terms, .menu_wrap, .deal_wrap{ margin:0; padding:0; text-align:left; background:#fff; padding:15px;  min-height:25em;}
 .menu_wrap{ background:none;}
+.deal_wrap{padding:0;margin:0;min-height:0;}
 
 .terms { padding-bottom:50px;}
 .confirmation h2, .terms h2{margin:0; padding:0; color:#000; text-shadow: none; font-size:20px; font-weight:normal; }
@@ -4845,7 +4841,7 @@ html body .ui-group-theme-a .ui-bar-inherit h1{ color:#FFF; font-weight:normal; 
 #pizzalist .ui-btn, #pizzalist2 .ui-btn, #pizzalist3 .ui-btn { border-width: 0 0 1px 0 !important;
 background:#fff !important; border-color: #358c47 !important;   /*color: #fff; text-shadow: 0 0px 0 #F3F3F3;*/}
 	
-/*#pizzalist .ui-btn-active { color:#fff !important;}*/
+#pizzalist .ui-btn-active { color:#fff !important;}
 	
 .pizzacatagory h4 { color: #169718; font-size:1.2em; font-weight:normal; margin:8px 0; text-shadow: 0 0px 0 #F3F3F3;
 -webkit-font-smoothing: antialiased; /* Fix for webkit rendering */-webkit-text-size-adjust: none;}
@@ -4915,7 +4911,7 @@ button .ui-btngreen {   color:#fff;}
 
 .footer_menu >.ui-navbar .ui-btn { font-family:Arial, Helvetica, sans-serif; font-size:0.8em;} 
 
-.terms .ui-input-text input[type="text"] { height:46px;  font-size:16px; color:#808080;  }
+.terms .ui-input-text input[type="text"] ,input[type="tel"],input[type="email"] { height:46px;  font-size:16px; color:#808080;  }
 .terms .ui-input-text { margin-bottom:20px;}
 
 .checkremo .ui-btn.ui-checkbox-off:after {
@@ -4953,7 +4949,6 @@ margin:0; padding:6px 0;}
 /*.footer_menu > .ui-navbar .ui-btn-active { color:green !important;}*/
 .ui-header a img{ margin-top:7px;}
 
-
 /* my new style---------*/
 .ui-navbar{margin-bottom: 10px;}
 a.arrival-time, a.guset-no { font-weight:normal !important; font-size:28px !important; float:left; width:36%;}
@@ -4986,9 +4981,6 @@ a.arrival-time span, a.guset-no span{ font-size:18px; color:#278a32;}
 		display: none;
 	}
 	.menu-choose-wp { width:47%; height:156px; float:left; margin-right:30px; margin-bottom:24px; }
-	
-	a.arrival-time span, a.guset-no span{ font-size:20px; color:#278a32; padding-top:10px; display:block;}
-
 	
 }
 /* Hack to make IE9 and WP7.5 treat cells like block level elements, scoped to ui-responsive class */ 
@@ -5024,14 +5016,7 @@ a.arrival-time span, a.guset-no span{ font-size:18px; color:#278a32;}
 	font-size: 1em;
 	}
 	
-	
-	a.arrival-time, a.guset-no { font-weight:normal !important; font-size:16px !important; float:left; width:34%;}
-	a.guset-no { float:right;}
-	
-	a.arrival-time span, a.guset-no span{ font-size:16px; color:#278a32; padding-top:10px; display:block;}
-	
 }
-
 /*--- Kathir ---*/
 .gmap {
     width:100%;
@@ -5055,4 +5040,3 @@ a.arrival-time span, a.guset-no span{ font-size:18px; color:#278a32;}
     -webkit-box-shadow: 0 0  8px #000;
     box-shadow: 0 0 8px #000;
 }
-

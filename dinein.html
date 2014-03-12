@@ -11,12 +11,13 @@
 	<link rel="stylesheet" href="_assets/css/jqm-demos.css">
      <link rel="stylesheet" href="css/slider_banner.css" />
 
-
+	<link rel="stylesheet" href="css/themes/default/fonts.css" />
 
 
 	<script src="js/jquery.js"></script>
 	<script src="_assets/js/index.js1"></script>
 	<script src="js/jquery.mobile-1.4.0.min.js"></script>
+	<script src="js/functions.js"></script>
 	
 	<!-- Date Picker -->
 
@@ -45,6 +46,10 @@
 					$( this ).addClass( "ui-btn-active" );
 				}
 			});
+			$(".ui-input-text").removeClass("ui-corner-all");
+			$(".ui-checkbox label").removeClass("ui-corner-all");			
+			$("#num_guest_online-button").removeClass("ui-corner-all");
+			$("#seating-button").removeClass("ui-corner-all");
 		});
 		
 		
@@ -80,28 +85,32 @@
 	<div data-role="page"  >
 		<!-- content -->
 		<div class="ui-content" role="main" >
-
-			<div id="pageLoader" class="ui-loader">		
-			<img src="img/loader.gif" />		
+			<div class="terms" style="background:none">
+				<div id="pageLoader" class="ui-loader ui-loader-verbose">		
+				<img src="img/loader.gif" /> <span>Loading....	</span>	
+				</div>
+				<form id="registerFrmId" style="display:block">
+				
+				<input type="text" id="booking_date" name="booking_date" class="one" required>
+				<div id="seatingDrop"><select id="seating" name="seating" data-shadow="false" onchange="loadtimediv('drop')"></select></div>
+				<input type="hidden" name="seating_text" id="seating_text" value="">
+				<div class="clearfix" style="width:100%;">
+					<a href="#timediv" data-rel="popup" data-position-to="window" data-transition="pop"  class="ui-btn arrival-time" id="displayTimeId">Loading...<br>
+					<span>Arrival Time</span>
+					</a>
+					<a class="ui-btn guset-no" id="num_guest_online_a">Loading...</a>
+				</div>
+				
+				<input type="text" id="comments" name="comments" required value="Notes to Restaurant" onfocus="OnFocusName1('comments','Notes to Restaurant',this.value)" onblur="OnBlurName1('comments','Notes to Restaurant',this.value)">	
+				<div id="timediv" data-role="popup" data-overlay-theme="b" data-theme="a"  style="max-width:360px;"></div>
+				 
+				<input type="hidden" name="time_validate" readonly id="time_validate" value="">			
+				<input type="hidden" id="user_id" name="user_id" readonly>
+				<div class="getdirect white-btn">
+					<a href="#" id="bookingButtonId" data-role="button" data-theme="c" class="ui-btn">Book Now</a>
+				 </div>
+				</form>   
 			</div>
-			<form id="registerFrmId" style="display:block">
-			<ul data-role="listview"  data-inset="true" data-theme="c">
-				<li><b>Booking Date</b></li>
-				<li><input type="text" id="booking_date" name="booking_date" class="one" required></li>
-				<li><b>Guests</b></li>
-				<li>
-					<select id="num_guest_online" name="num_guest_online" data-shadow="false"></select>
-					<select id="seating" name="seating" data-shadow="false" onchange="loadtimediv('drop')"></select>
-				</li>
-				<li><b>Select from available times</b></li>
-				<li><div id="timediv" class="time_hole_size">Please select the seating</div></li>
-								
-			</ul>
-			 
-			<input type="hidden" name="time_validate" readonly id="time_validate" value="">			
-			<input type="hidden" id="user_id" name="user_id" readonly>
-			<a href="#" id="bookingButtonId" data-role="button" data-theme="c" class="ui-rfloat ui-top gra_but">Submit</a>
-			</form>           
             
 		</div>
 		<!-- /content -->

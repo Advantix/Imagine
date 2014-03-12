@@ -11,12 +11,7 @@ function getAppConfig() {
 		//window.localStorage.setItem('configData',JSON.stringify(data)); // store local storage		
 		if(data!==null) {	
 			var data = JSON.parse(data);
-			$("#bodyId").css("background-image", "url("+data.AppConfig.bg_image+")");
-			$("#bodyId").css("background-repeat", "repeat-x");
-			$("#bodyId").css("background-position", "top");
-			$("#bodyId").css("background-color", "#000");
-		
-		
+			
 			htmlOption='<select onchange="setResLoc(this.value)"><option>--Select Restaurant Location---</option>';
 			var rest = data.RestInfo;
 			$.each(rest, function(index, res) {

@@ -1,21 +1,93 @@
-
+$("#pageLoader").show();
 //$('#typography').live('pageshow', function(event) {	
 	//if(checkConnection()) {
-		
+		var resDatavl = window.localStorage.getItem('RestInfoDet');//alert(resDatavl);
 		if(resDatavl!=null) {
 			var ref = 1;
-			$("#dealDivId").show();
-			$("#employeeList").show();
-			showHomePage();
+			/*$("#dealDivId").show();
+			$("#employeeList").show();*/
+			//showHomePage();
+			showDashPage();
 		} else {
-			$("#dealDivId").hide();
-			$("#employeeList").hide();
+			/*$("#dealDivId").hide();
+			$("#employeeList").hide();*/
 			var ref = 0;
 		}
 		getAppConfig();
 	//}
 //});
 $.ajaxSetup({ cache: false });
+function showDashPage() {
+	
+	var appData = JSON.parse(window.localStorage.getItem('configData'));
+	//var homeDash = JSON.parse(window.localStorage.getItem('homeDash'));
+	var htmlIn='';
+	buttonArray=resData.service_options;
+	buttonArray=buttonArray.split('-');
+	//alert(serviceURL+'home/'+restId);
+	$.getJSON(serviceURL+'home/'+restId, function(data) {	
+				
+				//alert(JSON.stringify(data));
+				dealDef=data.DealMenuList;
+				dealDefLen=dealDef.length;//alert(dealDefLen);
+				dealCat=data.DefaultCat;
+				dealCatLen=dealCat.length;//alert(dealCatLen);
+				dealMenuDeal=data.DefaultMenu;
+				
+				htmlHome='';
+				if(dealDefLen>0) {
+					htmlHome='<div class="menu-choose-wp">';
+						htmlHome+='<div class="menu-img"><img src="'+itemImgURL+dealDef[0]['item_img']+'" alt=""></div>';
+						htmlHome+='<p class="menu-title"><a href="deal.html?delitemId='+dealDef[0]['item_id']+'" rel="external">'+dealDef[0]['item_name']+'</a></p>';
+					htmlHome+='</div>';
+					
+					htmlHome+='<div class="menu-choose-wp" style="margin:0">';
+						htmlHome+='<div class="menu-img"><img src="'+itemImgURL+dealDef[1]['item_img']+'" alt=""></div>';
+						htmlHome+='<p class="menu-title"><a href="deal.html?delitemId='+dealDef[1]['item_id']+'" rel="external">'+dealDef[1]['item_name']+'</a></p>';
+					htmlHome+='</div>';
+				}
+				htmlHome+='<div class="menu-choose-wp" >';
+					htmlHome+='<div class="menu-img"><img src="images/reservation.jpg" alt=""></div>';
+					htmlHome+='<p class="menu-title"><a href="dinein.html" rel="external">Reservation</a></p>';
+				htmlHome+='</div>';
+								
+				htmlHome+='<div class="menu-choose-wp" style="margin:0">';
+					htmlHome+='<div class="menu-img"><img src="images/menu.jpg" alt=""></div>';
+					htmlHome+='<p class="menu-title"><a href="showMenu.html" rel="external">Menu</a></p>';
+				htmlHome+='</div>';
+				
+				if(dealCatLen>0) {
+					htmlHome+='<div class="menu-choose-wp">';
+						htmlHome+='<div class="menu-img"><img src="'+itemImgURL+dealCat[0]['subcat_image']+'" alt=""></div>';
+						htmlHome+='<p class="menu-title"><a href="showMenu.html?catId='+dealCat[0]['sub_id']+'&tabId='+dealCat[0]['menu_id']+'" rel="external">'+dealCat[0]['subcat_name']+'</a></p>';
+					htmlHome+='</div>';
+				}
+				
+				if(dealMenuDeal!=null) {
+					if(dealCatLen>0) {st='style="margin:0"'}else{st='';}
+					htmlHome+='<div class="menu-choose-wp" '+st+'>';
+						htmlHome+='<div class="menu-img"><img src="'+itemImgURL+dealMenuDeal.category_image+'" alt=""></div>';
+						htmlHome+='<p class="menu-title"><a href="deal.html?tabId='+dealMenuDeal.id+'" rel="external">'+dealMenuDeal.category_name+'</a></p>';
+					htmlHome+='</div>';
+				}
+				htmlHome+='<div class="menu-choose-wp">';
+					htmlHome+='<div class="menu-img"><img src="images/help.jpg" alt=""></div>';
+					htmlHome+='<p class="menu-title"><a href="help.html" rel="external">Help</a></p>';
+				htmlHome+='</div>';
+				
+				htmlHome+='<div class="menu-choose-wp" style="margin:0">';
+					htmlHome+='<div class="menu-img"><img src="images/location.jpg" alt=""></div>';
+					htmlHome+='<p class="menu-title"><a href="restaurant_details.html" rel="external">Location</a></p>';
+				htmlHome+='</div><span class="menu-choose-wp"></span>';
+				
+				$('#homeDashId').html(htmlHome);	
+				
+			});
+	
+	$("#pageLoader").hide();
+	headerHtml(resData.restaurant_name);
+	
+}
 function showHomePage() {
 		$("#dealDivId").hide();
 		var appData = JSON.parse(window.localStorage.getItem('configData'));
@@ -113,9 +185,11 @@ function getAppConfig() {
 					
 				});
 				htmlOption+='</select>';
+				$("#pageLoader").hide();
 				$('#resLocationId').html(htmlOption);
 			} else {
 				$('#resLocationId').hide();
+				$("#pageLoader").hide();
 				setResLoc(0,0);
 			}
 		
@@ -129,14 +203,16 @@ function getAppConfig() {
 		}
 }
 function setResLoc(restId,refVa) {
+	
+	$("#pageLoader").show();
 	window.localStorage.setItem('RestInfoDetIndex',restId); // store local storage
 	var restDet = JSON.parse(window.localStorage.getItem('configData'));
 	window.localStorage.setItem('RestInfoDet',JSON.stringify(restDet.RestInfo[restId])); // store local storage
 	//alert(ref+"::"+refVa);
 	if(ref==refVa) {
 		//alert(ref+"::"+refVa);
-		window.location.href='index.html';
+		window.location.href='index.html';		
 	} else if(refVa==2){
-		window.location.href='index.html';
+		window.location.href='index.html';		
 	}
 }	

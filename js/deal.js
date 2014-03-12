@@ -1,9 +1,12 @@
 if(dataAppConfig==null) {
 	window.location.href='index.html';
 }
-
+$("#pageLoader").show();
 
 if(delitemId!=null){
+	// show when order enabled	
+	$('#checkOutButtonId').hide();
+	$('#addCartButtonId').hide();	
 	getDealItemDet();
 	
 }else if(dealId!=null && chkitemid==null){
@@ -13,7 +16,7 @@ if(delitemId!=null){
 }else if(chkitemid!=null && dealId!=null){
 	addCartItemdet();
 	$('#checkOutButtonId').hide();
-	$('#addCartButtonId').show();	
+	$('#addCartButtonId').hide();// show when order enabled	
 }else{
 	getDealItemList();
 	$('#checkOutButtonId').hide();
@@ -53,8 +56,8 @@ $("#checkOutButtonId").click(function() {
 
 function getDealItemList() {
 	//alert(serviceURL+'dealitemlist/'+restId);
-	$.getJSON(serviceURL+'dealitemlist/'+restId, function(data) {		
-		$('#employeeList li').remove();		
+	$.getJSON(serviceURL+'dealitemlist/'+restId+'/'+tabId, function(data) {		
+		$('#menuList li').remove();		
 		//alert(data.DealList);
 		var items = data.DealList;
 		if(items.length>0) {
@@ -62,14 +65,15 @@ function getDealItemList() {
 				dealItemsId=item.deal_items_id=="" ? null :1;
 				strDesc=item.item_desc;
 				strItemName=item.item_name;
-				$('#employeeList').append('<li class="ui-li-has-thumb"><a class="ui-btn ui-btn-icon-right ui-icon-carat-r" href="deal.html?delitemId='+item.item_id+'" rel="external" ><img src="'+itemImgURL+(item.item_img!=""? item.item_img:defaultImgURL)+'" style="padding:5px;">&nbsp;' + strItemName.substr(0,20)+'...&nbsp;<span style="font-size:11px; display:block; margin-left:4px; margin-top:4px;">('+ strDesc.substr(0,20) + '...)</span></a></li>');
+				$('#menuList').append('<li class="ui-li-has-thumb"><a class="ui-btn ui-btn-icon-right ui-icon-carat-r" href="deal.html?delitemId='+item.item_id+'" rel="external" ><img src="'+itemImgURL+(item.item_img!=""? item.item_img:defaultImgURL)+'"><h2>' + strItemName+'&nbsp;</h2><p>'+ strDesc + '</p></a></li>');
 			});
 		} else {
-			$('#employeeList').append('<li class="ui-li-has-thumb"><span style="color:#ff0000">No Deals Found</span></li>');
+			$('#menuList').append('<li class="ui-li-has-thumb"><span style="color:#ff0000">No Deals Found</span></li>');
 		}
 		//onclick="showDealCartAlert('+item.item_id+','+dealFlag+','+dealItemsId+')"
-		$('#employeeList').listview('refresh');
+		$('#menuList').listview('refresh');
 		headerHtml('Deal Item List');
+		$("#pageLoader").hide();
 		//$('#deallist').html('Deal Item List');
 	});
 }
@@ -78,26 +82,26 @@ function getDealItemDet() {
 	htmlVal="";
 	//alert(serviceURL+'itemdet/'+itemId);
 	$.getJSON(serviceURL+'dealitemdet/'+delitemId, function(data) {
-		$('#employeeList').hide();		
+		$('#menuList').hide();		
 		//alert(data);
 		var itemDets = data.ItemDet;
 		window.localStorage.setItem('deal_item_det',JSON.stringify(itemDets[0])); // store local storage
 		$.each(itemDets, function(index, itemDet) {
 			//alert('item page');
 			//htmlVal+='<h2>'+itemDet.item_name+'</h2>';
-			htmlVal+='<div class="item-wrap clearfix">';
-				htmlVal+=' <div class="item-image">';
+		htmlVal+='<div class="confirmation">';
+		htmlVal+='<h2>'+itemDets[0].item_name+'</h2>';
+			htmlVal+=' <div class="row_div">';
 					htmlVal+='<img src="'+itemImgURL+(itemDet.item_img!=""? itemDet.item_img:defaultImgURL)+'" alt="">';
 				htmlVal+='</div>';   
 			
-				htmlVal+='<p class="para_text">'+itemDet.item_desc+'</p>';   
+				htmlVal+='<p>'+itemDet.item_desc+'</p>';   
 				// hidden fields
 				htmlVal+='<input type="hidden" value="'+itemDet.item_name+'" name="item_name"  id="item_name"><input type="hidden" value="'+itemDet.item_id+'" name="item_id"  id="item_id"><input type="hidden" value="'+itemDet.item_desc+'" name="item_desc" id="item_desc"><input type="hidden" value="'+itemDet.item_img+'" name="item_img"  id="item_img">';
-			htmlVal+='</div>';
+			
 			
                    
-			htmlVal+='<div class="item-desc"><h3>Price';            
-				htmlVal+='AUD  <span>'+ itemDet.item_selling_price + '/-</span><h3>';
+			htmlVal+='<p><h3>Price <span>$'+ itemDet.item_selling_price + '/-</span><h3>';
 				
 
 				/* htmlVal+='<div class="item-wrap clearfix">';				 
@@ -106,13 +110,15 @@ function getDealItemDet() {
 				// hidden fields
 				htmlVal+='<input type="hidden" value="'+itemDet.item_selling_price+'" name="price" id="price">';
 			
+			htmlVal+='</p>';
+			
 			htmlVal+='</div>';
 			$('#itemDetList').html(htmlVal);
 		});	
 			
 		var carDataGetDealval = window.localStorage.getItem('dealItemsId');					
 		//alert(JSON.stringify(data.DealItemDet));
-		var dealNam = data.DealItemDet;
+		var dealNam = data.DealItemDet;		
 		$.each(dealNam, function(index, dealItem) {
 			if(carDataGetDealval!=null) {
 				var carDataGetDeal = JSON.parse(carDataGetDealval);
@@ -133,14 +139,15 @@ function getDealItemDet() {
 			}
 			
 			strDealItemName=dealItem.deal_item_name;
-			$('#dealItemList').append('<li '+tick+' class="ui-li-has-thumb"><a class="ui-btn ui-btn-icon-right '+dealSelSpan+'" href="deal.html?dealId='+dealItem.id+'" rel="external">' + strDealItemName.substr(0,20) + '...&nbsp;</a></li>');
+			//$('#dealItemList').append('<li '+tick+'><a class="ui-link-inherit '+dealSelSpan+'" href="deal.html?dealId='+dealItem.id+'" rel="external">' + strDealItemName + '&nbsp;</a></li>'); for tick button change
+			$('#dealItemList').append('<li '+tick+'><a class="ui-link-inherit" href="deal.html?dealId='+dealItem.id+'" rel="external">' + strDealItemName + '&nbsp;</a></li>');
 		});	
 			
 		$('#dealItemList').listview('refresh');
 		headerHtml(itemDets[0].item_name);
 		//$('#deallist').html(itemDets[0].item_name);
 		$("#addCartButtonId").hide();
-		
+		$("#pageLoader").hide();
 		
 	});
 }
@@ -149,17 +156,18 @@ function getSingleDealItem() {
 	//alert(serviceURL+'singledealitem/'+dealId);
 	$.getJSON(serviceURL+'singledealitem/'+dealId, function(data) {	
 		//alert(data);
-		$('#employeeList li').remove();	
+		$('#menuList li').remove();	
 		var itemDets1 = data.ItemDet;
 		//alert(data.DealTitle);
 		$.each(itemDets1, function(index, itemDet) {
 				strDealDesc=itemDet.item_desc;
 				strDealItemName=itemDet.item_name;
-				$('#employeeList').append('<li class="ui-li-has-thumb"><a class="ui-btn ui-btn-icon-right ui-icon-carat-r" href="deal.html?chkitemid='+itemDet.item_id+'&dealId='+dealId+'" rel="external" ><img src="'+itemImgURL+(itemDet.item_img!=""? itemDet.item_img:defaultImgURL)+'" style="padding:5px;">&nbsp;' + strDealItemName.substr(0,20) + '...&nbsp;<span style="font-size:11px; display:block; margin-left:4px; margin-top:4px;">('+ strDealDesc.substr(0,20) + '...)</span></a></li>');
+				$('#menuList').append('<li class="ui-li-has-thumb"><a class="ui-btn ui-btn-icon-right ui-icon-carat-r" href="deal.html?chkitemid='+itemDet.item_id+'&dealId='+dealId+'" rel="external" ><img src="'+itemImgURL+(itemDet.item_img!=""? itemDet.item_img:defaultImgURL)+'"><h2>' + strDealItemName + '</h2><p >'+ strDealDesc + '</p></a></li>');
 			});
-			//$('#employeeList').listview('refresh');
+			//$('#menuList').listview('refresh');
 			//$('#deallist').html(data.DealTitle);
 			headerHtml(data.DealTitle);
+			$("#pageLoader").hide();
 	});
 }
 
@@ -167,17 +175,18 @@ function addCartItemdet() {
 	htmlVal="";
 	//alert(serviceURL+'itemdet/'+itemId);
 	$.getJSON(serviceURL+'dealitemdet/'+chkitemid+'/'+dealId, function(data) {
-		$('#employeeList').hide();		
+		$('#menuList').hide();		
 		//alert(data.DealTitle);
 		var itemDets = data.ItemDet;
 		$.each(itemDets, function(index, itemDet) {
 			//alert('item page');
-			htmlVal+='<div class="item-desc"><h3>'+itemDet.item_name+'</h3></div>';
-			htmlVal+='<div class="item-wrap clearfix">';
-				htmlVal+=' <div class="item-image">';
+				htmlVal+='<div class="confirmation">';
+				htmlVal+='<h2>'+itemDet.item_name+'</h2>';
+			
+				htmlVal+=' <div class="row_div">';
 					htmlVal+='<img src="'+itemImgURL+(itemDet.item_img!=""? itemDet.item_img:defaultImgURL)+'" alt="">';
 				htmlVal+='</div>';  				
-				htmlVal+='<p class="para_text">'+itemDet.item_desc+'</p>';   
+				htmlVal+='<p>'+itemDet.item_desc+'</p>';   
 				// hidden fields
 				htmlVal+='<input type="hidden" value="'+itemDet.item_name+'" name="item_name"  id="item_name"><input type="hidden" value="'+itemDet.item_id+'" name="item_id"  id="item_id"><input type="hidden" value="'+itemDet.item_desc+'" name="item_desc" id="item_desc"><input type="hidden" value="'+itemDet.item_img+'" name="item_img"  id="item_img">';
 				
@@ -185,6 +194,7 @@ function addCartItemdet() {
 			$('#itemDetList').html(htmlVal);
 			//$('#deallist').html(data.DealTitle+' [Deal]');
 			headerHtml(data.DealTitle+' [Deal]');
+			$("#pageLoader").hide();
 		});
 	});
 }

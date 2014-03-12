@@ -11,7 +11,7 @@
 	<link rel="stylesheet" href="_assets/css/jqm-demos.css">
      <link rel="stylesheet" href="css/slider_banner.css" />
 
-
+<link rel="stylesheet" href="css/themes/default/fonts.css" />	
 
 
 	<script src="js/jquery.js"></script>
@@ -75,20 +75,25 @@
 	<div data-role="page"  >
 		<!-- content -->
 		<div class="ui-content" role="main" >
-		
-		<div id="pizzalist">
-			<ul id="employeeList" data-role="listview"  data-inset="true" ></ul>
-		</div>
-		<div id="itemDetList"></div>
-		<span id="itemDetAlert" class="clearfix" ></span>
-		<div id="pizzalist2">
-			<ul id="dealItemList" data-role="listview"  data-inset="true" data-theme="a" ></ul>
-		</div>
-		<a href="#" id="addCartButtonId" data-role="button"  data-theme="a" class="ui-top" >Add to cart</a>
-		
-        <a href="#" id="checkOutButtonId" data-role="button"  data-theme="a" rel="external">Checkout</a>
-       
-		
+			<div id="pageLoader" class="ui-loader ui-loader-verbose">		
+			<img src="img/loader.gif" /> <span>Loading....	</span>	
+			</div>
+			<div class="deal_wrap">
+			<div id="pizzalist">				
+				<ul id="menuList" data-role="listview"  data-inset="true" class="cremove"></ul>
+			</div>
+			<div id="itemDetList"></div>
+			<span id="itemDetAlert"></span>
+			<div id="pizzalist2">				
+				<ul id="dealItemList" data-role="listview"  data-inset="true" data-theme="a" ></ul>
+			</div>
+			<div class="getdirect white-btn">
+			<a href="#" id="addCartButtonId" data-role="button"  data-theme="a" class="ui-btn" >Add to cart</a>
+			</div>
+			<div class="getdirect white-btn">
+			<a href="#" id="checkOutButtonId" data-role="button"  data-theme="a" class="ui-btn" rel="external">Checkout</a>
+			</div>
+			</div>
 		
 	</div>
 		<!-- /content -->

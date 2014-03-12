@@ -20,17 +20,22 @@ function clear_spaces(formName)
 	}
 }/*----- Trim all the text boxes Only-----*/
 
-function checkText(obj)
+function checkText(obj,defaultTxt)
 {
-/*-----The trim function has to be called before calling this function -----*/
-/*---- Later , type will be passed as a parameter so that the type will be like email, phone no , numeric, character ---*/
+	if(defaultTxt!=obj.value) {
+		/*-----The trim function has to be called before calling this function -----*/
+		/*---- Later , type will be passed as a parameter so that the type will be like email, phone no , numeric, character ---*/
 
-if(obj.value == "")
-	{
+		if(obj.value == "")
+			{
+				return false;
+			}
+		else {
+			return true;
+		}
+	} else {
 		return false;
 	}
-else
-	return true;
 }/*---- Checks the text box for empty string -----*/
 
 function checkConfPassword(obj1,obj2)
@@ -141,29 +146,37 @@ function emailCheck(email)
 	return isValid;
 }/*----- Email-----*/
 
-function nameCheck(name)
+function nameCheck(name,defaultTxt)
   {
-	//alert(email);
-	var validCharRegExp = /^[A-Za-z\' -]+$/;
-//var validCharRegExp = /^\w(\.?\w)*@\w(\.?[-\w])*\.([a-z]{3}(\.[a-z]{2})?|[a-z]{2}(\.[a-z]{2})?)$/i;
-	
+	if(defaultTxt!=name) {
+		//alert(email);
+		var validCharRegExp = /^[A-Za-z\' -]+$/;
+	//var validCharRegExp = /^\w(\.?\w)*@\w(\.?[-\w])*\.([a-z]{3}(\.[a-z]{2})?|[a-z]{2}(\.[a-z]{2})?)$/i;
+		
 
-	var isValid = (validCharRegExp.test(name));
-	
-	
-	return isValid;
+		var isValid = (validCharRegExp.test(name));
+		
+		
+		return isValid;
+	} else {
+		return false;
+	}
 }/*----- Email-----*/
 
-function phoneCheck(phone) {
-	//alert(email);
-	var validCharRegExp = /^[0-9]+$/;
-//var validCharRegExp = /^\w(\.?\w)*@\w(\.?[-\w])*\.([a-z]{3}(\.[a-z]{2})?|[a-z]{2}(\.[a-z]{2})?)$/i;
-	
+function phoneCheck(phone,defaultTxt) {
+	if(defaultTxt!=name) {
+		//alert(email);
+		var validCharRegExp = /^[0-9]+$/;
+	//var validCharRegExp = /^\w(\.?\w)*@\w(\.?[-\w])*\.([a-z]{3}(\.[a-z]{2})?|[a-z]{2}(\.[a-z]{2})?)$/i;
+		
 
-	var isValid = (validCharRegExp.test(phone));
-	
-	
-	return isValid;
+		var isValid = (validCharRegExp.test(phone));
+		
+		
+		return isValid;
+	} else {
+		return false;
+	}
 }
 
   function openCalendar(element)
@@ -775,3 +788,23 @@ else
    return false;
 }
 /*************** Alpha numeric check End *****************************************/
+
+
+function OnFocusName1(idValOut,ValOut,typedVal) {
+	//alert(idValOut+','+ValOut+','+typedVal);
+	if(typedVal==ValOut) {
+		document.getElementById(idValOut).value='';
+	} else {
+		document.getElementById(idValOut).value=typedVal;
+	}
+	
+}
+
+function OnBlurName1(idValOut,ValOut,typedVal) {
+	//alert(idValOut+','+ValOut+','+typedVal);
+	if(typedVal==ValOut || typedVal=="") {
+		document.getElementById(idValOut).value=ValOut;
+	} else {
+		document.getElementById(idValOut).value=typedVal;
+	}
+}

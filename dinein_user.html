@@ -46,7 +46,9 @@
 					$( this ).addClass( "ui-btn-active" );
 				}
 			});
-			$( "#registerFrmId ul li div.ui-checkbox" ).css({"width":'20px',"float":'left'});
+			$(".ui-input-text").removeClass("ui-corner-all");
+			$(".ui-checkbox label").removeClass("ui-corner-all");
+			$(".checkremo .ui-btn").css({ "background":"none","border":"none", "text-shadow":"none","color":"#fff","font-family":"Arial","overflow":"visible"});
 		});
 		
 		
@@ -82,33 +84,40 @@
 	<div data-role="page"  >
 		<!-- content -->
 		<div class="ui-content" role="main" >
-
-			<div id="pageLoader" class="ui-loader">		
-			<img src="img/loader.gif" />		
+			<div class="terms" style="background:none">
+				<div id="pageLoader" class="ui-loader ui-loader-verbose">		
+				<img src="img/loader.gif" /> <span>Loading....	</span>	
+				</div>
+				<form id="registerFrmId" name="registerFrmId">
+				
+					<div id="bookingDate" style="color:#000;background:#fff;padding:10px"></div>
+					<div id="numGuest" style="color:#000;background:#fff;padding:10px;margin-bottom:20px"></div>
+					
+					<input type="text" id="fname" name="fname" value="First Name" required onfocus="OnFocusName1('fname','First Name',this.value)" onblur="OnBlurName1('fname','First Name',this.value)">
+					
+					<input type="text" id="lname" name="lname" value="Surname" required onfocus="OnFocusName1('lname','Surname',this.value)" onblur="OnBlurName1('lname','Surname',this.value);checkTerm()">
+					
+					<input type="tel" id="mobile" name="mobile" value="Mobile Number" required maxlength="12" onfocus="OnFocusName1('mobile','Mobile Number',this.value)" onblur="OnBlurName1('mobile','Mobile Number',this.value)">
+					
+					<input type="email" id="email" name="email" value="Email" required onfocus="OnFocusName1('email','Email',this.value)" onblur="OnBlurName1('email','Email',this.value);checkTerm()">	
+						
+					<input type="hidden" id="comments" name="comments" required value="Notes to Restaurant" onfocus="OnFocusName1('comments','Notes to Restaurant',this.value)" onblur="OnBlurName1('comments','Notes to Restaurant',this.value)">	
+					
+					<div class="checkremo" id="termLiId"><input name="term" id="term" data-mini="true" type="checkbox" required>
+					 <label for="term">Accept Terms and Conditions</label>
+					</div>	
+					
+				
+				<input type="hidden" id="time_validate" name="time_validate" readonly>
+				<input type="hidden" id="booking_date" name="booking_date" readonly>
+				<input type="hidden" id="num_guest" name="num_guest" readonly>
+				<input type="hidden" id="seating" name="seating" readonly>
+				<!--<input type="hidden" id="user_id" name="user_id" readonly>-->
+				 <div class="getdirect white-btn">
+					<a href="#" id="sinupButtonId" data-role="button" data-theme="c" class="ui-btn">Book Now</a>
+				</div>
+				</form>
 			</div>
-			<form id="registerFrmId" name="registerFrmId">
-			<ul data-role="listview"  data-inset="true" data-theme="c">
-				<li id="bookingDate"></li>
-				<li id="numGuest"></li>
-				<li><b>First Name</b></li>
-				<li><input type="text" id="fname" name="fname" required></li>
-				<li><b>Surname</b></li>
-				<li><input type="text" id="lname" name="lname" required></li>
-				<li><b>Mobile Number</b></li>
-				<li><input type="tel" id="mobile" name="mobile" required maxlength="12"></li>
-				<li><b>Email</b></li>
-				<li><input type="email" id="email" name="email" required></li>					
-				<li id="termLiId"><input type="checkbox" id="term" name="term" required> <div style="text-indent:15px;font-weight:bold;"><a href="terms.html" rel="external" style="color: #333333;">Accept Terms and Conditions </a></div></li>	
-				<li><b>Notes to Restaurant</b></li>
-				<li><input type="text" id="comments" name="comments" required></li>	
-			</ul>
-			<input type="hidden" id="time_validate" name="time_validate" readonly>
-			<input type="hidden" id="booking_date" name="booking_date" readonly>
-			<input type="hidden" id="num_guest" name="num_guest" readonly>
-			<input type="hidden" id="seating" name="seating" readonly>
-			<!--<input type="hidden" id="user_id" name="user_id" readonly>-->
-			<a href="#" id="sinupButtonId" data-role="button" data-theme="c" class="ui-rfloat ui-top gra_but">Submit</a>
-			</form>
 		</div>
 		<!-- /content -->
 

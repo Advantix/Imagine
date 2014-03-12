@@ -12,10 +12,10 @@ function userValidate() {
 	var errorMessage = "";
 	var frm = document.registerFrmId;	
 	
-	error[0] = nameCheck(frm.fname.value) ? "" : "This is not a valid first name";
-	error[1] = nameCheck(frm.lname.value) ? "" :  "This is not a valid Surname";
-	error[2] = phoneCheck(frm.mobile.value) ? "" :  "Please provide mobile number";
-	error[3] = checkText(frm.email) ? "" :  "Email Address is empty!";
+	error[0] = nameCheck(frm.fname.value,'First Name') ? "" : "This is not a valid first name";
+	error[1] = nameCheck(frm.lname.value,'Surname') ? "" :  "This is not a valid Surname";
+	error[2] = phoneCheck(frm.mobile.value,'Mobile Number') ? "" :  "Please provide mobile number";
+	error[3] = checkText(frm.email,'Email') ? "" :  "Email Address is empty!";
 	if(error[3]=="") {
 		error[3]=emailCheck(frm.email.value) ? "" : "This is not valid email address";	
 	}
@@ -55,7 +55,7 @@ $('#registerFrmId').submit(function(){
 	//alert(serviceURL+'register_post');
 	$.ajax({
 		type: 'POST',
-		data: postData+'&store_id='+store_id,
+		data: postData+'&store_id='+store_id+'&restaurant_id='+restId,
 		url: serviceURL+'register',
 		success: function(data){
 			//alert(JSON.stringify(data));
@@ -64,27 +64,27 @@ $('#registerFrmId').submit(function(){
 				console.log(data);
 				//alert(data.user_data.userid);
 				//alert("User Registered Successfully, the password sent to your email");
-				$("#pageLoader").hide();				
+				//$("#pageLoader").hide();				
 				bookReservation(postData,data.user_data.userid);
 			}else if(data.response == 2) {
 				window.localStorage.setItem('userData',JSON.stringify(data));
 				console.log(data);
 				//alert(data.user_data.userid);
 				//alert("User Updated Successfully");
-				$("#pageLoader").hide();
+				//$("#pageLoader").hide();
 				bookReservation(postData,data.user_data.userid);				
 			}else if(data.response == 3) {
 				window.localStorage.setItem('userData',JSON.stringify(data));
 				console.log(data);
 				//alert(data.user_data.userid);
 				//alert("You are not changed User information");
-				$("#pageLoader").hide();
+				//$("#pageLoader").hide();
 				bookReservation(postData,data.user_data.userid);				
 			}else{
 				//window.localStorage.setItem('userData',JSON.stringify(data));
 				console.log(data);				
 				alert(data.response);
-				$("#pageLoader").hide();
+				//$("#pageLoader").hide();
 				//bookReservation(postData,'');		
 			}	
 		},
@@ -115,6 +115,7 @@ function showPrevValue(){
 		$('#time_validate').val(bookVal.time_val.replace('_',':'));
 		$('#booking_date').val(bookVal.booking_date);
 		$('#num_guest').val(bookVal.num_gust_online);
+		$('#comments').val(bookVal.comments);//alert(bookVal.seating);
 		$('#seating').val(bookVal.seating);
 		//alert(bookVal.time_val);
 	}
@@ -165,4 +166,19 @@ function bookReservation(postData,userId) {
 	});
 	
 	return false;
+}
+
+function checkTerm(idVal,val) {
+	//alert(val);
+	var userDataval = window.localStorage.getItem('userData');
+	if(userDataval!=null) {
+		em=$('#email').val();
+		sur=$('#lname').val();
+		//alert(userData.user_data[idVal]+":"+val);
+		if(em!=userData.user_data.email || sur!=userData.user_data.lname) {
+			$('#termLiId').show();
+		} else {
+			$('#termLiId').hide();
+		}
+	}
 }

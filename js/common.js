@@ -37,10 +37,10 @@ if(dataAppConfigval==null) {
 if(dataAppConfigval!=null) {	
 	var dataAppConfig = JSON.parse(dataAppConfigval);
 	
-	/*$("#bodyId").css("background-image", "url("+dataAppConfig.AppConfig.bg_image+")");
+	$("#bodyId").css("background-image", "url("+dataAppConfig.AppConfig.bg_image+")");
 	$("#bodyId").css("background-repeat", "repeat-x");
 	$("#bodyId").css("background-position", "top");
-	$("#bodyId").css("background-color", "#000");*/
+	$("#bodyId").css("background-color", "#000");
 	$(document).ready(function() {
         document.title = dataAppConfig.AppConfig.store_name;
 		
@@ -52,15 +52,16 @@ if(dataAppConfigval!=null) {
 
 
 function getMenuTabDefId() {
-	$.getJSON(serviceURL+'tab/'+store_id+'/'+restId, function(data) {	
-		var tabs = data.TabInfo;
+	$.getJSON(serviceURL+'home/'+restId, function(data) {	
+		var dealMenuDeal=data.DefaultMenu;
 		//alert(tabs);
-		if(tabs[0]!=null) {
-			var tabIdVal = tabs[0]['cat_id'];
+		if(dealMenuDeal!=null) {
+			var tabIdVal = dealMenuDeal.id;
 			
 		} else {
 			var tabIdVal = 0;
 		}
+		window.localStorage.setItem('homeDash',JSON.stringify(data)); 	
 		window.localStorage.setItem('tabIdSess',tabIdVal); 	
 	});
 	
@@ -70,11 +71,11 @@ function headerHtml(titVal) {
 	$(document).ready(function() {
 		//alert(titVal);
 		if(file_name!='index.html') {
-		htmlData='<a href="../toolbar/" data-rel="back" class="ui-btn ui-btn-left ui-alt-icon ui-nodisc-icon ui-corner-all ui-btn-icon-notext ui-icon-back">Back</a>';
+		htmlData='<a href="../toolbar/" data-rel="back" class="ui-btn-left ui-alt-icon"><img src="images/arrow-back.png" alt=""></a>';
 		} else {
 			htmlData='';
 		}
-		htmlData+='<a href="#" data-rel="refresh" class="ui-btn ui-btn-right ui-alt-icon ui-nodisc-icon ui-corner-all ui-btn-icon-notext ui-icon-refresh" onclick="refresh();">Refresh</a>';
+		htmlData+='<a href="#" class="ui-btn-right ui-alt-icon" onclick="refresh();"><img src="images/arrow-refresh.png" alt=""></a>';
 		htmlData+='<h1 class="ui-title" role="heading" aria-level="1">'+titVal+'</h1>';
 
 		$('#headerContId').html(htmlData);
@@ -186,7 +187,8 @@ function refresh() { // used in showMenu.html
 		RestIndex = window.localStorage.getItem('RestInfoDetIndex');
 		//alert(RestIndex);
 		if(RestIndex!=null) {
-			window.localStorage.setItem('RestInfoDet',JSON.stringify(restDet.RestInfo[RestIndex])); 
+			window.localStorage.setItem('RestInfoDet',JSON.stringify(restDet.RestInfo[RestIndex]));
+			window.localStorage.removeItem('bookingDetailsArray');
 			// store local storage
 		}
 		history.go(0);
@@ -278,15 +280,17 @@ if(resData!=null) {
 	buttonArray[2]=0;
 }
 
-footHtml='<div class="ui-grid-c center" style="text-align:center;">';
-	footHtml+='<div class="ui-block-a"><a href="index.html" rel="external"  class="ui-shadow ui-btn ui-corner-all ui-icon-home ui-btn-icon-notext ui-btn-inline">Button</a></div>';
-	footHtml+='<div class="ui-block-b"><a href="info.html" rel="external" class="ui-shadow ui-btn ui-corner-all ui-icon-arrow-l ui-btn-icon-notext ui-icon-info">Button</a></div>';
+footHtml='<div data-role="footer" data-position="fixed" data-theme="b" class="footer_menu" >';
+footHtml+=' <div data-role="navbar" style="text-align:center;">';
+footHtml+=' <ul>';
+	footHtml+='<li><a href="index.html" rel="external"  ><div class="footer-icon"><img src="images/home.png" alt=""></div>Home</a></li>';
+	footHtml+='<li><a href="myaccount.html" rel="external" class="ui-btn-active"><div class="footer-icon"><img src="images/menus.png" alt=""></div>Menu</a></li>';
 	if(buttonArray[2]==1) {	
-		footHtml+='<div class="ui-block-c"><a href="dinein.html" rel="external" class="ui-shadow ui-btn ui-corner-all ui-icon-grid ui-btn-icon-notext ui-icon-phone">Button</a></div>';
+		footHtml+='<li><a href="dinein.html" rel="external" ><div class="footer-icon"><img src="images/reser.png" alt=""></div>Reservations</a></li>';
 	} else {
-		footHtml+='<div class="ui-block-c"><a class="ui-shadow ui-btn ui-corner-all ui-icon-grid ui-btn-icon-notext ui-icon-phone">Button</a></div>';
+		footHtml+='<li><a href="#" rel="external"><div class="footer-icon"><img src="images/reser.png" alt=""></div>Reservations</a></li>';
 	}
-	footHtml+='<div class="ui-block-d"><a href="myaccount.html" rel="external" class="ui-shadow ui-btn ui-corner-all ui-icon-arrow-r ui-btn-icon-notext ui-icon-user">Button</a></div>';
+	footHtml+='<li><a href="info.html" rel="external"  ><div class="footer-icon"><img src="images/info.png" alt=""></div>Info</a></li>';
 footHtml+='</div>';
 		
 

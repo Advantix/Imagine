@@ -11,7 +11,7 @@
 	<link rel="stylesheet" href="_assets/css/jqm-demos.css">
      <link rel="stylesheet" href="css/slider_banner.css" />
 
-
+<link rel="stylesheet" href="css/themes/default/fonts.css" />
 
 
 	<script src="js/jquery.js"></script>
@@ -40,6 +40,9 @@
 					$( this ).addClass( "ui-btn-active" );
 				}
 			});
+			$(".ui-input-text").removeClass("ui-corner-all");
+			$(".ui-checkbox label").removeClass("ui-corner-all");
+			$(".checkremo .ui-btn").css({ "background":"none","border":"none", "text-shadow":"none","color":"#fff","font-family":"Arial","overflow":"visible"});
 		});
 		
 		
@@ -74,55 +77,52 @@
 	<div data-role="page"  >
 		<!-- content -->
 		<div class="ui-content" role="main" >
-			<div id="pageLoader" class="ui-loader">		
-			<img src="img/loader.gif" />		
-			</div>
+			<div class="terms" style="background:none">
+				<div id="pageLoader" class="ui-loader">		
+				<img src="img/loader.gif" />		
+				</div>
 
-			<a href="#" id="loginBtnId" data-role="button" data-icon="star" data-theme="c" class="ui-rfloat ui-top gra_but" rel="external">Login</a>
-			<a href="#" id="signupBtnId" data-role="button" data-icon="grid" data-theme="c" class="ui-rfloat ui-top gra_but" rel="external">Signup</a>	
-			<a href="#" id="addrBtnId" data-role="button" data-icon="alert" data-theme="c" class="ui-rfloat ui-top gra_but" rel="external">Address</a>	
+				<a href="#" id="loginBtnId" data-role="button" data-icon="star" data-theme="c" class="ui-rfloat ui-top gra_but" rel="external">Login</a>
+				<a href="#" id="signupBtnId" data-role="button" data-icon="grid" data-theme="c" class="ui-rfloat ui-top gra_but" rel="external">Signup</a>	
+				<a href="#" id="addrBtnId" data-role="button" data-icon="alert" data-theme="c" class="ui-rfloat ui-top gra_but" rel="external">Address</a>	
 
-			<form id="registerFrmId" name="registerFrmId" style="display:none">
-			<ul data-role="listview"  data-inset="true" data-theme="c">
-				<li><b>First Name</b></li>
-				<li><input type="text" id="fname" name="fname" required></li>
-				<li><b>Last Name</b></li>
-				<li><input type="text" id="lname" name="lname" required></li>
-				<li><b>Email</b></li>
-				<li><input type="email" id="email" name="email" required></li>
-				<li><b>Mobile Number</b></li>
-				<li><input type="tel" id="mobile" name="mobile" required maxlength="12"></li>				
-			</ul>
-			<input type="hidden" id="user_id" name="user_id" readonly>
-			<a href="#" id="sinupButtonId" data-role="button" data-theme="c" class="ui-rfloat ui-top gra_but">Submit</a>
-			</form>
-			<form id="loginFrmId" style="display:none">
-			<ul data-role="listview"  data-inset="true" data-theme="c">				
-				<li><b>Email</b></li>
-				<li><input type="email" id="email" name="email" required></li>
-				<li><b>Password</b></li>
-				<li><input type="password" id="password" name="password" required></li>		
+				<form id="registerFrmId" name="registerFrmId" style="display:none">
 				
-			</ul>
-			<a href="#" id="loginButtonId" data-role="button"  data-theme="c" class="ui-rfloat ui-top gra_but">Submit</a>
-
-			</form>
-			<form id="addrFrmId" style="display:none">
-			<ul data-role="listview"  data-inset="true" data-theme="c" >
-				<li><b>Street Number</b></li>
-				<li><input type="text" id="street_number" name="street_number" required></li>
-				<li><b>Street Name</b></li>
-				<li><input type="text" id="street_name" name="street_name" required></li>
-				<li><b>Suburb</b></li>
-				<li><input type="text" id="suburb" name="suburb" required></li>
-				<li><b>Postcode</b></li>
-				<li><input type="text" id="postcode" name="postcode" required></li>				
-			</ul>
-			<input type="hidden" id="add_user_id" name="add_user_id" readonly>
-			<a href="#" id="addrButtonId" data-role="button"  data-theme="c" class="ui-rfloat ui-top gra_but">Save</a>
-			</form>
-		
-		
+					
+					<input type="text" id="fname" name="fname" value="First Name" required onfocus="OnFocusName1('fname','First Name',this.value)" onblur="OnBlurName1('fname','First Name',this.value)">
+					
+					<input type="text" id="lname" name="lname" value="Surname" required onfocus="OnFocusName1('lname','Surname',this.value)" onblur="OnBlurName1('lname','Surname',this.value)">
+					
+					<input type="email" id="email_reg" name="email" value="Email" required onfocus="OnFocusName1('email_reg','Email',this.value)" onblur="OnBlurName1('email_reg','Email',this.value)">
+					
+					<input type="tel" id="mobile" name="mobile" value="Mobile Number" required maxlength="12" onfocus="OnFocusName1('mobile','Mobile Number',this.value)" onblur="OnBlurName1('mobile','Mobile Number',this.value)">				
+				
+				<input type="hidden" id="user_id" name="user_id" readonly>
+				<div class="getdirect white-btn">
+					<a href="#" id="sinupButtonId" data-role="button" data-theme="c" class="ui-btn">Submit</a>
+				</div>
+				</form>
+				<form id="loginFrmId"  style="display:none">
+				
+					<input type="email" id="email" name="email" value="Email" required onfocus="OnFocusName1('email','Email',this.value)" onblur="OnBlurName1('email','Email',this.value)">
+					<input type="password" id="password" name="password" value="Password" required onfocus="OnFocusName1('password','Password',this.value)" onblur="OnBlurName1('password','Password',this.value)">		
+					
+				<div class="getdirect white-btn">
+					<a href="#" id="loginButtonId" data-role="button"  data-theme="c" class="ui-btn">Login</a>
+				</div>
+				</form>
+				<form id="addrFrmId" name="addrFrmId" style="display:none">
+				
+					<input type="text" id="street_number" name="street_number" value="Street Number" required onfocus="OnFocusName1('street_number','Street Number',this.value)" onblur="OnBlurName1('street_number','Street Number',this.value)">					
+					<input type="text" id="street_name" name="street_name" value="Street Name" required onfocus="OnFocusName1('street_name','Street Name',this.value)" onblur="OnBlurName1('street_name','Street Name',this.value)">					
+					<input type="text" id="suburb" name="suburb" value="Suburb" required onfocus="OnFocusName1('suburb','Suburb',this.value)" onblur="OnBlurName1('suburb','Suburb',this.value)">					
+					<input type="text" id="postcode" name="postcode" value="Postcode" required onfocus="OnFocusName1('postcode','Postcode',this.value)" onblur="OnBlurName1('postcode','Postcode',this.value)">
+					<input type="hidden" id="add_user_id" name="add_user_id" readonly>
+					<div class="getdirect white-btn">
+						<a href="#" id="addrButtonId" data-role="button"  data-theme="c" class="ui-btn">Save</a>
+					</div>
+				</form>
+			</div>
 	</div>
 		<!-- /content -->
 

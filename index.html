@@ -11,7 +11,7 @@
 	<link rel="stylesheet" href="_assets/css/jqm-demos.css">
      <link rel="stylesheet" href="css/slider_banner.css" />
 
-
+<link rel="stylesheet" href="css/themes/default/fonts.css" />
 
 
 	<script src="js/jquery.js"></script>
@@ -75,17 +75,21 @@
 	<!-- page -->
 	<div data-role="page" >
 		<!-- content -->
-		<div class="ui-content" role="main" >
+		<div class="ui-content menu_wrap" role="main" >
+			<div id="pageLoader" class="ui-loader ui-loader-verbose">		
+				<img src="img/loader.gif" /> <span>Loading....	</span>	
+				</div>
 			<form>
 				<div id="resLocationId" style="text-align:center;margin-top:10px;"></div>	
 			</form>
-			<div class="callbacks_container" id="dealDivId">
+			<!--<div class="callbacks_container" id="dealDivId">
 				<ul class="rslides" id="slider4">
 				   
 				</ul>
 			</div>		
 			<div class="clearfix"></div>
-			<div id="employeeList"></div>
+			<div id="employeeList"></div>-->
+			<div id="homeDashId" ></div>
 		</div>
 		<!-- /content -->
 

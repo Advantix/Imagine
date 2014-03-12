@@ -43,17 +43,52 @@ function showOrderinfo() {
 		var orderDets = data.order;
 		$.each(orderDets, function(index, item) {		
 				if(bokord==null) {
-					htmlData='<h4>Your booking has been confirmed</h4>';
+					htmlData=' <h2>Reservation Confirmation</h2>';
+					htmlData+='<p>Thank you, you request has been confirmed.<br> Please see reservation details below:</p>';
 				} else {
-					htmlData='<h4>Your booking details</h4>';
+					htmlData='<h2>Your booking details</h2>';
 				}
-				htmlData+='<div style="margin:20px 0 0 0;">';
-				htmlData+='<h4>Confirmation Number: '+item.booking_id+'<h4></div>';    
-				htmlData+='<p class="itemp">'+getDateFormat(item.booking_date)+'</p>';				
-				htmlData+='<div style="margin:20px 0;"><h4 class="itemp">'+item.num_guest+' Guests for '+(item.breakfast!="" ? item.breakfast+'am' : (item.lunch!="" ? item.lunch+'pm' : (item.dinner!="" ? item.dinner+'pm': "")))+'</h4>';
-				htmlData+='<h4 class="itemp">Name: <span>'+item.fname+'</span></h4>';    
-				htmlData+='<h4 class="itemp">Mobile: <span>'+item.mobile+'</span></h4>';    
-				htmlData+='<h4 class="itemp">Notes: <span>'+item.comments+'</span></h4>';    
+				
+				htmlData+=' <div class="clearfix infowarps">';
+				
+				htmlData+=' <div class="row_div"><label>Confirmation Number </label>';
+				htmlData+='  <p class="info_right">'+item.booking_id+'</p></div>';
+				
+				htmlData+=' <div class="row_div"><label>Name </label>';
+				htmlData+='  <p class="info_right">'+item.fname+' <br>'+item.mobile+'</p></div>';
+				
+				htmlData+=' <div class="row_div"><label>Guests </label>';
+				htmlData+='  <p class="info_right">'+item.num_guest+' Guests</p></div>';
+				
+				htmlData+=' <div class="row_div"><label>Time </label>';
+				htmlData+='  <p class="info_right">'+(item.breakfast!="" ? item.breakfast+'am' : (item.lunch!="" ? item.lunch+'pm' : (item.dinner!="" ? item.dinner+'pm': "")))+'</p></div>';
+				
+				htmlData+=' <div class="row_div"><label>Date </label>';
+				htmlData+='  <p class="info_right">'+getDateFormat(item.booking_date)+'</p></div>';
+				
+				htmlData+=' <div class="row_div"><label>Request </label>';
+				htmlData+='  <p class="info_right">'+item.comments+'</p></div>';
+				
+				htmlData+='</div>';
+				
+				htmlData+=' <div class="clearfix infowarps">';
+				
+				htmlData+='<h2>'+resData.restaurant_name+'</h2>';  
+				
+				htmlData+='<div class="row_div"><h2>Location</h2></div>';
+				htmlData+='<div class="row_div"><label>Address </label>';
+				htmlData+='<p class="info_right">';
+				htmlData+=resData.address_line1+', '+resData.address_line2+', <br> '+resData.suburb+',<br> '+resData.state+' <br> '+resData.postcode; 
+				htmlData+='</p></div>';
+				
+				htmlData+='<div class="row_div"><label>Phone </label>  ';           
+						   htmlData+='<p class="info_right"> '+resData.phone+'</p></div> ';
+				
+				
+				htmlData+='<div class="row_div getdirect" >';
+					htmlData+='<a href="restaurant_details.html" id="restMap" class="ui-btn" style="background: none repeat scroll 0 0 #00AB21;color:#fff" rel="external">Get Directions</a>';
+				htmlData+='</div>';
+				
 				htmlData+='</div>';
 			
 			$('#orderDetList').html(htmlData);
