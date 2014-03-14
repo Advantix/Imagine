@@ -209,7 +209,7 @@ $("#bookingButtonId").click(function() {
 			//alert(serviceURL+'timevalidate/'+time+'/'+booking_date+'/'+restId+'/'+num_guest+'/'+store_id);
 			$.getJSON(serviceURL+'timevalidate/'+time+'/'+booking_date+'/'+restId+'/'+num_guest+'/'+store_id, function(data) {
 				//alert(data.response);
-				if(data.response==0) {
+				if(data.response==='A') {
 					seatTxtBoxVal=$('#seating_text').val();//alert(seatTxtBoxVal);
 					if(seatTxtBoxVal=="") {
 						var seating = $('select[name="seating"]').val(); //alert(seating);
@@ -225,8 +225,12 @@ $("#bookingButtonId").click(function() {
 					window.localStorage.setItem('bookingDetailsArray',JSON.stringify(bookingDetails)); // store local storage	
 					window.location.href='dinein_user.html';	
 					
-				} else {
+				} else if(data.response==='NA') {
 					alert('No seats available your chosen time');
+					$('#pageLoader').hide();
+				} else {
+					available = data.response;
+					alert('Only '+available+' seats available');
 					$('#pageLoader').hide();
 				}
 

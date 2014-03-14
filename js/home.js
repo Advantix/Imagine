@@ -204,7 +204,7 @@ function getAppConfig() {
 }
 function setResLoc(restId,refVa) {
 	
-	$("#pageLoader").show();
+	//$("#pageLoader").show();
 	window.localStorage.setItem('RestInfoDetIndex',restId); // store local storage
 	var restDet = JSON.parse(window.localStorage.getItem('configData'));
 	window.localStorage.setItem('RestInfoDet',JSON.stringify(restDet.RestInfo[restId])); // store local storage
