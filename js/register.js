@@ -44,10 +44,10 @@ $("#addrBtnId").click(function() {
 });
 
 var formActive=window.localStorage.getItem('form_active');
-
+var form_active_url = getUrlVars()["form_active"];
 //var formInActive=window.localStorage.getItem('form_inactive');
 //alert(formInActive);
-if(formActive==null) {	
+if(formActive==null && form_active_url==null) {	
 	$("#addrBtnId").hide();
 	$("#logoutBtnId").hide();
 	$("#userName").hide();
@@ -65,7 +65,7 @@ if(formActive==null) {
 	} else {		
 		//headerHtml('Login');
 		$("#loginBtnId").hide();	
-		var form_active_url = getUrlVars()["form_active"];
+		
 		if(form_active_url!=null) {
 			showPrevValue(form_active_url);
 			$('#'+form_active_url).show();
