@@ -63,8 +63,9 @@ function getMenuTab() {
 		if(tabs!="") {
 			tabHtml='';
 			$.each(tabs, function(index, tab) {
-				//alert(index);					
-				tabHtml+='<a class="ui-btn ui-mini" href="showMenu.html?tabId='+tab.cat_id+'" rel="external">' + tab.category_name + '</a>';
+				//alert(index);		
+				if(menuId==tab.cat_id) { sty="select";} else {sty="";}			
+				tabHtml+='<a class="ui-btn ui-mini '+sty+'" href="showMenu.html?tabId='+tab.cat_id+'" rel="external">' + tab.category_name + '</a>';
 			});
 			$('#MenuCatID').html(tabHtml);
 		} else {

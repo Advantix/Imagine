@@ -1,9 +1,9 @@
-var itemImgURL = "http://advantixcrm.com/prj/mitech/images/item/";
+var itemImgURL = "http://sandbox.bestmenu.com.au/images/item/";
 var defaultImgURL = "logo_miapps.png";
-var serviceAppURL = "http://advantixcrm.com/prj/mitech/index.php/api/appconfig/Mw";
+var serviceAppURL = "http://sandbox.bestmenu.com.au/index.php/api/appconfig/Mw";
 
 var store_id= 'Mw';
-var serviceURL = "http://advantixcrm.com/prj/mitech/index.php/api/";
+var serviceURL = "http://sandbox.bestmenu.com.au/index.php/api/";
 
 var resDatavl = window.localStorage.getItem('RestInfoDet');//alert(resDatavl);
 var restId;
@@ -20,7 +20,7 @@ if(resDatavl!=null) {
 	}
 	
 	//alert(menuId+":"+restId);
-	var serviceMenuURL = "http://advantixcrm.com/prj/mitech/index.php/api/catlist/Mw/"+restId+"/"+menuId;
+	var serviceMenuURL = "http://sandbox.bestmenu.com.au/index.php/api/catlist/Mw/"+restId+"/"+menuId;
 }
 
 var dataAppConfigval = window.localStorage.getItem('configData');
@@ -284,13 +284,13 @@ footHtml='<div data-role="footer" data-position="fixed" data-theme="b" class="fo
 footHtml+=' <div data-role="navbar" style="text-align:center;">';
 footHtml+=' <ul>';
 	footHtml+='<li><a href="index.html" rel="external"  ><div class="footer-icon"><img src="images/home.png" alt=""></div>Home</a></li>';
-	footHtml+='<li><a href="myaccount.html" rel="external" class="ui-btn-active"><div class="footer-icon"><img src="images/menus.png" alt=""></div>Menu</a></li>';
+	footHtml+='<li><a href="showMenu.html" rel="external" class="ui-btn-active"><div class="footer-icon"><img src="images/menus.png" alt=""></div>Menu</a></li>';
 	if(buttonArray[2]==1) {	
 		footHtml+='<li><a href="dinein.html" rel="external" ><div class="footer-icon"><img src="images/reser.png" alt=""></div>Reservations</a></li>';
 	} else {
 		footHtml+='<li><a href="#" rel="external"><div class="footer-icon"><img src="images/reser.png" alt=""></div>Reservations</a></li>';
 	}
-	footHtml+='<li><a href="info.html" rel="external"  ><div class="footer-icon"><img src="images/info.png" alt=""></div>Info</a></li>';
+	footHtml+='<li><a href="myaccount.html" rel="external"  ><div class="footer-icon"><img src="images/info.png" alt=""></div>Info</a></li>';
 footHtml+='</div>';
 		
 

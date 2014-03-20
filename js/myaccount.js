@@ -36,7 +36,7 @@ function getMenuList() {
 			//$('#employeeList').append('<li><a href="order_info.html" class="ui-link-inherit" rel="external">Order History</a></li>');
 			$('#employeeList').append('<li><a href="confirm_booking.html" class="ui-link-inherit" rel="external">Reservation History</a></li>');
 			//$('#employeeList').append('<li><a href="checkout.html" class="ui-link-inherit" rel="external">View Cart</a></li>');
-			$('#employeeList').append('<li><a href="change_password.html" class="ui-link-inherit" rel="external">Change Password</a></li>');
+			//$('#employeeList').append('<li><a href="change_password.html" class="ui-link-inherit" rel="external">Change Password</a></li>');
 		}
 		$('#employeeList').append('<li><a href="dinein.html" class="ui-link-inherit" rel="external">Reservation</a></li>');
 		$('#employeeList').append('<li><a href="showMenu.html" class="ui-link-inherit" rel="external">Menu</a></li>');

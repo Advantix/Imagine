@@ -4838,7 +4838,7 @@ html body .ui-group-theme-a .ui-bar-inherit h1{ color:#FFF; font-weight:normal; 
 }
 #map-page, #map-canvas { width: 100%; height: 100%; padding: 0;}
 
-#pizzalist{ background:#fff;}
+#pizzalist{ background:#fff; text-transform:uppercase;}
 
 #pizzalist > .ui-listview { padding:6px; margin:0;}
 
@@ -4912,6 +4912,7 @@ button .ui-btngreen {   color:#fff;}
 
 .ui-navbar .ui-mini { width:40%; display: inline-block; line-height:48px; margin-right:20px; }
 .ui-navbar .ui-mini{ font-family: 'gothic' !important; font-size:20px; padding:0; font-weight:normal; text-transform:uppercase;} 
+.ui-navbar .ui-mini.select{background:#ccc;}
 
 .footer_menu >.ui-navbar .ui-btn { font-family:Arial, Helvetica, sans-serif; font-size:0.8em;} 
 
@@ -4933,9 +4934,9 @@ background-position:50%;
 
 
 .menu-choose-wp { width:48%; height:180px; float:left; margin-right:3%; margin-bottom:1%; }
-.menu-img{height:130px;}
+.menu-img{height:104px;}
 .menu-img img{ height:100%;  width:100%;}
-.menu-title { font-size:16px; font-family: 'gothic' !important; text-align: center; text-shadow:none; background:#fff;
+.menu-title { font-size:16px; font-family: 'gothic' !important; text-align: center; text-shadow:none; background:#ccc;
 margin:0; padding:6px 0;}
 .menu-title a { text-decoration:none; color:#000;}
 
@@ -5014,8 +5015,8 @@ a.arrival-time span, a.guset-no span{ font-size:18px; color:#278a32;}
 	}
 	.confirmation label {width: 6em;}
 	/*.ingre_label{  display: block; width:13em;}*/
-	.menu-choose-wp { width:47%; height:156px; float:left; margin-right:15px; margin-bottom:15px; }
-	.menu-title { font-size:14px; font-family: 'gothic' !important; text-align: center; text-shadow:none; background:#fff;
+	.menu-choose-wp { width:47%; height:126px; float:left; margin-right:15px; margin-bottom:15px; }
+	.menu-title { font-size:14px; font-family: 'gothic' !important; text-align: center; text-shadow:none; background:#ccc;
 	margin:0; padding:4px 0;}
 	
 	.ui-navbar .ui-mini{ font-size:16px;  line-height: 38px; margin-bottom:0px; } 

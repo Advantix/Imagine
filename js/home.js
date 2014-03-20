@@ -37,28 +37,28 @@ function showDashPage() {
 				htmlHome='';
 				if(dealDefLen>0) {
 					htmlHome='<div class="menu-choose-wp">';
-						htmlHome+='<div class="menu-img"><img src="'+itemImgURL+dealDef[0]['item_img']+'" alt=""></div>';
+						htmlHome+='<div class="menu-img"><a href="deal.html?delitemId='+dealDef[0]['item_id']+'" rel="external"><img src="'+itemImgURL+dealDef[0]['item_img']+'" alt=""></a></div>';
 						htmlHome+='<p class="menu-title"><a href="deal.html?delitemId='+dealDef[0]['item_id']+'" rel="external">'+dealDef[0]['item_name']+'</a></p>';
 					htmlHome+='</div>';
 					
 					htmlHome+='<div class="menu-choose-wp" style="margin:0">';
-						htmlHome+='<div class="menu-img"><img src="'+itemImgURL+dealDef[1]['item_img']+'" alt=""></div>';
+						htmlHome+='<div class="menu-img"><a href="deal.html?delitemId='+dealDef[1]['item_id']+'" rel="external"><img src="'+itemImgURL+dealDef[1]['item_img']+'" alt=""></a></div>';
 						htmlHome+='<p class="menu-title"><a href="deal.html?delitemId='+dealDef[1]['item_id']+'" rel="external">'+dealDef[1]['item_name']+'</a></p>';
 					htmlHome+='</div>';
 				}
 				htmlHome+='<div class="menu-choose-wp" >';
-					htmlHome+='<div class="menu-img"><img src="images/reservation.jpg" alt=""></div>';
+					htmlHome+='<div class="menu-img"><a href="dinein.html" rel="external"><img src="images/reservation.jpg" alt=""></a></div>';
 					htmlHome+='<p class="menu-title"><a href="dinein.html" rel="external">Reservation</a></p>';
 				htmlHome+='</div>';
 								
 				htmlHome+='<div class="menu-choose-wp" style="margin:0">';
-					htmlHome+='<div class="menu-img"><img src="images/menu.jpg" alt=""></div>';
+					htmlHome+='<div class="menu-img"><a href="showMenu.html" rel="external"><img src="images/menu.jpg" alt=""></a></div>';
 					htmlHome+='<p class="menu-title"><a href="showMenu.html" rel="external">Menu</a></p>';
 				htmlHome+='</div>';
 				
 				if(dealCatLen>0) {
 					htmlHome+='<div class="menu-choose-wp">';
-						htmlHome+='<div class="menu-img"><img src="'+itemImgURL+dealCat[0]['subcat_image']+'" alt=""></div>';
+						htmlHome+='<div class="menu-img"><a href="showMenu.html?catId='+dealCat[0]['sub_id']+'&tabId='+dealCat[0]['menu_id']+'" rel="external"><img src="'+itemImgURL+dealCat[0]['subcat_image']+'" alt=""></a></div>';
 						htmlHome+='<p class="menu-title"><a href="showMenu.html?catId='+dealCat[0]['sub_id']+'&tabId='+dealCat[0]['menu_id']+'" rel="external">'+dealCat[0]['subcat_name']+'</a></p>';
 					htmlHome+='</div>';
 				}
@@ -66,17 +66,17 @@ function showDashPage() {
 				if(dealMenuDeal!=null) {
 					if(dealCatLen>0) {st='style="margin:0"'}else{st='';}
 					htmlHome+='<div class="menu-choose-wp" '+st+'>';
-						htmlHome+='<div class="menu-img"><img src="'+itemImgURL+dealMenuDeal.category_image+'" alt=""></div>';
+						htmlHome+='<div class="menu-img"><a href="deal.html?tabId='+dealMenuDeal.id+'" rel="external"><img src="'+itemImgURL+dealMenuDeal.category_image+'" alt=""></a></div>';
 						htmlHome+='<p class="menu-title"><a href="deal.html?tabId='+dealMenuDeal.id+'" rel="external">'+dealMenuDeal.category_name+'</a></p>';
 					htmlHome+='</div>';
 				}
 				htmlHome+='<div class="menu-choose-wp">';
-					htmlHome+='<div class="menu-img"><img src="images/help.jpg" alt=""></div>';
+					htmlHome+='<div class="menu-img"><a href="help.html" rel="external"><img src="images/help.jpg" alt=""></a></div>';
 					htmlHome+='<p class="menu-title"><a href="help.html" rel="external">Help</a></p>';
 				htmlHome+='</div>';
 				
 				htmlHome+='<div class="menu-choose-wp" style="margin:0">';
-					htmlHome+='<div class="menu-img"><img src="images/location.jpg" alt=""></div>';
+					htmlHome+='<div class="menu-img"><a href="restaurant_details.html" rel="external"><img src="images/location.jpg" alt=""></a></div>';
 					htmlHome+='<p class="menu-title"><a href="restaurant_details.html" rel="external">Location</a></p>';
 				htmlHome+='</div><span class="menu-choose-wp"></span>';
 				
