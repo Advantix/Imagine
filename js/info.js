@@ -11,7 +11,7 @@ $.ajaxSetup({ cache: false });
 
 
 function getInfoMenuList() {
-	headerHtml('Information');
+	headerHtml('');
 	//$.getJSON(serviceURL, function(data) {		
 		
 		//var menus = data.MenuInfo;

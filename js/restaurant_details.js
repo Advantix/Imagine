@@ -3,7 +3,9 @@ if(dataAppConfig==null || resData==null) {
 }
 
 // Address box
-htmlData='<h2>'+resData.restaurant_name+'</h2>';  
+htmlData='<h2>'+resData.restaurant_name+'</h2>'; 
+htmlData+='<p>The best fine dining and pizza restaurant in the Illawarra. An experience of real fine food.</p>'; 
+htmlData+='<div class="res_location"><img src="images/location.jpg"  alt=""></div>';
 htmlData+='<div class="clearfix infowarps">';
 htmlData+='<div class="row_div"><h2>Location</h2></div>';
 htmlData+='<div class="row_div"><label>Address </label>';
@@ -11,64 +13,11 @@ htmlData+='<p class="info_right">';
 htmlData+=resData.address_line1+', '+resData.address_line2+', <br> '+resData.suburb+',<br> '+resData.state+' <br> '+resData.postcode; 
 htmlData+='</p></div>';
 htmlData+='<div class="row_div"><label>Phone </label>  ';           
-           htmlData+='<p class="info_right"> '+resData.phone+'</p></div> ';
+           htmlData+='<p class="info_right"> '+resData.phone+'</p> <a href="map.html" rel="external" style="float:right;" class="ui-btn ui-btn-inline">View Map</a></div> ';
 htmlData+='</div>';
 $('#addressDiv').html(htmlData);
 	
 
-// Map box
-
-	// JSON
-	var data = JSON.parse('[{"address":"'+resData.address_line1+', '+resData.address_line2+', '+resData.suburb+', '+resData.state+' , '+resData.postcode+'","content":"'+resData.restaurant_name+' ('+resData.restaurant_location+'), '+resData.address_line1+', '+resData.address_line2+', '+resData.suburb+', '+resData.state+' , '+resData.postcode+'","status":"live"}]');
-
-	var $map = $('.gmap');
-	
-
-	// Json Loop
-	$.each(data, function(key, val) {
-		$map.gmap3({
-			marker:{
-				values:[{
-					address:val.address,
-					events: {
-						click: function(marker, event, context) {
-
-							gmap_clear_markers();
-							
-							 $map.gmap3({
-								map:{
-								  options:{
-									center:event.latLng,
-									zoom: 15
-								  }
-								}
-							 });                        
-
-							$(this).gmap3({
-								overlay:{
-									address:val.address,
-									options:{
-										content:  '<div class="infobox">'+val.content+'</div>',
-										offset:{
-											y:-10,
-											x:-(val.content.length*3)
-										}
-									}
-								}
-							});
-						}
-					}
-				}]
-			}
-		});
-	});
-
-	// Function Clear Markers
-	function gmap_clear_markers() {
-		$('.infobox').each(function() {
-			$(this).remove();
-		});
-	}
 //alert(resData.sitting_status);
 sitStaVa = resData.sitting_status;
 sittingStaArr = sitStaVa.split('-');
@@ -129,7 +78,7 @@ $('#DinnerOpeningHoursDiv').html(htmlDatadelivery);
 	$('#dineId').hide();
 	$('#DinnerOpeningHoursDiv').hide();
 }
-headerHtml('Restaurant Details');
+headerHtml('');
 
 function checkCloseDate(str,end,na) {
 	if(na==0) {

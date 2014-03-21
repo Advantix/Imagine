@@ -739,7 +739,6 @@ select,
 textarea,
 button,
 .ui-btn {
-	/*font-size: 1em;*/
 	font-size: 1em;
 	line-height: 1.3;
 	font-family: 'gothic',Arial, Helvetica, sans-serif /*{global-font-family}*/; 
@@ -863,11 +862,10 @@ label.ui-btn {
 .ui-btn-icon-top:after,
 .ui-btn-icon-bottom:after,
 .ui-btn-icon-notext:after {
-	background-image:url(../../../images/arrow.png);
-	/*background-color: 					#000 {global-icon-color}*/;
+	background-color: 					#000 /*{global-icon-color}*/;
 	/*background-color: 			rgba(0,0,0,.3) */
-	/*{global-icon-disc};
-	background-color: 					rgba(178,178,178,1);*/
+	/*{global-icon-disc}*/;
+	background-color: 					rgba(178,178,178,1);
 	background-position: center center;
 	background-repeat: no-repeat;
 	-webkit-border-radius: 1em;
@@ -1359,7 +1357,16 @@ div.ui-mobile-viewport {
 	overflow: visible;
 	overflow-x: hidden;
 }
-
+@media screen and (orientation: portrait) {
+	.ui-mobile .ui-page {
+		min-height: 420px;
+	}
+}
+@media screen and (orientation: landscape) {
+	.ui-mobile .ui-page {
+		min-height: 300px;
+	}
+}
 /* Fouc */
 .ui-mobile-rendering > * {
 	visibility: hidden;
@@ -1472,7 +1479,8 @@ div.ui-mobile-viewport {
 .ui-footer:empty {
 	min-height: 2.6875em;
 }
-.ui-footer .ui-title,.ui-header .ui-title {
+.ui-header .ui-title,
+.ui-footer .ui-title {
 	font-size: 1em;
 	min-height: 1.1em;
 	text-align: center;
@@ -1588,7 +1596,6 @@ div.ui-mobile-viewport {
 .ui-btn-icon-top:after,
 .ui-btn-icon-bottom:after,
 .ui-btn-icon-notext:after {
-	background-image:url(../../../images/arrow.png);
 	content: "";
 	position: absolute;
 	display: block;
@@ -2477,7 +2484,57 @@ button.ui-btn-icon-notext,
 .ui-field-contain:last-child {
 	border-bottom-width: 0;
 }
-
+@media (min-width: 28em) {
+	.ui-field-contain,
+	.ui-mobile fieldset.ui-field-contain {
+		padding: 0;
+		margin: 1em 0;
+		border-bottom-width: 0;
+	}
+	.ui-field-contain:before,
+	.ui-field-contain:after {
+		content: "";
+		display: table;
+	}
+	.ui-field-contain:after {
+		clear: both;
+	}
+	.ui-field-contain > label,
+	.ui-field-contain .ui-controlgroup-label,
+	.ui-field-contain > .ui-rangeslider > label {
+		float: left;
+		width: 20%;
+		margin: .5em 2% 0 0;
+	}
+	.ui-popup .ui-field-contain > label,
+	.ui-popup .ui-field-contain .ui-controlgroup-label,
+	.ui-popup .ui-field-contain > .ui-rangeslider > label {
+		float: none;
+		width: auto;
+		margin: 0 0 .4em;
+	}
+	.ui-field-contain > label + [class*="ui-"],
+	.ui-field-contain .ui-controlgroup-controls {
+		float: left;
+		width: 78%;
+		-webkit-box-sizing: border-box;
+		-moz-box-sizing: border-box;
+		-ms-box-sizing: border-box;
+		box-sizing: border-box;
+	}
+	/* ui-hide-label deprecated in 1.4. TODO: Remove in 1.5 */
+	.ui-hide-label > label + [class*="ui-"],
+	.ui-hide-label .ui-controlgroup-controls,
+	.ui-popup .ui-field-contain > label + [class*="ui-"],
+	.ui-popup .ui-field-contain .ui-controlgroup-controls {
+		float: none;
+		width: 100%;
+	}
+	.ui-field-contain > label + .ui-btn-inline {
+		width: auto;
+		margin-right: .625em;
+	}
+}
 /* content configurations. */
 .ui-grid-a,
 .ui-grid-b,
@@ -2568,7 +2625,17 @@ li.ui-block-e {
 	width: 100%;
 	float: none; 
 }
-
+/* preset breakpoint to switch to stacked grid styles below 35em (560px) */
+@media (max-width: 35em) {
+	.ui-responsive > .ui-block-a,
+	.ui-responsive > .ui-block-b,
+	.ui-responsive > .ui-block-c,
+	.ui-responsive > .ui-block-d,
+	.ui-responsive > .ui-block-e {
+		width: 100%; 
+		float: none; 
+	}
+}
 /* fixed page header & footer configuration */
 .ui-header-fixed,
 .ui-footer-fixed {
@@ -3698,7 +3765,7 @@ fieldset.ui-controlgroup {
 .ui-listview .ui-li-has-thumb .ui-li-thumb {
 	position: absolute;
 	left: 0;
-	top: 16px;
+	top: 30px;
 	max-height: 5em;
 	max-width: 5em;
 }
@@ -3726,13 +3793,13 @@ fieldset.ui-controlgroup {
 	white-space: nowrap;
 }
 .ui-listview > li p {
-	font-size: .70em;
+	font-size: .75em;
 	font-weight: normal;
 	display: block;
 	margin: .6em 0;
 	text-overflow: ellipsis;
-	/*overflow: hidden;*/
-	white-space:normal; 
+	overflow: hidden;
+	white-space:nowrap; 
 }
 .ui-listview .ui-li-aside {
 	position: absolute;
@@ -3985,7 +4052,14 @@ div.ui-slider-switch.ui-mini {
 .ui-field-contain div.ui-slider-switch {
 	margin: 0;
 }
-	
+@media (min-width: 28em) {
+	/* ui-hide-label deprecated in 1.4. TODO: Remove in 1.5 */
+	.ui-field-contain div.ui-slider-switch,
+	.ui-field-contain.ui-hide-label div.ui-slider-switch {
+		display: inline-block;
+		width: 5.8em;
+	}
+}	
 /* slider tooltip
 -----------------------------------------------------------------------------------------------------------*/
 .ui-slider-popup {
@@ -4091,7 +4165,7 @@ textarea.ui-input-text {
 	min-height: 2.2em;
 	text-align: left; /* Opera aligns type="date" right by default */
 	border: 0;
-	/*background: transparent none;*/
+	background: transparent none;
 	-webkit-appearance: none;
 	-webkit-border-radius: inherit;
 	border-radius: inherit;
@@ -4260,7 +4334,19 @@ for Android 4.1 */
 	padding: 1px;
 	text-indent: 1em; /* Override this to center text if you use a label other than "off" */
 }
-
+@media (min-width: 28em) {
+	.ui-field-contain > label + .ui-flipswitch {
+		display: inline-block;
+		width: 5.875em; /* If you override the width for .ui-flipswitch you should repeat the same value here */
+		-webkit-box-sizing: content-box;
+		-moz-box-sizing: content-box;
+		-ms-box-sizing: content-box;
+		box-sizing: content-box;
+	}
+	.ui-field-contain .ui-flipswitch.ui-flipswitch-active {
+		width: 1.875em;
+	}
+}	
 .ui-table {
 	border: 0;
 	border-collapse: collapse;
@@ -4300,7 +4386,66 @@ for Android 4.1 */
 .ui-table-columntoggle {
 	clear: both;
 }
-
+/* Hide all prioritized columns by default */
+@media only all {
+	th.ui-table-priority-6,
+	td.ui-table-priority-6,
+	th.ui-table-priority-5,
+	td.ui-table-priority-5,
+	th.ui-table-priority-4,
+	td.ui-table-priority-4,
+	th.ui-table-priority-3,
+	td.ui-table-priority-3,
+	th.ui-table-priority-2,
+	td.ui-table-priority-2,
+	th.ui-table-priority-1,
+	td.ui-table-priority-1 {
+		display: none;
+	}
+}
+/* Preset breakpoints if ".ui-responsive" class added to table */
+/* Show priority 1 at 320px (20em x 16px) */
+@media screen and (min-width: 20em) {
+	.ui-table-columntoggle.ui-responsive th.ui-table-priority-1,
+	.ui-table-columntoggle.ui-responsive td.ui-table-priority-1 {
+		display: table-cell;
+	}
+}
+/* Show priority 2 at 480px (30em x 16px) */
+@media screen and (min-width: 30em) {
+	.ui-table-columntoggle.ui-responsive th.ui-table-priority-2,
+	.ui-table-columntoggle.ui-responsive td.ui-table-priority-2 {
+		display: table-cell;
+	}
+}
+/* Show priority 3 at 640px (40em x 16px) */
+@media screen and (min-width: 40em) {
+	.ui-table-columntoggle.ui-responsive th.ui-table-priority-3,
+	.ui-table-columntoggle.ui-responsive td.ui-table-priority-3 {
+		display: table-cell;
+	}
+}
+/* Show priority 4 at 800px (50em x 16px) */
+@media screen and (min-width: 50em) {
+	.ui-table-columntoggle.ui-responsive th.ui-table-priority-4,
+	.ui-table-columntoggle.ui-responsive td.ui-table-priority-4 {
+		display: table-cell;
+	}
+}
+/* Show priority 5 at 960px (60em x 16px) */
+@media screen and (min-width: 60em) {
+	.ui-table-columntoggle.ui-responsive th.ui-table-priority-5,
+	.ui-table-columntoggle.ui-responsive td.ui-table-priority-5 {
+		display: table-cell;
+	}
+}
+/* Show priority 6 at 1,120px (70em x 16px) */
+@media screen and (min-width: 70em) {
+	.ui-table-columntoggle.ui-responsive th.ui-table-priority-6,
+	.ui-table-columntoggle.ui-responsive td.ui-table-priority-6 {
+		display: table-cell;
+	}
+}
 /* Unchecked manually: Always hide */
 .ui-table-columntoggle th.ui-table-cell-hidden,
 .ui-table-columntoggle td.ui-table-cell-hidden,
@@ -4321,6 +4466,42 @@ for Android 4.1 */
 .ui-table-reflow td .ui-table-cell-label,
 .ui-table-reflow th .ui-table-cell-label { 
 	display: none;
+}
+/* Mobile first styles: Begin with the stacked presentation at narrow widths */ 
+@media only all {
+	/* Hide the table headers */ 
+	.ui-table-reflow thead td, 
+	.ui-table-reflow thead th {
+		display: none;
+	}
+	/* Show the table cells as a block level element */ 
+	.ui-table-reflow td,
+	.ui-table-reflow th { 
+		text-align: left;
+		display: block;
+	}
+	/* Add a fair amount of top margin to visually separate each row when stacked */  
+	.ui-table-reflow tbody th {
+		margin-top: 3em;
+	}
+	/* Make the label elements a percentage width */ 
+	.ui-table-reflow td .ui-table-cell-label,
+	.ui-table-reflow th .ui-table-cell-label { 
+		padding: .4em; 
+		min-width: 30%; 
+		display: inline-block;
+		margin: -.4em 1em -.4em -.4em;
+	}
+	/* For grouped headers, have a different style to visually separate the levels by classing the first label in each col group */ 
+	.ui-table-reflow th .ui-table-cell-label-top,
+	.ui-table-reflow td .ui-table-cell-label-top {
+		display: block;
+		padding: .4em 0;
+		margin: .4em 0;
+		text-transform: uppercase;
+		font-size: .9em;
+		font-weight: normal;
+	}
 }
 
 /* Panel */
@@ -4393,7 +4574,19 @@ for Android 4.1 */
 	-moz-transition: -moz-transform 300ms ease;
 	transition: transform 300ms ease;
 }
-
+/* Fix for Windows Phone issue #6349: unset the transition for transforms in case of fixed toolbars. */
+@media screen and ( max-device-width: 768px ) {
+	.ui-page-header-fixed .ui-panel-animate.ui-panel-wrapper,
+	.ui-page-footer-fixed .ui-panel-animate.ui-panel-wrapper,
+	.ui-panel-animate.ui-panel-fixed-toolbar {
+		-ms-transition: none;
+	}
+	/* We need a transitionend event ... */
+	.ui-panel-animate.ui-panel-fixed-toolbar {
+		-ms-transition: -ms-transform 1ms;
+		-ms-transform: rotate(0deg);
+	}
+}
 /* Hardware acceleration for smoother transitions on WebKit browsers */
 .ui-panel-animate.ui-panel:not(.ui-panel-display-reveal) {
 	-webkit-backface-visibility: hidden;
@@ -4520,7 +4713,23 @@ for Android 4.1 */
 	width: auto;
 }
 /* Responsive: wrap on wide viewports once open */
-
+@media (min-width:55em) {
+	.ui-responsive-panel .ui-panel-page-content-open.ui-panel-page-content-position-left {
+		margin-right: 17em;
+	}
+	.ui-responsive-panel .ui-panel-page-content-open.ui-panel-page-content-position-right {
+		margin-left: 17em;
+	}
+	.ui-responsive-panel .ui-panel-page-content-open {
+		width: auto;	
+	}
+	.ui-responsive-panel .ui-panel-dismiss-display-push,
+	.ui-responsive-panel.ui-page-active ~ .ui-panel-dismiss-display-push {
+		display: none;
+	}
+	
+	
+}
 
 .ui-tabs {
 	position: relative;/* position: relative prevents IE scroll bug (element with position: relative inside container with overflow: auto appear as "fixed") */
@@ -4530,7 +4739,7 @@ for Android 4.1 */
 
 /*------------- my style ----------------*/
 .myleft { float:left; width:73%; } .myright { float:left; width:21%; text-align:center}
-.imgshow { height:100%; overflow:hidden;} .imgshow img{ width:100%; }
+.imgshow { height:200px; overflow:hidden;} .imgshow img{ width:100%; }
 
 #cremove.ui-listview > li h1, #cremove.ui-listview > li h2, #cremove.ui-listview > li h3{
 margin: 0 0 0.3em ;   font-size:1.3em;}
@@ -4586,7 +4795,7 @@ p.info_right{  display: block; margin:0; padding:0; float:left; text-align:left 
 
 .infowarps { border-bottom:1px solid #358c47; width:100%;}
 
-.row_div img{ width:100%; border:1px solid #ccc; margin-top:6px;}
+.row_div img{ width:100%; border:1px solid #000; margin-top:6px;}
 
 
 
@@ -4695,24 +4904,19 @@ button .ui-btngreen {   color:#fff;}
 .footer_menu.ui-page-theme-b .ui-btn, html .footer_menu.ui-bar-b .ui-btn, html .footer_menu.ui-body-b .ui-btn, html body.footer_menu .ui-group-theme-b .ui-btn,  .footer_menu.ui-page-theme-b .ui-btn:visited, html .footer_menu.ui-bar-b .ui-btn:visited, html .footer_menu .ui-body-b .ui-btn:visited, html body .footer_menu .ui-group-theme-b.ui-btn:visited, html head + body .footer_menu.ui-btn.ui-btn-b:visited{
   background: none repeat scroll 0 0 #000 !important;
   border-color: #000 !important;
-  color: #FFFFFF; font-size:0.6em;
+  color: #FFFFFF;
   text-shadow: 0 1px 0 #111111;
- /*gokul*/ padding:0; text-transform:uppercase;
 
 }
 
 
 .ui-navbar .ui-mini { width:40%; display: inline-block; line-height:48px; margin-right:20px; }
 .ui-navbar .ui-mini{ font-family: 'gothic' !important; font-size:20px; padding:0; font-weight:normal; text-transform:uppercase;} 
-.ui-navbar .ui-mini.select{background:#c4c4c4;}
+.ui-navbar .ui-mini.select{background:#ccc;}
 
 .footer_menu >.ui-navbar .ui-btn { font-family:Arial, Helvetica, sans-serif; font-size:0.8em;} 
 
 .terms .ui-input-text input[type="text"] { height:46px;  font-size:16px; color:#808080;  }
-/*gokul*/.terms .ui-input-text input[type="tel"] { height:46px;  font-size:16px; color:#808080;  }
-/*gokul*/.terms .ui-input-text input[type="email"] { height:46px;  font-size:16px; color:#808080;  }
-/*gokul*/.terms .ui-input-text input[type="password"] { height:46px;  font-size:16px; color:#808080;  }
-
 .terms .ui-input-text { margin-bottom:20px;}
 
 .checkremo .ui-btn.ui-checkbox-off:after {
@@ -4726,6 +4930,8 @@ background-position:50%;
 .checkremo .ui-btn-icon-left { padding-left: 5em; padding-top:34px; }
 .checkremo input[type="checkbox"]{  width:40px; height:40px; }
 .checkremo .ui-mini .ui-btn-icon-left:after { left: 0!important;}
+
+
 
 .menu-choose-wp { width:48%; height:180px; float:left; margin-right:3%; margin-bottom:1%; }
 .menu-img{height:66px;}
@@ -4750,393 +4956,13 @@ margin:0; padding:6px 0;}
 
 
 /* my new style---------*/
-.ui-navbar{margin-bottom: 0px;}
+.ui-navbar{margin-bottom: 10px;}
 a.arrival-time, a.guset-no { font-weight:normal !important; font-size:28px !important; float:left; width:36%;}
 a.guset-no { float:right;}
 a.arrival-time span, a.guset-no span{ font-size:18px; color:#278a32;}
 
 .time_wrap {float:left; margin-left:15px; padding:10px;}
 
-
-
-/*--- Kathir ---*/
-.gmap {
-    width:100%;
-    height:400px;
-}
-.infobox-wrapper {
-    display:none;
-}
-.infobox {
-    border:2px solid black;
-    margin-top: 8px;
-    background:#333;
-    color:#FFF;
-    font-family:Arial, Helvetica, sans-serif;
-    font-size:12px;
-    padding: .5em 1em;
-    -webkit-border-radius: 2px;
-    -moz-border-radius: 2px;
-    border-radius: 2px;
-    text-shadow:0 -1px #000000;
-    -webkit-box-shadow: 0 0  8px #000;
-    box-shadow: 0 0 8px #000;
-}
-.res_location{ width:100%;} 
-
-.res_location img {margin:0; padding:0; width:100%;}
-#addressDiv .ui-btn { padding:0.3em 2em 0.3em 2em !important; margin-top:0 !important; background-color:#00ab21;font-family: 'gothic',Arial, Helvetica, sans-serif /*{global-font-family}*/; font-size:0.8em; text-transform:uppercase; color:#fff;}
-
-.imagineLogo img{width:35%;padding:0;margin:0px 0 0 0 !important}
-.imagineLogo  h1{padding:0;margin:0 0 0 0 !important}
-
-.ui-header .ui-title {
-	font-size: 1em; line-height:0;
-	min-height: 1.1em;
-	text-align: center;
-	display: block;
-	margin: 0 30%;
-	padding: .3em 0;
-	text-overflow: ellipsis;
-	overflow: hidden;
-	white-space: nowrap;
-	outline: 0 !important;
-}
-.header_titletext{line-height: 2em ; padding: 0.7em 0;}
-.terms_con{margin:0; padding:0; text-shadow:none; margin-left:40px; text-decoration:none; font-family: 'gothic',Arial, Helvetica, sans-serif /*{global-font-family}*/; color:#FFF;}
-.terms_con a{color:#FFF; text-shadow:none; text-decoration:none;}
-.terms_con a:hover{color:#FFF; text-decoration:underline;}
-.terms_con a:visited{color:#FFF;}
-
-@media screen and (orientation: portrait) {
-	.ui-mobile .ui-page {
-		min-height: 420px;
-	}
-}
-@media screen and (orientation: landscape) {
-	.ui-mobile .ui-page {
-		min-height: 300px;
-	}
-}
-
-@media (min-width: 20em) {
-	.ui-listview .ui-li-has-thumb > img:first-child, .ui-listview .ui-li-has-thumb > .ui-btn > img:first-child, .ui-listview .ui-li-has-thumb .ui-li-thumb {
-    left: 0;
-    max-height: 5em;
-    max-width: 5em;
-    position: absolute;
-    top: 16px;
-}
-.ui-listview > li h1,
-.ui-listview > li h2,
-.ui-listview > li h3,
-.ui-listview > li h4,
-.ui-listview > li h5,
-.ui-listview > li h6 {
-	font-size: 1em; text-transform: capitalize;
-	font-weight: normal;
-	display: block;
-	margin: 1.25em 0 1em;
-	text-overflow: ellipsis;
-	/*overflow: hidden;*/
-	white-space: nowrap;
-}
-.ui-listview > li p {text-transform:lowercase;}
-	.ui-listview > li h1, .ui-listview > li h2, .ui-listview > li h3, .ui-listview > li h4, .ui-listview > li h5, .ui-listview > li h6 {
-    display: block;
-    font-size: 1em;
-    font-weight: normal;
-    margin: 0.25em 0 1em;
-    text-overflow: ellipsis;
-    text-transform: capitalize;
-    white-space: normal;
-}
-.header_titletext{line-height:2em !important; padding: 0.7em 0 !important;}
-
-@media (min-width: 28em) {
-	.ui-field-contain,
-	.ui-mobile fieldset.ui-field-contain {
-		padding: 0;
-		margin: 1em 0;
-		border-bottom-width: 0;
-	}
-	.ui-field-contain:before,
-	.ui-field-contain:after {
-		content: "";
-		display: table;
-	}
-	.ui-field-contain:after {
-		clear: both;
-	}
-	.ui-field-contain > label,
-	.ui-field-contain .ui-controlgroup-label,
-	.ui-field-contain > .ui-rangeslider > label {
-		float: left;
-		width: 20%;
-		margin: .5em 2% 0 0;
-	}
-	.ui-popup .ui-field-contain > label,
-	.ui-popup .ui-field-contain .ui-controlgroup-label,
-	.ui-popup .ui-field-contain > .ui-rangeslider > label {
-		float: none;
-		width: auto;
-		margin: 0 0 .4em;
-	}
-	.ui-field-contain > label + [class*="ui-"],
-	.ui-field-contain .ui-controlgroup-controls {
-		float: left;
-		width: 78%;
-		-webkit-box-sizing: border-box;
-		-moz-box-sizing: border-box;
-		-ms-box-sizing: border-box;
-		box-sizing: border-box;
-	}
-	/* ui-hide-label deprecated in 1.4. TODO: Remove in 1.5 */
-	.ui-hide-label > label + [class*="ui-"],
-	.ui-hide-label .ui-controlgroup-controls,
-	.ui-popup .ui-field-contain > label + [class*="ui-"],
-	.ui-popup .ui-field-contain .ui-controlgroup-controls {
-		float: none;
-		width: 100%;
-	}
-	.ui-field-contain > label + .ui-btn-inline {
-		width: auto;
-		margin-right: .625em;
-	}
-	.header_titletext{line-height: 2em !important; padding: 0.7em 0 !important;}
-}
-@media (min-width: 30em) {
-	.ui-listview > li h1, .ui-listview > li h2, .ui-listview > li h3, .ui-listview > li h4, .ui-listview > li h5, .ui-listview > li h6 {
-    display: block;
-    font-size: 1em;
-    font-weight: normal;
-    margin: 0.25em 0 1em;
-    text-overflow: ellipsis;
-    text-transform: capitalize;
-    white-space: nowrap;
-}.header_titletext{line-height: 2em !important; padding: 0.7em 0 !important;}
-
-	}
-
-/* preset breakpoint to switch to stacked grid styles below 35em (560px) */
-@media (max-width: 35em) {
-	.ui-responsive > .ui-block-a,
-	.ui-responsive > .ui-block-b,
-	.ui-responsive > .ui-block-c,
-	.ui-responsive > .ui-block-d,
-	.ui-responsive > .ui-block-e {
-		width: 100%; 
-		float: none; 
-	}
-	/*.menu-choose-wp { width:47%; height:156px; background: #03F; color: #930; float:left; margin-right:30px; margin-bottom:24px; }*/
-	.header_titletext{line-height:2em !important; padding: 0.7em 0 !important;}
-}
-@media (min-width: 38em) {
-	.ui-responsive > .ui-block-a,
-	.ui-responsive > .ui-block-b,
-	.ui-responsive > .ui-block-c,
-	.ui-responsive > .ui-block-d,
-	.ui-responsive > .ui-block-e {
-		width: 100%; 
-		float: none; 
-	}
-	.menu-choose-wp { width:47%; height:108px;float:left; margin-right:30px; margin-bottom:24px; }
-	.menu-img { height: 112px;}
-}
-
-@media (min-width: 28em) {
-	/* ui-hide-label deprecated in 1.4. TODO: Remove in 1.5 */
-	.ui-field-contain div.ui-slider-switch,
-	.ui-field-contain.ui-hide-label div.ui-slider-switch {
-		display: inline-block;
-		width: 5.8em;
-	}
-}
-
-
-@media (min-width: 28em) {
-	.ui-field-contain > label + .ui-flipswitch {
-		display: inline-block;
-		width: 5.875em; /* If you override the width for .ui-flipswitch you should repeat the same value here */
-		-webkit-box-sizing: content-box;
-		-moz-box-sizing: content-box;
-		-ms-box-sizing: content-box;
-		box-sizing: content-box;
-	}
-	.ui-field-contain .ui-flipswitch.ui-flipswitch-active {
-		width: 1.875em;
-	}
-}	
-
-
-
-
-
-
-
-/* Hide all prioritized columns by default */
-@media only all {
-	th.ui-table-priority-6,
-	td.ui-table-priority-6,
-	th.ui-table-priority-5,
-	td.ui-table-priority-5,
-	th.ui-table-priority-4,
-	td.ui-table-priority-4,
-	th.ui-table-priority-3,
-	td.ui-table-priority-3,
-	th.ui-table-priority-2,
-	td.ui-table-priority-2,
-	th.ui-table-priority-1,
-	td.ui-table-priority-1 {
-		display: none;
-	}
-}
-/* Preset breakpoints if ".ui-responsive" class added to table */
-/* Show priority 1 at 320px (20em x 16px) */
-@media screen and (min-width: 20em) {
-	.ui-table-columntoggle.ui-responsive th.ui-table-priority-1,
-	.ui-table-columntoggle.ui-responsive td.ui-table-priority-1 {
-		display: table-cell;
-	}
-.ui-header a img {
-    margin-top: 1px;
-}
-}
-@media screen and (max-width: 30em) {
-	.imagineLogo img {
-    margin: 0 !important;
-    padding: 0;
-    width: 50%;
-}
-}
-/* Show priority 2 at 480px (30em x 16px) */
-@media screen and (min-width: 30em) {
-	.ui-table-columntoggle.ui-responsive th.ui-table-priority-2,
-	.ui-table-columntoggle.ui-responsive td.ui-table-priority-2 {
-		display: table-cell;
-	}
-
-}
-/* Show priority 3 at 640px (40em x 16px) */
-@media screen and (min-width: 40em) {
-	.ui-table-columntoggle.ui-responsive th.ui-table-priority-3,
-	.ui-table-columntoggle.ui-responsive td.ui-table-priority-3 {
-		display: table-cell;
-	}
-.ui-header a img {
-    margin-top: 3px;
-}
-}
-/* Show priority 4 at 800px (50em x 16px) */
-@media screen and (min-width: 50em) {
-	.ui-table-columntoggle.ui-responsive th.ui-table-priority-4,
-	.ui-table-columntoggle.ui-responsive td.ui-table-priority-4 {
-		display: table-cell;
-	}
-}
-/* Show priority 5 at 960px (60em x 16px) */
-@media screen and (min-width: 60em) {
-	.ui-table-columntoggle.ui-responsive th.ui-table-priority-5,
-	.ui-table-columntoggle.ui-responsive td.ui-table-priority-5 {
-		display: table-cell;
-	}
-		.ui-header .ui-title {
-    display: block;
-    font-size: 1em;
-    line-height: 0;
-    margin: 0 30%;
-    min-height: 1.1em;
-    outline: 0 none !important;
-    overflow: hidden;
-    padding: 0.01em 0;
-    text-align: center;
-    text-overflow: ellipsis;
-    white-space: nowrap;
-}
-}
-/* Show priority 6 at 1,120px (70em x 16px) */
-@media screen and (min-width: 70em) {
-	.ui-table-columntoggle.ui-responsive th.ui-table-priority-6,
-	.ui-table-columntoggle.ui-responsive td.ui-table-priority-6 {
-		display: table-cell;
-	}
-
-}
-
-
-/*---------our style-------*/
-
-
-
-
-
-/* Mobile first styles: Begin with the stacked presentation at narrow widths */ 
-@media only all {
-	/* Hide the table headers */ 
-	.ui-table-reflow thead td, 
-	.ui-table-reflow thead th {
-		display: none;
-	}
-	/* Show the table cells as a block level element */ 
-	.ui-table-reflow td,
-	.ui-table-reflow th { 
-		text-align: left;
-		display: block;
-	}
-	/* Add a fair amount of top margin to visually separate each row when stacked */  
-	.ui-table-reflow tbody th {
-		margin-top: 3em;
-	}
-	/* Make the label elements a percentage width */ 
-	.ui-table-reflow td .ui-table-cell-label,
-	.ui-table-reflow th .ui-table-cell-label { 
-		padding: .4em; 
-		min-width: 30%; 
-		display: inline-block;
-		margin: -.4em 1em -.4em -.4em;
-	}
-	/* For grouped headers, have a different style to visually separate the levels by classing the first label in each col group */ 
-	.ui-table-reflow th .ui-table-cell-label-top,
-	.ui-table-reflow td .ui-table-cell-label-top {
-		display: block;
-		padding: .4em 0;
-		margin: .4em 0;
-		text-transform: uppercase;
-		font-size: .9em;
-		font-weight: normal;
-	}
-}
-/* Fix for Windows Phone issue #6349: unset the transition for transforms in case of fixed toolbars. */
-@media screen and ( max-device-width: 768px ) {
-	.ui-page-header-fixed .ui-panel-animate.ui-panel-wrapper,
-	.ui-page-footer-fixed .ui-panel-animate.ui-panel-wrapper,
-	.ui-panel-animate.ui-panel-fixed-toolbar {
-		-ms-transition: none;
-	}
-	/* We need a transitionend event ... */
-	.ui-panel-animate.ui-panel-fixed-toolbar {
-		-ms-transition: -ms-transform 1ms;
-		-ms-transform: rotate(0deg);
-	}
-}
-
-@media (min-width:55em) {
-	.ui-responsive-panel .ui-panel-page-content-open.ui-panel-page-content-position-left {
-		margin-right: 17em;
-	}
-	.ui-responsive-panel .ui-panel-page-content-open.ui-panel-page-content-position-right {
-		margin-left: 17em;
-	}
-	.ui-responsive-panel .ui-panel-page-content-open {
-		width: auto;	
-	}
-	.ui-responsive-panel .ui-panel-dismiss-display-push,
-	.ui-responsive-panel.ui-page-active ~ .ui-panel-dismiss-display-push {
-		display: none;
-	}
-	
-	
-}
 
 /*------- Responsive----------*/
 /* Breakpoint to show as a standard table at 560px (35em x 16px) or wider */ 
@@ -5204,5 +5030,30 @@ a.arrival-time span, a.guset-no span{ font-size:18px; color:#278a32;}
 	a.guset-no { float:right;}
 	
 	a.arrival-time span, a.guset-no span{ font-size:16px; color:#278a32; padding-top:10px; display:block;}
-
+	
 }
+
+/*--- Kathir ---*/
+.gmap {
+    width:100%;
+    height:400px;
+}
+.infobox-wrapper {
+    display:none;
+}
+.infobox {
+    border:2px solid black;
+    margin-top: 8px;
+    background:#333;
+    color:#FFF;
+    font-family:Arial, Helvetica, sans-serif;
+    font-size:12px;
+    padding: .5em 1em;
+    -webkit-border-radius: 2px;
+    -moz-border-radius: 2px;
+    border-radius: 2px;
+    text-shadow:0 -1px #000000;
+    -webkit-box-shadow: 0 0  8px #000;
+    box-shadow: 0 0 8px #000;
+}
+

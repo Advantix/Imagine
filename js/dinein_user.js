@@ -102,7 +102,7 @@ showPrevValue();
 
 function showPrevValue(){	
 	//alert(JSON.stringify(userData));
-	headerHtml('Reservation Details');	
+	headerHtml('');	
 	var bookingDetailsArr = window.localStorage.getItem('bookingDetailsArray');	
 
 	if(bookingDetailsArr!=null) {

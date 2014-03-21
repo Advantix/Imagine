@@ -232,7 +232,7 @@ function getMenuItemList() {
 		htmlVal+=' </div>';
 		$('#itemDetList').html(htmlVal);
 		
-		headerHtml(itemDet.item_name);
+		headerHtml('');
 		$("#pageLoader").hide();
 	});
 }

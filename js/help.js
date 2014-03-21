@@ -11,6 +11,6 @@ $.ajaxSetup({ cache: false });
 
 
 function getInfoMenuList() {
-	headerHtml('Help');
+	headerHtml('');
 	
 }

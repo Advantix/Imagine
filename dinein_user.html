@@ -90,7 +90,7 @@
 				</div>
 				<form id="registerFrmId" name="registerFrmId">
 				
-					<div id="bookingDate" style="color:#000;background:#fff;padding:10px"></div>
+					<div id="bookingDate" style="color:#000;background:#fff; text-shadow:none;padding:10px"></div>
 					<div id="numGuest" style="color:#000;background:#fff;padding:10px;margin-bottom:20px"></div>
 					
 					<input type="text" id="fname" name="fname" value="First Name" required onfocus="OnFocusName1('fname','First Name',this.value)" onblur="OnBlurName1('fname','First Name',this.value)">
@@ -104,14 +104,16 @@
 					<input type="hidden" id="comments" name="comments" required value="Notes to Restaurant" onfocus="OnFocusName1('comments','Notes to Restaurant',this.value)" onblur="OnBlurName1('comments','Notes to Restaurant',this.value)">	
 					
 					<div class="checkremo" id="termLiId"><input name="term" id="term" data-mini="true" type="checkbox" required>
-					 <label for="term">Accept Terms and Conditions</label>
-					</div>	
+					 <label for="term" style="width:4px; padding:0;"></label>
+					</div>
+                    <div class="terms_con" >Accept&nbsp;<a href="terms.html" rel="external">Terms and Conditions</a></div>	
 					
 				
 				<input type="hidden" id="time_validate" name="time_validate" readonly>
 				<input type="hidden" id="booking_date" name="booking_date" readonly>
 				<input type="hidden" id="num_guest" name="num_guest" readonly>
 				<input type="hidden" id="seating" name="seating" readonly>
+				<input type="hidden" id="old_email" name="old_email" readonly value="">
 				<!--<input type="hidden" id="user_id" name="user_id" readonly>-->
 				 <div class="getdirect white-btn">
 					<a href="#" id="sinupButtonId" data-role="button" data-theme="c" class="ui-btn">Book Now</a>

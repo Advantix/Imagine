@@ -4,7 +4,7 @@ if(dataAppConfig==null || userData==null) {
 
 if(bokId!=null) {
 	if(bokord==null) {
-		headerHtml('Confirmation');	
+		headerHtml('Reservation');	
 	} else {
 		headerHtml('Booking Details');	
 	}

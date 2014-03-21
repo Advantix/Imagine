@@ -113,7 +113,7 @@ function getSittingName() {
 	function loadtimediv(onCh){
 		if(onCh=='drop') {
 			$('#time_validate').val('');
-			$('#displayTimeId').html('Loading...<span>Arrival Time</span>');
+			$('#displayTimeId').html('Select Arrival Time<span>Arrival Time</span>');
 		}
 		
 		numGuestSel=$( "#num_guest_online option:selected" ).val();//alert(numGuestSel);
@@ -142,18 +142,19 @@ function getSittingName() {
 				//	alert(bkfstStr);
 			//	var	bkfst=bkfstStr.split(",");
 					//alert(bkfst);
-					timHtml='<a href="#" data-rel="back" class="ui-btn ui-corner-all ui-shadow ui-btn-a ui-icon-delete ui-btn-icon-notext ui-btn-right">Close</a><div role="main" class="ui-content clearfix"><h3 class="ui-title">Change your time</h3>';
-					bkfstStrCnt=bkfstStr.length;
 					
+					bkfstStrCnt=bkfstStr.length;
+					timHtml='<a href="#" data-rel="back" class="ui-btn ui-corner-all ui-shadow ui-btn-a ui-icon-delete ui-btn-icon-notext ui-btn-right">Close</a><div role="main" class="ui-content clearfix"><h3 class="ui-title">Change your time</h3>';
 					if(bkfstStr.close_rest!==1) {
 						
 						if(bkfstStrCnt > 0) {
+							
 							i=0;
 							$.each(bkfstStr, function(index, bkfst) {
 								//alert(index+":"+bkfst);	
 								if(i==0) { pos='a';} else if(i==1){pos='b';} else if (i==2) { pos='c';}
 								i++;
-								timHtml+= '<div class="time_wrap" id="'+bkfst.replace(':','_')+'"><a href="#" class="ui-btn ui-shadow ui-corner-all" onclick=\'changecolor("'+bkfst.replace(':','_')+'")\'>'+bkfst+'</a></div>';					
+								timHtml+= '<div class="time_wrap" id="'+bkfst.replace(':','_')+'"><a href="#" class="ui-btn ui-shadow ui-corner-all" onclick=\'changecolor("'+bkfst.replace(':','_')+'")\' data-rel="back" href="#">'+bkfst+'</a></div>';					
 									//alert((bkfstStrCnt%3));
 								if(((index+1)%3)==0) {
 									//alert("dfs");
@@ -161,18 +162,42 @@ function getSittingName() {
 									i=0;
 								}
 							});
+							
+							timHtml+= '</div>';
+							$('#timediv').html(timHtml);
+							
 							var bookingDetailsArr = window.localStorage.getItem('bookingDetailsArray');	
 							if(bookingDetailsArr==null) {
-								$("#displayTimeId").html(bkfstStr[0]+'<span>Arrival Time</span>');
-								defTime=bkfstStr[0];
-								$("#time_validate").val(defTime.replace(':','_'));
+								//$("#displayTimeId").html(bkfstStr[0]+'<span>Arrival Time</span>');
+								//defTime=bkfstStr[0];
+								//$("#time_validate").val(defTime.replace(':','_'));
+								changecolor(bkfstStr[0].replace(':','_'));	
+							} else {
+								var bookVal = JSON.parse(bookingDetailsArr);
+								setSel=$('#seating').val(); 
+								dateSel=$('#booking_date').val();
+								if(bookVal.seating==setSel && bookVal.booking_date==dateSel) {
+									var labelidDef=bookVal.time_val;//alert(labelidDef);
+									changecolor(labelidDef);
+									
+								} else {
+									changecolor(bkfstStr[0].replace(':','_'));	
+								}								
+							}						
+						} else {							
+							if(seating=='bkfst') { set=0;} else if(seating=='lunch') {set=1;} else if(seating=='dinner') {set=2;}else {set='Select Sitting';}
+							timHtml+='<div class="ValidationErrors">'+sittingArr[set]+' Not Available for Selected Day</b></div>';
+							if(sittingArr[set]==null) {
+								sitVal=set;
+							} else {
+								sitVal=sittingArr[set]+' Closed';
 							}
-						} else {
-							if(seating=='bkfst') { set='Breakfast';} else if(seating=='lunch') {set='Lunch';} else if(seating=='dinner') {set='Dinner';}else {set='Select Sitting';}
-							timHtml+='<div class="ValidationErrors">'+set+' Not Available for Selected Day</b></div>';
+							$("#displayTimeId").html(sitVal+'<span>Arrival Time</span>');							
+							$("#time_validate").val('');
+							timHtml+= '</div>';
+							$('#timediv').html(timHtml);
 						}
-						timHtml+= '</div>';
-						$('#timediv').html(timHtml);
+						
 					} else {
 						timHtml+='<b class="ValidationErrors">Restaurant has been closed on selected date.</b></div>';
 						$('#timediv').html(timHtml);
@@ -196,6 +221,12 @@ function getSittingName() {
 		
 	}
 	
+$("#displayTimeId").click(function() {
+	if($('#seating').val()=="Select Sitting") {
+		alert("Please select sitting");
+		return false;
+	}
+});
 	
 $("#bookingButtonId").click(function() {	
 	

@@ -116,7 +116,7 @@ $('#registerFrmId').submit(function(){
 			}else if(data.response == 3) {
 				window.localStorage.setItem('userData',JSON.stringify(data));
 				console.log(data);
-				alert("You are not changed User information");
+				alert("You are not changed any user information");
 				$("#pageLoader").hide();
 			}else{
 				console.log(data);				
@@ -213,7 +213,8 @@ function showPrevValue(formName){
 		$('#fname').val(userData.user_data.fname);
 		$('#lname').val(userData.user_data.lname);
 		$('#email_reg').val(userData.user_data.email);
-		$('#email_reg').attr('readonly', true);
+		$('#old_email').val(userData.user_data.email);
+		//$('#email_reg').attr('readonly', true);
 		$('#mobile').val(userData.addr_data.mobile);
 	} else if(formName=="addrFrmId" || formName=="#addrFrmId") {
 		$('#add_user_id').val(userData.user_data.userid);

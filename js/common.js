@@ -38,7 +38,7 @@ if(dataAppConfigval!=null) {
 	var dataAppConfig = JSON.parse(dataAppConfigval);
 	
 	$("#bodyId").css("background-image", "url("+dataAppConfig.AppConfig.bg_image+")");
-	$("#bodyId").css("background-repeat", "repeat-x");
+	$("#bodyId").css("background-repeat", "repeat");
 	$("#bodyId").css("background-position", "top");
 	$("#bodyId").css("background-color", "#000");
 	$(document).ready(function() {
@@ -49,7 +49,6 @@ if(dataAppConfigval!=null) {
 	
 	
 } 
-
 
 function getMenuTabDefId() {
 	$.getJSON(serviceURL+'home/'+restId, function(data) {	
@@ -76,7 +75,12 @@ function headerHtml(titVal) {
 			htmlData='';
 		}
 		htmlData+='<a href="#" class="ui-btn-right ui-alt-icon" onclick="refresh();"><img src="images/arrow-refresh.png" alt=""></a>';
-		htmlData+='<h1 class="ui-title" role="heading" aria-level="1">'+titVal+'</h1>';
+		if(titVal!="") {
+			htmlData+='<h1 class="ui-title header_titletext" role="heading" aria-level="1">'+titVal+'</h1>';
+		} else {
+				
+			htmlData+='<h1 class="ui-title imagineLogo" role="heading" aria-level="1"><img src='+dataAppConfig.AppConfig.store_logo+' ></h1>';
+		}
 
 		$('#headerContId').html(htmlData);
 	});

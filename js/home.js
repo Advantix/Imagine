@@ -85,7 +85,7 @@ function showDashPage() {
 			});
 	
 	$("#pageLoader").hide();
-	headerHtml(resData.restaurant_name);
+	headerHtml('');
 	
 }
 function showHomePage() {
@@ -139,7 +139,7 @@ function showHomePage() {
 	
 		
 		$('#employeeList').append(htmlIn);	
-		headerHtml(resData.restaurant_name);
+		headerHtml('');
 }
 
 	function delortakeorder(val) {
@@ -158,7 +158,7 @@ function getAppConfig() {
 		if(data!==null) {	
 			var data = JSON.parse(data);
 			$("#bodyId").css("background-image", "url("+data.AppConfig.bg_image+")");
-			$("#bodyId").css("background-repeat", "repeat-x");
+			$("#bodyId").css("background-repeat", "repeat");
 			$("#bodyId").css("background-position", "top");
 			$("#bodyId").css("background-color", "#000");
 		
@@ -196,10 +196,10 @@ function getAppConfig() {
 		}
 		if(resData==null) {
 			if(dataAppConfig!=null) {
-				headerHtml(dataAppConfig.AppConfig.store_name);
+				headerHtml('');
 			} 
 		} else {
-			headerHtml(resData.restaurant_name);
+			headerHtml('');
 		}
 }
 function setResLoc(restId,refVa) {
