@@ -48,8 +48,12 @@
 			});
 			$(".ui-input-text").removeClass("ui-corner-all");
 			$(".ui-checkbox label").removeClass("ui-corner-all");			
-			$("#num_guest_online-button").removeClass("ui-corner-all");
+			$("#num_guest_online-button").removeClass("ui-corner-all");			
+			$("#num_guest_online-button").css("float","right");
+			$("#num_guest_online-button").addClass("drop_res");
 			$("#seating-button").removeClass("ui-corner-all");
+			$("#timediv-button").removeClass("ui-corner-all");
+			$("#timediv-button").addClass("drop_res");
 		});
 		
 		
@@ -90,19 +94,24 @@
 				<img src="img/loader.gif" /> <span>Loading....	</span>	
 				</div>
 				<form id="registerFrmId" style="display:block">
-				
-				<input type="text" id="booking_date" name="booking_date" class="one" required>
+				<div class="left_nav" onclick="dateChange('Prev')"><a href="#"><img src="images/left_nav.jpg" alt=""></a></div>
+                <div class="right_nav" onclick="dateChange('Next')"><a href="#"><img src="images/right_nav.jpg" alt=""></a></div>
+                
+				<div style="width:100%; height:74px; background:#fff;">            
+				  <p style="font-size:26px; color:#000; font-family: 'gothic'; margin:0 0 0 0; padding:10px 0 0 0; text-align:center;" id='dateP'></p>
+				  <p style="font-size:16px; color:#027e0c; text-transform:uppercase; font-family: 'gothic'; margin:5px 0 0 0; padding:0; text-align:center;" id='dayP'></p>                
+				</div>
+			
+				<input type="hidden" id="booking_date" name="booking_date" class="one" required>
 				<div id="seatingDrop"><select id="seating" name="seating" data-shadow="false" onchange="loadtimediv('drop')"></select></div>
 				<input type="hidden" name="seating_text" id="seating_text" value="">
-				<div class="clearfix" style="width:100%;">
-					<a href="#timediv" data-rel="popup" data-position-to="window" data-transition="pop"  class="ui-btn arrival-time" id="displayTimeId">Select Arrival Time<br>
-					<span>Arrival Time</span>
-					</a>
-					<a class="ui-btn guset-no" id="num_guest_online_a">Select Arrival Time</a>
-				</div>
 				
-				<input type="text" id="comments" name="comments" required value="Notes to Restaurant" onfocus="OnFocusName1('comments','Notes to Restaurant',this.value)" onblur="OnBlurName1('comments','Notes to Restaurant',this.value)">	
-				<div id="timediv" data-role="popup" data-overlay-theme="b" data-theme="a"  style="max-width:360px;"></div>
+				<select id="num_guest_online" name="num_guest_online" data-shadow="false" ></select>
+				<select id="timediv" name="timediv" data-shadow="false"  onchange="changecolor(this.value)"><option value="SA">Select Arrival Time</option></select>
+				
+				
+				<input type="text" id="comments" name="comments" required value="Additional Requests" onfocus="OnFocusName1('comments','Additional Requests',this.value)" onblur="OnBlurName1('comments','Additional Requests',this.value)">	
+				
 				 
 				<input type="hidden" name="time_validate" readonly id="time_validate" value="">			
 				<input type="hidden" id="user_id" name="user_id" readonly>

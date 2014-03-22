@@ -107,6 +107,7 @@
     -->
    <access origin="http://advantixcrm.com" /> <!-- allow local pages -->
    <access origin="http://sandbox.bestmenu.com.au" /> <!-- allow local pages -->
+   <access origin="http://www.sandbox.bestmenu.com.au" /> <!-- allow local pages -->
    <access origin="http://bestmenu.com.au" /> <!-- allow local pages -->
    <access origin="*.google.com" /> <!-- allow local pages -->
    <access origin="*.googleapis.com" /> <!-- allow local pages -->
