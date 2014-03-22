@@ -53,7 +53,7 @@ jQuery(document).ready(function () {
 	} else {
 		$('#num_guest_online').val(resData.min_gust_per_online_bk);
 		$('#num_guest_online-button span').html(resData.min_gust_per_online_bk);
-		$('#seating').val('Select Sitting');
+		$('#seating').val('0');
 		$('#seating-button span').html('Select Sitting');
 		currDate = today.getDate()+'-'+(today.getMonth()+1)+'-'+today.getFullYear();
 		$('#booking_date').val(currDate);//alert(bookVal.num_gust_online);
@@ -64,7 +64,7 @@ jQuery(document).ready(function () {
 function getNumGuest() {
 	resDataMinGuest=resData.min_gust_per_online_bk;
 	resDataMaxGuest=resData.max_gust_per_online_bk;
-	numGuestHtml='';
+	numGuestHtml='<option value="0">Select Guest</option>';
 	for(i=resDataMinGuest;i<=resDataMaxGuest;i++){	
 		
 		numGuestHtml+='<option value='+i+'>'+i+'</option>';
@@ -86,7 +86,7 @@ function getSittingName() {
 		$("#time_validate").val('');			
 		$('#seatingDrop').show();	
 		$('#seating_text').val('');
-		numGuestHtml='<option>Select Sitting</option>';
+		numGuestHtml='<option value="0">Select Sitting</option>';
 		for(j=0;j<sittingArrLen;j++){	
 			if(sittingStaArr[j]==0) {
 				numGuestHtml+='<option value='+sittingValuArr[j]+'>'+sittingArr[j]+'</option>';
@@ -116,7 +116,7 @@ function getSittingName() {
 		if(onCh=='drop') {
 			$('#time_validate').val('');
 			
-			$('#timediv').html('<option value="SA">Select Arrival Time</option>');
+			$('#timediv').html('<option value="0">Select Arrival Time</option>');
 			$("#timediv-button span").html('Select Arrival Time');
 		}
 		
@@ -149,7 +149,7 @@ function getSittingName() {
 					if(bkfstStr.close_rest!==1) {
 						
 						if(bkfstStrCnt > 0) {
-							
+							timHtml+='<option value="0">Select Arrival Time</option>';
 							i=0;
 							$.each(bkfstStr, function(index, bkfst) {
 								//alert(index+":"+bkfst);	
@@ -193,7 +193,7 @@ function getSittingName() {
 								sitVal=sittingArr[set]+' Not Available for Selected Day';
 							}
 								
-							timHtml+='<option value="NA">'+sitVal+'</option>';
+							timHtml+='<option value="0">'+sitVal+'</option>';
 												
 							$("#time_validate").val('');							
 							$('#timediv').html(timHtml);
@@ -201,14 +201,15 @@ function getSittingName() {
 						}
 						
 					} else {
-						timHtml+='<option value="CLOSED">Restaurant has been closed on selected date.</option>';
+						timHtml+='<option value="0">Restaurant has been closed on selected date.</option>';
 						$('#timediv').html(timHtml);
 						$("#timediv-button span").html('Restaurant has been closed on selected date.');
 					}
 			});	
 		} else {
+			$('#seating').val('0');
+			$('#seating-button span').html('Select sitting');
 			alert('Please Select Number of Guest');
-			$('#seating').val('Select sitting');
 		}
 		
 	}
@@ -221,6 +222,10 @@ function getSittingName() {
 			$("#time_validate").val(labelid);
 			$("#timediv").val(labelid);
 			$("#timediv-button span").html(labelid.replace('_',':'));
+		} else {
+			$("#time_validate").val('');
+			$("#timediv").val(0);
+			$("#timediv-button span").html('Select Arrival Time');
 		}
 		
 	}
@@ -231,8 +236,11 @@ $("#bookingButtonId").click(function() {
 	
 	$('#pageLoader').show();
 	time=$('#time_validate').val();
-	
-	if(time!="") {
+	numGuestSel=$( "#num_guest_online option:selected" ).val();//alert(numGuestSel);
+	if(numGuestSel==0) {
+		alert("Please Select Number of Guest");
+		$('#pageLoader').hide();
+	} else if(time!="") {
 		var booking_date = $('#booking_date').val();
 		var commentsVal = $('#comments').val();
 		commentsVal = commentsVal !="Additional Requests" ? commentsVal: "";
@@ -278,6 +286,15 @@ $("#bookingButtonId").click(function() {
 
 function dateChange(type) {
 	
+	$('#time_validate').val('');
+			
+	$('#timediv').html('<option value="0">Select Arrival Time</option>');
+	$("#timediv-button span").html('Select Arrival Time');
+	if(type!='') {
+		$('#seating').val('0');
+		$('#seating-button span').html('Select sitting');
+	}
+			
 	var booking_date = $('#booking_date').val();
 	
 	var today = new Date(); 
