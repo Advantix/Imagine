@@ -86,7 +86,7 @@
 				<a href="#" id="signupBtnId" data-role="button" data-icon="grid" data-theme="c" class="ui-rfloat ui-top gra_but" rel="external">Signup</a>	
 				<a href="#" id="addrBtnId" data-role="button" data-icon="alert" data-theme="c" class="ui-rfloat ui-top gra_but" rel="external">Address</a>	
 
-				<form id="registerFrmId" name="registerFrmId" style="display:none">
+				<form id="registerFrmId" name="registerFrmId" style="display:none" onsubmit="return false;">
 				
 					
 					<input type="text" id="fname" name="fname" value="First Name" required onfocus="OnFocusName1('fname','First Name',this.value)" onblur="OnBlurName1('fname','First Name',this.value)">
@@ -103,7 +103,7 @@
 					<a href="#" id="sinupButtonId" data-role="button" data-theme="c" class="ui-btn">Submit</a>
 				</div>
 				</form>
-				<form id="loginFrmId"  style="display:none">
+				<form id="loginFrmId"  style="display:none" onsubmit="return false;">
 				
 					<input type="email" id="email" name="email" value="Email" required onfocus="OnFocusName1('email','Email',this.value)" onblur="OnBlurName1('email','Email',this.value)">
 					<input type="password" id="password" name="password" value="Password" required onfocus="OnFocusName1('password','Password',this.value)" onblur="OnBlurName1('password','Password',this.value)">		
@@ -112,7 +112,7 @@
 					<a href="#" id="loginButtonId" data-role="button"  data-theme="c" class="ui-btn">Login</a>
 				</div>
 				</form>
-				<form id="addrFrmId" name="addrFrmId" style="display:none">
+				<form id="addrFrmId" name="addrFrmId" style="display:none" onsubmit="return false;">
 				
 					<input type="text" id="street_number" name="street_number" value="Street Number" required onfocus="OnFocusName1('street_number','Street Number',this.value)" onblur="OnBlurName1('street_number','Street Number',this.value)">					
 					<input type="text" id="street_name" name="street_name" value="Street Name" required onfocus="OnFocusName1('street_name','Street Name',this.value)" onblur="OnBlurName1('street_name','Street Name',this.value)">					

@@ -4724,12 +4724,12 @@ button .ui-btngreen {   color:#fff;}
 .terms .ui-input-text { margin-bottom:20px;}
 
 .checkremo .ui-btn.ui-checkbox-off:after {
-filter: Alpha(Opacity=100);/*width:40px; height:40px;*/ margin-left:8px; margin-top:0px; border-radius:0;
+filter: Alpha(Opacity=100);/*width:40px; height:40px;*/ margin-left:8px; margin-top:-2px; border-radius:0;
 opacity: 1; background:#fff;}
 
 .checkremo .ui-btn.ui-checkbox-on:after{border-radius:0; opacity: 1; background:#3388cc; background-repeat:no-repeat;
 background-position:50%;
- /*width:40px; height:40px;*/ margin-left:8px; margin-top:0px;}
+ /*width:40px; height:40px;*/ margin-left:6px; margin-top:-2px;}
 
 .checkremo .ui-btn-icon-left { padding-left: 5em; padding-top:34px; }
 .checkremo input[type="checkbox"]{  width:43px; height:40px; }
@@ -5230,7 +5230,7 @@ a.arrival-time span, a.guset-no span{ font-size:18px; color:#278a32;}
 	padding:0.0em 0;
 	width: auto !important;
 	}
-	.confirmation label {width: 6em;}
+	.confirmation label {width: 12em;}
 	/*.ingre_label{  display: block; width:13em;}*/
 	.menu-choose-wp { width:47%; height:89px; float:left; margin-right:15px; margin-bottom:15px; }
 	.menu-title { font-size:14px; font-family: 'gothic' !important; text-align: center; text-shadow:none; background:#ccc;
