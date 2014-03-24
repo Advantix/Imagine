@@ -64,8 +64,13 @@ function getDealItemList() {
 			$.each(items, function(index, item) {
 				dealItemsId=item.deal_items_id=="" ? null :1;
 				strDesc=item.item_desc;
+				if(strDesc.length >40) {
+					strDescShow = strDesc.substr(0,40)+'...';
+				} else {
+					strDescShow = strDesc;
+				}
 				strItemName=item.item_name;
-				$('#menuList').append('<li class="ui-li-has-thumb"><a class="ui-btn ui-btn-icon-right ui-icon-carat-r" href="deal.html?delitemId='+item.item_id+'" rel="external" ><img src="'+itemImgURL+(item.item_img!=""? item.item_img:defaultImgURL)+'"><h2>' + strItemName+'&nbsp;</h2><p>'+ strDesc + '</p></a></li>');
+				$('#menuList').append('<li class="ui-li-has-thumb"><a class="ui-btn ui-btn-icon-right ui-icon-carat-r" href="deal.html?delitemId='+item.item_id+'" rel="external" ><img src="'+itemImgURL+(item.item_img!=""? item.item_img:defaultImgURL)+'"><h2>' + strItemName+'&nbsp;</h2><p>'+ strDescShow + '</p></a></li>');
 			});
 		} else {
 			$('#menuList').append('<li class="ui-li-has-thumb"><span style="color:#ff0000">No Deals Found</span></li>');
@@ -161,8 +166,13 @@ function getSingleDealItem() {
 		//alert(data.DealTitle);
 		$.each(itemDets1, function(index, itemDet) {
 				strDealDesc=itemDet.item_desc;
+				if(strDealDesc.length >40) {
+					strDealDescShow = strDealDesc.substr(0,40)+'...';
+				} else {
+					strDealDescShow = strDealDesc;
+				}
 				strDealItemName=itemDet.item_name;
-				$('#menuList').append('<li class="ui-li-has-thumb"><a class="ui-btn ui-btn-icon-right ui-icon-carat-r" href="deal.html?chkitemid='+itemDet.item_id+'&dealId='+dealId+'" rel="external" ><img src="'+itemImgURL+(itemDet.item_img!=""? itemDet.item_img:defaultImgURL)+'"><h2>' + strDealItemName + '</h2><p >'+ strDealDesc + '</p></a></li>');
+				$('#menuList').append('<li class="ui-li-has-thumb"><a class="ui-btn ui-btn-icon-right ui-icon-carat-r" href="deal.html?chkitemid='+itemDet.item_id+'&dealId='+dealId+'" rel="external" ><img src="'+itemImgURL+(itemDet.item_img!=""? itemDet.item_img:defaultImgURL)+'"><h2>' + strDealItemName + '</h2><p >'+ strDealDescShow + '</p></a></li>');
 			});
 			//$('#menuList').listview('refresh');
 			//$('#deallist').html(data.DealTitle);

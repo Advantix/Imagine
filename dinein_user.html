@@ -3,7 +3,7 @@
 	<head>
 	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
-	<title></title>
+	<title>Reservation</title>
 	<link rel="shortcut icon" href="../favicon.ico">
     <link rel="stylesheet" href="http://fonts.googleapis.com/css?family=Open+Sans:300,400,700">
 	<link rel="stylesheet" href="css/themes/default/jquery.mobile-1.4.0.css">
@@ -97,16 +97,19 @@
 					
 					<input type="text" id="lname" name="lname" value="Surname" required onfocus="OnFocusName1('lname','Surname',this.value)" onblur="OnBlurName1('lname','Surname',this.value);checkTerm()">
 					
-					<input type="tel" id="mobile" name="mobile" value="Mobile Number" required maxlength="12" onfocus="OnFocusName1('mobile','Mobile Number',this.value)" onblur="OnBlurName1('mobile','Mobile Number',this.value)">
+					<input type="tel" id="mobile" name="mobile" value="Mobile Number (eg: 61123456789)" required maxlength="12" onfocus="OnFocusName1('mobile','Mobile Number (eg: 61123456789)',this.value)" onblur="OnBlurName1('mobile','Mobile Number (eg: 61123456789)',this.value)">
 					
 					<input type="email" id="email" name="email" value="Email" required onfocus="OnFocusName1('email','Email',this.value)" onblur="OnBlurName1('email','Email',this.value);checkTerm()">	
 						
 					<input type="hidden" id="comments" name="comments" required value="Notes to Restaurant" onfocus="OnFocusName1('comments','Notes to Restaurant',this.value)" onblur="OnBlurName1('comments','Notes to Restaurant',this.value)">	
 					
 					<div class="checkremo" id="termLiId"><input name="term" id="term" data-mini="true" type="checkbox" required>
-					 <label for="term" style="width:4px; padding:0;"></label>
+					 <label for="term" style="width:4px; padding:0; overflow:hidden;"></label>
+                     
+                     
+                     
 					</div>
-                    <div class="terms_con" >Accept&nbsp;<a href="terms.html" rel="external">Terms and Conditions</a></div>	
+                    <div class="terms_con" id="termTxtId">Accept&nbsp;<a href="terms.html" rel="external">Terms and Conditions</a></div>	
 					
 				
 				<input type="hidden" id="time_validate" name="time_validate" readonly>

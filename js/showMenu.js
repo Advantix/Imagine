@@ -90,7 +90,7 @@ function getMenuCatList() {
 				//alert(index);
 				strCat=cat.subcat_name;
 				if(index==0) { fir='ui-first-child';} else if(totMenCnt==index && dataAppConfig.AppConfig.deal_status=='B'){fir='ui-last-child';}else{ fir='';}
-				$('#menuList').append('<li class="ui-li-has-thumb '+fir+'"><a class="ui-btn ui-btn-icon-right ui-icon-carat-r" href="showMenu.html?catId='+cat.sub_id+'&tabId='+menuId+'" rel="external"><img src="'+itemImgURL+(cat.subcat_image!=""? cat.subcat_image:defaultImgURL)+'"><h2>' + strCat+'</h2></a></li>');
+				$('#menuList').append('<li class="ui-li-has-thumb '+fir+'"><a class="ui-btn ui-btn-icon-right ui-icon-carat-r" href="showMenu.html?catId='+cat.sub_id+'&tabId='+menuId+'" rel="external"><img src="'+itemImgURL+(cat.subcat_image!=""? cat.subcat_image:defaultImgURL)+'"><h2 style="margin-top:margin: 1.68em 0 1em">' + strCat+'</h2></a></li>');
 			});
 			if(dataAppConfig.AppConfig.deal_status=='A') {
 				$('#menuList').append('<li class="ui-li-has-thumb ui-last-child"><a class="ui-btn ui-btn-icon-right ui-icon-carat-r" href="deal.html?tabId='+menuId+'" rel="external"><img src="'+dataAppConfig.AppConfig.deal_img+'" ><h2>Deals</h2></a></li>');
@@ -135,9 +135,14 @@ function getMenuList() {
 				var totMenCnt2=items.length-1;
 				$.each(items, function(index, item) {
 					if(index==0 && totMenCnt2==index) { fir2='ui-first-child';} else if(totMenCnt2==index){fir2='ui-last-child';}else{ fir2='';}
-					strDesc=item.item_desc;
+					strDesc=item.item_desc;//alert(strDesc.length);
+					if(strDesc.length >40) {
+						strDescShow = strDesc.substr(0,40)+'...';
+					} else {
+						strDescShow = strDesc;
+					}
 					strItemName=item.item_name;
-					$('#menuList').append('<li class="ui-li-has-thumb '+fir2+'"><a class="ui-btn ui-btn-icon-right ui-icon-carat-r" href="showMenu.html?itemId='+item.item_id+'&tabId='+menuId+'" rel="external"><img src="'+itemImgURL+(item.item_img!=""? item.item_img:defaultImgURL)+'" ><h2 class="myleft">'+strItemName+'</h2><h3 class="mylefth3">$'+ item.item_selling_price + '</h3><p >'+ strDesc+ '</p ></a></li>');
+					$('#menuList').append('<li class="ui-li-has-thumb '+fir2+'"><a class="ui-btn ui-btn-icon-right ui-icon-carat-r" href="showMenu.html?itemId='+item.item_id+'&tabId='+menuId+'" rel="external"><img src="'+itemImgURL+(item.item_img!=""? item.item_img:defaultImgURL)+'" ><h2 class="myleft">'+strItemName+'</h2><h3 class="mylefth3">$'+ item.item_selling_price + '</h3><p >'+ strDescShow+ '</p ></a></li>');
 				});
 				$("#pageLoader").hide();
 			} else {

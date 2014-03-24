@@ -70,7 +70,7 @@ function showDashPage() {
 						htmlHome+='<p class="menu-title"><a href="deal.html?tabId='+dealMenuDeal.id+'" rel="external">'+dealMenuDeal.category_name+'</a></p>';
 					htmlHome+='</div>';
 				}
-				htmlHome+='<div class="menu-choose-wp">';
+				/*htmlHome+='<div class="menu-choose-wp">';
 					htmlHome+='<div class="menu-img"><a href="help.html" rel="external"><img src="images/help.jpg" alt=""></a></div>';
 					htmlHome+='<p class="menu-title"><a href="help.html" rel="external">Help</a></p>';
 				htmlHome+='</div>';
@@ -78,7 +78,7 @@ function showDashPage() {
 				htmlHome+='<div class="menu-choose-wp" style="margin:0">';
 					htmlHome+='<div class="menu-img"><a href="restaurant_details.html" rel="external"><img src="images/location.jpg" alt=""></a></div>';
 					htmlHome+='<p class="menu-title"><a href="restaurant_details.html" rel="external">Location</a></p>';
-				htmlHome+='</div><span class="menu-choose-wp"></span>';
+				htmlHome+='</div><span class="menu-choose-wp"></span>';*/
 				
 				$('#homeDashId').html(htmlHome);	
 				

@@ -3389,7 +3389,7 @@ fieldset.ui-controlgroup {
 	top: 50%;
 	width: 22px;
 	height: 22px;
-	margin: -11px 0 0 0;
+	margin: -7px 0 0 0;
 	outline: 0 !important;
 	z-index: 1;
 }
@@ -3719,13 +3719,14 @@ fieldset.ui-controlgroup {
 .ui-listview > li h6 {
 	/*font-size: 1em;*/
 	font-size: 0.8em;
-	font-weight: normal;
+	font-weight: bold;
 	display: block;
-	margin: 1.25em 0 1em;
+	margin: 1.38em 0 1em;
 	text-overflow: ellipsis;
 	overflow: hidden;
 	white-space: nowrap;
 }
+.myleft { float:left; width:73%;} .mylefth3 { float:left; width:26%; text-align:center !important}
 .ui-listview > li p {
 	font-size: .70em;
 	font-weight: normal;
@@ -3733,6 +3734,7 @@ fieldset.ui-controlgroup {
 	margin: .6em 0;
 	text-overflow: ellipsis;
 	/*overflow: hidden;*/
+	/*gokul*/ float:left !important;
 	white-space:normal; 
 }
 .ui-listview .ui-li-aside {
@@ -4565,8 +4567,10 @@ select > option { font-weight:normal; }
 .menu_wrap{ background:none;}
 
 .terms { padding-bottom:50px;}
-.confirmation h2, .terms h2{margin:0; padding:0; color:#000; text-shadow: none; font-size:20px; font-weight:normal; }
-.confirmation p, .terms p{ margin:0; padding:0; margin-top:10px; text-shadow: none; color:#333; }
+.confirmation h2, .terms h2{margin:0; padding:0; color:#000; text-shadow: none; font-size:18px; font-weight:bold;
+text-transform:capitalize;}
+.confirmation p, .terms p{ margin:0; padding:0; margin-top:10px; text-shadow: none; color:#333; 
+text-transform:none; }
 .terms p { font-size:14px;}
 
 .row_div { float:left; clear:left; width:100%; margin:3px 0;}
@@ -4630,7 +4634,7 @@ html body .ui-group-theme-a .ui-bar-inherit h1{ color:#FFF; font-weight:normal; 
 }
 #map-page, #map-canvas { width: 100%; height: 100%; padding: 0;}
 
-#pizzalist{ background:#fff; text-transform:uppercase;}
+#pizzalist{ background:#fff; text-transform: capitalize;}
 
 #pizzalist > .ui-listview { padding:6px; margin:0;}
 
@@ -4795,7 +4799,7 @@ a.arrival-time span, a.guset-no span{ font-size:18px; color:#278a32;}
 
 .ui-header .ui-title {
 	font-size: 1em; line-height:0;
-	min-height: 1.1em;
+	min-height: 1.1em; font-weight:bold;
 	text-align: center;
 	display: block;
 	margin: 0 30%;
@@ -4840,20 +4844,22 @@ a.arrival-time span, a.guset-no span{ font-size:18px; color:#278a32;}
 .ui-listview > li h4,
 .ui-listview > li h5,
 .ui-listview > li h6 {
-	/*font-size: 1em;*/font-size: 0.8em; text-transform: capitalize;
-	font-weight: normal;
+	/*font-size: 1em;*/font-size: 0.7em; text-transform: capitalize;
+	font-weight: bold;
 	display: block;
-	margin: 1.25em 0 1em;
+	margin: 1.38em 0 1em;
 	text-overflow: ellipsis;
 	/*overflow: hidden;*/
 	white-space: nowrap;
 }
-.ui-listview > li p {text-transform:lowercase;}
+.myleft { float:left; width:73%;} .mylefth3 { float:left; width:26%; text-align:center !important}
+.ui-listview > li p {text-transform:lowercase;	/*gokul*/ float:left !important;}
 	.ui-listview > li h1, .ui-listview > li h2, .ui-listview > li h3, .ui-listview > li h4, .ui-listview > li h5, .ui-listview > li h6 {
     display: block;
-    /*font-size: 1em;*/font-size: 0.8em;
-    font-weight: normal;
-    margin: 0.25em 0 1em;
+    /*font-size: 1em;*/font-size: 0.7em;
+		/*gokul*/ float:left;
+    font-weight: bold;
+    margin: 1.38em 0 1em;
     text-overflow: ellipsis;
     text-transform: capitalize;
     white-space: normal;
@@ -4863,7 +4869,7 @@ a.arrival-time span, a.guset-no span{ font-size:18px; color:#278a32;}
 	.menu-img { height: 66px;}
 	
 	.drop_res{width:25%!important;}
-	
+	.myleft { float:left; width:73%;} .mylefth3 { float:left; width:26%; text-align:center !important}
 }
 @media (min-width: 28em) {
 	.ui-field-contain,
@@ -4922,13 +4928,14 @@ a.arrival-time span, a.guset-no span{ font-size:18px; color:#278a32;}
 	.ui-listview > li h1, .ui-listview > li h2, .ui-listview > li h3, .ui-listview > li h4, .ui-listview > li h5, .ui-listview > li h6 {
     display: block;
     /*font-size: 1em;*/font-size: 0.8em;
-    font-weight: normal;
-    margin: 0.25em 0 1em;
+    font-weight: bold;
+    margin: 1.38em 0 1em;
     text-overflow: ellipsis;
     text-transform: capitalize;
     white-space: nowrap;
 }.header_titletext{line-height: 2em !important; padding: 0.7em 0 !important;}
 .drop_res{width:35%!important;}
+.myleft { float:left; width:73%;} .mylefth3 { float:left; width:26%; text-align:center !important}
 	}
 
 /* preset breakpoint to switch to stacked grid styles below 35em (560px) */
