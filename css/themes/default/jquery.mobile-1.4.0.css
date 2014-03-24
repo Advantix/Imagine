@@ -1568,7 +1568,8 @@ div.ui-mobile-viewport {
 	padding-left: 2.5em;
 }
 .ui-btn-icon-right {
-	padding-right: 2.5em;
+	/*padding-right: 2.5em;*/
+	padding-right: 0.5em;
 }
 .ui-btn-icon-top {
 	padding-top: 2.5em;
@@ -3389,7 +3390,7 @@ fieldset.ui-controlgroup {
 	top: 50%;
 	width: 22px;
 	height: 22px;
-	margin: -7px 0 0 0;
+	margin: -5px 0 0 0;
 	outline: 0 !important;
 	z-index: 1;
 }
@@ -4564,7 +4565,7 @@ select > option { font-weight:normal; }
 /*------------Gokul style-----------*/
 
 .confirmation, .terms, .menu_wrap{ margin:0; padding:0; text-align:left; background:#fff; padding:15px;  min-height:25em;}
-.menu_wrap{ background:none;}
+.menu_wrap{ background:none; margin-top: 33px;}
 
 .terms { padding-bottom:50px;}
 .confirmation h2, .terms h2{margin:0; padding:0; color:#000; text-shadow: none; font-size:18px; font-weight:bold;
@@ -4723,15 +4724,15 @@ button .ui-btngreen {   color:#fff;}
 .terms .ui-input-text { margin-bottom:20px;}
 
 .checkremo .ui-btn.ui-checkbox-off:after {
-filter: Alpha(Opacity=100);/*width:40px; height:40px;*/ margin-left:16px; margin-top:1px; border-radius:0;
+filter: Alpha(Opacity=100);/*width:40px; height:40px;*/ margin-left:8px; margin-top:0px; border-radius:0;
 opacity: 1; background:#fff;}
 
 .checkremo .ui-btn.ui-checkbox-on:after{border-radius:0; opacity: 1; background:#3388cc; background-repeat:no-repeat;
 background-position:50%;
- /*width:40px; height:40px;*/ margin-left:16px; margin-top:1px;}
+ /*width:40px; height:40px;*/ margin-left:8px; margin-top:0px;}
 
 .checkremo .ui-btn-icon-left { padding-left: 5em; padding-top:34px; }
-.checkremo input[type="checkbox"]{  width:40px; height:40px; }
+.checkremo input[type="checkbox"]{  width:43px; height:40px; }
 .checkremo .ui-mini .ui-btn-icon-left:after { left: 0!important;}
 
 .menu-choose-wp { width:48%; height:180px; float:left; margin-right:3%; margin-bottom:1%; }
@@ -4936,6 +4937,7 @@ a.arrival-time span, a.guset-no span{ font-size:18px; color:#278a32;}
 }.header_titletext{line-height: 2em !important; padding: 0.7em 0 !important;}
 .drop_res{width:35%!important;}
 .myleft { float:left; width:73%;} .mylefth3 { float:left; width:26%; text-align:center !important}
+#pizzalist{  margin-top: 12px !important;}
 	}
 
 /* preset breakpoint to switch to stacked grid styles below 35em (560px) */
