@@ -44,7 +44,7 @@ function showOrderinfo() {
 		$.each(orderDets, function(index, item) {		
 				if(bokord==null) {
 					htmlData=' <h2>Reservation Confirmation</h2>';
-					htmlData+='<p>Thank you, you request has been confirmed.<br> Please see reservation details below:</p>';
+					htmlData+='<p>Thank you, your request has been confirmed.<br> Please see reservation details below:</p>';
 				} else {
 					htmlData='<h2>Your booking details</h2>';
 				}

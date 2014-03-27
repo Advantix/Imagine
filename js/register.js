@@ -235,7 +235,7 @@ function userValidate() {
 	
 	error[0] = nameCheck(frm.fname.value,'First Name') ? "" : "This is not a valid first name";
 	error[1] = nameCheck(frm.lname.value,'Surname') ? "" :  "This is not a valid Surname";
-	error[2] = phoneCheck(frm.mobile.value,'Mobile Number') ? "" :  "Please provide mobile number";
+	error[2] = phoneCheck(frm.mobile.value,'Mobile Number (eg: 61123456789)') ? "" :  "Please provide mobile number";
 	error[3] = checkText(frm.email,'Email') ? "" :  "Email Address is empty!";
 	if(error[3]=="") {
 		error[3]=emailCheck(frm.email.value) ? "" : "This is not valid email address";	

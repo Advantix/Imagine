@@ -62,6 +62,8 @@ function getDealItemList() {
 		var items = data.DealList;
 		if(items.length>0) {
 			$.each(items, function(index, item) {
+				var totMenCnt2=items.length-1;
+				if(index==0 && totMenCnt2==index) { fir2='ui-first-child';} else if(totMenCnt2==index){fir2='ui-last-child';}else{ fir2='';}
 				dealItemsId=item.deal_items_id=="" ? null :1;
 				strDesc=item.item_desc;
 				if(strDesc.length >40) {
@@ -70,7 +72,7 @@ function getDealItemList() {
 					strDescShow = strDesc;
 				}
 				strItemName=item.item_name;
-				$('#menuList').append('<li class="ui-li-has-thumb"><a class="ui-btn ui-btn-icon-right ui-icon-carat-r" href="deal.html?delitemId='+item.item_id+'" rel="external" ><img src="'+itemImgURL+(item.item_img!=""? item.item_img:defaultImgURL)+'"><h2>' + strItemName+'&nbsp;</h2><p>'+ strDescShow + '</p></a></li>');
+				$('#menuList').append('<li class="ui-li-has-thumb '+fir2+'"><a class="ui-btn ui-btn-icon-right ui-icon-carat-r" href="deal.html?delitemId='+item.item_id+'" rel="external" ><img src="'+itemImgURL+(item.item_img!=""? item.item_img:defaultImgURL)+'"><h2 class="myleft">' + strItemName+'&nbsp;</h2><h3 class="mylefth3">&nbsp;</h3><p>'+ strDescShow + '</p></a></li>');
 			});
 		} else {
 			$('#menuList').append('<li class="ui-li-has-thumb"><span style="color:#ff0000">No Deals Found</span></li>');
@@ -164,7 +166,9 @@ function getSingleDealItem() {
 		$('#menuList li').remove();	
 		var itemDets1 = data.ItemDet;
 		//alert(data.DealTitle);
+		var totMenCnt2=itemDets1.length-1;
 		$.each(itemDets1, function(index, itemDet) {
+			if(index==0 && totMenCnt2==index) { fir2='ui-first-child';} else if(totMenCnt2==index){fir2='ui-last-child';}else{ fir2='';}
 				strDealDesc=itemDet.item_desc;
 				if(strDealDesc.length >40) {
 					strDealDescShow = strDealDesc.substr(0,40)+'...';
@@ -172,7 +176,7 @@ function getSingleDealItem() {
 					strDealDescShow = strDealDesc;
 				}
 				strDealItemName=itemDet.item_name;
-				$('#menuList').append('<li class="ui-li-has-thumb"><a class="ui-btn ui-btn-icon-right ui-icon-carat-r" href="deal.html?chkitemid='+itemDet.item_id+'&dealId='+dealId+'" rel="external" ><img src="'+itemImgURL+(itemDet.item_img!=""? itemDet.item_img:defaultImgURL)+'"><h2>' + strDealItemName + '</h2><p >'+ strDealDescShow + '</p></a></li>');
+				$('#menuList').append('<li class="ui-li-has-thumb '+fir2+'"><a class="ui-btn ui-btn-icon-right ui-icon-carat-r" href="deal.html?chkitemid='+itemDet.item_id+'&dealId='+dealId+'" rel="external" ><img src="'+itemImgURL+(itemDet.item_img!=""? itemDet.item_img:defaultImgURL)+'"><h2  class="myleft">' + strDealItemName + '</h2><h3 class="mylefth3">&nbsp;</h3><p >'+ strDealDescShow + '</p></a></li>');
 			});
 			//$('#menuList').listview('refresh');
 			//$('#deallist').html(data.DealTitle);

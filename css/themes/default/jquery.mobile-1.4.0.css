@@ -1023,6 +1023,7 @@ html head + body .ui-btn.ui-btn-a:visited {
 	border-color:	 		#ddd /*{a-bup-border}*/;
 	color: 					#333 /*{a-bup-color}*/;
 	text-shadow: 0 /*{a-bup-shadow-x}*/ 1px /*{a-bup-shadow-y}*/ 0 /*{a-bup-shadow-radius}*/ #f3f3f3 /*{a-bup-shadow-color}*/;
+	/*gokul*/padding:5px;
 }
 /* Button hover */
 .ui-page-theme-a .ui-btn:hover,
@@ -1600,13 +1601,16 @@ div.ui-mobile-viewport {
 .ui-btn-icon-left:after,
 .ui-btn-icon-right:after {
 	top: 50%;
-	margin-top: -11px;
+	/*margin-top: -11px;*/
+	margin-top: -10px;
+
 }
 .ui-btn-icon-left:after {
 	left: .5625em;
 }
 .ui-btn-icon-right:after {
-	right: .5625em;
+	/*right: .5625em;*/
+	right: 0em;
 }
 .ui-mini.ui-btn-icon-left:after,
 .ui-mini .ui-btn-icon-left:after,
@@ -3699,7 +3703,8 @@ fieldset.ui-controlgroup {
 .ui-listview .ui-li-has-thumb .ui-li-thumb {
 	position: absolute;
 	left: 0;
-	top: 16px;
+	/*top: 16px;*/
+	top:5px;
 	max-height: 5em;
 	max-width: 5em;
 }
@@ -3722,17 +3727,21 @@ fieldset.ui-controlgroup {
 	font-size: 0.8em;
 	font-weight: bold;
 	display: block;
-	margin: 1.38em 0 1em;
+	/*margin: 1.38em 0 1em;*/
+	margin:0.2em 0 0.5em; 
 	text-overflow: ellipsis;
 	overflow: hidden;
 	white-space: nowrap;
 }
-.myleft { float:left; width:73%;} .mylefth3 { float:left; width:26%; text-align:center !important}
+.menu_title{margin:1.38em 0 1em!important; float:left;}
+.myleft { float:left; width:73%;} .mylefth3 { float:left; width:26%; text-align:right !important}
+#pizzalist h2{ margin:0.0em 0 0.3em;}
+#pizzalist h3{ margin:0 0 0.3em!important;}
 .ui-listview > li p {
 	font-size: .70em;
 	font-weight: normal;
 	display: block;
-	margin: .6em 0;
+	/*margin: .6em 0;*/margin:0;
 	text-overflow: ellipsis;
 	/*overflow: hidden;*/
 	/*gokul*/ float:left !important;
@@ -4534,6 +4543,9 @@ for Android 4.1 */
 
 /*------------- my style ----------------*/
 .myleft { float:left; width:73%; } .myright { float:left; width:21%; text-align:center}
+#pizzalist h2{ margin:0.0em 0 0.3em;}
+#pizzalist h3{ margin:0 0 0.3em!important;}
+
 .imgshow { height:100%; overflow:hidden;} .imgshow img{ width:100%; }
 
 #cremove.ui-listview > li h1, #cremove.ui-listview > li h2, #cremove.ui-listview > li h3{
@@ -4584,7 +4596,7 @@ text-transform:none; }
 
 
 .confirmation label{ display: block; width:15em; float:left; color:#000; font-size:14px; font-weight:bold;}
-p.info_right{  display: block; margin:0; padding:0; float:left; text-align:left }
+p.info_right{  /*display: block; margin:0; padding:0; float:left; text-align:left*/float: right;font-size: 0.9em;margin: 0; padding: 0; }
 .ingre_label{  display: block; width:80%; float:left; color:#000; font-size:14px; font-weight:bold;}
 
 .confirmation strong{color:#ed9238; font-weight:normal;}
@@ -4635,12 +4647,12 @@ html body .ui-group-theme-a .ui-bar-inherit h1{ color:#FFF; font-weight:normal; 
 }
 #map-page, #map-canvas { width: 100%; height: 100%; padding: 0;}
 
-#pizzalist{ background:#fff; text-transform: capitalize;}
+#pizzalist{ background:#fff; text-transform: capitalize; clear:both;}
 
-#pizzalist > .ui-listview { padding:6px; margin:0;}
+#pizzalist > .ui-listview { padding:6px; margin:0; clear:both; }
 
 #pizzalist .ui-btn, #pizzalist2 .ui-btn, #pizzalist3 .ui-btn { border-width: 0 0 1px 0 !important;
-background:#fff !important; border-color: #358c47 !important;   /*color: #fff; text-shadow: 0 0px 0 #F3F3F3;*/}
+background:#fff !important; border-color: #358c47 !important; clear:both;    /*color: #fff; text-shadow: 0 0px 0 #F3F3F3;*/}
 	
 /*#pizzalist .ui-btn-active { color:#fff !important;}*/
 	
@@ -4701,14 +4713,14 @@ button .ui-btngreen {   color:#fff;}
 .footer_menu.ui-page-theme-b .ui-btn, html .footer_menu.ui-bar-b .ui-btn, html .footer_menu.ui-body-b .ui-btn, html body.footer_menu .ui-group-theme-b .ui-btn,  .footer_menu.ui-page-theme-b .ui-btn:visited, html .footer_menu.ui-bar-b .ui-btn:visited, html .footer_menu .ui-body-b .ui-btn:visited, html body .footer_menu .ui-group-theme-b.ui-btn:visited, html head + body .footer_menu.ui-btn.ui-btn-b:visited{
   background: none repeat scroll 0 0 #000 !important;
   border-color: #000 !important;
-  color: #FFFFFF; font-size:0.6em;
+  color: #FFFFFF; font-size:0.59em;
   text-shadow: 0 1px 0 #111111;
  /*gokul*/ padding:0; text-transform:uppercase;
 
 }
 
 
-.ui-navbar .ui-mini { width:40%; display: inline-block; line-height:48px; margin-right:20px; }
+.ui-navbar .ui-mini { width:48%; display: inline-block; line-height:48px; margin-right:20px; }
 
 
 .ui-navbar .ui-mini{ font-family: 'gothic' !important; font-size:20px; padding:0; font-weight:normal; text-transform:uppercase;} 
@@ -4724,15 +4736,15 @@ button .ui-btngreen {   color:#fff;}
 .terms .ui-input-text { margin-bottom:20px;}
 
 .checkremo .ui-btn.ui-checkbox-off:after {
-filter: Alpha(Opacity=100);/*width:40px; height:40px;*/ margin-left:8px; margin-top:-2px; border-radius:0;
-opacity: 1; background:#fff;}
+/*width:40px; height:40px;*/filter: Alpha(Opacity=100); margin-left:8px; margin-top:-2px; border-radius:0;
+opacity: 1;background:#fff; width:23px; height:20px; }
 
 .checkremo .ui-btn.ui-checkbox-on:after{border-radius:0; opacity: 1; background:#3388cc; background-repeat:no-repeat;
-background-position:50%;
- /*width:40px; height:40px;*/ margin-left:6px; margin-top:-2px;}
+background-position:50%; width:23px; height:20px;
+ /*width:40px; height:40px;*/ margin-left:8px; margin-top:-2px; }
 
 .checkremo .ui-btn-icon-left { padding-left: 5em; padding-top:34px; }
-.checkremo input[type="checkbox"]{  width:43px; height:40px; }
+.checkremo input[type="checkbox"]{  width:23px; height:20px; margin-left:13px; margin-top:-1px; }
 .checkremo .ui-mini .ui-btn-icon-left:after { left: 0!important;}
 
 .menu-choose-wp { width:48%; height:180px; float:left; margin-right:3%; margin-bottom:1%; }
@@ -4811,7 +4823,7 @@ a.arrival-time span, a.guset-no span{ font-size:18px; color:#278a32;}
 	outline: 0 !important;
 }
 .header_titletext{line-height: 2em ; padding: 0.7em 0;}
-.terms_con{margin:0; padding:0; text-shadow:none; margin-left:40px; text-decoration:none; font-family: 'gothic',Arial, Helvetica, sans-serif /*{global-font-family}*/; color:#FFF;}
+.terms_con{padding:0; text-shadow:none; margin:-3px 0 0 40px; text-decoration:none; font-family: 'gothic',Arial, Helvetica, sans-serif /*{global-font-family}*/; color:#FFF;}
 .terms_con a{color:#FFF; text-shadow:none; text-decoration:none;}
 .terms_con a:hover{color:#FFF; text-decoration:underline;}
 .terms_con a:visited{color:#FFF;}
@@ -4820,6 +4832,9 @@ a.arrival-time span, a.guset-no span{ font-size:18px; color:#278a32;}
 .left_nav {position:absolute; width:46px; height:74px; background:#d3d3d3;}
 .right_nav {position:absolute; right:30px; width:46px; height:74px; background:#d3d3d3;}
 .left_nav img, .right_nav img{ width:80%; margin-top:10px;}
+.menuleft{margin-right:0px!important; float:left; margin-left:0px;margin-bottom:10px!important;}
+.menuright{margin-right:0px!important; float:right; margin-left:0px;margin-bottom:10px!important;}
+.menubottom{margin-right:0px!important; margin-left:0px; clear:both;margin-bottom:10px!important;}
 @media screen and (orientation: portrait) {
 	.ui-mobile .ui-page {
 		min-height: 420px;
@@ -4837,7 +4852,7 @@ a.arrival-time span, a.guset-no span{ font-size:18px; color:#278a32;}
     max-height: 5em;
     max-width: 5em;
     position: absolute;
-    top: 16px;
+    /*top: 16px;*/top:5px;
 }
 .ui-listview > li h1,
 .ui-listview > li h2,
@@ -4845,22 +4860,25 @@ a.arrival-time span, a.guset-no span{ font-size:18px; color:#278a32;}
 .ui-listview > li h4,
 .ui-listview > li h5,
 .ui-listview > li h6 {
-	/*font-size: 1em;*/font-size: 0.7em; text-transform: capitalize;
+	/*font-size: 1em;*/font-size: 0.8em; text-transform: capitalize;
 	font-weight: bold;
 	display: block;
-	margin: 1.38em 0 1em;
+	/*margin: 1.38em 0 1em;*/
+	margin:0.2em 0 0.5em;
 	text-overflow: ellipsis;
 	/*overflow: hidden;*/
 	white-space: nowrap;
 }
+.menu_title{margin:1.38em 0 1em!important;}
 .myleft { float:left; width:73%;} .mylefth3 { float:left; width:26%; text-align:center !important}
 .ui-listview > li p {text-transform:lowercase;	/*gokul*/ float:left !important;}
 	.ui-listview > li h1, .ui-listview > li h2, .ui-listview > li h3, .ui-listview > li h4, .ui-listview > li h5, .ui-listview > li h6 {
     display: block;
-    /*font-size: 1em;*/font-size: 0.7em;
+    /*font-size: 1em;*/font-size: 0.8em;
 		/*gokul*/ float:left;
     font-weight: bold;
-    margin: 1.38em 0 1em;
+    /*margin: 1.38em 0 1em;*/
+	margin:0.2em 0 0.5em;
     text-overflow: ellipsis;
     text-transform: capitalize;
     white-space: normal;
@@ -4870,7 +4888,19 @@ a.arrival-time span, a.guset-no span{ font-size:18px; color:#278a32;}
 	.menu-img { height: 66px;}
 	
 	.drop_res{width:25%!important;}
-	.myleft { float:left; width:73%;} .mylefth3 { float:left; width:26%; text-align:center !important}
+	.myleft { float:left; width:73%;} .mylefth3 { float:left; width:26%; text-align:right !important}
+	#pizzalist h2{ margin:0.0em 0 0.3em;}
+	#pizzalist h3{ margin:0 0 0.3em!important;}
+	#pizzalist {margin-top: 0 !important; clear: both;}
+	.ui-checkbox input, .ui-radio input{
+	 left: -0.40em;
+    margin: -12px 0 0;
+    outline: 0 none !important;
+    position: absolute;
+    top: 50%;
+    width: 22px;
+    z-index: 1;
+		}
 }
 @media (min-width: 28em) {
 	.ui-field-contain,
@@ -4930,14 +4960,19 @@ a.arrival-time span, a.guset-no span{ font-size:18px; color:#278a32;}
     display: block;
     /*font-size: 1em;*/font-size: 0.8em;
     font-weight: bold;
-    margin: 1.38em 0 1em;
+    /*margin: 1.38em 0 1em;*/
+	margin:0.2em 0 0.5em;
     text-overflow: ellipsis;
     text-transform: capitalize;
     white-space: nowrap;
-}.header_titletext{line-height: 2em !important; padding: 0.7em 0 !important;}
+}
+.menu_title{margin:1.38em 0 1em!important;}
+.header_titletext{line-height: 2em !important; padding: 0.7em 0 !important;}
 .drop_res{width:35%!important;}
-.myleft { float:left; width:73%;} .mylefth3 { float:left; width:26%; text-align:center !important}
-#pizzalist{  margin-top: 12px !important;}
+.myleft { float:left; width:73%;} .mylefth3 { float:left; width:26%; text-align:right !important}
+#pizzalist h2{ margin:0.0em 0 0.3em;}
+#pizzalist h3{ margin:0 0 0.3em!important;}
+#pizzalist{  margin-top: 0 !important; clear:both; }
 	}
 
 /* preset breakpoint to switch to stacked grid styles below 35em (560px) */
@@ -5230,7 +5265,7 @@ a.arrival-time span, a.guset-no span{ font-size:18px; color:#278a32;}
 	padding:0.0em 0;
 	width: auto !important;
 	}
-	.confirmation label {width: 12em;}
+	.confirmation label {/*width: 12em;*/ width:4em; float: left;}
 	/*.ingre_label{  display: block; width:13em;}*/
 	.menu-choose-wp { width:47%; height:89px; float:left; margin-right:15px; margin-bottom:15px; }
 	.menu-title { font-size:14px; font-family: 'gothic' !important; text-align: center; text-shadow:none; background:#ccc;

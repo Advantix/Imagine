@@ -64,8 +64,9 @@ function getMenuTab() {
 			tabHtml='';
 			$.each(tabs, function(index, tab) {
 				//alert(index);		
+				if(index==0) { fir='menuleft';} else if(index==1){fir='menuright';}else{ fir='menubottom';}
 				if(menuId==tab.cat_id) { sty="select";} else {sty="";}			
-				tabHtml+='<a class="ui-btn ui-mini '+sty+'" href="showMenu.html?tabId='+tab.cat_id+'" rel="external">' + tab.category_name + '</a>';
+				tabHtml+='<a class="ui-btn ui-mini '+fir+' '+sty+'" href="showMenu.html?tabId='+tab.cat_id+'" rel="external">' + tab.category_name + '</a>';
 			});
 			$('#MenuCatID').html(tabHtml);
 		} else {
@@ -90,10 +91,10 @@ function getMenuCatList() {
 				//alert(index);
 				strCat=cat.subcat_name;
 				if(index==0) { fir='ui-first-child';} else if(totMenCnt==index && dataAppConfig.AppConfig.deal_status=='B'){fir='ui-last-child';}else{ fir='';}
-				$('#menuList').append('<li class="ui-li-has-thumb '+fir+'"><a class="ui-btn ui-btn-icon-right ui-icon-carat-r" href="showMenu.html?catId='+cat.sub_id+'&tabId='+menuId+'" rel="external"><img src="'+itemImgURL+(cat.subcat_image!=""? cat.subcat_image:defaultImgURL)+'"><h2 style="margin-top:margin: 1.68em 0 1em">' + strCat+'</h2></a></li>');
+				$('#menuList').append('<li class="ui-li-has-thumb '+fir+'"><a class="ui-btn ui-btn-icon-right ui-icon-carat-r" href="showMenu.html?catId='+cat.sub_id+'&tabId='+menuId+'" rel="external"><img src="'+itemImgURL+(cat.subcat_image!=""? cat.subcat_image:defaultImgURL)+'"><h2 class="menu_title">' + strCat+'</h2></a></li>');
 			});
 			if(dataAppConfig.AppConfig.deal_status=='A') {
-				$('#menuList').append('<li class="ui-li-has-thumb ui-last-child"><a class="ui-btn ui-btn-icon-right ui-icon-carat-r" href="deal.html?tabId='+menuId+'" rel="external"><img src="'+dataAppConfig.AppConfig.deal_img+'" ><h2>Deals</h2></a></li>');
+				$('#menuList').append('<li class="ui-li-has-thumb ui-last-child"><a class="ui-btn ui-btn-icon-right ui-icon-carat-r" href="deal.html?tabId='+menuId+'" rel="external"><img src="'+dataAppConfig.AppConfig.deal_img+'" ><h2 class="menu_title">Deals</h2></a></li>');
 			}
 			headerHtml(data.MenuInfo.category_name);	
 			$("#pageLoader").hide();

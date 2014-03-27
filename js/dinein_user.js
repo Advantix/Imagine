@@ -103,7 +103,36 @@ showPrevValue();
 function showPrevValue(){	
 	//alert(JSON.stringify(userData));
 	headerHtml('');	
+	
+	var userDataval = window.localStorage.getItem('userData');
+	if(userDataval!=null) {
+		var userData = JSON.parse(userDataval);
+		//alert(JSON.stringify(userData));
+		//$('#user_id').val(userData.user_data.userid);
+		$('#fname').val(userData.user_data.fname);
+		$('#lname').val(userData.user_data.lname);
+		$('#email').val(userData.user_data.email);
+		//$('#email').attr('readonly', true);
+		$('#mobile').val(userData.addr_data.mobile);	 
+		$('#termLiId').hide();	 
+		$('#termTxtId').hide();	 
+	} else {
+		
+		var tempRegInfoData = window.localStorage.getItem('tempRegInfoArry');
+		if(tempRegInfoData!=null) {
+			var tempRegInfoVal = JSON.parse(tempRegInfoData);
+			//alert(tempRegInfoVal.fname);
+			$('#fname').val(tempRegInfoVal.fname);
+			$('#lname').val(tempRegInfoVal.lname);
+			$('#email').val(tempRegInfoVal.email);
+			//$('#email').attr('readonly', true);
+			$('#mobile').val(tempRegInfoVal.mobile);	
+			document.getElementById('term').checked=tempRegInfoVal.term;
+		}
+	}
+	
 	var bookingDetailsArr = window.localStorage.getItem('bookingDetailsArray');	
+
 
 	if(bookingDetailsArr!=null) {
 		var bookVal = JSON.parse(bookingDetailsArr);
@@ -118,20 +147,9 @@ function showPrevValue(){
 		$('#comments').val(bookVal.comments);//alert(bookVal.seating);
 		$('#seating').val(bookVal.seating);
 		//alert(bookVal.time_val);
-	}
-	var userDataval = window.localStorage.getItem('userData');
-	if(userDataval!=null) {
-		var userData = JSON.parse(userDataval);
-		//alert(JSON.stringify(userData));
-		//$('#user_id').val(userData.user_data.userid);
-		$('#fname').val(userData.user_data.fname);
-		$('#lname').val(userData.user_data.lname);
-		$('#email').val(userData.user_data.email);
-		//$('#email').attr('readonly', true);
-		$('#mobile').val(userData.addr_data.mobile);	 
-		$('#termLiId').hide();	 
-		$('#termTxtId').hide();	 
-	} 
+	} else {
+		window.location.href='dinein.html';
+	}	
 	
 }
 
@@ -151,6 +169,7 @@ function bookReservation(postData,userId) {
 			if(data.response == 1) {				
 				//alert("Reservation Successfully registered");
 				window.localStorage.removeItem('bookingDetailsArray');
+				window.localStorage.removeItem('tempRegInfoArry');
 				$("#pageLoader").hide();				
 				window.location.href='confirm_booking.html?bokId='+data.booking_id;
 			}else{
@@ -184,4 +203,17 @@ function checkTerm(idVal,val) {
 			$('#termTxtId').hide();
 		}
 	}
+}
+function storeUserInfo() {	
+		//alert(document.getElementById('term').checked);
+		
+		var tempRegInfo={"fname": $('#fname').val(),
+		"lname":$('#lname').val(),
+		"email":$('#email').val(),
+		"mobile":$('#mobile').val(),
+		"term":document.getElementById('term').checked
+		};
+		//alert(JSON.stringify(tempRegInfo));
+		window.localStorage.setItem('tempRegInfoArry',JSON.stringify(tempRegInfo)); // store local storage	
+		 
 }
