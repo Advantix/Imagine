@@ -4750,7 +4750,7 @@ background-position:50%; width:23px; height:20px;
 .menu-choose-wp { width:48%; height:180px; float:left; margin-right:3%; margin-bottom:1%; }
 .menu-img{height:66px;}
 .menu-img img{ height:100%;  width:100%;}
-.menu-title { font-size:16px; font-family: 'gothic' !important; text-align: center; text-shadow:none; background:#ccc;
+.menu-title { font-size:14px; font-family: 'gothic' !important; text-align: center; text-shadow:none; background:#ccc;
 margin:0; padding:6px 0;}
 .menu-title a { text-decoration:none; color:#000 !important;}
 
@@ -4907,7 +4907,7 @@ a.arrival-time span, a.guset-no span{ font-size:18px; color:#278a32;}
 		}
 		.drop_date{width:92%!important;font-size: 18px;     font-family: 'gothic'; margin-left:3.5%!important;height:64px;border:none!important;box-shadow:none!important; line-height:64px; font-weight:bold !important;}
 .drop_date option{ text-align:center; border-bottom: 1px solid #00ab21; font-size:16px;}
-.calen_tab{width:71.7%; height:74px; background:#fff;margin-left:36px}
+.calen_tab{width:72.7%; height:74px; background:#fff;margin-left:36px}
 .ui-listview > li p {
 	/*font-size: .70em;*/font-size: .718em;
 	font-weight: normal;
@@ -4918,6 +4918,10 @@ a.arrival-time span, a.guset-no span{ font-size:18px; color:#278a32;}
 	/*gokul*/ float:left !important;
 	white-space:normal; width:13em;
 }
+}
+@media (min-width: 24em) {
+	.calen_tab {background: none repeat scroll 0 0 #FFFFFF;height: 74px; margin-left: 36px;width: 77.7%;}
+	
 }
 @media (min-width: 28em) {
 	.ui-field-contain,
@@ -4971,7 +4975,7 @@ a.arrival-time span, a.guset-no span{ font-size:18px; color:#278a32;}
 	}
 	.header_titletext{line-height: 2em !important; padding: 0.7em 0 !important;}
 	.drop_res{width:20%!important;}
-	.calen_tab{width:69.7%; height:74px; background:#fff;margin-left:36px}
+	.calen_tab{width:70.7%; height:74px; background:#fff;margin-left:36px}
 
 }
 
@@ -4993,7 +4997,7 @@ a.arrival-time span, a.guset-no span{ font-size:18px; color:#278a32;}
 #pizzalist h2{ margin:0.0em 0 0.3em;}
 #pizzalist h3{ margin:0 0 0.3em!important;}
 #pizzalist{  margin-top: 0 !important; clear:both; }
-.calen_tab {background: none repeat scroll 0 0 #FFFFFF;height: 74px; margin-left: 36px; width: 83.8%;}
+.calen_tab {background: none repeat scroll 0 0 #FFFFFF;height: 74px; margin-left: 36px; width: 84.8%;}
 	.ui-listview > li p {
 	/*font-size: .70em;*/font-size: .718em;
 	font-weight: normal;
@@ -5023,11 +5027,11 @@ a.arrival-time span, a.guset-no span{ font-size:18px; color:#278a32;}
  .left_nav img, .right_nav img{ width:80%;  margin-top:16px;}
 	/*.menu-choose-wp { width:47%; height:156px; background: #03F; color: #930; float:left; margin-right:30px; margin-bottom:24px; }*/
 	.header_titletext{line-height:2em !important; padding: 0.7em 0 !important;}
-	.menu-choose-wp { width:47%; height:89px; float:left; margin-right:15px; margin-bottom:15px; }
+	.menu-choose-wp { width:47%; height:89px; float:left; margin-right:15px; margin-bottom:20px; }
 }
 @media (min-width: 35.5em) {
 	.menu-img {height: 84px;/*height: 80px;*/}
-	.menu-choose-wp { width:47%; height:110px !important; float:left; margin-right:15px; margin-bottom:15px; }
+	.menu-choose-wp { width:47%; height:135px !important; float:left; margin-right:15px; margin-bottom:0px; }
 	
 	}
 @media (min-width: 38em) {
@@ -5171,7 +5175,7 @@ a.arrival-time span, a.guset-no span{ font-size:18px; color:#278a32;}
 
 @media (min-width: 48em) {
 	.menu-img {height:129px !important;/*height:125px !important;*/}
-	.menu-choose-wp { width:47%; height:175px!important; float:left; margin-right:15px; margin-bottom:15px; }
+	.menu-choose-wp { width:47%; height:175px!important; float:left; margin-right:15px; margin-bottom:0px; }
 	.calen_tab {background: none repeat scroll 0 0 #FFFFFF;height: 74px; margin-left: 36px; width: 89.8%!important;}
 				.ui-listview > li p {
 	/*font-size: .70em;*/font-size: .718em;
