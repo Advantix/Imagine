@@ -12,16 +12,16 @@ function userValidate() {
 	var errorMessage = "";
 	var frm = document.registerFrmId;	
 	
-	error[0] = nameCheck(frm.fname.value,'First Name') ? "" : "This is not a valid first name";
-	error[1] = nameCheck(frm.lname.value,'Surname') ? "" :  "This is not a valid Surname";
-	error[2] = phoneCheck(frm.mobile.value,'Mobile Number (eg: 61123456789)') ? "" :  "Please provide mobile number";
+	error[0] = nameCheck(frm.fname.value,'First Name') ? "" : "Please provide valid First Name";
+	error[1] = nameCheck(frm.lname.value,'Surname') ? "" :  "Please provide valid Surname";
+	error[2] = phoneCheck(frm.mobile.value,'Mobile Number') ? "" :  "Please provide valid Mobile Number";
 	error[3] = checkText(frm.email,'Email') ? "" :  "Email Address is empty!";
 	if(error[3]=="") {
-		error[3]=emailCheck(frm.email.value) ? "" : "This is not valid email address";	
+		error[3]=emailCheck(frm.email.value) ? "" : "Please provide valid E-mail Address";	
 	}
 	if( $('#termLiId').is(':visible') ) {
 		if(frm.term.checked == false) {
-				error[4] = "Accept Terms and Conditions!";
+				error[4] = "Please accept the Terms and Conditions";
 		}
 	}
 			
@@ -84,7 +84,7 @@ $('#registerFrmId').submit(function(){
 				//window.localStorage.setItem('userData',JSON.stringify(data));
 				console.log(data);				
 				alert(data.response);
-				//$("#pageLoader").hide();
+				$("#pageLoader").hide();
 				//bookReservation(postData,'');		
 			}	
 		},
@@ -104,42 +104,53 @@ function showPrevValue(){
 	//alert(JSON.stringify(userData));
 	headerHtml('');	
 	
-	var userDataval = window.localStorage.getItem('userData');
-	if(userDataval!=null) {
-		var userData = JSON.parse(userDataval);
-		//alert(JSON.stringify(userData));
-		//$('#user_id').val(userData.user_data.userid);
-		$('#fname').val(userData.user_data.fname);
-		$('#lname').val(userData.user_data.lname);
-		$('#email').val(userData.user_data.email);
+	var tempRegInfoData = window.localStorage.getItem('tempRegInfoArry');
+	if(tempRegInfoData!=null) {
+		var tempRegInfoVal = JSON.parse(tempRegInfoData);
+		//alert(tempRegInfoVal.fname);
+		$('#fname').val(tempRegInfoVal.fname);
+		$('#lname').val(tempRegInfoVal.lname);
+		$('#email').val(tempRegInfoVal.email);
 		//$('#email').attr('readonly', true);
-		$('#mobile').val(userData.addr_data.mobile);	 
-		$('#termLiId').hide();	 
-		$('#termTxtId').hide();	 
-	} else {
-		
-		var tempRegInfoData = window.localStorage.getItem('tempRegInfoArry');
-		if(tempRegInfoData!=null) {
-			var tempRegInfoVal = JSON.parse(tempRegInfoData);
-			//alert(tempRegInfoVal.fname);
-			$('#fname').val(tempRegInfoVal.fname);
-			$('#lname').val(tempRegInfoVal.lname);
-			$('#email').val(tempRegInfoVal.email);
+		$('#mobile').val(tempRegInfoVal.mobile);	
+		document.getElementById('term').checked=tempRegInfoVal.term;
+	} else {		
+		var userDataval = window.localStorage.getItem('userData');
+		if(userDataval!=null) {
+			var userData = JSON.parse(userDataval);
+			//alert(JSON.stringify(userData));
+			//$('#user_id').val(userData.user_data.userid);
+			$('#fname').val(userData.user_data.fname);
+			$('#lname').val(userData.user_data.lname);
+			$('#email').val(userData.user_data.email);
 			//$('#email').attr('readonly', true);
-			$('#mobile').val(tempRegInfoVal.mobile);	
-			document.getElementById('term').checked=tempRegInfoVal.term;
+			$('#mobile').val(userData.addr_data.mobile);	 
+			$('#termLiId').hide();	 
+			$('#termTxtId').hide();	 
+		} else {
+			
+			var tempRegInfoData = window.localStorage.getItem('tempRegInfoArry');
+			if(tempRegInfoData!=null) {
+				var tempRegInfoVal = JSON.parse(tempRegInfoData);
+				//alert(tempRegInfoVal.fname);
+				$('#fname').val(tempRegInfoVal.fname);
+				$('#lname').val(tempRegInfoVal.lname);
+				$('#email').val(tempRegInfoVal.email);
+				//$('#email').attr('readonly', true);
+				$('#mobile').val(tempRegInfoVal.mobile);	
+				document.getElementById('term').checked=tempRegInfoVal.term;
+			}
 		}
 	}
-	
 	var bookingDetailsArr = window.localStorage.getItem('bookingDetailsArray');	
 
 
 	if(bookingDetailsArr!=null) {
 		var bookVal = JSON.parse(bookingDetailsArr);
-		dateGiven1=getDateFormat(bookVal.booking_date);//alert(dateGiven1);
+		/*dateGiven1=getDateFormat(bookVal.booking_date);//alert(dateGiven1);
 		$('#bookingDate').html(dateGiven1);//alert(bookVal.num_gust_online);
 		if(bookVal.seating=='bkfst') { amPm='am'} else {amPm='pm' }
-		$('#numGuest').html(bookVal.num_gust_online+' Guests for  ' + bookVal.time_val.replace('_',':') + amPm);
+		$('#numGuest').html(bookVal.num_gust_online+' Guests for  ' + bookVal.time_val.replace('_',':') + amPm);*/
 
 		$('#time_validate').val(bookVal.time_val.replace('_',':'));
 		$('#booking_date').val(bookVal.booking_date);

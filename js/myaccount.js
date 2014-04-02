@@ -45,6 +45,7 @@ function getMenuList() {
 		$('#employeeList').append('<li><a href="help.html" class="ui-link-inherit" rel="external">Help</a></li>');
 		$('#employeeList').append('<li><a href="terms.html" class="ui-link-inherit" rel="external">Terms and Conditions</a></li>');
 		$('#employeeList').append('<li><a href="bms.html" class="ui-link-inherit" rel="external">Best Menu Services</a></li>');
+		$('#employeeList').append('<li><a href="restaurant_details.html" class="ui-link-inherit" rel="external">Restaurant Details</a></li>');
 		
 		if(userDataval!=null) {	
 			$('#employeeList').append('<li><a href="#" id="logoutBtnId" onclick="logout();" rel="external" class="ui-link-inherit">Logout</a></li>');

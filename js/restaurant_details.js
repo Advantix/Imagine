@@ -3,9 +3,9 @@ if(dataAppConfig==null || resData==null) {
 }
 
 // Address box
-htmlData='<h2>'+resData.restaurant_name+'</h2>'; 
+htmlData='<h2>'+resData.restaurant_name+' Restaurant</h2>'; 
 htmlData+='<p>The best fine dining and pizza restaurant in the Illawarra. An experience of real fine food.</p>'; 
-htmlData+='<div class="res_location"><img src="images/location.jpg"  alt=""></div>';
+htmlData+='<div class="res_location"><img src="images/location.jpg"  style="margin-top:10px;" alt=""></div>';
 htmlData+='<div class="clearfix infowarps">';
 htmlData+='<div class="row_div"><h2>Location</h2></div>';
 htmlData+='<div class="row_div"><label>Address </label>';

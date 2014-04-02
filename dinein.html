@@ -54,6 +54,17 @@
 			$("#seating-button").removeClass("ui-corner-all");
 			$("#timediv-button").removeClass("ui-corner-all");
 			$("#timediv-button").addClass("drop_res");
+			$("#timediv-button,#num_guest_online-button,#dateDrop-button").removeClass("ui-btn-icon-right");
+			$("#dateDrop-button").removeClass("ui-corner-all");
+			$("#dateDrop-button").addClass("drop_date");
+			$("#registerFrmId .ui-select").css({"margin-bottom":"0"});
+			$("#seating-button .ui-select").css({"margin-top":"0"});
+			$("#registerFrmId .ui-select #timediv-button").css({"border-width":"0"});
+			$("#registerFrmId .ui-select #num_guest_online-button").css({"border-width":"0"});
+			//$("#registerFrmId #seating-button span").css({"height":"30","display":"block","line-height":"30px"});
+			//$("#registerFrmId #dateDrop-button span").css({"color":"black","font-size":"16px","font-weight":"bold"});
+			$("#seatingDrop").css({"margin-bottom":"20px"});
+			$("#registerFrmId #seating-button ").addClass("hour_sche");
 		});
 		
 		
@@ -97,19 +108,34 @@
 				<div class="left_nav" onclick="dateChange('Prev')"><a href="#"><img src="images/left_nav.jpg" alt=""></a></div>
                 <div class="right_nav" onclick="dateChange('Next')"><a href="#"><img src="images/right_nav.jpg" alt=""></a></div>
                 
-				<div style="width:100%; height:74px; background:#fff;">            
-				  <p style="font-size:26px; color:#000; font-family: 'gothic'; margin:0 0 0 0; padding:10px 0 0 0; text-align:center;" id='dateP'></p>
-				  <p style="font-size:16px; color:#027e0c; text-transform:uppercase; font-family: 'gothic'; margin:5px 0 0 0; padding:0; text-align:center;" id='dayP'></p>                
+                <div class="calen_tab">            
+				 <select id="dateDrop" name="dateDrop" onchange="setDateHidden(this.value)"></select></p>
+				                 
 				</div>
+                <div class="clearfix"></div>				
+               
 			
 				<input type="hidden" id="booking_date" name="booking_date" class="one" required>
-				<div id="seatingDrop"><select id="seating" name="seating" data-shadow="false" onchange="loadtimediv('drop')"></select></div>
+				<div id="seatingDrop">
+				  <select id="seating" name="seating" data-shadow="false" onChange="loadtimediv('drop')">
+			      </select>
+                 
+				</div>
 				<input type="hidden" name="seating_text" id="seating_text" value="">
 				
 				<select id="num_guest_online" name="num_guest_online" data-shadow="false" ></select>
-				<select id="timediv" name="timediv" data-shadow="false"  onchange="changecolor(this.value)"><option value="SA">Select Arrival Time</option></select>
-				
-				
+                
+				<select id="timediv" style="background-image:none;" name="timediv" data-shadow="false"  onChange="changecolor(this.value)">
+				  <option value="SA">
+                  Select Arrival Time
+                  </option>
+                
+				  </select>
+              <div class="clearfix" style="width:100%;">
+                <a href="javascript:void(0)" class="ui-btn arrival-time" style="cursor:context-menu!important;"><span>Arrival Time</span></a>
+                <a class="ui-btn guset-no" style="cursor:context-menu!important;"><span>#Guest</span></a>
+            </div>
+                  
 				<input type="text" id="comments" name="comments" required value="Additional Requests" onfocus="OnFocusName1('comments','Additional Requests',this.value)" onblur="OnBlurName1('comments','Additional Requests',this.value)">	
 				
 				 

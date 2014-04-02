@@ -27,7 +27,7 @@ function getOrderList() {
 		//alert(orderDets);
 		$.each(orderDets, function(index, item) {
 			
-			$('#orderList').append('<li><a class="ui-btn ui-btn-icon-right ui-icon-carat-r" href="confirm_booking.html?bokId='+item.booking_id+'&bokord=view"  rel="external">'+(index+1)+'. Booking Id:'+item.booking_id+' Booking Date: '+item.booking_date+' Guests: '+item.num_guest+' for '+(item.breakfast!="" ? item.breakfast+'am' : (item.lunch!="" ? item.lunch+'pm' : (item.dinner!="" ? item.dinner+'pm': "")))+' </a></li>');
+			$('#orderList').append('<li><a class="ui-btn ui-btn-icon-right ui-icon-carat-r" href="confirm_booking.html?bokId='+item.booking_id+'&bokord=view"  rel="external"> Reservation Date: '+item.booking_date+'</a></li>');
 		}); 
 		//$('#orderList').listview('refresh');
 	});
@@ -55,7 +55,10 @@ function showOrderinfo() {
 				htmlData+='  <p class="info_right">'+item.booking_id+'</p></div>';
 				
 				htmlData+=' <div class="row_div"><label>Name </label>';
-				htmlData+='  <p class="info_right">'+item.fname+' <br>'+item.mobile+'</p></div>';
+				htmlData+='  <p class="info_right">'+item.fname+'</p></div>';
+				
+				htmlData+=' <div class="row_div"><label>Phone </label>';
+				htmlData+='  <p class="info_right">'+item.mobile+'</p></div>';
 				
 				htmlData+=' <div class="row_div"><label>Guests </label>';
 				htmlData+='  <p class="info_right">'+item.num_guest+' Guests</p></div>';
@@ -78,7 +81,7 @@ function showOrderinfo() {
 				htmlData+='<div class="row_div"><h2>Location</h2></div>';
 				htmlData+='<div class="row_div"><label>Address </label>';
 				htmlData+='<p class="info_right">';
-				htmlData+=resData.address_line1+', '+resData.address_line2+', <br> '+resData.suburb+',<br> '+resData.state+' <br> '+resData.postcode; 
+				htmlData+=resData.address_line1+',<br>  '+resData.address_line2+', <br> '+resData.suburb+',<br> '+resData.state+' <br> '+resData.postcode; 
 				htmlData+='</p></div>';
 				
 				htmlData+='<div class="row_div"><label>Phone </label>  ';           

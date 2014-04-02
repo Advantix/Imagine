@@ -23,7 +23,7 @@ jQuery(document).ready(function () {
 	var targetDate= new Date();
 	targetDate.setDate(today.getDate()+ 60);
 	$('input.one').simpleDatepicker({ startdate: new Date(), enddate: endyear });	
-	
+	load_30days();
 	getNumGuest();
 	getSittingName();
 	
@@ -265,7 +265,7 @@ $("#bookingButtonId").click(function() {
 					window.location.href='dinein_user.html';	
 					
 				} else if(data.response==='NA') {
-					alert('No seats available your chosen time');
+					alert('There are no seats available for your selected time.');
 					$('#pageLoader').hide();
 				} else {
 					available = data.response;
@@ -285,7 +285,7 @@ $("#bookingButtonId").click(function() {
 });
 
 function dateChange(type) {
-	
+	//alert(type);
 	$('#time_validate').val('');
 			
 	$('#timediv').html('<option value="0">Select Arrival Time</option>');
@@ -314,9 +314,8 @@ function dateChange(type) {
 		} 
 		var dmNex = nex.getMonth()+1;		
 		var dyNex = nex.getFullYear();
-		var daNex = nex.getDate();		
-		
 		var daNex = nex.getDate();			
+			
 		dateGiven = dyNex+'-'+(dmNex<10 ? '0'+dmNex: dmNex)+'-'+(daNex<10 ? '0'+daNex: daNex);			
 		dateGivenHidden=daNex+'-'+dmNex+'-'+dyNex;
 		var cmp = fn_DateCompare(dateGiven,currDate);
@@ -328,8 +327,12 @@ function dateChange(type) {
 		//alert(booking_date);
 		var frmDat = getDateFormat(dateGiven);
 		var sepDay = frmDat.split(" ");
-		$("#dayP").html(sepDay[0]);
-		$("#dateP").html(sepDay[1]+" "+sepDay[2]+" "+sepDay[3]);
+		
+		ordinal = sepDay[1] + (sepDay[1]>10 && sepDay[1]<20 ? 'th' : {1:'st', 2:'nd', 3:'rd'}[sepDay[1] % 10] || 'th');
+		DateShow = sepDay[0].slice(0,3)+", "+ordinal+" "+sepDay[2].slice(0,3)+" "+sepDay[3];
+		
+		$('#dateDrop').val(dateGiven);
+		$('#dateDrop-button span').html(DateShow);
 		//alert(sepDay[0]);
 	} else {
 		alert('Please select greater than or equal to current date');
@@ -344,7 +347,7 @@ function fn_DateCompare(DateA, DateB) {
 
       var msDateA = Date.UTC(a.getFullYear(), a.getMonth()+1, a.getDate());
       var msDateB = Date.UTC(b.getFullYear(), b.getMonth()+1, b.getDate());
-
+	  //alert(msDateA+":"+msDateB);
       if (parseFloat(msDateA) < parseFloat(msDateB))
         return -1;  // less than
       else if (parseFloat(msDateA) == parseFloat(msDateB))
@@ -354,3 +357,44 @@ function fn_DateCompare(DateA, DateB) {
       else
         return null;  // error
   }
+  function load_30days() {	
+	days30Html="";
+	for(i=0;i<30;i++){	
+		var today = new Date(); 
+		today.setDate(today.getDate() + i);
+		var da = today.getDate();		
+		var dm = today.getMonth()+1;
+		currDate = today.getFullYear()+'-'+(dm<10 ? '0'+dm: dm)+'-'+(da<10 ? '0'+da: da);
+		
+		var nex = new Date(currDate); //alert(nex);
+		
+		//nex.setDate(nex.getDate() + i);		
+		 
+		var dmNex = nex.getMonth()+1;		
+		var dyNex = nex.getFullYear();		
+		var daNex = nex.getDate();		
+		
+		dateGiven = dyNex+'-'+(dmNex<10 ? '0'+dmNex: dmNex)+'-'+(daNex<10 ? '0'+daNex: daNex);			
+		dateGivenHidden=daNex+'-'+dmNex+'-'+dyNex;
+		
+		var frmDat = getDateFormat(dateGiven);
+		var sepDay = frmDat.split(" ");
+		ordinal = sepDay[1] + (sepDay[1]>10 && sepDay[1]<20 ? 'th' : {1:'st', 2:'nd', 3:'rd'}[sepDay[1] % 10] || 'th');
+		DateShow = sepDay[0].slice(0,3)+", "+ordinal+" "+sepDay[2].slice(0,3)+" "+sepDay[3];
+		
+		days30Html+='<option value='+dateGivenHidden+'>'+DateShow+'</option>';
+	}		
+	//numGuestHtml+='';
+	$('#dateDrop').html(days30Html);	
+  }
+  function setDateHidden(val){
+	$('#time_validate').val('');
+			
+	$('#timediv').html('<option value="0">Select Arrival Time</option>');
+	$("#timediv-button span").html('Select Arrival Time');
+	$('#seating').val('0');
+	$('#seating-button span').html('Select sitting');
+			
+	$('#booking_date').val(val);
+  }
+  
