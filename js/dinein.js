@@ -64,7 +64,7 @@ jQuery(document).ready(function () {
 function getNumGuest() {
 	resDataMinGuest=resData.min_gust_per_online_bk;
 	resDataMaxGuest=resData.max_gust_per_online_bk;
-	numGuestHtml='<option value="0">Select Guest</option>';
+	numGuestHtml='<option value="0">Select</option>';
 	for(i=resDataMinGuest;i<=resDataMaxGuest;i++){	
 		
 		numGuestHtml+='<option value='+i+'>'+i+'</option>';
@@ -116,8 +116,8 @@ function getSittingName() {
 		if(onCh=='drop') {
 			$('#time_validate').val('');
 			
-			$('#timediv').html('<option value="0">Select Arrival Time</option>');
-			$("#timediv-button span").html('Select Arrival Time');
+			$('#timediv').html('<option value="0">Select</option>');
+			$("#timediv-button span").html('Select');
 		}
 		
 		numGuestSel=$( "#num_guest_online option:selected" ).val();//alert(numGuestSel);
@@ -149,7 +149,7 @@ function getSittingName() {
 					if(bkfstStr.close_rest!==1) {
 						
 						if(bkfstStrCnt > 0) {
-							timHtml+='<option value="0">Select Arrival Time</option>';
+							timHtml+='<option value="0">Select</option>';
 							i=0;
 							$.each(bkfstStr, function(index, bkfst) {
 								//alert(index+":"+bkfst);	
@@ -186,7 +186,7 @@ function getSittingName() {
 								}								
 							}						
 						} else {							
-							if(seating=='bkfst') { set=0;} else if(seating=='lunch') {set=1;} else if(seating=='dinner') {set=2;}else {set='Select Arrival Time';}
+							if(seating=='bkfst') { set=0;} else if(seating=='lunch') {set=1;} else if(seating=='dinner') {set=2;}else {set='Select';}
 							if(sittingArr[set]==null) {
 								sitVal=set;
 							} else {
@@ -225,7 +225,7 @@ function getSittingName() {
 		} else {
 			$("#time_validate").val('');
 			$("#timediv").val(0);
-			$("#timediv-button span").html('Select Arrival Time');
+			$("#timediv-button span").html('Select');
 		}
 		
 	}
@@ -288,8 +288,8 @@ function dateChange(type) {
 	//alert(type);
 	$('#time_validate').val('');
 			
-	$('#timediv').html('<option value="0">Select Arrival Time</option>');
-	$("#timediv-button span").html('Select Arrival Time');
+	$('#timediv').html('<option value="0">Select</option>');
+	$("#timediv-button span").html('Select');
 	if(type!='') {
 		$('#seating').val('0');
 		$('#seating-button span').html('Select sitting');
@@ -333,6 +333,8 @@ function dateChange(type) {
 		
 		$('#dateDrop').val(dateGiven);
 		$('#dateDrop-button span').html(DateShow);
+		$("#dayP").html(sepDay[0]);
+		$("#dateP").html(sepDay[1]+" "+sepDay[2].slice(0,3)+" "+sepDay[3]);
 		//alert(sepDay[0]);
 	} else {
 		alert('Please select greater than or equal to current date');
@@ -390,11 +392,41 @@ function fn_DateCompare(DateA, DateB) {
   function setDateHidden(val){
 	$('#time_validate').val('');
 			
-	$('#timediv').html('<option value="0">Select Arrival Time</option>');
-	$("#timediv-button span").html('Select Arrival Time');
+	$('#timediv').html('<option value="0">Select</option>');
+	$("#timediv-button span").html('Select');
 	$('#seating').val('0');
 	$('#seating-button span').html('Select sitting');
 			
 	$('#booking_date').val(val);
+	$("#dropDateId").hide();
+	$("#dropHtmlDateId").show();
+	
+	var booking_date = $('#booking_date').val();
+	dArr=booking_date.split('-');
+	if(dArr[0]<2000) {
+		dateGiven=dArr[2]+'-'+(dArr[1]<10 ? '0'+dArr[1]: dArr[1])+'-'+(dArr[0]<10 ? '0'+dArr[0]: dArr[0]);
+		var nex = new Date(dateGiven); //alert(nex);
+		
+		var dmNex = nex.getMonth()+1;		
+		var dyNex = nex.getFullYear();
+		var daNex = nex.getDate();			
+			
+		dateGiven = dyNex+'-'+(dmNex<10 ? '0'+dmNex: dmNex)+'-'+(daNex<10 ? '0'+daNex: daNex);			
+		
+	}
+	var frmDat = getDateFormat(dateGiven);
+	var sepDay = frmDat.split(" ");
+	
+	$("#dayP").html(sepDay[0]);
+	$("#dateP").html(sepDay[1]+" "+sepDay[2].slice(0,3)+" "+sepDay[3]);
   }
-  
+  function showDateDrop(val) {
+	//alert(val);
+	if(val!="out") {
+		$("#dropDateId").show();
+		$("#dropHtmlDateId").hide();
+	} else {
+		$("#dropDateId").hide();
+		$("#dropHtmlDateId").show();
+	}
+  }

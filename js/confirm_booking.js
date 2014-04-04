@@ -51,7 +51,7 @@ function showOrderinfo() {
 				
 				htmlData+=' <div class="clearfix infowarps">';
 				
-				htmlData+=' <div class="row_div"><label>Confirmation Number </label>';
+				htmlData+=' <div class="row_div"><label>Confirm No </label>';
 				htmlData+='  <p class="info_right">'+item.booking_id+'</p></div>';
 				
 				htmlData+=' <div class="row_div"><label>Name </label>';
@@ -81,7 +81,7 @@ function showOrderinfo() {
 				htmlData+='<div class="row_div"><h2>Location</h2></div>';
 				htmlData+='<div class="row_div"><label>Address </label>';
 				htmlData+='<p class="info_right">';
-				htmlData+=resData.address_line1+',<br>  '+resData.address_line2+', <br> '+resData.suburb+',<br> '+resData.state+' <br> '+resData.postcode; 
+				htmlData+=resData.address_line1+'<br>  '+(resData.address_line2!="" ? resData.address_line2+'<br>' :"")+resData.suburb+'<br> '+resData.state+' <br> '+resData.postcode; 
 				htmlData+='</p></div>';
 				
 				htmlData+='<div class="row_div"><label>Phone </label>  ';           

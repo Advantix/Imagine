@@ -10,10 +10,10 @@ htmlData+='<div class="clearfix infowarps">';
 htmlData+='<div class="row_div"><h2>Location</h2></div>';
 htmlData+='<div class="row_div"><label>Address </label>';
 htmlData+='<p class="info_right">';
-htmlData+=resData.address_line1+', '+resData.address_line2+', <br> '+resData.suburb+',<br> '+resData.state+' <br> '+resData.postcode; 
+htmlData+=resData.address_line1+'<br> '+(resData.address_line2!="" ? resData.address_line2+'<br>' :"")+resData.suburb+'<br> '+resData.state+' <br> '+resData.postcode; 
 htmlData+='</p></div>';
 htmlData+='<div class="row_div"><label>Phone </label>  ';           
-           htmlData+='<p class="info_right"> '+resData.phone+'</p> <a href="map.html" rel="external" style="float:right;" class="ui-btn ui-btn-inline">View Map</a></div> ';
+           htmlData+='<p class="info_right"> '+resData.phone+'</p> <a href="map.html" rel="external"  class="ui-btn">View Map</a></div> ';
 htmlData+='</div>';
 $('#addressDiv').html(htmlData);
 	

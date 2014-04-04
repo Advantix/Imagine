@@ -58,7 +58,8 @@
 			$("#dateDrop-button").removeClass("ui-corner-all");
 			$("#dateDrop-button").addClass("drop_date");
 			$("#registerFrmId .ui-select").css({"margin-bottom":"0"});
-			$("#seating-button .ui-select").css({"margin-top":"0"});
+			$("#seating-button .ui-select").css({"margin-top":"0.5em"});
+			$("#dropDateId .ui-select").css({"margin-top":"0"});
 			$("#registerFrmId .ui-select #timediv-button").css({"border-width":"0"});
 			$("#registerFrmId .ui-select #num_guest_online-button").css({"border-width":"0"});
 			//$("#registerFrmId #seating-button span").css({"height":"30","display":"block","line-height":"30px"});
@@ -108,16 +109,21 @@
 				<div class="left_nav" onclick="dateChange('Prev')"><a href="#"><img src="images/left_nav.jpg" alt=""></a></div>
                 <div class="right_nav" onclick="dateChange('Next')"><a href="#"><img src="images/right_nav.jpg" alt=""></a></div>
                 
-                <div class="calen_tab">            
-				 <select id="dateDrop" name="dateDrop" onchange="setDateHidden(this.value)"></select></p>
-				                 
+                <div class="calen_tab"  id="dropDateId" style="display:none;">            
+				 <select id="dateDrop" name="dateDrop" onchange="setDateHidden(this.value)"></select>                 
 				</div>
-                <div class="clearfix"></div>				
                
+                
+				<div class="calen_tab" onmouseover="showDateDrop('in');"   id="dropHtmlDateId">            
+				  <p style="font-size:26px; color:#000; font-family: 'gothic'; margin:0 0 0 0!important; padding:10px 0 0 0!important; text-align:center;" id='dateP'></p>
+				  <p style="font-size:16px; color:#027e0c; text-transform:uppercase; font-family: 'gothic'; margin:5px 0 0 0!important; padding:0!important; text-align:center;" id='dayP'></p>                
+				</div>
+				<div class="clearfix"></div>				
+            
 			
 				<input type="hidden" id="booking_date" name="booking_date" class="one" required>
-				<div id="seatingDrop">
-				  <select id="seating" name="seating" data-shadow="false" onChange="loadtimediv('drop')">
+				<div id="seatingDrop" onmouseout="showDateDrop('out');">
+				  <select id="seating" name="seating" data-shadow="false" onChange="loadtimediv('drop')" >
 			      </select>
                  
 				</div>
@@ -127,7 +133,7 @@
                 
 				<select id="timediv" style="background-image:none;" name="timediv" data-shadow="false"  onChange="changecolor(this.value)">
 				  <option value="SA">
-                  Select Arrival Time
+                  Select
                   </option>
                 
 				  </select>

@@ -4596,11 +4596,11 @@ text-transform:none; }
 
 
 .confirmation label{ display: block; width:15em; float:left; color:#000; font-size:14px; font-weight:bold;}
-p.info_right{  /*display: block; margin:0; padding:0; float:left; text-align:left*/float: right;font-size: 0.9em;margin: 0; padding: 0; text-align:right; }
+p.info_right{  /*display: block; margin:0; padding:0; float:left; text-align:left*/float: left;font-size: 0.9em;margin: 0; padding: 0; text-align:left; width:9em; }
 .ingre_label{  display: block; width:80%; float:left; color:#000; font-size:14px; font-weight:bold;}
 
 .confirmation strong{color:#ed9238; font-weight:normal;}
-.confirmation span{color:#e04c4c;}
+.confirmation span{/*color:#e04c4c;*/color:#333333;}
 
 .infowarps { border-bottom:1px solid #358c47; width:100%;}
 
@@ -4805,7 +4805,7 @@ a.arrival-time span, a.guset-no span{ font-size:18px; color:#278a32;}
 .res_location{ width:100%;} 
 
 .res_location img {margin:0; padding:0; width:100%;}
-#addressDiv .ui-btn { padding:0.3em 2em 0.3em 2em !important; margin-top:0 !important; background-color:#00ab21;font-family: 'gothic',Arial, Helvetica, sans-serif /*{global-font-family}*/; font-size:0.8em; text-transform:uppercase; color:#fff;}
+#addressDiv .ui-btn { padding:0.3em 2em 0.3em 2em !important; margin-top:0; background-color:#00ab21;font-family: 'gothic',Arial, Helvetica, sans-serif /*{global-font-family}*/; font-size:0.8em; clear: right; text-transform:uppercase; color:#fff;}
 
 .imagineLogo img{width:35%;padding:0;margin:0px 0 0 0 !important}
 .imagineLogo  h1{padding:0;margin:0 0 0 0 !important}
@@ -4838,6 +4838,7 @@ a.arrival-time span, a.guset-no span{ font-size:18px; color:#278a32;}
 .calen_tab{width:92.6%; height:74px; background:#fff;margin-left:45px}
 .drop_date{width:92%!important;font-size: 18px; font-family: 'gothic'; margin-left:3.5%!important;height:64px;border:none!important;box-shadow:none!important; line-height:64px; font-weight:bold!important;}
 .hour_sche{height:30px;display:block;line-height:30px;}
+.price_shw{text-align:right;  margin: 0 0 0.3em !important;}
 @media screen and (orientation: portrait) {
 	.ui-mobile .ui-page {
 		min-height: 420px;
@@ -4888,7 +4889,7 @@ a.arrival-time span, a.guset-no span{ font-size:18px; color:#278a32;}
 }
     .header_titletext{line-height:2em !important; padding: 0.7em 0 !important;}
 	.menu-choose-wp { width:47%; height:108px;float:left; margin-right:30px; margin-bottom:24px; }
-	.menu-img { height: 70px;/*height: 66px;*/}
+	.menu-img { height: 74px;/*height: 66px;*/}
 	
 	.drop_res{width:41%!important;}
 	a.arrival-time span, a.guset-no span {color: #278A32;font-size: 15px;}
@@ -4918,9 +4919,31 @@ a.arrival-time span, a.guset-no span{ font-size:18px; color:#278a32;}
 	/*gokul*/ float:left !important;
 	white-space:normal; width:13em;
 }
+.confirmation label{ display: block; width:7em; float:left; color:#000; font-size:14px; font-weight:bold;}
+#addressDiv .ui-btn { padding:0.3em .2em 0.3em 0.2em !important; margin-right:0; margin-top:-20px; background-color:#00ab21;font-family: 'gothic',Arial, Helvetica, sans-serif /*{global-font-family}*/; font-size:0.6em; text-transform:uppercase; float:right; color:#fff;}
+.menu_wrap{ background:none; margin-top:0px!important;}
+.menu-choose-wp {float: left;height: 89px; margin-bottom:28px!important; margin-right: 15px;width: 47%;}
+.imagineLogo img {margin: 0 !important;padding: 0;width: 70%!important;}
 }
 @media (min-width: 24em) {
-	.calen_tab {background: none repeat scroll 0 0 #FFFFFF;height: 74px; margin-left: 36px;width: 77.7%;}
+	.calen_tab {background: none repeat scroll 0 0 #FFFFFF;height: 74px; margin-left: 36px;width: 77.8%!important;}
+	#addressDiv .ui-btn { padding:0.8em 2.2em 0.8em 2.2em !important; margin-right:0; margin-top:-24px; background-color:#00ab21;font-family: 'gothic',Arial, Helvetica, sans-serif /*{global-font-family}*/; font-size:0.6em; text-transform:uppercase; float:right; color:#fff;}
+	
+.confirmation label {
+    color: #000000;
+    display: block;
+    float: left;
+    font-size: 14px;
+    font-weight: bold;
+    width: 7em;
+}p.info_right {
+    float: left;
+    font-size: 0.9em;
+    margin: 0;
+    padding: 0;
+    text-align: left;
+    width: 12em;
+}
 	
 }
 @media (min-width: 28em) {
@@ -4997,7 +5020,7 @@ a.arrival-time span, a.guset-no span{ font-size:18px; color:#278a32;}
 #pizzalist h2{ margin:0.0em 0 0.3em;}
 #pizzalist h3{ margin:0 0 0.3em!important;}
 #pizzalist{  margin-top: 0 !important; clear:both; }
-.calen_tab {background: none repeat scroll 0 0 #FFFFFF;height: 74px; margin-left: 36px; width: 84.8%;}
+.calen_tab {background: none repeat scroll 0 0 #FFFFFF;height: 74px; margin-left: 36px; width: 84.8%!important;}
 	.ui-listview > li p {
 	/*font-size: .70em;*/font-size: .718em;
 	font-weight: normal;
@@ -5008,6 +5031,10 @@ a.arrival-time span, a.guset-no span{ font-size:18px; color:#278a32;}
 	/*gokul*/ float:left !important;
 	white-space:normal; width:27em;
 }
+#addressDiv .ui-btn { padding:0.3em 1em 0.3em 1em !important; margin-right:0; margin-top:-22px; background-color:#00ab21;font-family: 'gothic',Arial, Helvetica, sans-serif /*{global-font-family}*/; font-size:0.8em; text-transform:uppercase; float:right; color:#fff;}
+.confirmation label{ display: block; width:15em; float:left; color:#000; font-size:14px; font-weight:bold;}
+p.info_right{  /*display: block; margin:0; padding:0; float:left; text-align:left*/float: left;font-size: 0.9em;margin: 0; padding: 0; text-align:left; width:13em; }
+.imagineLogo img {margin: 0 !important;padding: 0;width: 50%!important;}
 
 	}
 
@@ -5027,13 +5054,25 @@ a.arrival-time span, a.guset-no span{ font-size:18px; color:#278a32;}
  .left_nav img, .right_nav img{ width:80%;  margin-top:16px;}
 	/*.menu-choose-wp { width:47%; height:156px; background: #03F; color: #930; float:left; margin-right:30px; margin-bottom:24px; }*/
 	.header_titletext{line-height:2em !important; padding: 0.7em 0 !important;}
+
 	.menu-choose-wp { width:47%; height:89px; float:left; margin-right:15px; margin-bottom:20px; }
+	.calen_tab { background: none repeat scroll 0 0 #FFFFFF;height: 74px;margin-left: 36px;width: 84.8%;}
+	
 }
 @media (min-width: 35.5em) {
 	.menu-img {height: 84px;/*height: 80px;*/}
-	.menu-choose-wp { width:47%; height:135px !important; float:left; margin-right:15px; margin-bottom:0px; }
-	
+	.menu-choose-wp { width:47%; height:106px!important; float:left; margin-right:15px; margin-bottom:0px; }
+	.confirmation label{ display: block; width:16em; float:left; color:#000; font-size:14px; font-weight:bold;}
+p.info_right{  /*display: block; margin:0; padding:0; float:left; text-align:left*/float: left;font-size: 0.9em;margin: 0; padding: 0; text-align:left; width:18em; }
+.menu_wrap{ background:none; margin-top:20px!important;}
+
+
 	}
+	
+	@media (min-width: 37.5em) {
+		.calen_tab {background: none repeat scroll 0 0 #FFFFFF;height: 74px; margin-left: 36px;width: 85.8%!important;}
+		
+		}
 @media (min-width: 38em) {
 	.ui-responsive > .ui-block-a,
 	.ui-responsive > .ui-block-b,
@@ -5145,7 +5184,12 @@ a.arrival-time span, a.guset-no span{ font-size:18px; color:#278a32;}
 	filter: Alpha(Opacity=75);
 	opacity: .75;
 }
-
+.calen_tab {
+    background: none repeat scroll 0 0 #FFFFFF;
+    height: 74px;
+    margin-left: 36px;
+    width: 72.8%;
+}
 }
 @media screen and (max-width: 30em) {
 	.imagineLogo img {
@@ -5153,6 +5197,7 @@ a.arrival-time span, a.guset-no span{ font-size:18px; color:#278a32;}
     padding: 0;
     width: 50%;
 }
+
 }
 /* Show priority 2 at 480px (30em x 16px) */
 @media screen and (min-width: 30em) {
@@ -5161,6 +5206,12 @@ a.arrival-time span, a.guset-no span{ font-size:18px; color:#278a32;}
 		display: table-cell;
 	}
 .drop_res{width:41%!important;}
+.calen_tab {
+    background: none repeat scroll 0 0 #FFFFFF;
+    height: 74px;
+    margin-left: 36px;
+    width: 83.8%;
+}
 }
 /* Show priority 3 at 640px (40em x 16px) */
 @media screen and (min-width: 40em) {
@@ -5187,6 +5238,14 @@ a.arrival-time span, a.guset-no span{ font-size:18px; color:#278a32;}
 	/*gokul*/ float:left !important;
 	white-space:normal; width:51em;
 }
+#addressDiv .ui-btn { padding:0.3em 1em 0.3em 1em !important; margin-right:0; margin-top:-29px; background-color:#00ab21;font-family: 'gothic',Arial, Helvetica, sans-serif /*{global-font-family}*/; font-size:0.8em; text-transform:uppercase; float:right; color:#fff;}
+.confirmation label{ display: block; width:26em; float:left; color:#000; font-size:14px; font-weight:bold;}
+p.info_right{  /*display: block; margin:0; padding:0; float:left; text-align:left*/float: left;font-size: 0.9em;margin: 0; padding: 0; text-align:left; width:22em; }
+.menu_wrap {
+    background: none repeat scroll 0 0 rgba(0, 0, 0, 0);
+    margin-top:24px!important;
+}
+.imagineLogo img {margin: 0 !important;padding: 0;width: 40%!important;}
 	}
 
 	
@@ -5242,6 +5301,26 @@ a.arrival-time span, a.guset-no span{ font-size:18px; color:#278a32;}
 	/*gokul*/ float:left !important;
 	white-space:normal; width:73em;
 }
+#addressDiv .ui-btn { padding:0.3em 1em 0.3em 1em !important; margin-right:0; margin-top:-29px; background-color:#00ab21;font-family: 'gothic',Arial, Helvetica, sans-serif /*{global-font-family}*/; font-size:0.8em; text-transform:uppercase; float:right; color:#fff;}
+.confirmation label{ display: block; width:32em; float:left; color:#000; font-size:14px; font-weight:bold;}
+p.info_right{  /*display: block; margin:0; padding:0; float:left; text-align:left*/float: left;font-size: 0.9em;margin: 0; padding: 0; text-align:left; width:33em; }
+	}
+	/*gokul*/@media (min-width: 64em) {
+	
+	.calen_tab {background: none repeat scroll 0 0 #FFFFFF;height: 74px; margin-left: 36px; width: 93.8%!important;}
+					.ui-listview > li p {
+	/*font-size: .70em;*/font-size: .718em;
+	font-weight: normal;
+	display: block;
+	/*margin: .6em 0;*/margin:0;
+	text-overflow: ellipsis;
+	/*overflow: hidden;*/
+	/*gokul*/ float:left !important;
+	white-space:normal; width:73em;
+}
+#addressDiv .ui-btn { padding:0.3em 1em 0.3em 1em !important; margin-right:0; margin-top:-29px; background-color:#00ab21;font-family: 'gothic',Arial, Helvetica, sans-serif /*{global-font-family}*/; font-size:0.8em; text-transform:uppercase; float:right; color:#fff;}
+.confirmation label{ display: block; width:32em; float:left; color:#000; font-size:14px; font-weight:bold;}
+p.info_right{  /*display: block; margin:0; padding:0; float:left; text-align:left*/float: left;font-size: 0.9em;margin: 0; padding: 0; text-align:left; width:33em; }
 	}
 /* Show priority 6 at 1,120px (70em x 16px) */
 @media screen and (min-width: 70em) {

@@ -182,7 +182,7 @@ function getMenuItemList() {
 		if(itemDet.option=='N') {
 			
 			
-			htmlVal+='<p> <h3>Price  <span>$'+ itemDet.item_selling_price + '/-</span></h3>';
+			htmlVal+='<p> <h3 class="price_shw">Price  <span>$'+ itemDet.item_selling_price + '/-</span></h3>';
 				
 			
 			/* -- modi 4 /12----
