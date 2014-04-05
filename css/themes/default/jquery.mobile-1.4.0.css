@@ -4924,7 +4924,7 @@ p.info_right { float: left;font-size: 0.8em;margin: 0; padding: 0;text-align: le
 width: 12em;
 }
 .confirmation label{ display: block; width:6em; float:left; color:#000; font-size:14px; font-weight:bold;}
-#addressDiv .ui-btn { padding:0.3em .8em 0.3em 0.8em !important; margin-right:0; margin-top:-14px; background-color:#00ab21;font-family: 'gothic',Arial, Helvetica, sans-serif /*{global-font-family}*/; font-size:0.6em; text-transform:uppercase; float:right; color:#fff;}
+#addressDiv .ui-btn { padding:0.3em .8em 0.3em 0.8em !important; margin-right:0; margin-left:0;margin-bottom:0; margin-top:-14px; background-color:#00ab21;font-family: 'gothic',Arial, Helvetica, sans-serif /*{global-font-family}*/; font-size:0.5em; text-transform:uppercase; float:right; color:#fff;}
 .menu_wrap{ background:none; margin-top:0px!important;}
 .menu-choose-wp {float: left;height: 89px; margin-bottom:28px!important; margin-right: 15px;width: 47%;}
 .imagineLogo img {margin: 0 !important;padding: 0;width: 70%!important;}
