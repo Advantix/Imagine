@@ -221,7 +221,7 @@ function capitalize (text) {
     return text.charAt(0).toUpperCase() + text.slice(1).toLowerCase();
 }
 
-function getDateFormat(dateGiven) {
+function getDateFormat(dateGiven,type) {
 	
 	Date.prototype.myMet=function()
 	{
@@ -271,7 +271,11 @@ function getDateFormat(dateGiven) {
 	var date = Datestring.getDate();
 	var year = Datestring.getFullYear();
 	//alert(day+" "+date+" "+ mon +" "+ year);
-	return day+" "+date+" "+ mon +" "+ year;
+	if(type=='date') {
+		return day+" "+date+" "+ mon +" "+ year;
+	} else {
+		return day.slice(0,3)+" "+date+" "+ mon +" "+ year;
+	}
 }
 
 // Footer controls starts

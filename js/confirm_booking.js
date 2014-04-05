@@ -64,10 +64,10 @@ function showOrderinfo() {
 				htmlData+='  <p class="info_right">'+item.num_guest+' Guests</p></div>';
 				
 				htmlData+=' <div class="row_div"><label>Time </label>';
-				htmlData+='  <p class="info_right">'+(item.breakfast!="" ? item.breakfast+'am' : (item.lunch!="" ? item.lunch+'pm' : (item.dinner!="" ? item.dinner+'pm': "")))+'</p></div>';
+				htmlData+='  <p class="info_right">'+(item.breakfast!="" ? item.breakfast : (item.lunch!="" ? item.lunch : (item.dinner!="" ? item.dinner: "")))+'</p></div>';
 				
 				htmlData+=' <div class="row_div"><label>Date </label>';
-				htmlData+='  <p class="info_right">'+getDateFormat(item.booking_date)+'</p></div>';
+				htmlData+='  <p class="info_right">'+getDateFormat(item.booking_date,'confirm')+'</p></div>';
 				
 				htmlData+=' <div class="row_div"><label>Request </label>';
 				htmlData+='  <p class="info_right">'+item.comments+'</p></div>';
@@ -76,7 +76,7 @@ function showOrderinfo() {
 				
 				htmlData+=' <div class="clearfix infowarps">';
 				
-				htmlData+='<h2>'+resData.restaurant_name+'</h2>';  
+				//htmlData+='<h2>'+resData.restaurant_name+'</h2>';  
 				
 				htmlData+='<div class="row_div"><h2>Location</h2></div>';
 				htmlData+='<div class="row_div"><label>Address </label>';

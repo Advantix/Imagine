@@ -325,7 +325,7 @@ function dateChange(type) {
 	if(cmp==0 || cmp==1) {
 		var booking_date = $('#booking_date').val(dateGivenHidden);
 		//alert(booking_date);
-		var frmDat = getDateFormat(dateGiven);
+		var frmDat = getDateFormat(dateGiven,'date');
 		var sepDay = frmDat.split(" ");
 		
 		ordinal = sepDay[1] + (sepDay[1]>10 && sepDay[1]<20 ? 'th' : {1:'st', 2:'nd', 3:'rd'}[sepDay[1] % 10] || 'th');
@@ -379,7 +379,7 @@ function fn_DateCompare(DateA, DateB) {
 		dateGiven = dyNex+'-'+(dmNex<10 ? '0'+dmNex: dmNex)+'-'+(daNex<10 ? '0'+daNex: daNex);			
 		dateGivenHidden=daNex+'-'+dmNex+'-'+dyNex;
 		
-		var frmDat = getDateFormat(dateGiven);
+		var frmDat = getDateFormat(dateGiven,'date');
 		var sepDay = frmDat.split(" ");
 		ordinal = sepDay[1] + (sepDay[1]>10 && sepDay[1]<20 ? 'th' : {1:'st', 2:'nd', 3:'rd'}[sepDay[1] % 10] || 'th');
 		DateShow = sepDay[0].slice(0,3)+", "+ordinal+" "+sepDay[2].slice(0,3)+" "+sepDay[3];
@@ -414,7 +414,7 @@ function fn_DateCompare(DateA, DateB) {
 		dateGiven = dyNex+'-'+(dmNex<10 ? '0'+dmNex: dmNex)+'-'+(daNex<10 ? '0'+daNex: daNex);			
 		
 	}
-	var frmDat = getDateFormat(dateGiven);
+	var frmDat = getDateFormat(dateGiven,'date');
 	var sepDay = frmDat.split(" ");
 	
 	$("#dayP").html(sepDay[0]);
