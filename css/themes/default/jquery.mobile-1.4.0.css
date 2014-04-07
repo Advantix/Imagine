@@ -3485,6 +3485,7 @@ fieldset.ui-controlgroup {
 	text-overflow: ellipsis;
 	overflow: hidden !important;
 	white-space: nowrap;
+	/*gokul*/font-family: gothic;font-size: 26px;font-weight: normal;
 }
 .ui-selectmenu.ui-popup {
 	min-width: 11em;
@@ -4558,7 +4559,7 @@ ul#cremove.ui-listview > li p{ width:100%;}
 .green_disc {background-color: rgba(1,215,71,9) /*{global-icon-disc}*/;}
 #tick .ui-btn-icon-right:after{background-color: rgba(1, 215, 71, 0.9)}
 
-select > option { font-weight:normal; /*gokul*/border-bottom: 1px solid #00AB21; text-align:center; padding:6px; }
+select > option { font-weight:normal; /*gokul*/border-bottom: 1px solid #00AB21; text-align:center; padding:6px;font-family: gothic;font-size: 26px;font-weight: normal; }
 
 .list_heading { background:#d3d3d3; font-size:1.2em; text-indent:1em; line-height:40px;}
 
@@ -4908,7 +4909,7 @@ a.arrival-time span, a.guset-no span{ font-size:18px; color:#278a32;}
 		}
 		.drop_date {border: medium none !important;box-shadow: none !important;font-family: 'gothic';font-size: 18px;font-weight: bold !important;height: 64px;line-height: 64px;margin-left: 10.5% !important;width: 76% !important;
 }
-.drop_date option{ text-align:center; border-bottom: 1px solid #00ab21; font-size:16px;}
+.drop_date option{ text-align:center; border-bottom: 1px solid #00ab21; font-family: gothic;font-size: 26px;font-weight: normal;}
 .calen_tab{width:72.7%; height:74px; background:#fff;margin-left:36px}
 .ui-listview > li p {
 	/*font-size: .70em;*/font-size: .718em;
@@ -5478,3 +5479,21 @@ p.info_right{  /*display: block; margin:0; padding:0; float:left; text-align:lef
 	a.arrival-time span, a.guset-no span{ font-size:16px; color:#278a32; padding-top:10px; display:block;}
 
 }
+/*gokul*/@media all and (max-device-width:1920px){
+ /* this will target any device up to 1920px */
+ 
+ .calen_tab {background: none repeat scroll 0 0 #FFFFFF;height: 74px; margin-left: 36px; width: 93.8%!important;}
+					.ui-listview > li p {
+	/*font-size: .70em;*/font-size: .718em;
+	font-weight: normal;
+	display: block;
+	/*margin: .6em 0;*/margin:0;
+	text-overflow: ellipsis;
+	/*overflow: hidden;*/
+	/*gokul*/ float:left !important;
+	white-space:normal; width:73em;
+}
+}
+
+	
+	

@@ -64,7 +64,7 @@ function showOrderinfo() {
 				htmlData+='  <p class="info_right">'+item.num_guest+' Guests</p></div>';
 				
 				htmlData+=' <div class="row_div"><label>Time </label>';
-				htmlData+='  <p class="info_right">'+(item.breakfast!="" ? item.breakfast : (item.lunch!="" ? item.lunch : (item.dinner!="" ? item.dinner: "")))+'</p></div>';
+				htmlData+='  <p class="info_right">'+(item.breakfast!="" ? tConvert(item.breakfast) : (item.lunch!="" ? tConvert(item.lunch) : (item.dinner!="" ? tConvert(item.dinner): "")))+'</p></div>';
 				
 				htmlData+=' <div class="row_div"><label>Date </label>';
 				htmlData+='  <p class="info_right">'+getDateFormat(item.booking_date,'confirm')+'</p></div>';
@@ -101,4 +101,16 @@ function showOrderinfo() {
 	window.localStorage.removeItem('holidaypercnt');
 	window.localStorage.removeItem('minorderamt');
 	});
+}
+
+  function tConvert (time) {
+  // Check correct time format and split into components
+  time = time.toString ().match (/^([01]\d|2[0-3])(:)([0-5]\d)(:[0-5]\d)?$/) || [time];
+
+  if (time.length > 1) { // If time format correct
+    time = time.slice (1);  // Remove full string match value
+    time[5] = +time[0] < 12 ? ' AM' : ' PM'; // Set AM/PM
+    time[0] = +time[0] % 12 || 12; // Adjust hours
+  }
+  return time.join (''); // return adjusted time or original string
 }

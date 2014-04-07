@@ -45,7 +45,7 @@ jQuery(document).ready(function () {
 			if(labelidDef!=0) {
 				$("#time_validate").val(labelidDef);
 				$("#timediv").html(labelidDef);
-				$("#timediv-button span").html(labelidDef.replace('_',':'));
+				$("#timediv-button span").html(tConvert(labelidDef.replace('_',':')));
 			}
 		}, 700);
 		
@@ -155,7 +155,7 @@ function getSittingName() {
 								//alert(index+":"+bkfst);	
 								if(i==0) { pos='a';} else if(i==1){pos='b';} else if (i==2) { pos='c';}
 								i++;
-								timHtml+= '<option value="'+bkfst.replace(':','_')+'">'+bkfst+'</option>';					
+								timHtml+= '<option value="'+bkfst.replace(':','_')+'">'+tConvert(bkfst)+'</option>';					
 									//alert((bkfstStrCnt%3));
 								if(((index+1)%3)==0) {
 									//alert("dfs");
@@ -188,8 +188,9 @@ function getSittingName() {
 						} else {							
 							if(seating=='bkfst') { set=0;} else if(seating=='lunch') {set=1;} else if(seating=='dinner') {set=2;}else {set='Select';}
 							if(sittingArr[set]==null) {
-								sitVal=set;
+								sitVal=tConvert(set);
 							} else {
+								//alert("We are unable to accept your reservation online at this time, please contact restaurant");
 								sitVal=sittingArr[set]+' Not Available for Selected Day';
 							}
 								
@@ -221,7 +222,7 @@ function getSittingName() {
 		if(labelid!=0) {
 			$("#time_validate").val(labelid);
 			$("#timediv").val(labelid);
-			$("#timediv-button span").html(labelid.replace('_',':'));
+			$("#timediv-button span").html(tConvert(labelid.replace('_',':')));
 		} else {
 			$("#time_validate").val('');
 			$("#timediv").val(0);
@@ -265,7 +266,7 @@ $("#bookingButtonId").click(function() {
 					window.location.href='dinein_user.html';	
 					
 				} else if(data.response==='NA') {
-					alert('There are no seats available for your selected time.');
+					alert('We are unable to accept your reservation online at this time, please contact restaurant');
 					$('#pageLoader').hide();
 				} else {
 					available = data.response;
@@ -430,3 +431,14 @@ function fn_DateCompare(DateA, DateB) {
 		$("#dropHtmlDateId").show();
 	}
   }
+  function tConvert (time) {
+  // Check correct time format and split into components
+  time = time.toString ().match (/^([01]\d|2[0-3])(:)([0-5]\d)(:[0-5]\d)?$/) || [time];
+
+  if (time.length > 1) { // If time format correct
+    time = time.slice (1);  // Remove full string match value
+    time[5] = +time[0] < 12 ? ' AM' : ' PM'; // Set AM/PM
+    time[0] = +time[0] % 12 || 12; // Adjust hours
+  }
+  return time.join (''); // return adjusted time or original string
+}
