@@ -108,7 +108,7 @@ function getDealItemDet() {
 			
 			
                    
-			htmlVal+='<p><h3>Price <span>$'+ itemDet.item_selling_price + '/-</span><h3>';
+			htmlVal+='<p><h3 class="price_shw">Price <span>$'+ itemDet.item_selling_price + '</span><h3>';
 				
 
 				/* htmlVal+='<div class="item-wrap clearfix">';				 

@@ -383,7 +383,7 @@ function fn_DateCompare(DateA, DateB) {
 		var frmDat = getDateFormat(dateGiven,'date');
 		var sepDay = frmDat.split(" ");
 		ordinal = sepDay[1] + (sepDay[1]>10 && sepDay[1]<20 ? 'th' : {1:'st', 2:'nd', 3:'rd'}[sepDay[1] % 10] || 'th');
-		DateShow = sepDay[0].slice(0,3)+", "+ordinal+" "+sepDay[2].slice(0,3)+" "+sepDay[3];
+		DateShow = sepDay[0].slice(0,3)+",<br> "+ordinal+" "+sepDay[2].slice(0,3)+" "+sepDay[3];
 		
 		days30Html+='<option value='+dateGivenHidden+'>'+DateShow+'</option>';
 	}		
