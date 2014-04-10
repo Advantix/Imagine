@@ -1,9 +1,9 @@
-var itemImgURL = "http://bestmenu.com.au/restaurant/images/item/";
+var itemImgURL = "http://sandbox.bestmenu.com.au/images/item/";
 var defaultImgURL = "logo_miapps.png";
-var serviceAppURL = "http://bestmenu.com.au/restaurant/index.php/api/appconfig/Mw";
+var serviceAppURL = "http://sandbox.bestmenu.com.au/index.php/api/appconfig/Mw";
 
 var store_id= 'Mw';
-var serviceURL = "http://bestmenu.com.au/restaurant/index.php/api/";
+var serviceURL = "http://sandbox.bestmenu.com.au/index.php/api/";
 
 var resDatavl = window.localStorage.getItem('RestInfoDet');//alert(resDatavl);
 var restId;
@@ -20,7 +20,7 @@ if(resDatavl!=null) {
 	}
 	
 	//alert(menuId+":"+restId);
-	var serviceMenuURL = "http://bestmenu.com.au/restaurant/index.php/api/catlist/Mw/"+restId+"/"+menuId;
+	var serviceMenuURL = "http://sandbox.bestmenu.com.au/index.php/api/catlist/Mw/"+restId+"/"+menuId;
 }
 
 var dataAppConfigval = window.localStorage.getItem('configData');
