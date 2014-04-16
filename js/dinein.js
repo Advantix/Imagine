@@ -44,7 +44,7 @@ jQuery(document).ready(function () {
 			//$("#"+labelidDef+" a").css({"background":'#BFC4C4'});
 			if(labelidDef!=0) {
 				$("#time_validate").val(labelidDef);
-				$("#timediv").html(labelidDef);
+				$("#timediv").val(labelidDef);
 				$("#timediv-button span").html(tConvert(labelidDef.replace('_',':')));
 			}
 		}, 700);
@@ -307,7 +307,7 @@ function dateChange(type) {
 	dArr=booking_date.split('-');
 	if(dArr[0]<2000) {
 		dateGiven=dArr[2]+'-'+(dArr[1]<10 ? '0'+dArr[1]: dArr[1])+'-'+(dArr[0]<10 ? '0'+dArr[0]: dArr[0]);
-		var nex = new Date(dateGiven); //alert(nex);
+		var nex = new Date(parseDate(dateGiven)); //alert(nex);
 		if(type=='Next') {	
 			nex.setDate(nex.getDate() + 1);		
 		} else if(type=='Prev') {	
@@ -342,15 +342,16 @@ function dateChange(type) {
 	}
 }
 
+
 function fn_DateCompare(DateA, DateB) {
 
 	 // alert(DateA+":"+DateB);
-      var a = new Date(DateA);
-      var b = new Date(DateB);
+      var a = new Date(parseDate(DateA));
+      var b = new Date(parseDate(DateB));
 
       var msDateA = Date.UTC(a.getFullYear(), a.getMonth()+1, a.getDate());
       var msDateB = Date.UTC(b.getFullYear(), b.getMonth()+1, b.getDate());
-	  //alert(msDateA+":"+msDateB);
+	 // alert(msDateA+":"+msDateB);
       if (parseFloat(msDateA) < parseFloat(msDateB))
         return -1;  // less than
       else if (parseFloat(msDateA) == parseFloat(msDateB))
@@ -369,7 +370,7 @@ function fn_DateCompare(DateA, DateB) {
 		var dm = today.getMonth()+1;
 		currDate = today.getFullYear()+'-'+(dm<10 ? '0'+dm: dm)+'-'+(da<10 ? '0'+da: da);
 		
-		var nex = new Date(currDate); //alert(nex);
+		var nex = new Date(parseDate(currDate)); //alert(nex);
 		
 		//nex.setDate(nex.getDate() + i);		
 		 
@@ -406,7 +407,7 @@ function fn_DateCompare(DateA, DateB) {
 	dArr=booking_date.split('-');
 	if(dArr[0]<2000) {
 		dateGiven=dArr[2]+'-'+(dArr[1]<10 ? '0'+dArr[1]: dArr[1])+'-'+(dArr[0]<10 ? '0'+dArr[0]: dArr[0]);
-		var nex = new Date(dateGiven); //alert(nex);
+		var nex = new Date(parseDate(dateGiven)); //alert(nex);
 		
 		var dmNex = nex.getMonth()+1;		
 		var dyNex = nex.getFullYear();
@@ -417,7 +418,7 @@ function fn_DateCompare(DateA, DateB) {
 	}
 	var frmDat = getDateFormat(dateGiven,'date');
 	var sepDay = frmDat.split(" ");
-	
+	//alert(frmDat);
 	$("#dayP").html(sepDay[0]);
 	$("#dateP").html(sepDay[1]+" "+sepDay[2].slice(0,3)+" "+sepDay[3]);
   }

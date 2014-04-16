@@ -221,6 +221,10 @@ function capitalize (text) {
     return text.charAt(0).toUpperCase() + text.slice(1).toLowerCase();
 }
 
+function parseDate(input) {
+  var parts = input.match(/(\d+)/g);
+  return new Date(parts[0], parts[1]-1, parts[2]);
+}
 function getDateFormat(dateGiven,type) {
 	
 	Date.prototype.myMet=function()
@@ -256,7 +260,7 @@ function getDateFormat(dateGiven,type) {
 	
      // alert(dateGiven);
 	
-	var Datestring = new Date(dateGiven);
+	var Datestring = new Date(parseDate(dateGiven));//alert(Datestring);
 	/*Datestring.myMet();
 	alert(Datestring.toLocaleFormat('%A, %d %B %Y'));
 	mon = Datestring.myProp;
@@ -277,6 +281,7 @@ function getDateFormat(dateGiven,type) {
 		return day.slice(0,3)+" "+date+" "+ mon +" "+ year;
 	}
 }
+
 
 // Footer controls starts
 
