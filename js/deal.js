@@ -60,6 +60,7 @@ function getDealItemList() {
 		$('#menuList li').remove();		
 		//alert(data.DealList);
 		var items = data.DealList;
+		//alert(JSON.stringify(items));
 		if(items.length>0) {
 			$.each(items, function(index, item) {
 				var totMenCnt2=items.length-1;
@@ -72,14 +73,26 @@ function getDealItemList() {
 					strDescShow = strDesc;
 				}
 				strItemName=item.item_name;
-				$('#menuList').append('<li class="ui-li-has-thumb '+fir2+'"><a class="ui-btn ui-btn-icon-right ui-icon-carat-r" href="deal.html?delitemId='+item.item_id+'" rel="external" ><img src="'+itemImgURL+(item.item_img!=""? item.item_img:defaultImgURL)+'"><h2 class="myleft">' + strItemName+'&nbsp;</h2><h3 class="mylefth3">&nbsp;</h3><p>'+ strDescShow + '</p></a></li>');
+				$('#menuList').append('<li class="ui-li-has-thumb '+fir2+'"><a class="ui-btn ui-btn-icon-right ui-icon-carat-r" href="deal.html?delitemId='+item.item_id+'" rel="external" ><img src="'+itemImgURL+(item.item_img!=""? item.item_img:defaultImgURL)+'"><h2 class="myleft">' + strItemName+'&nbsp;</h2><h3 class="mylefth3">$'+ formatDollar(item.item_selling_price) +'</h3><p>'+ strDescShow + '</p></a></li>');
 			});
 		} else {
 			$('#menuList').append('<li class="ui-li-has-thumb"><span style="color:#ff0000">No Deals Found</span></li>');
 		}
 		//onclick="showDealCartAlert('+item.item_id+','+dealFlag+','+dealItemsId+')"
 		$('#menuList').listview('refresh');
-		headerHtml('Deal Item List');
+		var homeDashData = window.localStorage.getItem('tabMenus');
+		//alert(homeDashData);
+		var type="All";
+		if(homeDashData!=null) {
+			var homeDashInfos = JSON.parse(homeDashData);
+			$.each(homeDashInfos, function(index, tabs) {
+				//alert(JSON.stringify(tabs));
+				if(tabs.cat_id==tabId) {
+					type=tabs.category_name;
+				}
+			});
+		} 
+		headerHtml(type+' Deals');
 		$("#pageLoader").hide();
 		//$('#deallist').html('Deal Item List');
 	});
@@ -108,7 +121,7 @@ function getDealItemDet() {
 			
 			
                    
-			htmlVal+='<p><h3 class="price_shw">Price <span>$'+ itemDet.item_selling_price + '</span><h3>';
+			htmlVal+='<p><h3 class="price_shw">Price <span>$'+ formatDollar(itemDet.item_selling_price) + '</span><h3>';
 				
 
 				/* htmlVal+='<div class="item-wrap clearfix">';				 

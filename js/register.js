@@ -72,7 +72,7 @@ if(formActive==null && form_active_url==null) {
 			if(form_active_url=='registerFrmId') {
 				headerHtml('Account Details');
 			} else {
-				headerHtml('Billing Details');
+				headerHtml('Address Details');
 			}
 		} else {
 			showPrevValue(formActive);
@@ -220,8 +220,8 @@ function showPrevValue(formName){
 		$('#add_user_id').val(userData.user_data.userid);
 		$('#street_number').val(userData.addr_data.address!=""? userData.addr_data.address : "Street Number");
 		$('#street_name').val(userData.addr_data.street!=""? userData.addr_data.street : "Street Name");
-		$('#suburb').val(userData.addr_data.city!=""? userData.addr_data.city : "Suburp");
-		$('#postcode').val(userData.addr_data.post_code!=""? userData.addr_data.post_code : "Postcode");	
+		$('#suburb').val(userData.addr_data.city!=""? userData.addr_data.city : "Suburb");
+		$('#postcode').val(userData.addr_data.post_code!="0"? userData.addr_data.post_code : "Postcode");	
 	}
 	
 }

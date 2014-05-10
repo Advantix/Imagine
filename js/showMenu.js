@@ -58,7 +58,7 @@ function getMenuTab() {
 		
 		//alert(JSON.stringify(data));
 		var tabs = data.TabInfo;	
-		
+		window.localStorage.setItem('tabMenus',JSON.stringify(tabs)); 	
 		//alert(tabs);
 		if(tabs!="") {
 			tabHtml='';
@@ -143,7 +143,7 @@ function getMenuList() {
 						strDescShow = strDesc;
 					}
 					strItemName=item.item_name;
-					$('#menuList').append('<li class="ui-li-has-thumb '+fir2+'"><a class="ui-btn ui-btn-icon-right ui-icon-carat-r" href="showMenu.html?itemId='+item.item_id+'&tabId='+menuId+'" rel="external"><img src="'+itemImgURL+(item.item_img!=""? item.item_img:defaultImgURL)+'" ><h2 class="myleft">'+strItemName+'</h2><h3 class="mylefth3">$'+ item.item_selling_price + '</h3><p >'+ strDescShow+ '</p ></a></li>');
+					$('#menuList').append('<li class="ui-li-has-thumb '+fir2+'"><a class="ui-btn ui-btn-icon-right ui-icon-carat-r" href="showMenu.html?itemId='+item.item_id+'&tabId='+menuId+'" rel="external"><img src="'+itemImgURL+(item.item_img!=""? item.item_img:defaultImgURL)+'" ><h2 class="myleft">'+strItemName+'</h2><h3 class="mylefth3">$'+ formatDollar(item.item_selling_price) + '</h3><p >'+ strDescShow+ '</p ></a></li>');
 				});
 				$("#pageLoader").hide();
 			} else {
@@ -182,7 +182,7 @@ function getMenuItemList() {
 		if(itemDet.option=='N') {
 			
 			
-			htmlVal+='<p> <h3 class="price_shw">Price  <span>$'+ itemDet.item_selling_price + '</span></h3>';
+			htmlVal+='<p> <h3 class="price_shw">Price  <span>$'+ formatDollar(itemDet.item_selling_price) + '</span></h3>';
 				
 			
 			/* -- modi 4 /12----
@@ -212,7 +212,7 @@ function getMenuItemList() {
 			
 			htmlVal+='<div class="clearfix infowarps">';
 			htmlVal+='<div class="row_div">';
-            htmlVal+='<h2>Size</h2></div>';
+           // htmlVal+='<h2>Size</h2></div>';
 				$.each(itemOptionDets, function(index, itemOpt) {
 					if(priceSelect!="" ) {
 						priceSelected=priceSelect==itemOpt.price ? "checked" : "";
@@ -224,8 +224,8 @@ function getMenuItemList() {
 					}
 					//alert(labelStat)
 					OptionName=itemOpt.option_name;			
-					htmlVal+='<div class="row_div"><p class="ingre_label"><input type="radio" name="option_price" id="'+itemOpt.option_name+'" value="'+itemOpt.price + '" data-cacheval="true" onclick=\'setPriceType("'+OptionName+'")\' '+priceSelected+'/> '+itemOpt.option_name+'</p>';
-					htmlVal+='<p class="info_right">$'+ itemOpt.price + '</p>';					
+					htmlVal+='<div class="row_div"><p> <h3 class="price_shw"><input type="hidden" name="option_price" id="'+itemOpt.option_name+'" value="'+itemOpt.price + '" data-cacheval="true" onclick=\'setPriceType("'+OptionName+'")\' '+priceSelected+'/> '+itemOpt.option_name;
+					htmlVal+='<span> $'+ formatDollar(itemOpt.price) + '</span></h3>';					
 					htmlVal+='</div>';	
 					
 				});

@@ -102,7 +102,7 @@ showPrevValue();
 
 function showPrevValue(){	
 	//alert(JSON.stringify(userData));
-	headerHtml('');	
+	headerHtml('Guest Details');	
 	
 	var tempRegInfoData = window.localStorage.getItem('tempRegInfoArry');
 	if(tempRegInfoData!=null) {

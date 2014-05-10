@@ -25,7 +25,8 @@ if(dataAppConfig==null || resData==null) {
 								map:{
 								  options:{
 									center:event.latLng,
-									zoom: 15
+									zoom: 15,
+									disableDefaultUI: true
 								  }
 								}
 							 });                        

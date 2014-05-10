@@ -190,11 +190,11 @@ function getAppConfig() {
 					
 				});
 				htmlOption+='</select>';
-				$("#pageLoader").hide();
+				//$("#pageLoader").hide();
 				$('#resLocationId').html(htmlOption);
 			} else {
 				$('#resLocationId').hide();
-				$("#pageLoader").hide();
+				//$("#pageLoader").hide();
 				setResLoc(0,0);
 			}
 		

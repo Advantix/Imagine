@@ -31,16 +31,16 @@ function getMenuList() {
 		
 		//$('#employeeList').append('<li><a href="index.html" class="ui-link-inherit" rel="external">Home</a></li>');	
 		if(userDataval!=null) {			
-			$('#employeeList').append('<li><a href="register.html?form_active=registerFrmId" class="ui-link-inherit" rel="external">Personal Details</a></li>');
+			$('#employeeList').append('<li><a href="register.html?form_active=registerFrmId" class="ui-link-inherit" rel="external">Account Details</a></li>');
 			$('#employeeList').append('<li><a href="register.html?form_active=addrFrmId" class="ui-link-inherit" rel="external">Address Details</a></li>');
 			//$('#employeeList').append('<li><a href="order_info.html" class="ui-link-inherit" rel="external">Order History</a></li>');
-			$('#employeeList').append('<li><a href="confirm_booking.html" class="ui-link-inherit" rel="external">Reservation History</a></li>');
+			$('#employeeList').append('<li><a href="confirm_booking.html" class="ui-link-inherit" rel="external">History</a></li>');
 			//$('#employeeList').append('<li><a href="checkout.html" class="ui-link-inherit" rel="external">View Cart</a></li>');
 			//$('#employeeList').append('<li><a href="change_password.html" class="ui-link-inherit" rel="external">Change Password</a></li>');
 		}
 		$('#employeeList').append('<li><a href="dinein.html" class="ui-link-inherit" rel="external">Reservation</a></li>');
 		$('#employeeList').append('<li><a href="showMenu.html" class="ui-link-inherit" rel="external">Menu</a></li>');
-		$('#employeeList').append('<li><a href="deal.html?tabId='+menuId+'" class="ui-link-inherit" rel="external">Deals</a></li>');
+		$('#employeeList').append('<li><a href="deal.html?tabId=ALL" class="ui-link-inherit" rel="external">Deals</a></li>');
 		$('#employeeList').append('<li><a href="privacy.html" class="ui-link-inherit" rel="external">Privacy</a></li>');
 		$('#employeeList').append('<li><a href="help.html" class="ui-link-inherit" rel="external">Help</a></li>');
 		$('#employeeList').append('<li><a href="terms.html" class="ui-link-inherit" rel="external">Terms and Conditions</a></li>');

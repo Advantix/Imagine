@@ -4577,7 +4577,7 @@ select > option { font-weight:normal; /*gokul*/border-bottom: 1px solid #00AB21;
 
 /*------------Gokul style-----------*/
 
-.confirmation, .terms, .menu_wrap{ margin:0; padding:0; text-align:left; background:#fff; padding:15px;  min-height:25em;}
+.confirmation, .terms, .menu_wrap{ margin:0; padding:0; text-align:left; background:#fff; padding:15px;  min-height:0;}
 .menu_wrap{ background:none; margin-top: 33px;}
 
 .terms { padding-bottom:50px;}
@@ -4925,7 +4925,7 @@ p.info_right { float: left;font-size: 0.8em;margin: 0; padding: 0;text-align: le
 width: 12em;
 }
 .confirmation label{ display: block; width:6em; float:left; color:#000; font-size:14px; font-weight:bold;}
-#addressDiv .ui-btn { padding:0.3em .8em 0.3em 0.8em !important; margin-right:0; margin-left:0;margin-bottom:0; margin-top:-14px; background-color:#00ab21;font-family: 'gothic',Arial, Helvetica, sans-serif /*{global-font-family}*/; font-size:0.5em; text-transform:uppercase; float:right; color:#fff;}
+#addressDiv .ui-btn { padding:0.2em 0.4em !important; margin:24px 0 11px 82px; background-color:#00ab21;font-family: 'gothic',Arial, Helvetica, sans-serif /*{global-font-family}*/;  text-transform:uppercase; float:none; width:5em; color:#fff; font-size:.8em;}
 .menu_wrap{ background:none; margin-top:0px!important;}
 .menu-choose-wp {float: left;height: 89px; margin-bottom:28px!important; margin-right: 15px;width: 47%;}
 .imagineLogo img {margin: 0 !important;padding: 0;width: 70%!important;}
@@ -5036,7 +5036,10 @@ width: 12em;
 	/*gokul*/ float:left !important;
 	white-space:normal; width:27em;
 }
-#addressDiv .ui-btn { padding:0.3em 1em 0.3em 1em !important; margin-right:0; margin-top:-22px; background-color:#00ab21;font-family: 'gothic',Arial, Helvetica, sans-serif /*{global-font-family}*/; font-size:0.8em; text-transform:uppercase; float:right; color:#fff;}
+#addressDiv .ui-btn { padding:0.3em 1em 0.3em 1em !important; margin-right:0; margin-left: 208px; margin-top: 24px; background-color:#00ab21;font-family: 'gothic',Arial, Helvetica, sans-serif /*{global-font-family}*/; font-size:0.8em; text-transform:uppercase; float:none; color:#fff; font-size: 0.8em;
+   
+
+   }
 .confirmation label{ display: block; width:15em; float:left; color:#000; font-size:14px; font-weight:bold;}
 p.info_right{  /*display: block; margin:0; padding:0; float:left; text-align:left*/float: left;font-size: 0.9em;margin: 0; padding: 0; text-align:left; width:13em; }
 .imagineLogo img {margin: 0 !important;padding: 0;width: 50%!important;}
@@ -5243,7 +5246,7 @@ p.info_right{  /*display: block; margin:0; padding:0; float:left; text-align:lef
 	/*gokul*/ float:left !important;
 	white-space:normal; width:51em;
 }
-#addressDiv .ui-btn { padding:0.3em 1em 0.3em 1em !important; margin-right:0; margin-top:-29px; background-color:#00ab21;font-family: 'gothic',Arial, Helvetica, sans-serif /*{global-font-family}*/; font-size:0.8em; text-transform:uppercase; float:right; color:#fff;}
+#addressDiv .ui-btn { padding:0.3em 1em 0.3em 1em !important; margin-right:0; margin-top:32px; margin-left:362px; background-color:#00ab21;font-family: 'gothic',Arial, Helvetica, sans-serif /*{global-font-family}*/; font-size:0.8em; text-transform:uppercase; float:none; color:#fff;}
 .confirmation label{ display: block; width:26em; float:left; color:#000; font-size:14px; font-weight:bold;}
 p.info_right{  /*display: block; margin:0; padding:0; float:left; text-align:left*/float: left;font-size: 0.9em;margin: 0; padding: 0; text-align:left; width:22em; }
 .menu_wrap {
@@ -5323,7 +5326,7 @@ p.info_right{  /*display: block; margin:0; padding:0; float:left; text-align:lef
 	/*gokul*/ float:left !important;
 	white-space:normal; width:73em;
 }
-#addressDiv .ui-btn { padding:0.3em 1em 0.3em 1em !important; margin-right:0; margin-top:-29px; background-color:#00ab21;font-family: 'gothic',Arial, Helvetica, sans-serif /*{global-font-family}*/; font-size:0.8em; text-transform:uppercase; float:right; color:#fff;}
+#addressDiv .ui-btn { padding:0.3em 1em 0.3em 1em !important; margin-right:0; margin-top:32px; margin-left:446px; background-color:#00ab21;font-family: 'gothic',Arial, Helvetica, sans-serif /*{global-font-family}*/; font-size:0.8em; text-transform:uppercase; float:none; color:#fff;}
 .confirmation label{ display: block; width:32em; float:left; color:#000; font-size:14px; font-weight:bold;}
 p.info_right{  /*display: block; margin:0; padding:0; float:left; text-align:left*/float: left;font-size: 0.9em;margin: 0; padding: 0; text-align:left; width:33em; }
 	}
