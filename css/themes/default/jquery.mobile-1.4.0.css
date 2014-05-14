@@ -5498,5 +5498,17 @@ p.info_right{  /*display: block; margin:0; padding:0; float:left; text-align:lef
 }
 }
 
-	
+/**
+* Styles to fix the new iOS 7 transparent status bar
+*/
+#ios7statusbar {
+width:100%;
+height:20px;
+background-color:white;
+position:fixed;
+z-index:10000;
+}
+.ios7 .ui-page, .ios7 .ui-header, .ios7 .ui-pane {
+margin-top: 20px;
+}	
 	
