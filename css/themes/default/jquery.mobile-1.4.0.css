@@ -4617,7 +4617,7 @@ p.info_right{  /*display: block; margin:0; padding:0; float:left; text-align:lef
 	background: #000; /* Old browsers */	
 }
 
-.ui-header{border-color:#000; line-height:2em}
+.ui-header{border-color:#000; line-height:2em;}
 .ui-footer{border-color:#000000;}
 .ui-footer-fixed { background:#000;} 
 .ui-btngrey{color:#fff !important; text-shadow: 0 0px 0 #F3F3F3 !important;
@@ -4839,7 +4839,7 @@ a.arrival-time span, a.guset-no span{ font-size:18px; color:#278a32;}
 .calen_tab{width:84%!important; height:74px; background:#fff;margin-left:20px!important}
 .drop_date{width:92%!important;font-size: 18px; font-family: 'gothic'; margin-left:3.5%!important;height:64px;border:none!important;box-shadow:none!important; line-height:64px; font-weight:bold!important;}
 .hour_sche{height:30px;display:block;line-height:30px;}
-.price_shw{text-align:right;  margin: 0 0 0.3em !important;}
+.price_shw{text-align:right;  margin: 0 0 0.3em !important;font-size:14px;}
 @media screen and (orientation: portrait) {
 	.ui-mobile .ui-page {
 		min-height: 420px;

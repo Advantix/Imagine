@@ -1,11 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
+
 <!-- config.xml reference: https://build.phonegap.com/docs/config-xml -->
 <widget xmlns     = "http://www.w3.org/ns/widgets"
         xmlns:gap = "http://phonegap.com/ns/1.0"
         id        = "com.phonegap.Imagine-pizza-restaurant"
-        version   = "1.0.1">
+        version   = "1.0.0">
 
-    <name>Imagine Pizza Restaurant</name>
+    <name>Imagine</name>
 
     <description>
        Imagine Pizza Restaurant

@@ -270,7 +270,8 @@ $("#bookingButtonId").click(function() {
 					$('#pageLoader').hide();
 				} else {
 					available = data.response;
-					alert('Only '+available+' seats available');
+					//alert('Only '+available+' seats available');
+					alert('We are unable to accept your reservation online at this time, please contact restaurant');
 					$('#pageLoader').hide();
 				}
 
